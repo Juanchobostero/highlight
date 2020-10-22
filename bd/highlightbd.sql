@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-09-2020 a las 19:53:25
--- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.2
+-- Tiempo de generación: 23-10-2020 a las 01:09:33
+-- Versión del servidor: 10.4.13-MariaDB
+-- Versión de PHP: 7.4.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -101,6 +100,32 @@ CREATE TABLE `medidas` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `portadas`
+--
+
+CREATE TABLE `portadas` (
+  `id_port` int(11) NOT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `imagen` varchar(255) NOT NULL,
+  `publicado` enum('SI','NO') NOT NULL,
+  `estado` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `portadas`
+--
+
+INSERT INTO `portadas` (`id_port`, `titulo`, `imagen`, `publicado`, `estado`) VALUES
+(1, 'La casa de papel', 'assets/img/portadas/no-portada.png', 'NO', 1),
+(2, 'Portal La campora', 'assets/img/portadas/no-portada.png', 'NO', 1),
+(3, 'Copacabana', 'assets/img/portadas/02102020_1601682643.jpg', 'SI', 1),
+(4, 'La cara visible 1', 'assets/img/portadas/no-portada.png', 'SI', 1),
+(5, 'Maria', 'assets/img/portadas/no-portada.png', 'NO', 1),
+(6, 'Se muestra', 'assets/img/portadas/no-portada.png', 'SI', 0);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `productos`
 --
 
@@ -158,7 +183,8 @@ CREATE TABLE `tipousuarios` (
 --
 
 INSERT INTO `tipousuarios` (`id_tipoUsuario`, `tipo_usuario`) VALUES
-(1, 'admin');
+(1, 'admin'),
+(2, 'cliente');
 
 -- --------------------------------------------------------
 
@@ -189,9 +215,10 @@ CREATE TABLE `usuarios` (
   `nombreU` varchar(50) DEFAULT NULL,
   `apellidoU` varchar(50) DEFAULT NULL,
   `telefonoU` varchar(15) DEFAULT NULL,
-  `emailU` varchar(80) NOT NULL,
+  `fotoU` varchar(255) NOT NULL,
+  `emailU` varchar(100) NOT NULL,
   `nickU` varchar(45) NOT NULL,
-  `passwordU` varchar(45) NOT NULL,
+  `passwordU` varchar(255) NOT NULL,
   `estadoU` bit(1) NOT NULL DEFAULT b'1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -199,8 +226,9 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id_usuario`, `id_tu`, `nombreU`, `apellidoU`, `telefonoU`, `emailU`, `nickU`, `passwordU`, `estadoU`) VALUES
-(1, 1, 'Guido', 'Muchut', '215484545', 'gem_18@live.com', 'guido', '123', b'1');
+INSERT INTO `usuarios` (`id_usuario`, `id_tu`, `nombreU`, `apellidoU`, `telefonoU`, `fotoU`, `emailU`, `nickU`, `passwordU`, `estadoU`) VALUES
+(1, 1, 'Guido', 'Muchut', '215484545', 'assets/img/perfiles/no-user.jpg', 'gem_18@live.com', 'guido', '$2y$10$4uSC0/FVz5BJNjBikAD1veXvqWqGAMTzXzT63FNz.nAcPcEDDtFxO', b'1'),
+(2, 2, 'Juan', 'Perez', '41255125', 'assets/img/perfiles/02102020_1601672099.jpg', 'juan_99999@gmail.com', 'juan', '123', b'1');
 
 -- --------------------------------------------------------
 
@@ -275,6 +303,12 @@ ALTER TABLE `marcas`
 --
 ALTER TABLE `medidas`
   ADD PRIMARY KEY (`id_medida`);
+
+--
+-- Indices de la tabla `portadas`
+--
+ALTER TABLE `portadas`
+  ADD PRIMARY KEY (`id_port`);
 
 --
 -- Indices de la tabla `productos`
@@ -377,6 +411,12 @@ ALTER TABLE `medidas`
   MODIFY `id_medida` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `portadas`
+--
+ALTER TABLE `portadas`
+  MODIFY `id_port` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
@@ -398,7 +438,7 @@ ALTER TABLE `subcategorias`
 -- AUTO_INCREMENT de la tabla `tipousuarios`
 --
 ALTER TABLE `tipousuarios`
-  MODIFY `id_tipoUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_tipoUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `update_lotes`
@@ -410,7 +450,7 @@ ALTER TABLE `update_lotes`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas`

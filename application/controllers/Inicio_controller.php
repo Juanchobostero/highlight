@@ -1,25 +1,79 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
-
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
-	public function index()
+class Inicio_controller extends CI_Controller
+{
+	//--------------------------------------------------------------
+	public function admin()
 	{
-		$this->load->view('welcome_message');
+		if (isset($_SESSION['id'])) {
+			redirect('admin/dashboard');
+		} else {
+			redirect('admin/login');
+		}
+	}
+
+	//--------------------------------------------------------------
+	// acceso a login de admin
+	public function login()
+	{
+		$data['title'] = 'Acceso';
+		$this->load->view('admin/login', $data);
+		// $this->validar();
+	}
+
+	//--------------------------------------------------------------
+	// Validacion del login del admin
+	public function validar()
+	{
+		$email = $this->input->post('email');
+		$pass = $this->input->post('pass');
+
+		$this->form_validation->set_rules('email', 'E-mail', 'required|valid_email');
+		$this->form_validation->set_rules('pass', 'Contraseña', 'required');
+
+		if ($this->form_validation->run()) {
+			$users = new Usuarios;
+			$user = $users->get_userCorreo($email);
+
+			if ($user and password_verify($pass, $user->passwordU)) {
+				$data = [
+					'id'			=> $user->id_usuario,
+					'tipo'		=> $user->id_tu,
+					'nombre'	=> $user->nombreU,
+					'apellido' => $user->apellidoU,
+					'usuario'	=> $user->nombreU . ' ' . $user->apellidoU,
+					'telefono' => $user->telefonoU,
+					'correo'	=> $user->emailU,
+					'foto'		=> $user->fotoU,
+					'estado'	=> $user->estadoU,
+					'login'		=> TRUE
+				];
+				$this->session->set_userdata($data);
+				// redirect('admin');
+				$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Bienvenido ' . $user->nombreU . '!', 'url' => base_url('admin/dashboard')]));
+				return;
+			}
+			$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'errores' => ['Email y/o contraseña incorrectos']]));
+			return;
+			// $this->session->set_flashdata('msg_log', 'Email y/o Contraseña incorrectos');
+			// $this->admin();
+		} else {
+			$this->output->set_output(json_encode(['result' => 3, 'titulo' => 'Ooops.. error!', 'errores' => $this->form_validation->error_array()]));
+			return;
+		}
+	} // fin de metodo validar
+
+	//--------------------------------------------------------------
+	public function frmSalir()
+	{
+		$this->load->view('admin/cerrar-sesion');
+	}
+
+	//--------------------------------------------------------------
+	public function cerrarSesion()
+	{
+		$this->session->sess_destroy();
+		redirect('admin/login');
 	}
 }

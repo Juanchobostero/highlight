@@ -5,14 +5,10 @@ RewriteBase /
 # Removes index.php from ExpressionEngine URLs
 RewriteCond %{THE_REQUEST} ^GET.*index\.php [NC]
 RewriteCond %{REQUEST_URI} !/system/.* [NC]
-RewriteRule (.*?)index\.php/*(.*) nissi/$1$2 [R=301,NE,L]
+RewriteRule (.*?)index\.php/*(.*) highlight/$1$2 [R=301,NE,L]
  
 # Directs all EE web requests through the site index file
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ nissi/index.php/$1 [L]
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php/$1 [L,QSA]
+RewriteRule ^(.*)$ highlight/index.php/$1 [L]
 </IfModule>
