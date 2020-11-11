@@ -7,7 +7,6 @@
 
 <div class="modal-body">
 	<form id="form_editPort" enctype="multipart/form-data" method="post" onsubmit="validFormMod(event, '<?= base_url('editarPortada/' . $port->id_port) ?>')">
-		<input type="hidden" name="" value="33">
 		<div class="form-group">
 			<label for="titulo">Título</label>
 			<input type="text" class="form-control" id="titulo" name="titulo" placeholder="Introduce un titulo" value="<?= $port->titulo; ?>">

@@ -24,17 +24,13 @@ class Portadas_controller extends CI_Controller
 		verificarConsulAjax();
 
 		switch ($estado) {
-			case 'activas':
-				$portadas = $this->Portadas->getPortadas(1, 1);
-				$this->load->view('admin/portadas/_tblPortadasActivas', ['portadas' => $portadas]);
+			case 'publicadas':
+				$portadas = $this->Portadas->get_portadas(1, 1);
+				$this->load->view('admin/portadas/_tblPortadasPublicadas', ['portadas' => $portadas]);
 				break;
-			case 'todas':
-				$portadas = $this->Portadas->getPortadas(1);
-				$this->load->view('admin/portadas/_tblPortadasTodas', ['portadas' => $portadas]);
-				break;
-			case 'eliminadas':
-				$portadas = $this->Portadas->getPortadas(0);
-				$this->load->view('admin/portadas/_tblPortadasEliminadas', ['portadas' => $portadas]);
+			case 'no-publicadas':
+				$portadas = $this->Portadas->get_portadas(1, 2);
+				$this->load->view('admin/portadas/_tblPortadasNoPublicadas', ['portadas' => $portadas]);
 				break;
 		}
 	}
@@ -51,7 +47,7 @@ class Portadas_controller extends CI_Controller
 	{
 		verificarConsulAjax();
 
-		$portada = $this->Portadas->getPortada($id);
+		$portada = $this->Portadas->get_portada($id);
 		$this->load->view('admin/portadas/frmEditarPortada', ['port' => $portada]);
 	}
 
@@ -65,10 +61,10 @@ class Portadas_controller extends CI_Controller
 		if ($this->form_validation->run()) :
 			if ($this->input->post('publicar')) {
 				$publicado = 1; // SI
-				$tab = 'activas';
+				$tab = 'publicadas';
 			} else {
 				$publicado = 2; // NO
-				$tab = 'todas';
+				$tab = 'no-publicadas';
 			}
 
 			$port = [
@@ -91,7 +87,7 @@ class Portadas_controller extends CI_Controller
 
 		$this->output->set_output(json_encode(['result' => 3, 'titulo' => 'Ooops.. error!', 'errores' => $this->form_validation->error_array()]));
 		return;
-	} // fin de metodo altaPortada
+	} // fin de metodo crear
 
 	//--------------------------------------------------------------
 	public function editar($id)
@@ -103,10 +99,10 @@ class Portadas_controller extends CI_Controller
 		if ($this->form_validation->run()) :
 			if ($this->input->post('publicar')) {
 				$publicado = 1; // SI
-				$tab = 'activas';
+				$tab = 'publicadas';
 			} else {
 				$publicado = 2; // NO
-				$tab = 'todas';
+				$tab = 'no-publicadas';
 			}
 
 			$port = [
@@ -118,20 +114,20 @@ class Portadas_controller extends CI_Controller
 				$port['imagen'] = subirImagen('file', 'portadas', 'no-portada.png');
 			}
 
-			$resp = $this->Portadas->editar($id, $port); // se hace un update en bd
+			$resp = $this->Portadas->actualizar($id, $port); // se hace un update en bd
 
 			if ($resp) {
 				$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Portada actualizada con éxito.', 'tabs' => 'portadas', 'tab' => $tab]));
 				return;
 			} else {
-				$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'msj' => 'Ha ocurrido un error al intentar crear una nueva portada.']));
+				$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'msj' => 'Ha ocurrido un error al intentar actualizar una portada.']));
 				return;
 			}
 		endif;
 
 		$this->output->set_output(json_encode(['result' => 3, 'titulo' => 'Ooops.. error!', 'errores' => $this->form_validation->error_array()]));
 		return;
-	} // fin de metodo editarPortada
+	} // fin de metodo editar
 
 	// ----------------------------------------------------------------------------------------------------
 	public function habilitarDeshabilitar($id)
@@ -141,7 +137,7 @@ class Portadas_controller extends CI_Controller
 		$estado = ($this->input->post('est') == 1) ? true : false;
 		$msj = ($estado) ? 'habilitada' : 'deshabilitada';
 
-		$resp  = $this->Portadas->editar($id, ['estado' => $estado]);
+		$resp  = $this->Portadas->actualizar($id, ['estado' => $estado]);
 
 		if ($resp) {
 			$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Portada ' . $msj . '!']));
@@ -161,10 +157,10 @@ class Portadas_controller extends CI_Controller
 			$msj = 'publicada';
 		} else {
 			$prom = 2; // NO
-			$msj = 'dejada de publicar';
+			$msj = 'NO publicada';
 		}
 
-		$resp  = $this->Portadas->editar($this->input->post('id'), ['publicado' => $prom]);
+		$resp  = $this->Portadas->actualizar($this->input->post('id'), ['publicado' => $prom]);
 
 		if ($resp) {
 			$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Portada ' . $msj]));

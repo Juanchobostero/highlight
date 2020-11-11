@@ -23,9 +23,8 @@ class Usuarios_controller extends CI_Controller
 	//--------------------------------------------------------------
 	public function getUsuarios($estado)
 	{
-		if (!$this->input->is_ajax_request()) {
-			show_404();
-		}
+		verificarConsulAjax();
+
 		switch ($estado) {
 			case 'activos':
 				$usuarios = $this->Usuarios->get_users(1); // Devuelve usuarios activos
@@ -49,6 +48,8 @@ class Usuarios_controller extends CI_Controller
 	//--------------------------------------------------------------
 	public function editarPerfil()
 	{
+		verificarConsulAjax();
+
 		$nombre = $this->input->post('nombre');
 		$apellido = $this->input->post('apellido');
 		$telefono = $this->input->post('telefono');
@@ -66,11 +67,11 @@ class Usuarios_controller extends CI_Controller
 
 			if (!empty($_FILES['file']['name'])) {
 				$foto = subirImagen('file', 'perfiles', 'no-user.jpg');
-				$port['fotoU'] = $foto;
+				$user['fotoU'] = $foto;
 				$datosSession['foto'] = $foto;
 			}
 
-			$resp = $this->Usuarios->editar($_SESSION['id'], $user); // se hace un update en bd
+			$resp = $this->Usuarios->actualizar($_SESSION['id'], $user); // se hace un update en bd
 
 			if ($resp) {
 				$datosSession = [
@@ -85,11 +86,11 @@ class Usuarios_controller extends CI_Controller
 				$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Perfil actualizado.', 'url' => base_url('admin')]));
 				return;
 			} else {
-				$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'msj' => 'Ha ocurrido un error al intentar crear una nueva portada.']));
+				$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'msj' => 'Ha ocurrido un error al intentar actualizar el perfil de usuario.']));
 				return;
 			}
 		}
 		$this->output->set_output(json_encode(['result' => 3, 'titulo' => 'Ooops.. error!', 'errores' => $this->form_validation->error_array()]));
 		return;
-	} // fin de metodo editarPortada
+	} // fin de metodo editar
 }

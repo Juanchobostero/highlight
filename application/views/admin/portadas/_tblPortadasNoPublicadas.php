@@ -1,5 +1,5 @@
-<table id="tbl-port-activa" class="table table-hover">
-	<thead>
+<table class="table table-hover display" width="100%">
+	<thead class="text-center">
 		<tr>
 			<th>Título</th>
 			<th>Publicado</th>
@@ -12,7 +12,7 @@
 			<tr>
 				<td><?= $port->titulo; ?></td>
 				<td class="text-center">
-					<input type="checkbox" name="publicar" <?= ($port->publicado == 'SI') ? 'checked' : '' ?> data-bootstrap-switch data-off-text="NO" data-on-text="SI" data-off-color="danger" onchange="publicarPort(this, <?= $port->id_port; ?>)">
+					<input type="checkbox" name="publicar" <?= ($port->publicado == 'SI') ? 'checked' : '' ?> data-bootstrap-switch data-off-text="NO" data-on-text="SI" data-off-color="danger" onchange="publicarPort(this, <?= $port->id_port; ?>, false)">
 				</td>
 				<td>
 					<img class="img-fluid m-auto d-block rounded" src="<?= base_url($port->imagen); ?>" style="width: 40px; height: 40px">
@@ -22,7 +22,7 @@
 						<button type="button" class="btn btn-warning" title="Editar" onclick="cargarForm('<?= base_url('frmEditarPortada/' . $port->id_port) ?>', 'small', 'modal-small')">
 							<i class="fas fa-pen text-white"></i>
 						</button>
-						<button type="button" class="btn btn-danger" title="Inhabilitar" onclick="deshabilitar(this, 'eliminarPort/<?= $port->id_port; ?>')">
+						<button type="button" class="btn btn-danger" title="Eliminar" onclick="deshabilitar(this, 'eliminarPort/<?= $port->id_port; ?>')">
 							<i class="fas fa-trash-alt"></i>
 						</button>
 					</div>

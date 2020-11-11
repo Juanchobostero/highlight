@@ -37,6 +37,15 @@ class Clientes_controller extends CI_Controller
 	}
 
 	//--------------------------------------------------------------
+	public function frmEditar($id)
+	{
+		verificarConsulAjax();
+
+		$data['cliente'] = $this->Usuarios->get_user($id);
+		$this->load->view('admin/clientes/frmEditarCliente', $data);
+	}
+
+	//--------------------------------------------------------------
 	public function frmVer($id)
 	{
 		verificarConsulAjax();
@@ -44,6 +53,39 @@ class Clientes_controller extends CI_Controller
 		$data['cliente'] = $this->Usuarios->get_user($id);
 		$this->load->view('admin/clientes/frmVerCliente', $data);
 	}
+
+	//--------------------------------------------------------------
+	public function editar($id)
+	{
+		verificarConsulAjax();
+
+		$this->form_validation->set_rules('nombre', 'Nombre', 'required|trim');
+
+		if ($this->form_validation->run()) :
+			$cliente = [
+				'nombreU' 	=> $this->input->post('nombre'),
+				'apellidoU' => $this->input->post('apellido'),
+				'telefonoU' => $this->input->post('telefono'),
+			];
+
+			if (!empty($_FILES['file']['name'])) {
+				$cliente['fotoU'] = subirImagen('file', 'perfiles', 'no-user.png');
+			}
+
+			$resp = $this->Usuarios->editar($id, $cliente); // se hace un update en bd
+
+			if ($resp) {
+				$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Cliente actualizado con éxito.', 'tabs' => 'clientes', 'tab' => 'activos']));
+				return;
+			} else {
+				$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'msj' => 'Ha ocurrido un error al intentar actualizar un cliente.']));
+				return;
+			}
+		endif;
+
+		$this->output->set_output(json_encode(['result' => 3, 'titulo' => 'Ooops.. error!', 'errores' => $this->form_validation->error_array()]));
+		return;
+	} // fin de metodo editar
 
 	//--------------------------------------------------------------
 	public function habilitarDeshabilitar($id)

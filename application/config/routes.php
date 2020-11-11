@@ -12,10 +12,12 @@ $route = array(
 
 	'admin/dashboard'	=> 'admin/Dashboard_controller',
 
-	'admin/clientes'				=> 'admin/Clientes_controller',
-	'admin/clientes/(:any)'	=> 'admin/Clientes_controller/getClientes/$1',
-	'frmVerCliente/(:num)'	=> 'admin/Clientes_controller/frmVer/$1',
-	'habDesCliente/(:num)' 	=> 'admin/Clientes_controller/habilitarDeshabilitar/$1',
+	'admin/clientes'					=> 'admin/Clientes_controller',
+	'admin/clientes/(:any)'		=> 'admin/Clientes_controller/getClientes/$1',
+	'frmEditarCliente/(:num)'	=> 'admin/Clientes_controller/frmEditar/$1',
+	'frmVerCliente/(:num)'		=> 'admin/Clientes_controller/frmVer/$1',
+	'editarCliente/(:num)'		=> 'admin/Clientes_controller/editar/$1',
+	'habDesCliente/(:num)' 		=> 'admin/Clientes_controller/habilitarDeshabilitar/$1',
 
 	'admin/portadas'					=> 'admin/Portadas_controller',
 	'admin/portadas/(:any)' 	=> 'admin/Portadas_controller/getPortadas/$1',

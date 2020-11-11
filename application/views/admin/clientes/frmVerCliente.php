@@ -8,7 +8,7 @@
 	</div>
 	<div class="card-body card-outline box-profile">
 		<div class="text-center">
-			<img class="box-img-md img-circle" src="<?= base_url($cliente->fotoU); ?>" alt="User profile picture">
+			<img class="box-img-md img-circle" src="<?= base_url($cliente->fotoU); ?>" alt="Foto cliente">
 		</div>
 
 		<h3 class="profile-username text-center"><?= $cliente->apellidoU; ?>, <?=$cliente->nombreU;?></h3>
