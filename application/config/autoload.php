@@ -19,4 +19,4 @@ $autoload['config'] = array();
 $autoload['language'] = array();
 
 
-$autoload['model'] = array('Portadas', 'Usuarios');
+$autoload['model'] = array('Portadas', 'Usuarios', 'public/Portadas_model');
