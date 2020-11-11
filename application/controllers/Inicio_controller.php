@@ -6,11 +6,19 @@ class Inicio_controller extends CI_Controller
 	//--------------------------------------------------------------
 	public function admin()
 	{
+
 		if (isset($_SESSION['id'])) {
 			redirect('admin/dashboard');
 		} else {
 			redirect('admin/login');
 		}
+	}
+
+	
+	public function index()
+	{
+		$data['portadas'] = $this->Portadas_model->get_habs();
+		$this->load->view('public/index', $data);
 	}
 
 	//--------------------------------------------------------------
