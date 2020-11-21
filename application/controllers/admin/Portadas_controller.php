@@ -15,6 +15,8 @@ class Portadas_controller extends CI_Controller
 	{
 		$data['title'] = 'Portadas';
 		$data['act'] = '2Port';
+		$data['act_desplegado'] = '';
+		$data['item_desplegado'] = '';
 		$this->load->view('admin/portadas/index', $data);
 	}
 
@@ -25,12 +27,12 @@ class Portadas_controller extends CI_Controller
 
 		switch ($estado) {
 			case 'publicadas':
-				$portadas = $this->Portadas->get_portadas(1, 1);
-				$this->load->view('admin/portadas/_tblPortadasPublicadas', ['portadas' => $portadas]);
+				$data['portadas'] = $this->Portadas->get_portadas(1, 1);
+				$this->load->view('admin/portadas/_tblPortadasPublicadas', $data);
 				break;
 			case 'no-publicadas':
-				$portadas = $this->Portadas->get_portadas(1, 2);
-				$this->load->view('admin/portadas/_tblPortadasNoPublicadas', ['portadas' => $portadas]);
+				$data['portadas'] = $this->Portadas->get_portadas(1, 2);
+				$this->load->view('admin/portadas/_tblPortadasNoPublicadas', $data);
 				break;
 		}
 	}
@@ -47,8 +49,8 @@ class Portadas_controller extends CI_Controller
 	{
 		verificarConsulAjax();
 
-		$portada = $this->Portadas->get_portada($id);
-		$this->load->view('admin/portadas/frmEditarPortada', ['port' => $portada]);
+		$data['portada'] = $this->Portadas->get_portada($id);
+		$this->load->view('admin/portadas/frmEditarPortada', $data);
 	}
 
 	//--------------------------------------------------------------
@@ -129,7 +131,7 @@ class Portadas_controller extends CI_Controller
 		return;
 	} // fin de metodo editar
 
-	// ----------------------------------------------------------------------------------------------------
+	//--------------------------------------------------------------
 	public function habilitarDeshabilitar($id)
 	{
 		verificarConsulAjax();
@@ -147,7 +149,7 @@ class Portadas_controller extends CI_Controller
 		return;
 	}
 
-	// ----------------------------------------------------------------------------------------------------
+	//--------------------------------------------------------------
 	public function publicar()
 	{
 		verificarConsulAjax();

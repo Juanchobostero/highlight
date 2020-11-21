@@ -37,7 +37,7 @@
 									<input type="number" class="form-control" id="telefono" name="telefono" placeholder="Introduce un teléfono" value="<?= $_SESSION['telefono']; ?>">
 								</div>
 								<div class="form-group">
-									<label for="mail" class="mb-0" title="Campo obligatorio">E-Mail <span class="text-danger" title="Campo obligatorio">*</span></label>
+									<label for="mail" class="mb-0" title="Obligatorio">E-Mail <span class="text-danger" title="Obligatorio">*</span></label>
 									<input type="email" class="form-control" id="mail" name="mail" placeholder="Introduce un e-mail" value="<?= $_SESSION['correo']; ?>">
 								</div>
 								<button type="submit" id="btnForm" class="btn btn-primary" name="button">

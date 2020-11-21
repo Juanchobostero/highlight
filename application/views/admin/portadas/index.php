@@ -16,16 +16,16 @@
 						<div class="card-header p-0 pt-2">
 							<ul class="nav nav-tabs" id="portadas" role="tablist">
 								<li class="nav-item">
-									<a class="nav-link active" id="custom-tabs-five-overlay-tab" data-toggle="tab" href="#publicadas" role="tab">Publicadas</a>
+									<a class="nav-link active" data-toggle="tab" href="#publicadas" role="tab">Publicadas</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" id="custom-tabs-five-overlay-dark-tab" data-toggle="tab" href="#no-publicadas" role="tab">No publicadas</a>
+									<a class="nav-link" data-toggle="tab" href="#no-publicadas" role="tab">No publicadas</a>
 								</li>
 							</ul>
 						</div>
 
 						<div class="card-body">
-							<div class="tab-content" id="custom-tabs-five-tabContent">
+							<div class="tab-content">
 								<div class="tab-pane fade show active" id="publicadas" role="tabpanel">
 									<div class="overlay-wrapper py-5">
 										<div class="overlay dark"><i class="fas fa-3x fa-sync-alt fa-spin"></i>

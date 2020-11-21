@@ -16,6 +16,8 @@ class Clientes_controller extends CI_Controller
 	{
 		$data['title'] = 'Clientes';
 		$data['act'] = '1C';
+		$data['act_desplegado'] = '';
+		$data['item_desplegado'] = '';
 		$this->load->view('admin/clientes/index', $data);
 	}
 
@@ -26,12 +28,12 @@ class Clientes_controller extends CI_Controller
 
 		switch ($estado) {
 			case 'activos':
-				$clientes = $this->Usuarios->get_users(2); // Devuelve clientes activos
-				$this->load->view('admin/clientes/_tblClientes', ['clientes' => $clientes]);
+				$data['clientes'] = $this->Usuarios->get_users(2); // Devuelve clientes activos
+				$this->load->view('admin/clientes/_tblClientes', $data);
 				break;
 			case 'deshabilitados':
-				$clientes = $this->Usuarios->get_users(2, 0); // Devuelve clientes eliminados
-				$this->load->view('admin/clientes/_tblClientesEliminados', ['clientes' => $clientes]);
+				$data['clientes'] = $this->Usuarios->get_users(2, 0); // Devuelve clientes eliminados
+				$this->load->view('admin/clientes/_tblClientesEliminados', $data);
 				break;
 		}
 	}

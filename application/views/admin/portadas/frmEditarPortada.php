@@ -6,21 +6,21 @@
 </div>
 
 <div class="modal-body">
-	<form id="form_editPort" enctype="multipart/form-data" method="post" onsubmit="validFormMod(event, '<?= base_url('editarPortada/' . $port->id_port) ?>')">
+	<form id="form_editPort" enctype="multipart/form-data" method="post" onsubmit="validFormMod(event, '<?= base_url('editarPortada/' . $portada->id_port) ?>')">
 		<div class="form-group">
-			<label for="titulo">Título</label>
-			<input type="text" class="form-control" id="titulo" name="titulo" placeholder="Introduce un titulo" value="<?= $port->titulo; ?>">
+			<label for="titulo" title="Obligatorio">Título <span class="text-danger" title="Obligatorio">*</span></label>
+			<input type="text" class="form-control" id="titulo" name="titulo" placeholder="Introduce un título" value="<?= $portada->titulo; ?>">
 		</div>
 		<div class="form-group">
-			<label for="public">Publicar? </label>
-			<input type="checkbox" id="public" name="publicar" <?= ($port->publicado == 'SI') ? 'checked' : ''; ?> data-bootstrap-switch data-off-text="NO" data-on-text="SI">
+			<label for="public" title="Obligatorio">Publicar? <span class="text-danger" title="Obligatorio">*</span></label>
+			<input type="checkbox" id="public" name="publicar" <?= ($portada->publicado == 'SI') ? 'checked' : ''; ?> data-bootstrap-switch data-off-text="NO" data-on-text="SI">
 		</div>
 		<div class="form-group">
 			<label for="public" class="mb-1">Imagen de portada</label>
 			<div id="noFoto" class="alert alert-danger text-center mb-1 mt-0 py-1 d-none">
 				<small></small>
 			</div>
-			<img id="foto" name="foto-producto" class="mx-auto file-select hover img-fluid m-auto d-block rounded w-50 h-50" width="200px" src="<?= base_url($port->imagen); ?>" title="Haga click para cambiar imagen" style="cursor:pointer;">
+			<img id="foto" name="foto-producto" class="mx-auto file-select hover img-fluid m-auto d-block rounded w-50 h-50" width="200px" src="<?= base_url($portada->imagen); ?>" title="Haga click para cambiar imagen" style="cursor:pointer;">
 			<input id="ing-foto" class="d-none invisible" type="file" accept="image/*" name="file" onchange="subirFoto(this)" value="">
 		</div>
 	</form>

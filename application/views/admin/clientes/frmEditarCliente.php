@@ -8,7 +8,7 @@
 <div class="modal-body">
 	<form id="form_editCliente" enctype="multipart/form-data" method="post" onsubmit="validFormMod(event, '<?= base_url('editarCliente/' . $cliente->id_usuario) ?>')">
 		<div class="form-group">
-			<label for="nombre" class="mb-0" title="Campo obligatorio">Nombre <span class="text-danger" title="Campo obligatorio">*</span></label>
+			<label for="nombre" class="mb-0" title="Obligatorio">Nombre <span class="text-danger" title="Obligatorio">*</span></label>
 			<input type="text" class="form-control" id="nombre" name="nombre" placeholder="Introduce un nombre" value="<?= $cliente->nombreU; ?>">
 		</div>
 		<div class="form-group">

@@ -110,6 +110,28 @@ function validarFile(all) {
 	return false;
 }
 
+//--------------------OBTENER SUBCATEGORIAS--------------------
+function getSubcategorias(id = '') {
+  let categ  = $('#categoria').val();
+  let subcat = $('#subcategoria');
+  subcat.empty();
+  subcat.append('<option selected disabled value="0">Seleccione una...</option>');
+
+  if (categ == 0) return;
+
+  $.post(baseUrl + 'getSubcategorias', {
+    id_cat : categ
+  }, function(data) {
+    if (data != false) {
+      data.forEach(ele => {
+        let selec = (id == ele.id_cat) ? 'selected' : '';
+
+        subcat.append('<option value=' + ele.id_subcategoria + ' ' + selec + '>' + ele.descripcionSC + '</option>');
+      });
+    }
+  }, 'json').fail(ajaxErrors);
+};
+
 //----------------CARGA VISTA MODAL DE FORMULARIO---------------
 function cargarForm(metodo, modal, selector) {
 	$.post(metodo, function (data) {

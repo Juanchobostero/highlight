@@ -17,6 +17,8 @@ class Dashboard_controller extends CI_Controller
 	{
 		$data['title'] = 'Inicio';
 		$data['act'] = '0D';
+		$data['act_desplegado'] = '';
+		$data['item_desplegado'] = '';
 		$data['tot_clients'] = $this->Usuarios->total_clientes();
 		$this->load->view('admin/index', $data);
 	}

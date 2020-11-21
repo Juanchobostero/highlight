@@ -17,6 +17,8 @@ class Usuarios_controller extends CI_Controller
 	{
 		$data['title'] = 'Usuarios';
 		$data['act'] = '1U';
+		$data['act_desplegado'] = '';
+		$data['item_desplegado'] = '';
 		$this->load->view('admin/usuarios/index', $data);
 	}
 
@@ -27,12 +29,12 @@ class Usuarios_controller extends CI_Controller
 
 		switch ($estado) {
 			case 'activos':
-				$usuarios = $this->Usuarios->get_users(1); // Devuelve usuarios activos
-				$this->load->view('admin/usuarios/_tblUsuarios', ['usuarios' => $usuarios]);
+				$data['usuarios'] = $this->Usuarios->get_users(1); // Devuelve usuarios activos
+				$this->load->view('admin/usuarios/_tblUsuarios', $data);
 				break;
 			case 'deshabilitados':
-				$usuarios = $this->Usuarios->get_users(1, 0); // Devuelve usuarios eliminados
-				$this->load->view('admin/usuarios/_tblUsuariosEliminados', ['usuarios' => $usuarios]);
+				$data['usuarios'] = $this->Usuarios->get_users(1, 0); // Devuelve usuarios eliminados
+				$this->load->view('admin/usuarios/_tblUsuariosEliminados', $data);
 				break;
 		}
 	}
@@ -42,6 +44,7 @@ class Usuarios_controller extends CI_Controller
 	{
 		$data['title'] = 'Perfil';
 		$data['act'] = '';
+		$data['item_desplegado'] = '';
 		$this->load->view('admin/perfil/editarPerfil', $data);
 	}
 
@@ -75,11 +78,11 @@ class Usuarios_controller extends CI_Controller
 
 			if ($resp) {
 				$datosSession = [
-					'nombre'	=> $nombre,
-					'apellido' => $apellido,
-					'usuario'	=> $nombre . ' ' . $apellido,
-					'telefono' => $telefono,
-					'correo'	=> $email,
+					'nombre'		=> $nombre,
+					'apellido' 	=> $apellido,
+					'usuario'		=> $nombre . ' ' . $apellido,
+					'telefono' 	=> $telefono,
+					'correo'		=> $email,
 				];
 				$this->session->set_userdata($datosSession);
 
