@@ -41,10 +41,10 @@
     .section-slider {
         height: 65vh;
     } 
-    .slider-wraper {
+    .slider-wraper > *{
         width: 100%;
         height: 70vh;
-        transform: translateX(5rem, -6rem);
+        transform: translateX(-3rem, -6rem);
     }
 
     .slider-cell {
@@ -55,9 +55,19 @@
 }
 
 @media (max-width: 768px) {
-    .slider-wraper {
+
+    .section-slider {
+        height: 67vh;
+    } 
+    .slider-wraper > *{
         width: 100%;
-        height: 70vh;
+        height: 73vh;
+        transform: translateX(-7rem, -6rem);
+    }
+
+    .slider-cell {
+        width: 16vw;
+        height: 60vh;
     }
     
 }
