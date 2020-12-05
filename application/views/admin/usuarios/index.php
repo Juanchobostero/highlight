@@ -70,7 +70,6 @@
 
 		if (window.location.hash == '') {
 			window.location.hash = $tabs[0].hash;
-			
 		}
 		manageHashTab($tabs, $titulo, nomTab);
 	}

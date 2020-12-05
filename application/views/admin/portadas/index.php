@@ -16,20 +16,17 @@
 						<div class="card-header p-0 pt-2">
 							<ul class="nav nav-tabs" id="portadas" role="tablist">
 								<li class="nav-item">
-									<a class="nav-link active" id="custom-tabs-five-overlay-tab" data-toggle="tab" href="#activas" role="tab">Activas</a>
+									<a class="nav-link active" data-toggle="tab" href="#publicadas" role="tab">Publicadas</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" id="custom-tabs-five-overlay-dark-tab" data-toggle="tab" href="#todas" role="tab">Todas</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" id="custom-tabs-five-normal-tab" data-toggle="tab" href="#eliminadas" role="tab">Eliminadas</a>
+									<a class="nav-link" data-toggle="tab" href="#no-publicadas" role="tab">No publicadas</a>
 								</li>
 							</ul>
 						</div>
 
 						<div class="card-body">
-							<div class="tab-content" id="custom-tabs-five-tabContent">
-								<div class="tab-pane fade show active" id="activas" role="tabpanel">
+							<div class="tab-content">
+								<div class="tab-pane fade show active" id="publicadas" role="tabpanel">
 									<div class="overlay-wrapper py-5">
 										<div class="overlay dark"><i class="fas fa-3x fa-sync-alt fa-spin"></i>
 											<div class="text-bold pt-2">Cargando...</div>
@@ -38,17 +35,8 @@
 										</div>
 									</div>
 								</div>
-								<div class="tab-pane fade" id="todas" role="tabpanel">
+								<div class="tab-pane fade" id="no-publicadas" role="tabpanel">
 									<div class="overlay-wrapper py-5">
-										<div class="overlay dark"><i class="fas fa-3x fa-sync-alt fa-spin"></i>
-											<div class="text-bold pt-2">Cargando...</div>
-										</div>
-										<div class="tabla">
-										</div>
-									</div>
-								</div>
-								<div class="tab-pane fade" id="eliminadas" role="tabpanel">
-								<div class="overlay-wrapper py-5">
 										<div class="overlay dark"><i class="fas fa-3x fa-sync-alt fa-spin"></i>
 											<div class="text-bold pt-2">Cargando...</div>
 										</div>
@@ -57,17 +45,12 @@
 									</div>
 								</div>
 							</div>
-						</div>
-						<!-- /.card -->
+						</div><!-- /.card -->
 					</div>
-				</div>
-				<!-- /.col -->
-			</div>
-			<!-- /.row -->
-		</div>
-		<!-- /.container-fluid -->
-	</section>
-	<!-- /.content -->
+				</div><!-- /.col -->
+			</div><!-- /.row -->
+		</div><!-- /.container-fluid -->
+	</section><!-- /.content -->
 </div>
 
 <?php $this->load->view('admin/components/footer'); ?>

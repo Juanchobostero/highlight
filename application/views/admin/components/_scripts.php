@@ -13,10 +13,28 @@
 		<script src="<?= base_url('assets/js/admin/adminlte.min.js'); ?>"></script>
 		<script src="<?= base_url('assets/js/admin/index.js') ?>"></script>
 
-		<!-- Modal -->
+		<!-- Modal chico -->
 		<div class="modal fade" id="small" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content" id="modal-small">
+					<!-- Contenido modal -->
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal grande-->
+		<div class="modal fade" id="large" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content" id="modal-large">
+					<!-- Contenido modal -->
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal extra grande-->
+		<div class="modal fade" id="extra-large" tabindex="-1" role="dialog">
+			<div class="modal-dialog modal-xl">
+				<div class="modal-content" id="modal-extra-large">
 					<!-- Contenido modal -->
 				</div>
 			</div>

@@ -8,11 +8,11 @@
 <div class="modal-body">
 	<form id="form_portada" enctype="multipart/form-data" method="post" onsubmit="validFormMod(event, '<?= base_url('altaPortada'); ?>')">
 		<div class="form-group">
-			<label for="titulo">Título</label>
+			<label for="titulo" title="Obligatorio">Título <span class="text-danger" title="Obligatorio">*</span></label>
 			<input type="text" class="form-control" id="titulo" name="titulo" placeholder="Introduce un titulo">
 		</div>
 		<div class="form-group">
-			<label for="public">Publicar? </label>
+			<label for="public" title="Obligatorio">Publicar? <span class="text-danger" title="Obligatorio">*</span></label>
 			<input type="checkbox" id="public" name="publicar" data-bootstrap-switch data-off-text="NO" data-on-text="SI">
 		</div>
 		<div class="form-group">

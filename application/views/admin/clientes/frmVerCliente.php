@@ -8,17 +8,19 @@
 	</div>
 	<div class="card-body card-outline box-profile">
 		<div class="text-center">
-			<img class="box-img-md img-circle" src="<?= base_url($cliente->fotoU); ?>" alt="User profile picture">
+			<img class="box-img-md img-circle" src="<?= base_url($cliente->fotoU); ?>" alt="Foto cliente">
 		</div>
 
-		<h3 class="profile-username text-center"><?= $cliente->apellidoU; ?>, <?=$cliente->nombreU;?></h3>
+		<h3 class="profile-username text-center"><?= $cliente->apellidoU; ?>, <?= $cliente->nombreU; ?></h3>
 
 		<ul class="list-group list-group-unbordered mt-1">
 			<li class="list-group-item">
-				<strong>Teléfono</strong> <p class="float-right mb-0"><?=$cliente->telefonoU;?></p>
+				<strong>Teléfono</strong>
+				<p class="float-right mb-0"><?= $cliente->telefonoU; ?></p>
 			</li>
 			<li class="list-group-item">
-				<strong>E-Mail</strong> <p class="float-right mb-0"><?=$cliente->emailU;?></p>
+				<strong>E-Mail</strong>
+				<p class="float-right mb-0"><?= $cliente->emailU; ?></p>
 			</li>
 		</ul>
 	</div>

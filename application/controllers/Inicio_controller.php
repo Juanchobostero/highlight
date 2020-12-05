@@ -34,6 +34,8 @@ class Inicio_controller extends CI_Controller
 	// Validacion del login del admin
 	public function validar()
 	{
+		verificarConsulAjax();
+
 		$email = $this->input->post('email');
 		$pass = $this->input->post('pass');
 
@@ -42,20 +44,20 @@ class Inicio_controller extends CI_Controller
 
 		if ($this->form_validation->run()) {
 			$users = new Usuarios;
-			$user = $users->get_userCorreo($email);
+			$user = $users->get_user_correo($email);
 
 			if ($user and password_verify($pass, $user->passwordU)) {
 				$data = [
-					'id'			=> $user->id_usuario,
-					'tipo'		=> $user->id_tu,
-					'nombre'	=> $user->nombreU,
+					'id'			 => $user->id_usuario,
+					'tipo'		 => $user->id_tu,
+					'nombre'	 => $user->nombreU,
 					'apellido' => $user->apellidoU,
-					'usuario'	=> $user->nombreU . ' ' . $user->apellidoU,
+					'usuario'	 => $user->nombreU . ' ' . $user->apellidoU,
 					'telefono' => $user->telefonoU,
-					'correo'	=> $user->emailU,
-					'foto'		=> $user->fotoU,
-					'estado'	=> $user->estadoU,
-					'login'		=> TRUE
+					'correo'	 => $user->emailU,
+					'foto'		 => $user->fotoU,
+					'estado'	 => $user->estadoU,
+					'login'		 => TRUE
 				];
 				$this->session->set_userdata($data);
 				// redirect('admin');
@@ -64,8 +66,6 @@ class Inicio_controller extends CI_Controller
 			}
 			$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'errores' => ['Email y/o contraseña incorrectos']]));
 			return;
-			// $this->session->set_flashdata('msg_log', 'Email y/o Contraseña incorrectos');
-			// $this->admin();
 		} else {
 			$this->output->set_output(json_encode(['result' => 3, 'titulo' => 'Ooops.. error!', 'errores' => $this->form_validation->error_array()]));
 			return;

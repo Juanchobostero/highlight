@@ -17,23 +17,24 @@ class Usuarios_controller extends CI_Controller
 	{
 		$data['title'] = 'Usuarios';
 		$data['act'] = '1U';
+		$data['act_desplegado'] = '';
+		$data['item_desplegado'] = '';
 		$this->load->view('admin/usuarios/index', $data);
 	}
 
 	//--------------------------------------------------------------
 	public function getUsuarios($estado)
 	{
-		if (!$this->input->is_ajax_request()) {
-			show_404();
-		}
+		verificarConsulAjax();
+
 		switch ($estado) {
 			case 'activos':
-				$usuarios = $this->Usuarios->get_users(1); // Devuelve usuarios activos
-				$this->load->view('admin/usuarios/_tblUsuarios', ['usuarios' => $usuarios]);
+				$data['usuarios'] = $this->Usuarios->get_users(1); // Devuelve usuarios activos
+				$this->load->view('admin/usuarios/_tblUsuarios', $data);
 				break;
 			case 'deshabilitados':
-				$usuarios = $this->Usuarios->get_users(1, 0); // Devuelve usuarios eliminados
-				$this->load->view('admin/usuarios/_tblUsuariosEliminados', ['usuarios' => $usuarios]);
+				$data['usuarios'] = $this->Usuarios->get_users(1, 0); // Devuelve usuarios eliminados
+				$this->load->view('admin/usuarios/_tblUsuariosEliminados', $data);
 				break;
 		}
 	}
@@ -43,12 +44,15 @@ class Usuarios_controller extends CI_Controller
 	{
 		$data['title'] = 'Perfil';
 		$data['act'] = '';
+		$data['item_desplegado'] = '';
 		$this->load->view('admin/perfil/editarPerfil', $data);
 	}
 
 	//--------------------------------------------------------------
 	public function editarPerfil()
 	{
+		verificarConsulAjax();
+
 		$nombre = $this->input->post('nombre');
 		$apellido = $this->input->post('apellido');
 		$telefono = $this->input->post('telefono');
@@ -66,30 +70,30 @@ class Usuarios_controller extends CI_Controller
 
 			if (!empty($_FILES['file']['name'])) {
 				$foto = subirImagen('file', 'perfiles', 'no-user.jpg');
-				$port['fotoU'] = $foto;
+				$user['fotoU'] = $foto;
 				$datosSession['foto'] = $foto;
 			}
 
-			$resp = $this->Usuarios->editar($_SESSION['id'], $user); // se hace un update en bd
+			$resp = $this->Usuarios->actualizar($_SESSION['id'], $user); // se hace un update en bd
 
 			if ($resp) {
 				$datosSession = [
-					'nombre'	=> $nombre,
-					'apellido' => $apellido,
-					'usuario'	=> $nombre . ' ' . $apellido,
-					'telefono' => $telefono,
-					'correo'	=> $email,
+					'nombre'		=> $nombre,
+					'apellido' 	=> $apellido,
+					'usuario'		=> $nombre . ' ' . $apellido,
+					'telefono' 	=> $telefono,
+					'correo'		=> $email,
 				];
 				$this->session->set_userdata($datosSession);
 
 				$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Perfil actualizado.', 'url' => base_url('admin')]));
 				return;
 			} else {
-				$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'msj' => 'Ha ocurrido un error al intentar crear una nueva portada.']));
+				$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'msj' => 'Ha ocurrido un error al intentar actualizar el perfil de usuario.']));
 				return;
 			}
 		}
 		$this->output->set_output(json_encode(['result' => 3, 'titulo' => 'Ooops.. error!', 'errores' => $this->form_validation->error_array()]));
 		return;
-	} // fin de metodo editarPortada
+	} // fin de metodo editar
 }
