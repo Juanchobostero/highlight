@@ -23,7 +23,7 @@
     margin-bottom: 0;
 }
 
-.slider-hr {
+.hr-head {
     grid-area: slider-hr;
     width: 100%;
     border: 1px solid var(--color-grey);
@@ -31,7 +31,7 @@
   
   
 .slider-cell{
-    width: 23%;
+    width: 23.5%;
     height: 100%;
     margin-right: 0.8rem;
     transform: translateY(5.7rem);
@@ -44,9 +44,9 @@
         transform: translateX(-2rem);
     }
 
-    .slider-hr {
-        transform: translateX(-5rem);
-        width: 100%;
+    .hr-head {
+        transform: translateX(-2rem);
+        width: 85vw;
     }
 
     .slider-wraper {
