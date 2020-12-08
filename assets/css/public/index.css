@@ -1,7 +1,13 @@
 @import "http://localhost/highlight/assets/css/public/base.css";
 @import "http://localhost/highlight/assets/css/public/components/header.css";
+@import "http://localhost/highlight/assets/css/public/components/cel-nav.css";
 @import "http://localhost/highlight/assets/css/public/components/footer.css";
 @import "http://localhost/highlight/assets/css/public/components/carrusel.css";
+@import "http://localhost/highlight/assets/css/public/components/destacados.css";
+@import "http://localhost/highlight/assets/css/public/components/novedades.css";
+@import "http://localhost/highlight/assets/css/public/components/ofertas.css";
+@import "http://localhost/highlight/assets/css/public/components/novedades.css";
+@import "http://localhost/highlight/assets/css/public/components/product-cart.css";
+@import "http://localhost/highlight/assets/css/public/components/slider.css";
 @import "http://localhost/highlight/assets/css/public/flickity.css";
-@import "http://localhost/highlight/assets/css/public/components/jumbotron.css";
 

@@ -1,12 +1,18 @@
 <section class="portada-herramientas">
-	<div class="jumbotron text-white jumbotron-image shadow">
-		<img src="#">
-		<h2 class="mb-4">
-			Jumbotron with background image
-		</h2>
-		<p class="mb-4">
-			Hey, check this out.
-		</p>
-		<a href="https://bootstrapious.com/snippets" class="btn btn-primary">More Bootstrap Snippets</a>
+    <div class="jumbotron jumbotron-fluid bg-dark">
+      <div class="jumbotron-background">
+        <img src="<?=base_url('assets/img/public/portadas/portada8.jpeg')?>" class="blur">
+      </div>
+      <div class="container text-white">
+        <h5>Herramientas</h5>
+        <p>Conoce más sobre las marcas con las que trabajamos</p>
+        <hr class="my-2">
+        <a class="btn btn-lg" href="#" role="button">VER MAS</a>
+      </div>
+      <!-- /.container -->
     </div>
+<!-- /.jumbotron -->
 </section>
+
+
+

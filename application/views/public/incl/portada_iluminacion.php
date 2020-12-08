@@ -1,10 +1,15 @@
 <section class="portada-iluminacion">
-<div class="jumbotron">
-		<h3>Iluminacion</h3>
-			<p class="lead">Conoce mas sobre las marcas con las que trabajamos</p>
-			<hr class="my-4">
-			<p class="lead">
-				<a class="btn btn-primary btn-lg" href="#" role="button">VER MAS</a>
-			</p>
-	</div>
+<div class="jumbotron jumbotron-fluid bg-dark">
+      <div class="jumbotron-background">
+        <img src="<?=base_url('assets/img/public/portadas/portada7.jpeg')?>" class="blur ">
+      </div>
+      <div class="container text-white">
+        <h5>Iluminación</h5>
+		<p>Conoce más sobre las marcas con las que trabajamos</p>
+		<hr class="my-2">
+        <a class="btn btn-lg" href="#" role="button">VER MÁS</a>
+      </div>
+      <!-- /.container -->
+    </div>
+<!-- /.jumbotron -->
 </section>
