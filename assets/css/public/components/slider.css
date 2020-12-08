@@ -31,14 +31,31 @@
   
   
 .slider-cell{
+    
     width: 23.5%;
     height: 100%;
     margin-right: 0.8rem;
     transform: translateY(5.7rem);
 }
 
+/* TABLET */
 
-@media (max-width: 768px) {
+@media (min-width: 561px) and (max-width: 1024px) and (orientation: landscape) {
+  
+    .slider-cell {
+        width: 30%;
+    }
+
+    .section-slider {
+        transform: translateY(2rem);
+    }
+    
+}
+
+
+/* CELU */
+
+@media (max-width: 560px) {
 
     .slider-titulo {
         transform: translateX(-2rem);
