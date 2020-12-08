@@ -47,15 +47,15 @@
         height: 14.4vh;
     }
 
-    .product-img {
+    /* .product-img {
         height: 100%;
     }
 
     .product-desc {
         height: 100%;
-    }
+    } */
 
     .product-desc {
-        font-size: 1rem;
+        font-size: 0.8rem;
     }
 } 

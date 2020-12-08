@@ -78,3 +78,9 @@
     font-weight: 500;
 }
 
+@media (min-width: 768px) {
+    .cel-nav{
+      display: none;
+    }
+  }
+
