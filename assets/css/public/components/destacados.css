@@ -1,21 +1,27 @@
 .prod-destacados {
     grid-area: destacados;
     background-color: #ffffff;
-    width: 65%;
+    width: 70%;
     height: 30vh;
     position: relative;
     z-index: 100;
     display:flex;
     justify-self: center;
-    flex-direction: row;
     bottom: 0;
     margin-bottom: 1rem;
     display: grid;
-    grid-template: min-content min-content 1fr / 3fr;
+    grid-template:  1fr / 3fr;
     grid-template-areas: "head"
                          "slider-hr"
                          "slider-wraper";
 }
+
+@media (max-width: 768px) {
+    .prod-destacados {
+        height: 20vh;
+    }
+}
+
 
 
 

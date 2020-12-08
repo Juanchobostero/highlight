@@ -1,4 +1,4 @@
-<section class="prod-destacados section-slider">
+<section class="prod-destacados section-slider container">
 	<h4 class="slider-titulo">DESTACADOS</h4>
 	<hr class="hr-head">
 	<div class="slider-wraper slider-destacados">

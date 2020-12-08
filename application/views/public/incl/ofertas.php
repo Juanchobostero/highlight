@@ -1,4 +1,4 @@
-<section class="prod-ofertas section-slider">
+<section class="prod-ofertas section-slider container">
 	<h4 class="slider-titulo">OFERTAS</h4>
 	<hr class="hr-head">
 	<div class="slider-wraper slider-ofertas">
