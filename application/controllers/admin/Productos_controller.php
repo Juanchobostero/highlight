@@ -43,9 +43,30 @@ class Productos_controller extends CI_Controller
 	}
 
 	//--------------------------------------------------------------
-	public function crear()
+	// public function frmEditar($id_producto)
+	// {
+	// 	// verificarConsulAjax();
+
+	// 	$data['marcas'] = $this->Marcas->get_marcas();
+	// 	$data['categorias'] = $this->Categorias->get_categorias();
+	// 	$data['producto'] = $this->Productos->get_producto($id_producto);
+	// 	// $data['producto']['fotos'] = $this->Productos_fotos->get_producto_fotos($id_producto);
+	// 	$this->load->view('admin/productos/frmEditarProducto', $data);
+	// }
+
+	//--------------------------------------------------------------
+	public function frmEditarDescripcion($id_producto)
 	{
 		verificarConsulAjax();
+
+		$data['producto'] = $this->Productos->get_producto($id_producto);
+		$this->load->view('admin/productos/frmEditarDescripcion', $data);
+	}
+
+	//--------------------------------------------------------------
+	public function crear()
+	{
+		// verificarConsulAjax();
 
 		// Reglas
 		$this->form_validation->set_rules('codigo', 'Código', 'required|trim');
@@ -69,13 +90,55 @@ class Productos_controller extends CI_Controller
 				'estadoPR' 				=> 1
 			];
 
-			$resp = $this->Productos->crear($producto); // se inserta en bd
+			$id_producto = $this->Productos->crear($producto); // se inserta en bd
 
-			if ($resp) {
+			if (!empty($_FILES['file']['name'])) :
+				$fotos = subirImagenes('file', 'productos', $id_producto);
+
+				if (!empty($fotos)) :
+					$this->Productos_fotos->crear($fotos);
+				endif;
+			endif;
+
+			if ($id_producto) {
 				$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Producto creado con éxito.', 'tabs' => 'productos', 'tab' => 'activos']));
 				return;
 			} else {
 				$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'msj' => 'Ha ocurrido un error al intentar crear un nuevo producto.']));
+				return;
+			}
+		endif;
+
+		$this->output->set_output(json_encode(['result' => 3, 'titulo' => 'Ooops.. error!', 'errores' => $this->form_validation->error_array()]));
+		return;
+	}
+
+	//--------------------------------------------------------------
+	public function editarDescripcion($id_producto)
+	{
+		verificarConsulAjax();
+
+		// Reglas
+		$this->form_validation->set_rules('atributos[]', 'Atributo', 'required|trim');
+		$this->form_validation->set_rules('valores[]', 'Valor', 'required|trim');
+
+		if ($this->form_validation->run()) :
+			$atributos = $this->input->post('atributos');
+			$valores = $this->input->post('valores');
+
+			$datos = [];
+			for ($i = 0; $i < count($atributos); $i++) {
+				$datos[$atributos[$i]] = $valores[$i];
+			}
+			$descripcion = ['descripcionPR'	=> json_encode($datos)];
+
+			$resp = $this->Productos->actualizar($id_producto, $descripcion); // se inserta en bd
+
+			if ($resp) {
+				$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Descripción de producto actualizada.', 'tabs' => 'productos', 'tab' => 'activos']));
+				return;
+			} else {
+				$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'msj' => 'Ha ocurrido un error al intentar actualizar la descripción de un producto.']));
 				return;
 			}
 		endif;

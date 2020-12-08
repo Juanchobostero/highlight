@@ -1,5 +1,5 @@
 <div class="modal-header bg-primary py-2">
-	<h5 class="modal-title">Nuevo producto</h5>
+	<h5 class="modal-title">Actualizar producto</h5>
 	<button type="button" id="cerrarModal" class="close text-white" data-dismiss="modal" aria-label="Close">
 		<span aria-hidden="true">&times;</span>
 	</button>
@@ -70,13 +70,13 @@
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="pLista" class="mb-0" title="Obligatorio">Precio lista <span class="text-danger" title="Obligatorio">*</span></label>
-							<input type="number" class="form-control" id="pLista" name="pLista" placeholder="0,00">
+							<input type="number" class="form-control" id="pLista" name="pLista" placeholder="0,00" value="<?=$producto->precio_listaPR?>">
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="pVenta" class="mb-0" title="Obligatorio">Precio venta <span class="text-danger" title="Obligatorio">*</span></label>
-							<input type="number" class="form-control" id="pVenta" name="pVenta" placeholder="0,00">
+							<input type="number" class="form-control" id="pVenta" name="pVenta" placeholder="0,00" value="<?=$producto->precio_ventaPR?>">
 						</div>
 					</div>
 				</div>

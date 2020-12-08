@@ -44,10 +44,13 @@ $route = array(
 	'habDesPortada/(:num)'		=> 'admin/Portadas_controller/habilitarDeshabilitar/$1',
 	'publicarPort'						=> 'admin/Portadas_controller/publicar',
 
-	'admin/productos'					=> 'admin/Productos_controller',
-	'admin/productos/(:any)'	=> 'admin/Productos_controller/getProductos/$1',
-	'frmNuevoProducto'				=> 'admin/Productos_controller/frmNuevo',
-	'altaProducto'						=> 'admin/Productos_controller/crear',
+	'admin/productos'							=> 'admin/Productos_controller',
+	'admin/productos/(:any)'			=> 'admin/Productos_controller/getProductos/$1',
+	'frmNuevoProducto'						=> 'admin/Productos_controller/frmNuevo',
+	'frmEditarProducto/(:num)'		=> 'admin/Productos_controller/frmEditar/$1',
+	'frmEditarDescripcion/(:num)'	=> 'admin/Productos_controller/frmEditarDescripcion/$1',
+	'altaProducto'								=> 'admin/Productos_controller/crear',
+	'editarDescripcion/(:num)'		=> 'admin/Productos_controller/editarDescripcion/$1',
 
 	'frmNuevaSubcategoria'					=> 'admin/Subcategorias_controller/frmNueva',
 	'frmEditarSubcategoria/(:num)'	=> 'admin/Subcategorias_controller/frmEditar/$1',

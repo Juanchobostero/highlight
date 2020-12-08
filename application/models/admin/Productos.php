@@ -14,8 +14,21 @@ class Productos extends CI_Model
 	}
 
 	//--------------------------------------------------------------
+	public function get_producto($id_producto) {
+		$this->db->where('id_producto', $id_producto);
+		return $this->db->get('productos')->row();
+	}
+
+	//--------------------------------------------------------------
 	public function crear($producto)
 	{
-		return $this->db->insert('productos', $producto);
+		$this->db->insert('productos', $producto);
+		return $this->db->insert_id();
+	}
+
+	//--------------------------------------------------------------
+	public function actualizar($id_producto, $producto) {
+		$this->db->where('id_producto', $id_producto);
+		return $this->db->update('productos', $producto);
 	}
 }

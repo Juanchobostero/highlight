@@ -6,7 +6,6 @@
 			<th>Marca</th>
 			<th>Subcategoría</th>
 			<th>Categoría</th>
-			<th>Precio Lista</th>
 			<th>Precio Venta</th>
 			<th>Stock</th>
 			<th>Acciones</th>
@@ -20,7 +19,6 @@
 				<td><?= $producto->descripcionM; ?></td>
 				<td><?= $producto->descripcionSC; ?></td>
 				<td><?= $producto->descripcionCAT; ?></td>
-				<td>$<?= $producto->precio_listaPR; ?></td>
 				<td>$<?= $producto->precio_ventaPR; ?></td>
 				<td><?= intval($producto->stockPR); ?></td>
 				<td class="text-center">
@@ -28,11 +26,11 @@
 						<button type="button" class="btn btn-info" title="Ver" onclick="cargarForm('<?= base_url('frmVerProducto/' . $producto->id_producto) ?>', 'small', 'modal-small')">
 							<i class="fas fa-eye"></i>
 						</button>
-						<button type="button" class="btn btn-warning" title="Editar" onclick="cargarForm('<?= base_url('frmEditarProducto/' . $producto->id_producto) ?>', 'small', 'modal-small')">
+						<button type="button" class="btn btn-warning" title="Editar" onclick="cargarForm('<?= base_url('frmEditarProducto/' . $producto->id_producto) ?>', 'extra-large', 'modal-extra-large')">
 							<i class="fas fa-pen text-white"></i>
 						</button>
-						<button type="button" class="btn btn-warning" title="Editar descripción" onclick="cargarForm('<?= base_url('frmEditarDescripcion/' . $producto->id_producto) ?>', 'small', 'modal-small')">
-							<i class="fas fa-pen text-white"></i>
+						<button type="button" class="btn bg-olive" title="Editar descripción" onclick="cargarForm('<?= base_url('frmEditarDescripcion/' . $producto->id_producto) ?>', 'small', 'modal-small')">
+							<i class="fas fa-list-ul"></i>
 						</button>
 						<button type="button" class="btn btn-danger" title="Eliminar" onclick="deshabilitar(this, 'eliminarProducto/<?= $producto->id_producto; ?>')">
 							<i class="fas fa-trash-alt"></i>
