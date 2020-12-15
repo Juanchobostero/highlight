@@ -100,6 +100,9 @@ function validarFile(all) {
 		$('#noFoto').removeClass('d-none');
 		$('#noFoto > small').text("Extensión de archivo no valida");
 		document.getElementById(all.id).value = "";
+		setTimeout(function () {
+			$("#noFoto").fadeOut(1500);
+		}, 4000);
 		return true; // Si la extension es no válida ya no chequeo lo de abajo.
 	}
 	// if ((all.files[0].size / 1048576) > tamano) {
@@ -110,26 +113,59 @@ function validarFile(all) {
 	return false;
 }
 
+//----------------CREAR MINIATURA AB PRODUCTO----------------
+function crearThumbnail(file, posicion, thumbnail_id) {
+	let container = document.createElement('div');
+	let capa = document.createElement('div');
+	let quitar = document.createElement('span');
+	let icon = document.createElement('i');
+
+	container.id = thumbnail_id;
+	container.classList.add('grid-item');
+	container.setAttribute('style', `background-image: url(${URL.createObjectURL(file.files[posicion])})`);
+
+	capa.classList.add('capa');
+	quitar.onclick = () => eliminarFoto(thumbnail_id);
+	icon.classList.add('fas', 'fa-trash');
+
+	quitar.appendChild(icon);
+	capa.appendChild(quitar);
+	container.append(capa);
+	document.getElementById('imagenes').appendChild(container);
+}
+
+//-------------------ELIMINAR FOTO PRODUCTO-------------------
+function eliminarFotoBD(id) {
+	$.post(baseUrl + 'eliminarFoto/' + id, function (data) {
+		if (data.result === 1) {
+			$('#' + id).fadeOut();
+			mostrarToast('success', data.titulo, data.msj);
+		} else {
+			mostrarToast('error', data.titulo, data.msj);
+		}
+	}, 'json').fail(ajaxErrors);
+}
+
 //--------------------OBTENER SUBCATEGORIAS--------------------
 function getSubcategorias(id = '') {
-  let categ  = $('#categoria').val();
-  let subcat = $('#subcategoria');
-  subcat.empty();
-  subcat.append('<option selected disabled value="0">Seleccione una...</option>');
+	let categ = $('#categoria').val();
+	let subcat = $('#subcategoria');
+	subcat.empty();
+	subcat.append('<option disabled value="0">Seleccione una...</option>');
 
-  if (categ == 0) return;
+	if (categ == 0) return;
 
-  $.post(baseUrl + 'getSubcategorias', {
-    id_cat : categ
-  }, function(data) {
-    if (data != false) {
-      data.forEach(ele => {
-        let selec = (id == ele.id_cat) ? 'selected' : '';
+	$.post(baseUrl + 'getSubcategorias', {
+		id_cat: categ
+	}, function (data) {
+		if (data != false) {
+			data.forEach(ele => {
+				let selec = (id == ele.id_cat) ? 'selected' : '';
 
-        subcat.append('<option value=' + ele.id_subcategoria + ' ' + selec + '>' + ele.descripcionSC + '</option>');
-      });
-    }
-  }, 'json').fail(ajaxErrors);
+				subcat.append('<option value=' + ele.id_subcategoria + ' ' + selec + '>' + ele.descripcionSC + '</option>');
+			});
+		}
+	}, 'json').fail(ajaxErrors);
 };
 
 //----------------CARGA VISTA MODAL DE FORMULARIO---------------
@@ -141,9 +177,9 @@ function cargarForm(metodo, modal, selector) {
 }
 
 //-----------------ALTA-UPDATE FORMULARIO MODAL-----------------
-function validFormMod(e, metodo) {
+function validFormMod(e, metodo, form = '') {
 	e.preventDefault();
-	const formData = new FormData(e.target);
+	const formData = (form == '') ? new FormData(e.target) : form;
 
 	$.ajax({
 		url: metodo,
@@ -183,7 +219,6 @@ function validFormMod(e, metodo) {
 
 //------------------ALTA-UPDATE FORMULARIO PAGE------------------
 function validFormPage(e, metodo) {
-	console.log('met ' + metodo);
 	e.preventDefault();
 	const formData = new FormData(e.target);
 
@@ -243,7 +278,7 @@ function habDes(e, metodo, est, titulo, msj) {
 		cancelButtonText: 'Cancelar'
 	}).then((result) => {
 		if (result.value) {
-			$.post(baseUrl + metodo, {est: est}, function (data) {
+			$.post(baseUrl + metodo, { est: est }, function (data) {
 				if (data.result === 1) {
 					mostrarToast('success', data.titulo, data.msj);
 					$(e).closest('tr').fadeOut(1200);

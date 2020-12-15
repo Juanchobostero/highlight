@@ -50,7 +50,9 @@ $route = array(
 	'frmEditarProducto/(:num)'		=> 'admin/Productos_controller/frmEditar/$1',
 	'frmEditarDescripcion/(:num)'	=> 'admin/Productos_controller/frmEditarDescripcion/$1',
 	'altaProducto'								=> 'admin/Productos_controller/crear',
+	'editarProducto/(:num)'				=> 'admin/Productos_controller/editar/$1',
 	'editarDescripcion/(:num)'		=> 'admin/Productos_controller/editarDescripcion/$1',
+	'eliminarFoto/(:num)'					=> 'admin/Productos_controller/eliminarFoto/$1',
 
 	'frmNuevaSubcategoria'					=> 'admin/Subcategorias_controller/frmNueva',
 	'frmEditarSubcategoria/(:num)'	=> 'admin/Subcategorias_controller/frmEditar/$1',

@@ -58,41 +58,63 @@ function subirImagen($nombre, $carpeta, $imgDefault)
 
 /**
  * Sube una coleccion de imagen
- * @param string $nombre Nombre del input de donde se recibe el archivo
  * @param string $carpeta Nombre de la carpeta donde se subira la imagen
- * @param string $id_producto Id del producto al que pertenece el conjunto de imagenes
+ * @return array Rutas del archivo.
  */
-function subirImagenes($nombre, $carpeta, $id_producto)
+function subirImagenes($carpeta)
 {
 	$CI = &get_instance();
 	$tipos  = array('image/jpeg', 'image/pjpeg', 'image/bmp', 'image/png', 'imagen/x-png');
 	$destino = 'assets/img/' . $carpeta . '/';
 
-	for ($i = 0; $i < count($_FILES[$nombre]['name']); $i++) :
-		$mime  =  get_mime_by_extension($_FILES[$nombre]['name'][$i]); //obtiene la extension del file
+	$i = 0;
+	foreach ($_FILES as $file) :
+		if (!is_array($file['name'])) :
+			$mime  =  get_mime_by_extension($file['name']); //obtiene la extension del file
 
-		if (in_array($mime,  $tipos)) {
-			$_FILES['arch']['name'] = $_FILES[$nombre]['name'][$i];
-			$_FILES['arch']['type'] = $_FILES[$nombre]['type'][$i];
-			$_FILES['arch']['tmp_name'] = $_FILES[$nombre]['tmp_name'][$i];
-			$_FILES['arch']['error'] = $_FILES[$nombre]['error'][$i];
-			$_FILES['arch']['size'] = $_FILES[$nombre]['size'][$i];
+			if (in_array($mime,  $tipos)) {
+				$_FILES['arch']['name'] = $file['name'];
+				$_FILES['arch']['type'] = $file['type'];
+				$_FILES['arch']['tmp_name'] = $file['tmp_name'];
+				$_FILES['arch']['error'] = $file['error'];
+				$_FILES['arch']['size'] = $file['size'];
 
-			//cargar configuración 
-			$config['upload_path'] = $destino;
-			$config['allowed_types'] = 'bmp|jpg|png';
-			$config['file_name'] = date('dmY') . '_' . time() . '_' . $i;
+				//cargar configuración 
+				$config['upload_path'] = $destino;
+				$config['allowed_types'] = 'bmp|jpg|png';
+				$config['file_name'] = date('dmY') . '_' . time() . '_' . $i;
 
-			$CI->upload->initialize($config); // Se inicializa la config
+				$CI->upload->initialize($config); // Se inicializa la config
 
-			// subir el archivo al directorio 
-			if ($CI->upload->do_upload('arch')) {
-				$imgSubida = $CI->upload->data();
-				$imgs[$i]['id_prod'] = $id_producto;
-				$imgs[$i]['foto'] = $destino . $imgSubida['orig_name'];
+				// subir el archivo al directorio 
+				if ($CI->upload->do_upload('arch')) {
+					$imgSubida = $CI->upload->data();
+					$imgs[$i] = $destino . $imgSubida['orig_name'];
+					$i++;
+				}
 			}
-		}
-	endfor;
+		endif;
+	endforeach;
 
 	return isset($imgs) ? $imgs : '';
+}
+
+/**
+ * Verifica que los archivos por subir sean todos imagenes
+ * @return bool El resultado del analisis
+ */
+function verificarTipoArchivo() {
+	$tipos  = array('image/jpeg', 'image/pjpeg', 'image/bmp', 'image/png', 'imagen/x-png');
+
+	foreach ($_FILES as $file) :
+		if (!is_array($file['name'])) :
+			$mime  =  get_mime_by_extension($file['name']); //obtiene la extension del file
+
+			if (!in_array($mime,  $tipos)) {
+				return false;
+			}
+		endif;
+	endforeach;
+
+	return true;
 }

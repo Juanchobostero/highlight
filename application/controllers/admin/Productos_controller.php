@@ -43,16 +43,16 @@ class Productos_controller extends CI_Controller
 	}
 
 	//--------------------------------------------------------------
-	// public function frmEditar($id_producto)
-	// {
-	// 	// verificarConsulAjax();
+	public function frmEditar($id_producto)
+	{
+		// verificarConsulAjax();
 
-	// 	$data['marcas'] = $this->Marcas->get_marcas();
-	// 	$data['categorias'] = $this->Categorias->get_categorias();
-	// 	$data['producto'] = $this->Productos->get_producto($id_producto);
-	// 	// $data['producto']['fotos'] = $this->Productos_fotos->get_producto_fotos($id_producto);
-	// 	$this->load->view('admin/productos/frmEditarProducto', $data);
-	// }
+		$data['marcas'] = $this->Marcas->get_marcas();
+		$data['categorias'] = $this->Categorias->get_categorias();
+		$data['producto'] = $this->Productos->get_producto($id_producto);
+		$data['fotos'] = $this->Productos_fotos->get_producto_fotos($id_producto);
+		$this->load->view('admin/productos/frmEditarProducto', $data);
+	}
 
 	//--------------------------------------------------------------
 	public function frmEditarDescripcion($id_producto)
@@ -69,12 +69,70 @@ class Productos_controller extends CI_Controller
 		// verificarConsulAjax();
 
 		// Reglas
-		$this->form_validation->set_rules('codigo', 'Código', 'required|trim');
+		$this->form_validation->set_rules('codigo', 'Código', 'required|trim|is_unique[productos.codigoPR]');
 		$this->form_validation->set_rules('nombre', 'Nombre', 'required|trim');
 		$this->form_validation->set_rules('stock', 'Stock', 'required|trim');
 		$this->form_validation->set_rules('marca_id', 'Marca', 'required|trim');
 		$this->form_validation->set_rules('categoria_id', 'Categoría', 'required|trim');
 		$this->form_validation->set_rules('subcategoria_id', 'Subcategoría', 'required|trim');
+		$this->form_validation->set_rules('pLista', 'Precio lista', 'required|trim');
+		$this->form_validation->set_rules('pVenta', 'Precio venta', 'required|trim');
+		$this->form_validation->set_rules('file[]', 'Archivo', 'callback_verificarArchivos');
+
+		if ($this->form_validation->run()) :
+			$destacado = $this->input->post('destacar') ? 1 : 2; // 1 => SI; 2 => NO
+			$producto = [
+				'id_subcat' 			=> $this->input->post('subcategoria_id'),
+				'id_mar'					=> $this->input->post('marca_id'),
+				'codigoPR' 				=> $this->input->post('codigo'),
+				'nombrePR' 				=> $this->input->post('nombre'),
+				'stockPR' 				=> $this->input->post('stock'),
+				'precio_listaPR'	=> $this->input->post('pLista'),
+				'precio_ventaPR'	=> $this->input->post('pVenta'),
+				'destacadoPR'			=> $destacado,
+				'estadoPR' 				=> 1
+			];
+
+			$id_producto = $this->Productos->crear($producto); // se inserta en bd
+
+			if (!empty($_FILES)) :
+				$imgs = subirImagenes('productos');
+
+				if (!empty($imgs)) :
+					for ($i = 0; $i < count($imgs); $i++) {
+						$fotos[$i]['id_prod'] = $id_producto;
+						$fotos[$i]['foto'] = $imgs[$i];
+					}
+
+					$this->Productos_fotos->crear($fotos);
+				endif;
+			endif;
+
+			if ($id_producto) {
+				$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Producto creado con éxito.', 'tabs' => 'productos', 'tab' => 'activos']));
+				return;
+			} else {
+				$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'msj' => 'Ha ocurrido un error al intentar crear un nuevo producto.']));
+				return;
+			}
+		endif;
+
+		$this->output->set_output(json_encode(['result' => 3, 'titulo' => 'Ooops.. error!', 'errores' => $this->form_validation->error_array()]));
+		return;
+	}
+
+	//--------------------------------------------------------------
+	public function editar($id_producto)
+	{
+		// verificarConsulAjax();
+
+		// Reglas
+		// $this->form_validation->set_rules('codigo', 'Código', 'required|trim|is_unique[productos.codigoPR]');
+		$this->form_validation->set_rules('nombre', 'Nombre', 'required|trim');
+		$this->form_validation->set_rules('stock', 'Stock', 'required|trim');
+		$this->form_validation->set_rules('marca_id', 'Marca', 'required|trim');
+		$this->form_validation->set_rules('categoria_id', 'Categoría', 'required');
+		$this->form_validation->set_rules('subcategoria_id', 'Subcategoría', 'required');
 		$this->form_validation->set_rules('pLista', 'Precio lista', 'required|trim');
 		$this->form_validation->set_rules('pVenta', 'Precio venta', 'required|trim');
 
@@ -87,24 +145,23 @@ class Productos_controller extends CI_Controller
 				'stockPR' 				=> $this->input->post('stock'),
 				'precio_listaPR'	=> $this->input->post('pLista'),
 				'precio_ventaPR'	=> $this->input->post('pVenta'),
-				'estadoPR' 				=> 1
 			];
 
-			$id_producto = $this->Productos->crear($producto); // se inserta en bd
+			$resp = $this->Productos->actualizar($id_producto, $producto); // se inserta en bd
 
-			if (!empty($_FILES['file']['name'])) :
-				$fotos = subirImagenes('file', 'productos', $id_producto);
+			if (!empty($_FILES)) :
+				$fotos = subirImagenes('productos');
 
 				if (!empty($fotos)) :
 					$this->Productos_fotos->crear($fotos);
 				endif;
 			endif;
 
-			if ($id_producto) {
-				$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Producto creado con éxito.', 'tabs' => 'productos', 'tab' => 'activos']));
+			if ($resp) {
+				$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Producto actualizado con éxito.', 'tabs' => 'productos', 'tab' => 'activos']));
 				return;
 			} else {
-				$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'msj' => 'Ha ocurrido un error al intentar crear un nuevo producto.']));
+				$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'msj' => 'Ha ocurrido un error al intentar actualizar un producto.']));
 				return;
 			}
 		endif;
@@ -145,5 +202,31 @@ class Productos_controller extends CI_Controller
 
 		$this->output->set_output(json_encode(['result' => 3, 'titulo' => 'Ooops.. error!', 'errores' => $this->form_validation->error_array()]));
 		return;
+	}
+
+	//--------------------------------------------------------------
+	public function eliminarFoto($id_foto)
+	{
+		$resp = $this->Productos_fotos->eliminar($id_foto);
+
+		if ($resp) {
+			$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Foto eliminada.']));
+			return;
+		} else {
+			$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'msj' => 'Ha ocurrido un error al intentar eliminar una foto.']));
+			return;
+		}
+	}
+
+	//--------------------------------------------------------------
+	function verificarArchivos()
+	{
+		if (!empty($_FILES)) :
+			if (!verificarTipoArchivo()) {
+				$this->form_validation->set_message('verificarArchivos', 'Un o varios archivos no son imágenes.');
+				return false;
+			}
+		endif;
+		return true;
 	}
 }

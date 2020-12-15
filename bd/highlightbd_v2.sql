@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-11-2020 a las 14:34:57
+-- Tiempo de generación: 15-12-2020 a las 21:43:49
 -- Versión del servidor: 10.4.13-MariaDB
 -- Versión de PHP: 7.4.7
 
@@ -130,6 +130,7 @@ CREATE TABLE `productos` (
   `stockPR` decimal(18,3) NOT NULL,
   `precio_listaPR` decimal(18,2) NOT NULL,
   `precio_ventaPR` decimal(18,2) NOT NULL,
+  `destacadoPR` enum('SI','NO') NOT NULL,
   `estadoPR` bit(1) NOT NULL DEFAULT b'1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -137,8 +138,24 @@ CREATE TABLE `productos` (
 -- Volcado de datos para la tabla `productos`
 --
 
-INSERT INTO `productos` (`id_producto`, `id_subcat`, `id_mar`, `codigoPR`, `nombrePR`, `descripcionPR`, `stockPR`, `precio_listaPR`, `precio_ventaPR`, `estadoPR`) VALUES
-(1, 2, 1, '300497', 'Fotocontrol alumbrado público 2200W 10Amp.', NULL, '14.000', '500.00', '800.00', b'1');
+INSERT INTO `productos` (`id_producto`, `id_subcat`, `id_mar`, `codigoPR`, `nombrePR`, `descripcionPR`, `stockPR`, `precio_listaPR`, `precio_ventaPR`, `destacadoPR`, `estadoPR`) VALUES
+(1, 2, 1, '300497', 'Fotocontrol alumbrado público 2200W 10Amp.', '{\"Cara lateral\":\"Azul\",\"Descripci\\u00f3n\":\"Tiene pelos en la lengua\",\"No es tuyo\":\"Es aquella\"}', '14.000', '500.00', '800.00', 'SI', b'1'),
+(2, 3, 1, '7458', 'Caca doble', NULL, '41.000', '122.00', '156.00', 'SI', b'1'),
+(3, 2, 1, '300496', 'Fotocontrol domiciliario 1300W 6 amp.', NULL, '51.000', '512.00', '700.00', 'SI', b'1'),
+(4, 2, 1, '300498', 'ZÓCALO PARA FOTOCONTROL 2200W', NULL, '33.000', '333.00', '444.00', 'SI', b'1'),
+(7, 2, 1, '8256', 'la pucha', NULL, '44.000', '451.00', '550.00', 'SI', b'1'),
+(8, 2, 1, '41256', 'La otra vez', NULL, '12.000', '41.00', '55.00', 'SI', b'1'),
+(9, 2, 1, '41288', 'La otra vez con imgs', NULL, '12.000', '41.00', '55.00', 'SI', b'1'),
+(10, 2, 1, '4174', 'Mil veces', NULL, '12.000', '41.00', '55.00', 'SI', b'1'),
+(11, 3, 1, '85699', 'Casa de alguien', NULL, '45.000', '412.00', '520.00', 'SI', b'1'),
+(12, 3, 1, '4589', 'Casa de alguie', NULL, '45.000', '412.00', '520.00', 'SI', b'1'),
+(13, 1, 1, '4889', 'Casa de tuya', NULL, '45.000', '412.00', '520.00', 'SI', b'1'),
+(15, 3, 1, '51395', 'la casa de quien', NULL, '745.000', '125.00', '521.00', 'SI', b'1'),
+(16, 3, 1, '74588', 'pedazo', NULL, '22.000', '41.00', '123.00', 'SI', b'1'),
+(17, 1, 1, '41744', 'Jebus', NULL, '23.000', '12.00', '34.00', 'SI', b'1'),
+(18, 3, 1, '741', 'Casucha tuya', NULL, '122.000', '123.00', '321.00', 'SI', b'1'),
+(19, 2, 1, '742', 'Vamos', NULL, '741.000', '123.00', '233.00', 'SI', b'1'),
+(20, 3, 1, '7425', 'Martillo', NULL, '123.000', '23.00', '32.00', 'NO', b'1');
 
 -- --------------------------------------------------------
 
@@ -151,6 +168,24 @@ CREATE TABLE `productos_fotos` (
   `id_prod` int(11) NOT NULL,
   `foto` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `productos_fotos`
+--
+
+INSERT INTO `productos_fotos` (`id_foto`, `id_prod`, `foto`) VALUES
+(11, 15, 'assets/img/productos/07122020_1607390215_0.jpg'),
+(12, 15, 'assets/img/productos/07122020_1607390215_2.jpg'),
+(18, 16, 'assets/img/productos/14122020_1607978399_1.jpg'),
+(19, 16, 'assets/img/productos/14122020_1607978399_2.jpg'),
+(20, 2, 'assets/img/productos/14122020_1607978590_1.jpg'),
+(21, 2, 'assets/img/productos/14122020_1607978590_2.jpg'),
+(22, 12, 'assets/img/productos/14122020_1607978650_1.jpg'),
+(23, 12, 'assets/img/productos/14122020_1607978650_2.jpg'),
+(26, 19, 'assets/img/productos/15122020_1608063013_0.jpg'),
+(27, 19, 'assets/img/productos/15122020_1608063013_1.jpg'),
+(28, 20, 'assets/img/productos/15122020_1608064982_0.jpg'),
+(29, 20, 'assets/img/productos/15122020_1608064982_1.jpg');
 
 -- --------------------------------------------------------
 
@@ -395,13 +430,13 @@ ALTER TABLE `portadas`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `productos_fotos`
 --
 ALTER TABLE `productos_fotos`
-  MODIFY `id_foto` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_foto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedores`

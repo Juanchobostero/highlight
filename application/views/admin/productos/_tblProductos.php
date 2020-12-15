@@ -7,7 +7,7 @@
 			<th>Subcategoría</th>
 			<th>Categoría</th>
 			<th>Precio Venta</th>
-			<th>Stock</th>
+			<th>Destacado</th>
 			<th>Acciones</th>
 		</tr>
 	</thead>
@@ -20,6 +20,9 @@
 				<td><?= $producto->descripcionSC; ?></td>
 				<td><?= $producto->descripcionCAT; ?></td>
 				<td>$<?= $producto->precio_ventaPR; ?></td>
+				<td class="text-center">
+					<input type="checkbox" name="destacar" <?= ($producto->destacadoPR == 'SI') ? 'checked' : '' ?> data-bootstrap-switch data-off-text="NO" data-on-text="SI" data-off-color="danger" onchange="publicarPort(this, <?= $producto->id_producto; ?>)">
+				</td>
 				<td><?= intval($producto->stockPR); ?></td>
 				<td class="text-center">
 					<div class="btn-group btn-group-sm">

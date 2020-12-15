@@ -15,4 +15,11 @@ class Productos_fotos extends CI_Model
 	{
 		return $this->db->insert_batch('productos_fotos', $fotos);
 	}
+
+	//--------------------------------------------------------------
+	public function eliminar($id_foto)
+	{
+		$this->db->where('id_foto', $id_foto);
+		return $this->db->delete('productos_fotos');
+	}
 }

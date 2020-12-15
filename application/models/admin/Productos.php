@@ -15,6 +15,8 @@ class Productos extends CI_Model
 
 	//--------------------------------------------------------------
 	public function get_producto($id_producto) {
+		$this->db->join('subcategorias', 'subcategorias.id_subcategoria = productos.id_subcat');
+		$this->db->join('categorias', 'categorias.id_categoria = subcategorias.id_cat');
 		$this->db->where('id_producto', $id_producto);
 		return $this->db->get('productos')->row();
 	}

@@ -6,16 +6,32 @@
 </div>
 
 <div class="modal-body">
-	<form id="form_producto" method="post" onsubmit="validFormMod(event, '<?= base_url('altaProducto'); ?>')">
+	<form id="form_producto" method="post" enctype="multipart/form-data">
 		<div class="row">
 			<div class="col-lg-5">
 				<label>Imágenes</label>
-				<div id="imagenes">
+				<div id="noFoto" class="alert alert-danger text-center mb-1 mt-0 py-1 d-none">
+					<small>
+						<!-- Leyenda error --></small>
+				</div>
+				<div id="imagenes" class="grid-container">
+					<!-- Se cargan las fotos del producto -->
+				</div>
+				<div>
+					<button type="button" class="btn btn-success file-button btn-sm mt-1" onclick="getFile()">
+						<i class="fas fa-camera mr-2"></i>Agregar
+					</button>
+					<div class="file-input">
+						<input id="fotos" type="file" name="file[]" multiple>
+					</div>
+				</div>
+				<br>
+				<!-- <div id="imagenes">
 					<input type="file" class="mb-1" name="file[]" accept="image/*">
 				</div>
 				<button type="button" id="agregarFoto" class="btn btn-success btn-sm mt-1">
 					<i class="fas fa-file-medical mr-2"></i>Agregar
-				</button>
+				</button> -->
 			</div>
 			<div class="col-lg-7">
 				<div class="form-group">
@@ -80,6 +96,10 @@
 						</div>
 					</div>
 				</div>
+				<div class="form-group">
+					<label for="destacar" class="mb-0 mr-2" title="Obligatorio">Destacar? <span class="text-danger" title="Obligatorio">*</span></label>
+					<input type="checkbox" id="destacar" name="destacar" data-bootstrap-switch data-off-text="NO" data-on-text="SI">
+				</div>
 			</div>
 		</div>
 	</form>
@@ -100,22 +120,51 @@
 </div>
 
 <script>
-	$('.modal').on('shown.bs.modal', function() {
-		$('#categ').focus()
+	var file = document.getElementById('fotos');
+	var form = new FormData();
+
+	$(function() {
+		$("input[data-bootstrap-switch]").bootstrapSwitch();
 	});
 
-	// $('.product-image-thumb').on('click', function () {
-	//   let image_element = $(this).find('img')
-	//   $('.product-image').prop('src', $(image_element).attr('src'))
-	//   $('.product-image-thumb.active').removeClass('active')
-	//   $(this).addClass('active')
+	$('.modal').on('shown.bs.modal', function() {
+		$('#codigo').focus()
+	});
+	$("#categoria").change(() => getSubcategorias());
+
+	function getFile() {
+		document.getElementById("fotos").click();
+	};
+
+	file.addEventListener('change', function(e) {
+		if (validarFile(file)) return;
+		for (var i = 0; i < file.files.length; i++) {
+			let thumbnail_id = Date.now() + '_' + i;
+			crearThumbnail(file, i, thumbnail_id);
+			form.append(thumbnail_id, file.files[i]);
+		}
+		e.target.value = '';
+	});
+
+	function eliminarFoto(id) {
+		$('#' + id).fadeOut();
+		form.delete(id);
+	};
+
+	$('#form_producto').submit(function(event) {
+		let formComp = new FormData($('#form_producto')[0]);
+		for (let pair of form.entries()) {
+			formComp.append(pair[0], pair[1]);
+		};
+		validFormMod(event, '<?= base_url('altaProducto'); ?>', formComp);
+	});
+	// $('#agregarFoto').click(function(e) {
+	// 	e.preventDefault();
+	// 	$('#imagenes').append("<div><input type='file' class='mb-1 mr-1' name='file[]' accept='image/*'><button class='btn btn-danger btn-sm' title='Quitar' onclick='eliminarFoto(event, this)'><i class='fas fa-times'></i></button></div>");
 	// });
 
-	// $('.carousel').carousel('pause');
-	$('#agregarFoto').click(function(e) {
-		e.preventDefault();
-		$('#imagenes').append("<input type='file' class='mb-1' name='file[]' accept='image/*'>");
-	});
-
-	$("#categoria").change(() => getSubcategorias());
+	// function eliminarFoto(e, ele) {
+	// 	e.preventDefault();
+	// 	$(ele).parent().remove();
+	// }
 </script>
