@@ -16,3 +16,9 @@
                          "slider-hr"
                          "slider-wraper";
 }
+
+@media (max-width: 768px) {
+    .prod-novedades {
+        height: 27vh;
+    }
+}

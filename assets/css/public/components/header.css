@@ -54,7 +54,7 @@
 
 .icon-logo {
   position: absolute;
-  transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-52%) translateY(-50%);
   top: 2.5rem;
   max-width: 12rem;
   max-height: 12rem;
@@ -67,6 +67,7 @@
   display:block;
   display: flex;
   justify-content: flex-end;
+  margin-right: 0.5rem;
 }
 
 .busqueda {

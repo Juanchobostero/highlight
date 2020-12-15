@@ -1,7 +1,7 @@
 .prod-ofertas {
     grid-area: ofertas;
     background-color: #ffffff;
-    width: 65%;
+    width: 70%;
     height: 30vh;
     position: relative;
     z-index: 100;
@@ -15,4 +15,10 @@
     grid-template-areas: "head"
                          "slider-hr"
                          "slider-wraper";
+}
+
+@media (max-width: 768px) {
+    .prod-ofertas {
+        height: 27vh;
+    }
 }

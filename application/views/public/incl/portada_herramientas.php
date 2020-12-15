@@ -3,7 +3,7 @@
       <div class="jumbotron-background">
         <img src="<?=base_url('assets/img/public/portadas/portada8.jpeg')?>" class="blur">
       </div>
-      <div class="container text-white">
+      <div class="jumbo-container text-white">
         <h5>Herramientas</h5>
         <p>Conoce más sobre las marcas con las que trabajamos</p>
         <hr class="my-2">

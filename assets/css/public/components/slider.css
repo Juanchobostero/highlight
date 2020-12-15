@@ -1,15 +1,16 @@
 .section-slider {
     margin-top: 0.5rem;
     position: relative;
-    height: 60vh;
+    height: 55vh;
     object-fit: cover;
+    padding: 1rem;
 }
 
 .slider-wraper {
     grid-area: slider-wraper;
-    width: 90%;
+    width: 99%;
     height: 67vh;
-    transform: translate(5rem, -6rem);
+    transform: translate(0.2rem, -6rem);
 }
 
 .slider-titulo {
@@ -22,7 +23,7 @@
     margin-bottom: 0;
 }
 
-.slider-hr {
+.hr-head {
     grid-area: slider-hr;
     width: 100%;
     border: 1px solid var(--color-grey);
@@ -30,44 +31,55 @@
   
   
 .slider-cell{
-    width: 12.7vw;
-    height: 55vh;
-    margin-right: 1rem;
+    
+    width: 23.5%;
+    height: 100%;
+    margin-right: 0.8rem;
     transform: translateY(5.7rem);
-    object-fit: cover;
 }
 
-@media (max-width: 1064px) {
-    .section-slider {
-        height: 65vh;
-    } 
-    .slider-wraper > *{
-        width: 100%;
-        height: 70vh;
-        transform: translateX(-3rem, -6rem);
+/* TABLET */
+
+@media (min-width: 561px) and (max-width: 1024px) and (orientation: landscape) {
+  
+    .slider-cell {
+        width: 30%;
     }
 
-    .slider-cell {
-        width: 13vw;
-        height: 57vh;
+    .section-slider {
+        transform: translateY(2rem);
     }
     
 }
 
-@media (max-width: 768px) {
 
-    .section-slider {
-        height: 67vh;
-    } 
-    .slider-wraper > *{
-        width: 100%;
-        height: 73vh;
-        transform: translateX(-7rem, -6rem);
+/* CELU */
+
+@media (max-width: 560px) {
+
+    .slider-titulo {
+        transform: translateX(-2rem);
     }
 
-    .slider-cell {
-        width: 16vw;
+    .hr-head {
+        transform: translateX(-2rem);
+        width: 85vw;
+    }
+
+    .slider-wraper {
+        width: 80vw;
         height: 60vh;
+        transform: translate(-2rem, -6rem);
+    }
+
+    .section-slider {
+        height: 60vh;
+        margin-top: 3rem;
+    } 
+
+    .slider-cell {
+        width: 45%;
+        height: 100%;
     }
     
 }
