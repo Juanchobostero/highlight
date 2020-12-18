@@ -15,7 +15,7 @@
 						</h5>
 						
 						<h6>
-							<?=$producto->precio_ventaPR?>
+							$<?=$producto->precio_ventaPR?>
 						</h6>
 					</div>
 				</div>
