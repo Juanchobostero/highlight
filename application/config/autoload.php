@@ -19,4 +19,14 @@ $autoload['config'] = array();
 $autoload['language'] = array();
 
 
-$autoload['model'] = array('admin/Categorias', 'admin/Marcas' , 'admin/Portadas', 'admin/Productos', 'admin/Productos_fotos', 'admin/Subcategorias', 'admin/Usuarios', 'public/Portadas_model');
+$autoload['model'] = array('admin/Categorias', 
+    'admin/Marcas' , 
+    'admin/Portadas', 
+    'admin/Productos', 
+    'admin/Productos_fotos', 
+    'admin/Subcategorias', 
+    'admin/Usuarios', 
+    'public/Portadas_model', 
+    'public/Productos_model',
+    'public/Categorias_model',
+);

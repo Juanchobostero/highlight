@@ -1,6 +1,6 @@
 <nav class="cel-nav">
-    <a href="#" class="menu-close">
-        X
+    <a href="#" class="nav-close">
+        <img src="<?=base_url('assets/img/public/imgVarios/close.jpeg')?>" class="img-close" alt="cerrar-nav">
     </a>
 
     <ul class="nav-links">

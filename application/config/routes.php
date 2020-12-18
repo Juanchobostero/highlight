@@ -69,3 +69,4 @@ $route = array(
 
 $route['admin/validar']['post'] = 'Inicio_controller/validar';
 $route['cerrarSesion']['post'] = 'Inicio_controller/cerrarSesion';
+$route['api/destacados'] = 'APISlider/masDestacados';

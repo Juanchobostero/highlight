@@ -141,7 +141,8 @@ h4 {
 
 .icon-tw {
   width: 1.7rem;
-  height: 1.7rem;
+  height: 1.5rem;
+  transform: translateX(0.3rem);
 }
 
 .marca {

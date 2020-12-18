@@ -44,34 +44,18 @@
                 <a href="#" class="navbar-drop-link" id="categoria">Todos
                 </a>
               </li>
-              <li>
-                <a href="#" class="navbar-drop-link" id="categoria">Herramientas
-                </a>
-              </li>
-              <li>
-                <a href="#" class="navbar-drop-link" id="subcategoria">Manuales
-                </a>
-              </li>
-              <li>
-                <a href="#" class="navbar-drop-link" id="subcategoria">Eléctricas
-                </a>
-              </li>
-              <li>
-                <a href="#" class="navbar-drop-link" id="categoria">Iluminación
-                </a>
-              </li>
-              <li>
-                <a href="#" class="navbar-drop-link" id="subcategoria">Paneles
-                </a>
-              </li>
-              <li>
-                <a href="#" class="navbar-drop-link" id="subcategoria">Reflectores
-                </a>
-              </li>
-              <li>
-                <a href="#" class="navbar-drop-link" id="subcategoria">Lámparas
-                </a>
-              </li>
+              <?php foreach($categorias as $categoria):?>
+                <li>
+                  <a href="#" class="navbar-drop-link" id="categoria"><?=$categoria->descripcionCAT?>
+                  </a>
+                </li>
+                <?php foreach($categoria->subcategorias as $subcat):?>
+                  <li>
+                    <a href="#" class="navbar-drop-link" id="subcategoria"><?=$subcat->descripcionSC?>
+                    </a>
+                  </li>
+                <?php endforeach?>
+              <?php endforeach?>
             </ul>
             
           </li>

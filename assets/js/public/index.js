@@ -4,6 +4,7 @@ const baseUrl = 'http://localhost/highlight/';
 const toggle = document.querySelector('.img-toggle');
 const celNav = document.querySelector('.cel-nav');
 const backdrop = document.querySelector('.backdrop');
+const closeToggle = document.querySelector('.nav-close');
 
 //ABRIR MENU TOGGLE
 toggle.addEventListener('click', e => {
@@ -23,24 +24,50 @@ backdrop.addEventListener('click', e => {
   }, 100);
 })
 
+closeToggle.addEventListener('click', e => {
+  celNav.style.display = 'none';
+  backdrop.style.display = 'none';
+  setTimeout(() => {
+    backdrop.classList.remove('open-backdrop')
+  }, 100);
+})
+
 
 
 /*/--- DESTACADOS ---/*/
-var elem = document.querySelector('.slider-destacados');
-var flkty = new Flickity( elem, {
-  //options
-  cellAlign: 'center',
-  contain: true,  
-  groupCells: true, 
-  pageDots: false, 
-  wrapAround: true,
-  /* arrowShape: {
-    x0: 20,
-    x1: 40, y1: 20,
-    x2: 80, y2: 20,
-    x3: 100
-  } */
-});
+const destacados = document.querySelector('.slider-destacados');
+if (destacados){
+
+  /* let total_pages = document.querySelector('.total-destacados').dataset.total;
+  let page = 1;
+  let url = 'api/destacados'; */
+
+  const sliderDestacados = new Flickity( destacados, {
+    cellAlign: 'center',
+    contain: true,  
+    groupCells: true, 
+    pageDots: false, 
+    wrapAround: true,
+  });
+
+  /* sliderDestacados.on( 'change', function(index) {
+    if(index === desFlkty.slides.length - 1){
+      if(page < total_pages){
+        cargarMasCells(url, page, desFlkty);
+        page++;
+      }else{
+        console.log('no hay mas datos...');
+        console.log('total cells destacados:', desFlkty.cells.length);
+      }
+    }
+  }); */
+
+  /* desFlkty.on( 'staticClick', function( event, pointer, cellElement ) {
+    window.location.href = baseUrl + 'producto/'+ cellElement.dataset.idproducto;
+  });
+ */
+}
+
 
 /*/--- NOVEDADES ---/*/
 var elem = document.querySelector('.slider-novedades');

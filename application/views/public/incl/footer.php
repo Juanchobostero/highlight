@@ -14,11 +14,11 @@
       <a href="#" class="insta-link">
         <img src="<?=base_url('assets/img/public/imgVarios/instagram.jpeg')?>" class="icon-insta">
       </a>
-      <a href="#" class="insta-face">
+      <a href="#" class="face-link">
         <img src="<?=base_url('assets/img/public/imgVarios/facebook.jpeg')?>" class="icon-face">
       </a>
-      <a href="#" class="insta-tw">
-        <img src="<?=base_url('assets/img/public/imgVarios/twitter.png')?>" class="icon-tw"> 
+      <a href="#" class="tw-link">
+        <img src="<?=base_url('assets/img/public/imgVarios/tw.jpeg')?>" class="icon-tw"> 
       </a>
     </div>
   

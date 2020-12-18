@@ -3,117 +3,24 @@
 	<hr class="hr-head">
 	<div class="slider-wraper slider-novedades">
 	
-	<div class="slider-cell" data-idproducto="1">
+		<?php foreach($novedades as $producto):?>
+			<div class="slider-cell" data-idproducto="<?=$producto->id_producto?>">
 				<div class="product-cart">
 					<div class="product-img-top">
-						<img class="product-img" src="<?=base_url('assets/img/public/productos/producto3.jpeg')?>">
+						<img class="product-img" src="<?=base_url($producto->foto)?>">
 					</div>
 					<div class="product-desc">
 						<h5>
-							FILAMENTO-GLOBO-8W 
+							<?=$producto->nombrePR?>
 						</h5>
+						
 						<h6>
-							-$99,9
+							<?=$producto->precio_ventaPR?>
 						</h6>
 					</div>
 				</div>
 			</div>
-
-			<div class="slider-cell" data-idproducto="1">
-				<div class="product-cart">
-					<div class="product-img-top">
-						<img class="product-img" src="<?=base_url('assets/img/public/productos/producto4.jpeg')?>">
-					</div>
-					<div class="product-desc">
-						<h5>
-							FILAMENTO-GLOBO-8W 
-						</h5>
-						<h6>
-							-$99,9
-						</h6>
-					</div>
-				</div>
-			</div>
-
-			<div class="slider-cell" data-idproducto="1">
-				<div class="product-cart">
-					<div class="product-img-top">
-						<img class="product-img" src="<?=base_url('assets/img/public/productos/producto5.jpeg')?>">
-					</div>
-					<div class="product-desc">
-						<h5>
-							FILAMENTO-GLOBO-8W 
-						</h5>
-						<h6>
-							-$99,9
-						</h6>
-					</div>
-				</div>
-			</div>
-
-			<div class="slider-cell" data-idproducto="1">
-				<div class="product-cart">
-					<div class="product-img-top">
-						<img class="product-img" src="<?=base_url('assets/img/public/productos/producto6.jpeg')?>">
-					</div>
-					<div class="product-desc">
-						<h5>
-							FILAMENTO-GLOBO-8W 
-						</h5>
-						<h6>
-							-$99,9
-						</h6>
-					</div>
-				</div>
-			</div>
-
-			<div class="slider-cell" data-idproducto="2">
-				<div class="product-cart">
-					<div class="product-img-top">
-						<img class="product-img" src="<?=base_url('assets/img/public/productos/producto7.jpeg')?>">
-					</div>
-					<div class="product-desc">
-						<h5>
-							FILAMENTO-GLOBO-8W 
-						</h5>
-						<h6>
-							-$99,9
-						</h6>
-					</div>
-				</div>
-			</div>
-
-			<div class="slider-cell" data-idproducto="3">
-				<div class="product-cart">
-					<div class="product-img-top">
-						<img class="product-img" src="<?=base_url('assets/img/public/productos/producto8.jpeg')?>">
-					</div>
-					<div class="product-desc">
-						<h5>
-							FILAMENTO-GLOBO-8W 
-						</h5>
-						<h6>
-							-$99,9
-						</h6>
-					</div>
-				</div>
-			</div>
-
-			<div class="slider-cell" data-idproducto="3">
-				<div class="product-cart">
-					<div class="product-img-top">
-						<img class="product-img" src="<?=base_url('assets/img/public/productos/producto9.jpeg')?>">
-					</div>
-					<div class="product-desc">
-						<h5>
-							FILAMENTO-GLOBO-8W 
-						</h5>
-						<h6>
-							-$99,9
-						</h6>
-					</div>
-				</div>
-			</div>
+		<?php endforeach?>
 	
 	</div>
 </section>

@@ -34,13 +34,15 @@
     z-index: 1000;
 }
 
-.menu-close {
-    font-size: 1.5rem;
+.nav-close {
     position: absolute;
-    top: 1rem;
-    right: 2rem;
-    color: var(--menu-links-color);
-    text-decoration: none;
+    top: 0.3rem;
+    right: 0.3rem;
+}
+
+.img-close {
+    width: 3rem;
+    height: 3rem;
 }
 
 .nav-links {

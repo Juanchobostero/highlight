@@ -17,7 +17,17 @@ class Inicio_controller extends CI_Controller
 	
 	public function index()
 	{
+		//Paginado
+		$perPage = 20;
+		$start = 0;
+
+		$data['categorias'] = $this->Categorias_model->get_full();
 		$data['portadas'] = $this->Portadas_model->get_habs();
+		$data['productos'] = $this->Productos_model->get_productos();
+		$data['destacados'] = $this->Productos_model->get_destacados($perPage, $start);
+		$data['novedades'] = $this->Productos_model->get_novedades($perPage, $start);
+		$data['ofertas'] = $this->Productos_model->get_ofertas($perPage, $start);
+
 		$this->load->view('public/index', $data);
 	}
 
