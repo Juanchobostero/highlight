@@ -10,6 +10,7 @@ class Productos extends CI_Model
 		$this->db->join('marcas', 'marcas.id_marca = productos.id_mar');
 		$this->db->join('subcategorias', 'subcategorias.id_subcategoria = productos.id_subcat');
 		$this->db->join('categorias', 'categorias.id_categoria = subcategorias.id_cat');
+		$this->db->where('estadoPR', 1);
 		return $this->db->get('productos')->result();
 	}
 

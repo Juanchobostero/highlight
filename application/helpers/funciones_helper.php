@@ -41,7 +41,7 @@ function subirImagen($nombre, $carpeta, $imgDefault)
 		if (in_array($mime,  $tipos)) {
 			//cargar configuración 
 			$config['upload_path'] = $destino;
-			$config['allowed_types'] = 'bmp|jpg|png';
+			$config['allowed_types'] = 'bmp|jpeg|jpg|png';
 			$config['file_name'] = date('dmY') . '_' . time();
 
 			$CI->upload->initialize($config); // Se inicializa la config
@@ -81,7 +81,7 @@ function subirImagenes($carpeta)
 
 				//cargar configuración 
 				$config['upload_path'] = $destino;
-				$config['allowed_types'] = 'bmp|jpg|png';
+				$config['allowed_types'] = 'bmp|jpeg|jpg|png';
 				$config['file_name'] = date('dmY') . '_' . time() . '_' . $i;
 
 				$CI->upload->initialize($config); // Se inicializa la config

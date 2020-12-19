@@ -11,8 +11,7 @@
 			<div class="col-lg-5">
 				<label>Imágenes</label>
 				<div id="noFoto" class="alert alert-danger text-center mb-1 mt-0 py-1 d-none">
-					<small>
-						<!-- Leyenda error --></small>
+					<small><!-- Leyenda error --></small>
 				</div>
 				<div id="imagenes" class="grid-container">
 					<!-- Se cargan las fotos del producto -->
@@ -26,12 +25,6 @@
 					</div>
 				</div>
 				<br>
-				<!-- <div id="imagenes">
-					<input type="file" class="mb-1" name="file[]" accept="image/*">
-				</div>
-				<button type="button" id="agregarFoto" class="btn btn-success btn-sm mt-1">
-					<i class="fas fa-file-medical mr-2"></i>Agregar
-				</button> -->
 			</div>
 			<div class="col-lg-7">
 				<div class="form-group">
@@ -130,6 +123,7 @@
 	$('.modal').on('shown.bs.modal', function() {
 		$('#codigo').focus()
 	});
+
 	$("#categoria").change(() => getSubcategorias());
 
 	function getFile() {
@@ -158,13 +152,4 @@
 		};
 		validFormMod(event, '<?= base_url('altaProducto'); ?>', formComp);
 	});
-	// $('#agregarFoto').click(function(e) {
-	// 	e.preventDefault();
-	// 	$('#imagenes').append("<div><input type='file' class='mb-1 mr-1' name='file[]' accept='image/*'><button class='btn btn-danger btn-sm' title='Quitar' onclick='eliminarFoto(event, this)'><i class='fas fa-times'></i></button></div>");
-	// });
-
-	// function eliminarFoto(e, ele) {
-	// 	e.preventDefault();
-	// 	$(ele).parent().remove();
-	// }
 </script>

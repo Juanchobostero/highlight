@@ -12,7 +12,7 @@
 			<tr>
 				<td><?= $port->titulo; ?></td>
 				<td class="text-center">
-					<input type="checkbox" name="publicar" <?= ($port->publicado == 'SI') ? 'checked' : '' ?> data-bootstrap-switch data-off-text="NO" data-on-text="SI" data-off-color="danger" onchange="publicarPort(this, <?= $port->id_port; ?>)">
+					<input type="checkbox" name="publicar" <?= ($port->publicado == 'SI') ? 'checked' : '' ?> data-bootstrap-switch data-off-text="NO" data-on-text="SI" data-off-color="danger" onchange="manejoSwitch(this, <?= $port->id_port; ?>, '<?=base_url('publicarPort')?>')">
 				</td>
 				<td>
 					<img class="img-fluid m-auto d-block rounded" src="<?= base_url($port->imagen); ?>" style="width: 40px; height: 40px">

@@ -263,13 +263,19 @@ function deshabilitar(e, metodo) {
 	habDes(e, metodo, 0, 'Deshabilitar', 'deshabilitará')
 }
 
+//----------------------------ELIMINAR----------------------------
+function eliminar(e, metodo) {
+	habDes(e, metodo, 0, 'Eliminar', 'eliminará')
+}
+
 //----------------HABILITAR-DESHABILITAR RESPONSE----------------
 function habDes(e, metodo, est, titulo, msj) {
-	let nom = $(e).closest('tr').children('td:first').text();
+	// let nom = $(e).closest('tr').children('td:first').text();
 
 	Swal.fire({
 		title: '¿' + titulo + '?',
-		html: '<strong>' + nom + '</strong> se ' + msj + '.',
+		// html: '<strong>' + nom + '</strong> se ' + msj + '.',
+		text: 'El registro se ' + msj,
 		icon: 'question',
 		showCancelButton: true,
 		confirmButtonColor: '#2c9faf',
@@ -291,9 +297,9 @@ function habDes(e, metodo, est, titulo, msj) {
 	});
 }
 
-//-----------------------PUBLICAR PORTADA-----------------------
-function publicarPort(e, id, del = true) {
-	$.post(baseUrl + 'publicarPort', {
+//---------------------MANEJO SWITCH (SI-NO)---------------------
+function manejoSwitch(e, id, metodo, del = true) {
+	$.post(metodo, {
 		id: id,
 		prom: e.checked
 	}, function (data) {

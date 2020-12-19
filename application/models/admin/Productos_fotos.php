@@ -11,8 +11,19 @@ class Productos_fotos extends CI_Model
 	}
 
 	//--------------------------------------------------------------
-	public function crear($fotos)
+	public function get_foto($id_foto)
 	{
+		$this->db->where('id_foto', $id_foto);
+		return $this->db->get('productos_fotos')->row();
+	}
+
+	//--------------------------------------------------------------
+	public function crear($id_producto, $imgs)
+	{
+		for ($i = 0; $i < count($imgs); $i++) {
+			$fotos[$i]['id_prod'] = $id_producto;
+			$fotos[$i]['foto'] = $imgs[$i];
+		}
 		return $this->db->insert_batch('productos_fotos', $fotos);
 	}
 

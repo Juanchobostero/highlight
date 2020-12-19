@@ -39,6 +39,7 @@
 			<div class="col-lg-7">
 				<div class="form-group">
 					<label for="codigo" class="mb-0" title="Obligatorio">Código <span class="text-danger" title="Obligatorio">*</span></label>
+					<input type="hidden" name="codigoAct" value="<?= $producto->codigoPR; ?>">
 					<input type="text" class="form-control" id="codigo" name="codigo" placeholder="Introduce un código" value="<?= $producto->codigoPR; ?>">
 				</div>
 				<div class="form-group">
@@ -101,6 +102,10 @@
 						</div>
 					</div>
 				</div>
+				<div class="form-group">
+					<label for="destacar" class="mb-0 mr-2" title="Obligatorio">Destacar? <span class="text-danger" title="Obligatorio">*</span></label>
+					<input type="checkbox" id="destacar" name="destacar" <?= ($producto->destacadoPR == 'SI') ? 'checked' : ''; ?> data-bootstrap-switch data-off-text="NO" data-on-text="SI">
+				</div>
 			</div>
 		</div>
 	</form>
@@ -126,6 +131,7 @@
 
 	$(function() {
 		getSubcategorias('<?= $producto->id_cat; ?>');
+		$("input[data-bootstrap-switch]").bootstrapSwitch();
 	});
 
 	$('.modal').on('shown.bs.modal', function() {

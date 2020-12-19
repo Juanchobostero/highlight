@@ -21,9 +21,8 @@
 				<td><?= $producto->descripcionCAT; ?></td>
 				<td>$<?= $producto->precio_ventaPR; ?></td>
 				<td class="text-center">
-					<input type="checkbox" name="destacar" <?= ($producto->destacadoPR == 'SI') ? 'checked' : '' ?> data-bootstrap-switch data-off-text="NO" data-on-text="SI" data-off-color="danger" onchange="publicarPort(this, <?= $producto->id_producto; ?>)">
+					<input type="checkbox" name="destacar" <?= ($producto->destacadoPR == 'SI') ? 'checked' : '' ?> data-bootstrap-switch data-off-text="NO" data-on-text="SI" data-off-color="danger" onchange="manejoSwitch(this, <?= $producto->id_producto; ?>, '<?= base_url('destacarProducto') ?>', false)">
 				</td>
-				<td><?= intval($producto->stockPR); ?></td>
 				<td class="text-center">
 					<div class="btn-group btn-group-sm">
 						<button type="button" class="btn btn-info" title="Ver" onclick="cargarForm('<?= base_url('frmVerProducto/' . $producto->id_producto) ?>', 'small', 'modal-small')">
@@ -35,7 +34,7 @@
 						<button type="button" class="btn bg-olive" title="Editar descripción" onclick="cargarForm('<?= base_url('frmEditarDescripcion/' . $producto->id_producto) ?>', 'small', 'modal-small')">
 							<i class="fas fa-list-ul"></i>
 						</button>
-						<button type="button" class="btn btn-danger" title="Eliminar" onclick="deshabilitar(this, 'eliminarProducto/<?= $producto->id_producto; ?>')">
+						<button type="button" class="btn btn-danger" title="Eliminar" onclick="eliminar(this, 'eliminarProducto/<?= $producto->id_producto; ?>')">
 							<i class="fas fa-trash-alt"></i>
 						</button>
 					</div>
