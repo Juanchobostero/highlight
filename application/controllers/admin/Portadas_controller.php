@@ -14,7 +14,7 @@ class Portadas_controller extends CI_Controller
 	public function index()
 	{
 		$data['title'] = 'Portadas';
-		$data['act'] = '2Port';
+		$data['act'] = '4Port';
 		$data['act_desplegado'] = '';
 		$data['item_desplegado'] = '';
 		$this->load->view('admin/portadas/index', $data);

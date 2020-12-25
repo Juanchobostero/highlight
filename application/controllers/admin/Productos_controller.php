@@ -15,7 +15,7 @@ class Productos_controller extends CI_Controller
 	public function index()
 	{
 		$data['title'] = 'Productos';
-		$data['act'] = '3_2Prod';
+		$data['act'] = '5_2Prod';
 		$data['act_desplegado'] = 'active';
 		$data['item_desplegado'] = 'menu-is-opening menu-open';
 		$this->load->view('admin/productos/index', $data);
@@ -61,6 +61,16 @@ class Productos_controller extends CI_Controller
 
 		$data['producto'] = $this->Productos->get_producto($id_producto);
 		$this->load->view('admin/productos/frmEditarDescripcion', $data);
+	}
+
+	//--------------------------------------------------------------
+	public function frmVer($id_producto)
+	{
+		verificarConsulAjax();
+		
+		$data['producto'] = $this->Productos->get_producto($id_producto);
+		$data['fotos'] = $this->Productos_fotos->get_producto_fotos($id_producto);
+		$this->load->view('admin/productos/frmVerProducto', $data);
 	}
 
 	//--------------------------------------------------------------
@@ -224,7 +234,7 @@ class Productos_controller extends CI_Controller
 			$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Producto ' . $msj]));
 			return;
 		}
-		$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Error', 'msj' => 'Intente más tarde.', 'est' => $prom]));
+		$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Error', 'msj' => 'Intente más tarde.']));
 		return;
 	}
 

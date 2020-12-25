@@ -19,13 +19,13 @@
 				<td><?= $producto->descripcionM; ?></td>
 				<td><?= $producto->descripcionSC; ?></td>
 				<td><?= $producto->descripcionCAT; ?></td>
-				<td>$<?= $producto->precio_ventaPR; ?></td>
+				<td>$ <?= number_format($producto->precio_ventaPR, 0, ',', '.'); ?></td>
 				<td class="text-center">
 					<input type="checkbox" name="destacar" <?= ($producto->destacadoPR == 'SI') ? 'checked' : '' ?> data-bootstrap-switch data-off-text="NO" data-on-text="SI" data-off-color="danger" onchange="manejoSwitch(this, <?= $producto->id_producto; ?>, '<?= base_url('destacarProducto') ?>', false)">
 				</td>
 				<td class="text-center">
 					<div class="btn-group btn-group-sm">
-						<button type="button" class="btn btn-info" title="Ver" onclick="cargarForm('<?= base_url('frmVerProducto/' . $producto->id_producto) ?>', 'small', 'modal-small')">
+						<button type="button" class="btn btn-info" title="Ver" onclick="cargarForm('<?= base_url('frmVerProducto/' . $producto->id_producto) ?>', 'extra-large', 'modal-extra-large')">
 							<i class="fas fa-eye"></i>
 						</button>
 						<button type="button" class="btn btn-warning" title="Editar" onclick="cargarForm('<?= base_url('frmEditarProducto/' . $producto->id_producto) ?>', 'extra-large', 'modal-extra-large')">

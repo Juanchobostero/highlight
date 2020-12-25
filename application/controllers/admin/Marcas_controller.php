@@ -15,7 +15,7 @@ class Marcas_controller extends CI_Controller
 	public function index()
 	{
 		$data['title'] = 'Marcas';
-		$data['act'] = '3_1Mar';
+		$data['act'] = '5_1Mar';
 		$data['act_desplegado'] = 'active';
 		$data['item_desplegado'] = 'menu-is-opening menu-open';
 		$this->load->view('admin/marcas/index', $data);

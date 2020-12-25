@@ -50,7 +50,7 @@
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="stock" class="mb-0" title="Obligatorio">Stock <span class="text-danger" title="Obligatorio">*</span></label>
-							<input type="number" class="form-control" id="stock" name="stock" placeholder="0,000" value="<?= $producto->stockPR; ?>">
+							<input type="number" class="form-control" id="stock" name="stock" placeholder="0,000" value="<?= intval($producto->stockPR); ?>">
 						</div>
 					</div>
 					<div class="col-md-6">

@@ -27,6 +27,9 @@ $route = array(
 	'editarCliente/(:num)'		=> 'admin/Clientes_controller/editar/$1',
 	'habDesCliente/(:num)' 		=> 'admin/Clientes_controller/habilitarDeshabilitar/$1',
 
+	'admin/imagenes' 				=> 'admin/Imagenes_controller',
+	'editarImagenes/(:num)'	=> 'admin/Imagenes_controller/editar/$1',
+
 	'admin/marcas'					=> 'admin/Marcas_controller',
 	'admin/marcas/(:any)'		=> 'admin/Marcas_controller/getMarcas/$1',
 	'frmNuevaMarca'					=> 'admin/Marcas_controller/frmNueva',
@@ -49,12 +52,16 @@ $route = array(
 	'frmNuevoProducto'						=> 'admin/Productos_controller/frmNuevo',
 	'frmEditarProducto/(:num)'		=> 'admin/Productos_controller/frmEditar/$1',
 	'frmEditarDescripcion/(:num)'	=> 'admin/Productos_controller/frmEditarDescripcion/$1',
+	'frmVerProducto/(:num)'				=> 'admin/Productos_controller/frmVer/$1',
 	'altaProducto'								=> 'admin/Productos_controller/crear',
 	'editarProducto/(:num)'				=> 'admin/Productos_controller/editar/$1',
 	'editarDescripcion/(:num)'		=> 'admin/Productos_controller/editarDescripcion/$1',
 	'destacarProducto'						=> 'admin/Productos_controller/destacar',
 	'eliminarProducto/(:num)'			=> 'admin/Productos_controller/eliminar/$1',
 	'eliminarFoto/(:num)'					=> 'admin/Productos_controller/eliminarFoto/$1',
+
+	'admin/productos-destacados'	=> 'admin/Productos_destacados_controller',
+	'quitarDestacado/(:num)'			=> 'admin/Productos_destacados_controller/quitarDestacado/$1',
 
 	'frmNuevaSubcategoria'					=> 'admin/Subcategorias_controller/frmNueva',
 	'frmEditarSubcategoria/(:num)'	=> 'admin/Subcategorias_controller/frmEditar/$1',
