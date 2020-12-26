@@ -17,30 +17,19 @@
             <li class="nav-item">
                 <a href="#" id="cat" class="nav-link">Todos</a>
             </li>
-            <li class="nav-item">
-                <a href="#" id="cat" class="nav-link">Herramientas</a>
-            </li>
-            <li class="nav-item">
-                <a href="#" id="subcat" class="nav-link">Inalámbricas</a>
-            </li>
-            <li class="nav-item">
-                <a href="#" id="subcat" class="nav-link">Manuales</a>
-            </li>
-            <li class="nav-item">
-                <a href="#" id="subcat" class="nav-link">Eléctricas</a>
-            </li>
-            <li class="nav-item">
-                <a href="#" id="cat" class="nav-link">Iluminación</a>
-            </li>
-            <li class="nav-item">
-                <a href="#" id="subcat" class="nav-link">Paneles</a>
-            </li>
-            <li class="nav-item">
-                <a href="#" id="subcat" class="nav-link">Reflectores</a>
-            </li>
-            <li class="nav-item">
-                <a href="#" id="subcat" class="nav-link">Lámparas</a>
-            </li>
+            <?php foreach($categorias as $categoria):?>
+                <li class="nav-item">
+                  <a href="#" class="nav-link" id="cat"><?=$categoria->descripcionCAT?>
+                  </a>
+                </li>
+                <?php foreach($categoria->subcategorias as $subcat):?>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link" id="subcat"><?=$subcat->descripcionSC?>
+                    </a>
+                  </li>
+                <?php endforeach?>
+              <?php endforeach?>
+            
         </div>
 
         <li class="nav-item">

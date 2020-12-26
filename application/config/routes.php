@@ -80,4 +80,7 @@ $route = array(
 
 $route['admin/validar']['post'] = 'Inicio_controller/validar';
 $route['cerrarSesion']['post'] = 'Inicio_controller/cerrarSesion';
-$route['api/destacados'] = 'APISlider/masDestacados';
+$route['producto/(:num)'] = 'Inicio_controller/producto/$1';
+
+
+$route['api/destacados'] = 'public/APISlider/masDestacados';

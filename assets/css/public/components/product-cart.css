@@ -1,86 +1,98 @@
-.product-cart {
-    display: flex;
-    flex-direction: column;
-    border-style: solid;
-    border-color: var(--color-grey);
-    width: 100%;
-    background-color: var(--titulo-seccion-color);
-}
-
-.product-img-top {
-    width: 100%;
-}
-
-.product-img{
-    width: 100%;
-    height: 25vh;
-    /* width: 12.3vw;
-    height: 25vh; */
-    object-fit: cover;
-    border-top-right-radius: 2.5rem;
-}
-
-.product-desc {
-    color: var(--menu-links-color);
-    background-color: var(--color-grey);
-    padding: 0.5rem;
+@media (min-width: 768px){ 
+    .product-cart {
+        display: flex;
+        flex-direction: column;
+        border-style: solid;
+        border-color: var(--color-grey);
+        width: 100%;
+        background-color: var(--titulo-seccion-color);
+    }
     
-}
-
-.product-desc h5{
-    font-size: 0.7rem;
-    font-weight: 400;
-    margin-bottom: 0;
-}
-
-.product-desc h6 {
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 0.1rem;
-}
-
-@media (min-width: 561px) and (max-width: 1024px) and (orientation: landscape) { 
-    .product-cart {
-        height: 30vh;
-    }
-
     .product-img-top {
-        height: 10.4vh;
+        width: 100%;
+        height: 32vh;
     }
-
+    
+    .product-img{
+        width: 100%;
+        height: 32vh;
+        /* width: 12.3vw;
+        height: 25vh; */
+        object-fit: cover;
+        border-top-right-radius: 2.5rem;
+    }
+    
     .product-desc {
-        height: 10vh;
-        transform: translateY(2.5rem);
-        font-size: 0.6rem;
-        padding: 0.3rem;
+        color: var(--menu-links-color);
+        background-color: var(--color-grey);
+        height: 11vh;
+        padding-bottom: 0.1rem;
     }
-
+    
+    .product-desc h5{
+        font-size: 0.9rem;
+        font-weight: 400;
+        margin-bottom: 0.5rem;
+    }
+    
     .product-desc h6 {
-        font-size: 0.8rem;
+        font-size: 1rem;
+        font-weight: 600;
+        bottom: 0;
+        margin-top: 0.3rem;
     }
 }
 
-@media (max-width: 560px) {
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .product-img{
+        width: 100%;
+    }
+}  
+
+@media (max-width: 768px) {
+    
     .product-cart {
-        height: 28vh;
+        display: flex;
+        flex-direction: column;
+        border-style: solid;
+        border-color: var(--color-grey);
+        width: 100%;
+        height: 30vh;
+        background-color: var(--titulo-seccion-color);
     }
+    
     .product-img-top {
-        height: 14.4vh;
-    }
-
-    .product-desc {
-        transform: translateY(1.2rem);
-    }
-
-    /* .product-img {
+        width: 100%;
         height: 100%;
     }
-
+    
+    .product-img{
+        width: 100%;
+        height: 19vh;
+        /* width: 12.3vw;
+        height: 25vh; */
+        object-fit: cover;
+        border-top-right-radius: 2.5rem;
+    }
+    
     .product-desc {
+        color: var(--menu-links-color);
+        background-color: var(--color-grey);
+        padding: 0.2rem;
         height: 100%;
-    } */
-
-    .product-desc {
-        font-size: 0.8rem;
+        top: 0;
+    }
+    
+    .product-desc h5{
+        font-size: 0.7rem;
+        font-weight: 400;
+        margin-bottom: 0.2rem;
+    }
+    
+    .product-desc h6 {
+        font-size: 0.7rem;
+        font-weight: 600;
+        top: 0;
+        margin-bottom: 0;
     }
 } 

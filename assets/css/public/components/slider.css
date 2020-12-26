@@ -1,7 +1,7 @@
 .section-slider {
     margin-top: 0.5rem;
     position: relative;
-    height: 55vh;
+    height: 57vh;
     object-fit: cover;
     padding: 1rem;
 }
@@ -40,7 +40,7 @@
 
 /* TABLET */
 
-@media (min-width: 561px) and (max-width: 1024px) and (orientation: landscape) {
+@media (min-width: 600px) and (max-width: 1024px) and (orientation: landscape) {
   
     .slider-cell {
         width: 30%;
@@ -55,7 +55,7 @@
 
 /* CELU */
 
-@media (max-width: 560px) {
+@media (max-width: 600px) {
 
     .slider-titulo {
         transform: translateX(-2rem);

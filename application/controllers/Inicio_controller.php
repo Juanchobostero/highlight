@@ -18,12 +18,14 @@ class Inicio_controller extends CI_Controller
 	public function index()
 	{
 		//Paginado
-		$perPage = 20;
+		$perPage = 10;
 		$start = 0;
 
 		$data['categorias'] = $this->Categorias_model->get_full();
 		$data['portadas'] = $this->Portadas_model->get_habs();
 		$data['productos'] = $this->Productos_model->get_productos();
+		$total_dest = $this->Productos_model->get_count_productos_destacados();
+		$data['total_destacados']  = ceil($total_dest/$perPage);
 		$data['destacados'] = $this->Productos_model->get_destacados($perPage, $start);
 		$data['novedades'] = $this->Productos_model->get_novedades($perPage, $start);
 		$data['ofertas'] = $this->Productos_model->get_ofertas($perPage, $start);
@@ -94,4 +96,18 @@ class Inicio_controller extends CI_Controller
 		$this->session->sess_destroy();
 		redirect('admin/login');
 	}
+
+	//--------------------------------------------------------------
+	public function producto($id){
+		$data['categorias'] = $this->Categorias_model->get_full();
+		$data['producto'] = $this->Productos_model->get_producto($id);
+	
+		/* if(!$data['producto']){
+		  show_404($page = '', $log_error = TRUE);
+		  return;
+		}
+		 */
+		$this->load->view('public/producto', $data);
+		
+	  }
 }

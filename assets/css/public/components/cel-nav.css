@@ -9,6 +9,7 @@
     z-index: 2000;
     overflow-y: scroll;
     transition: transform 300ms ease-out;
+    
   }
 
 .backdrop{
@@ -52,6 +53,9 @@
     font-size: 1rem;
 }
 
+.nav-tem {
+    color: var(--menu-links-color);
+}
 
 .nav-link {
     color: var(--menu-links-color);
@@ -67,6 +71,7 @@
 .nav-prod > * {
     transform: translateX(1.8rem);
 }
+
 
 #bold {
     font-weight: 900;
