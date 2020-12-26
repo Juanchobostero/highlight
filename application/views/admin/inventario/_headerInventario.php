@@ -3,12 +3,12 @@
 	<div class="container-fluid">
 		<div class="row mb-2">
 			<div class="col-sm-6">
-				<h1>Imágenes</h1>
+				<h1 id="tit-inventario">Inventario</h1>
 			</div>
 			<div class="col-sm-6">
 				<ol class="breadcrumb float-sm-right">
 					<li class="breadcrumb-item"><a href="#">Home</a></li>
-					<li class="breadcrumb-item active">Imágenes</li>
+					<li class="breadcrumb-item active">Inventario de Productos</li>
 				</ol>
 			</div>
 		</div>

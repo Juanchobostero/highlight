@@ -30,6 +30,8 @@ $route = array(
 	'admin/imagenes' 				=> 'admin/Imagenes_controller',
 	'editarImagenes/(:num)'	=> 'admin/Imagenes_controller/editar/$1',
 
+	'admin/inventario'			=> 'admin/Inventario_controller',
+	
 	'admin/marcas'					=> 'admin/Marcas_controller',
 	'admin/marcas/(:any)'		=> 'admin/Marcas_controller/getMarcas/$1',
 	'frmNuevaMarca'					=> 'admin/Marcas_controller/frmNueva',

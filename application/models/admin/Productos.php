@@ -49,4 +49,12 @@ class Productos extends CI_Model
 		$this->db->where('id_producto', $id_producto);
 		return $this->db->update('productos', $producto);
 	}
+
+	//--------------------------------------------------------------
+	public function get_inventario()
+	{
+		$this->db->select('COUNT(*) as total_productos, SUM(precio_listaPR) as total_costo');
+		$this->db->where('estadoPR', 1);
+		return $this->db->get('productos')->row();
+	}
 }
