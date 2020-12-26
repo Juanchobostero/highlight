@@ -15,8 +15,13 @@ class Productos_model extends CI_Model {
 
   public function get_producto($id)
 	{
-		$this->db->where('id_producto', $id);
-		return $this->db->get('productos')->row();
+    $this->db->join('subcategorias as sc', 'productos.id_subcat = sc.id_subcategoria');
+    $this->db->join('categorias as cat', 'sc.id_cat = cat.id_categoria');
+    $this->db->join('productos_fotos as pf', 'productos.id_producto = pf.id_prod');
+    $this->db->where('pf.foto IS NOT NULL');
+    $this->db->where('productos.id_producto', $id);
+    $producto = $this->db->get('productos')->row();
+
   }
 
   /* public function get_foto_producto($id)
@@ -86,5 +91,14 @@ class Productos_model extends CI_Model {
     $ofertas = $this->db->get()->result();
 
     return $ofertas;
+  }
+
+  public function get_count_productos_destacados(){
+    $this->db->select('id_producto');
+    $this->db->where('stockPR >', 0);
+    $this->db->where('destacadoPR', 'SI');
+    $this->db->group_by('id_producto');
+    $this->db->from('productos');
+    return $this->db->count_all_results();
   }
 }

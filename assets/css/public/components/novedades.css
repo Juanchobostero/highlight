@@ -1,8 +1,8 @@
 .prod-novedades {
     grid-area: novedades;
     background-color: #ffffff;
-    width: 65%;
-    height: 32vh;
+    width: 70%;
+    height: 60vh;
     position: relative;
     z-index: 100;
     display:flex;

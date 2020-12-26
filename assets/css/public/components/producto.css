@@ -1,0 +1,36 @@
+.product-main {
+    background-color: white;
+    color: var(--menu-links-color);
+    width: 100vw;
+    height: 100vh;
+    align-content: right;
+    display: grid;
+    padding: 0 2.5rem;
+    grid-template: 1fr 1fr / 1fr 1fr;
+    grid-template-areas: "head head"
+                         "hr   hr"
+                         "img description";
+}
+
+.product-head {
+    grid-area: head;
+    display: inline;
+}
+
+.product-name {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 2rem;
+}
+
+.product-category{
+    background-color: var(--menu-links-color);
+    color: white;
+    font-size: 2rem;
+    align-self: right;
+}
+
+.hr-prod{
+    grid-area: hr;
+    width: 80%;
+    border: 1rem solid var(--menu-links-color);
+}

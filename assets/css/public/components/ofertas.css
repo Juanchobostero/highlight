@@ -2,7 +2,7 @@
     grid-area: ofertas;
     background-color: #ffffff;
     width: 70%;
-    height: 30vh;
+    height: 60vh;   
     position: relative;
     z-index: 100;
     display:flex;

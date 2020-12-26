@@ -55,10 +55,12 @@
     </div>
 </footer>
 
+  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="<?=base_url('assets/js/public/flickity.pkgd.min.js')?>"></script>
   <script src="<?=base_url('assets/js/public/index.js')?>"></script>
+  <script src="<?= base_url('assets/plugins/sweetalert2/sweetalert2.all.min.js'); ?>"></script>
 </body>
 </html>
 
