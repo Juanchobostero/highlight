@@ -2,12 +2,13 @@
 
 <div class="product-main">
     <div class="product-head">
-        <h2 class="product-name">Nombre producto</h2>
-        <span class="product-category">Categoria Producto</span>
+        <h3 id="nameP" class="product-name"><?=$producto->nombrePR?></h3>
+        <span id="catP" class="product-category"><?=$producto->descripcionCAT?></span>
+        <hr class="hr-prod">
     </div>
-    <hr class="hr-prod">
+    
     <div class="product-content">
-        <div class="product-img">
+        <div class="producto-img">
             <img class="img-pro" src="#">
             </img>
             <div class="product-images">

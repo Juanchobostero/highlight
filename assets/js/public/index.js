@@ -69,6 +69,75 @@ if (destacados){
 }
 
 
+/*/--- NOVEDADES ---/*/
+const novedades = document.querySelector('.slider-novedades');
+if (novedades){
+
+  let total_pages = document.querySelector('.total-novedades').dataset.total;
+  let page = 1;
+  let url = 'api/novedades'; 
+
+  const sliderNovedades = new Flickity( novedades, {
+    cellAlign: 'center',
+    contain: true,  
+    groupCells: true, 
+    pageDots: false, 
+    wrapAround: true,
+  });
+
+  sliderNovedades.on('change', function(index) {
+    if(index === sliderNovedades.slides.length - 1){
+      if(page < total_pages){
+        cargarMasCells(url, page, sliderNovedades);
+        page++;
+      }else{
+        console.log('no hay mas datos...');
+        console.log('total cells novedades:', sliderNovedades.cells.length);
+      }
+    }
+  }); 
+
+  sliderNovedades.on( 'staticClick', function( event, pointer, cellElement ) {
+    window.location.href = baseUrl + 'producto/'+ cellElement.dataset.idproducto;
+  });
+ 
+}
+
+
+/*/--- OFERTAS ---/*/
+const ofertas = document.querySelector('.slider-ofertas');
+if (ofertas){
+
+  let total_pages = document.querySelector('.total-ofertas').dataset.total;
+  let page = 1;
+  let url = 'api/ofertas'; 
+
+  const sliderOfertas = new Flickity( ofertas, {
+    cellAlign: 'center',
+    contain: true,  
+    groupCells: true, 
+    pageDots: false, 
+    wrapAround: true,
+  });
+
+  sliderOfertas.on('change', function(index) {
+    if(index === sliderOfertas.slides.length - 1){
+      if(page < total_pages){
+        cargarMasCells(url, page, sliderOfertas);
+        page++;
+      }else{
+        console.log('no hay mas datos...');
+        console.log('total cells ofertas:', sliderOfertas.cells.length);
+      }
+    }
+  }); 
+
+  sliderOfertas.on( 'staticClick', function( event, pointer, cellElement ) {
+    window.location.href = baseUrl + 'producto/'+ cellElement.dataset.idproducto;
+  });
+ 
+}
+
 function cargarMasCells(url, page, slider){
   $.ajax({
     method: "GET",
@@ -85,29 +154,6 @@ function cargarMasCells(url, page, slider){
   })
   .fail(ajaxErrors);
 }
-
-
-/*/--- NOVEDADES ---/*/
-var elem = document.querySelector('.slider-novedades');
-var flkty = new Flickity( elem, {
-  //options
-  cellAlign: 'center',
-  contain: true,  
-  groupCells: true, 
-  pageDots: false, 
-  wrapAround: true
-});
-
-/*/--- OFERTAS ---/*/
-var elem = document.querySelector('.slider-ofertas');
-var flkty = new Flickity( elem, {
-  //options
-  cellAlign: 'center',
-  contain: true,  
-  groupCells: true, 
-  pageDots: false, 
-  wrapAround: true
-});
 
 function ajaxErrors( jqXHR, textStatus) {
   /* pageLoader.classList.remove('page-loader--show'); */
