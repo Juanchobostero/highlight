@@ -86,6 +86,12 @@
 								<p>Destacados</p>
 							</a>
 						</li>
+						<li class="nav-item">
+							<a href="<?= base_url('admin/productos-ofertas'); ?>" class="nav-link <?= ($act == '5_4Ofer') ? 'active' : '' ?>">
+								<i class="nav-icon fab fa-forumbee"></i>
+								<p>Ofertas</p>
+							</a>
+						</li>
 					</ul>
 				</li>
 				<li class="nav-header">ESTADISTICAS</li>

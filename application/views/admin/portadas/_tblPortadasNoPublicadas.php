@@ -1,4 +1,4 @@
-<table class="table table-hover display" width="100%">
+<table class="table table-sm table-hover display" width="100%">
 	<thead class="text-center">
 		<tr>
 			<th>Título</th>
@@ -22,7 +22,7 @@
 						<button type="button" class="btn btn-warning" title="Editar" onclick="cargarForm('<?= base_url('frmEditarPortada/' . $port->id_port) ?>', 'small', 'modal-small')">
 							<i class="fas fa-pen text-white"></i>
 						</button>
-						<button type="button" class="btn btn-danger" title="Eliminar" onclick="deshabilitar(this, 'eliminarPort/<?= $port->id_port; ?>')">
+						<button type="button" class="btn btn-danger" title="Eliminar" onclick="eliminar(this, 'eliminarPort/<?= $port->id_port; ?>')">
 							<i class="fas fa-trash-alt"></i>
 						</button>
 					</div>

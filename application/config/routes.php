@@ -46,8 +46,8 @@ $route = array(
 	'frmEditarPortada/(:num)'	=> 'admin/Portadas_controller/frmEditar/$1',
 	'altaPortada'							=> 'admin/Portadas_controller/crear',
 	'editarPortada/(:num)'		=> 'admin/Portadas_controller/editar/$1',
-	'habDesPortada/(:num)'		=> 'admin/Portadas_controller/habilitarDeshabilitar/$1',
 	'publicarPort'						=> 'admin/Portadas_controller/publicar',
+	'eliminarPort/(:num)'			=> 'admin/Portadas_controller/eliminar/$1',
 
 	'admin/productos'							=> 'admin/Productos_controller',
 	'admin/productos/(:any)'			=> 'admin/Productos_controller/getProductos/$1',
@@ -64,6 +64,9 @@ $route = array(
 
 	'admin/productos-destacados'	=> 'admin/Productos_destacados_controller',
 	'quitarDestacado/(:num)'			=> 'admin/Productos_destacados_controller/quitarDestacado/$1',
+
+	'admin/productos-ofertas'			=> 'admin/Productos_ofertas_controller',
+	'frmNuevaOferta'							=> 'admin/Productos_ofertas_controller/frmNueva',
 
 	'frmNuevaSubcategoria'					=> 'admin/Subcategorias_controller/frmNueva',
 	'frmEditarSubcategoria/(:num)'	=> 'admin/Subcategorias_controller/frmEditar/$1',

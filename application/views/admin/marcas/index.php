@@ -7,7 +7,7 @@
 	<!-- Main content -->
 	<section class="content">
 		<div class="container-fluid">
-			<button class="btn bg-gradient-primary mb-3" onclick="cargarForm('<?= base_url('frmNuevaMarca') ?>', 'small', 'modal-small')">
+			<button class="btn btn-sm bg-gradient-primary mb-3" onclick="cargarForm('<?= base_url('frmNuevaMarca') ?>', 'small', 'modal-small')">
 				<i class="fas fa-plus fa-fw"></i> Nueva
 			</button>
 			<div class="row">

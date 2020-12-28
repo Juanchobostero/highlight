@@ -238,7 +238,7 @@ function validFormPage(e, metodo) {
 			let data = JSON.parse(resp);
 			if (data.result === 1) {
 				mostrarToast('success', data.titulo, data.msj);
-				setTimeout(() => window.location.href = data.url, 3000);
+				setTimeout(() => window.location.href = data.url, 1500);
 			}
 			else {
 				mostrarErrors('Oops... verifique los datos', data.errores);

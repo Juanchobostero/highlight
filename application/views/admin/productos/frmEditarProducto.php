@@ -56,7 +56,7 @@
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="marca" class="mb-0" title="Obligatorio">Marca <span class="text-danger" title="Obligatorio">*</span></label>
-							<select class="form-control" id="marca" name="marca_id">
+							<select class="select2" id="marca" name="marca_id" style="width: 100%;">
 								<option value="0" disabled selected>Seleccione una marca</option>
 								<?php foreach ($marcas as $marca) : ?>
 									<?php $selected = ($producto->id_mar == $marca->id_marca) ? 'selected' : ''; ?>
@@ -70,7 +70,7 @@
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="categoria" class="mb-0" title="Obligatorio">Categoría <span class="text-danger" title="Obligatorio">*</span></label>
-							<select class="form-control" id="categoria" name="categoria_id">
+							<select class="select2" id="categoria" name="categoria_id" style="width: 100%;">
 								<option value="0" disabled selected>Seleccione una categoría</option>
 								<?php foreach ($categorias as $categoria) : ?>
 									<?php $selected = ($producto->id_cat == $categoria->id_categoria) ? 'selected' : ''; ?>
@@ -82,7 +82,7 @@
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="subcategoria" class="mb-0" title="Obligatorio">Subcategoría <span class="text-danger" title="Obligatorio">*</span></label>
-							<select class="form-control" id="subcategoria" name="subcategoria_id" required>
+							<select class="select2" id="subcategoria" name="subcategoria_id" style="width: 100%;" required>
 								<option value="0" disabled>Seleccione una subcategoría</option>
 							</select>
 						</div>
@@ -131,6 +131,7 @@
 
 	$(function() {
 		getSubcategorias('<?= $producto->id_cat; ?>');
+		$('.select2').select2();
 		$("input[data-bootstrap-switch]").bootstrapSwitch();
 	});
 

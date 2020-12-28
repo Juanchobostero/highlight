@@ -1,4 +1,4 @@
-<table class="table table-hover display" width="100%">
+<table class="table table-sm table-hover display">
 	<thead class="text-center">
 		<tr>
 			<th>Marca</th>
