@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-12-2020 a las 21:43:49
+-- Tiempo de generación: 26-12-2020 a las 00:24:51
 -- Versión del servidor: 10.4.13-MariaDB
 -- Versión de PHP: 7.4.7
 
@@ -73,6 +73,25 @@ CREATE TABLE `comprasdetalle` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `imagenes`
+--
+
+CREATE TABLE `imagenes` (
+  `id_img` int(11) NOT NULL,
+  `imagen_1` varchar(255) NOT NULL,
+  `imagen_2` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `imagenes`
+--
+
+INSERT INTO `imagenes` (`id_img`, `imagen_1`, `imagen_2`) VALUES
+(1, 'assets/img/imagenes/25122020_16089381111.jpeg', 'assets/img/imagenes/25122020_16089381112.jpeg');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `marcas`
 --
 
@@ -107,9 +126,9 @@ CREATE TABLE `portadas` (
 --
 
 INSERT INTO `portadas` (`id_port`, `titulo`, `imagen`, `publicado`, `estado`) VALUES
-(1, 'La casa de papel', 'assets/img/portadas/no-portada.png', 'NO', 1),
-(2, 'Portal La campora', 'assets/img/portadas/no-portada.png', 'SI', 1),
-(3, 'Copacabana', 'assets/img/portadas/02102020_1601682643.jpg', 'SI', 1),
+(1, 'La casa de papel', 'assets/img/portadas/no-portada.png', 'SI', 1),
+(2, 'Portal La campora', 'assets/img/portadas/no-portada.png', 'NO', 1),
+(3, 'Copacabana', 'assets/img/portadas/02102020_1601682643.jpg', 'NO', 1),
 (4, 'La cara visible 1', 'assets/img/portadas/no-portada.png', 'SI', 1),
 (5, 'Maria', 'assets/img/portadas/no-portada.png', 'NO', 1),
 (6, 'Se muestra', 'assets/img/portadas/no-portada.png', 'SI', 0);
@@ -140,22 +159,20 @@ CREATE TABLE `productos` (
 
 INSERT INTO `productos` (`id_producto`, `id_subcat`, `id_mar`, `codigoPR`, `nombrePR`, `descripcionPR`, `stockPR`, `precio_listaPR`, `precio_ventaPR`, `destacadoPR`, `estadoPR`) VALUES
 (1, 2, 1, '300497', 'Fotocontrol alumbrado público 2200W 10Amp.', '{\"Cara lateral\":\"Azul\",\"Descripci\\u00f3n\":\"Tiene pelos en la lengua\",\"No es tuyo\":\"Es aquella\"}', '14.000', '500.00', '800.00', 'SI', b'1'),
-(2, 3, 1, '7458', 'Caca doble', NULL, '41.000', '122.00', '156.00', 'SI', b'1'),
+(2, 3, 1, '7458', 'Caca doble', NULL, '41.000', '122.00', '156.00', 'NO', b'1'),
 (3, 2, 1, '300496', 'Fotocontrol domiciliario 1300W 6 amp.', NULL, '51.000', '512.00', '700.00', 'SI', b'1'),
 (4, 2, 1, '300498', 'ZÓCALO PARA FOTOCONTROL 2200W', NULL, '33.000', '333.00', '444.00', 'SI', b'1'),
-(7, 2, 1, '8256', 'la pucha', NULL, '44.000', '451.00', '550.00', 'SI', b'1'),
+(7, 2, 1, '8256', 'la pucha', NULL, '44.000', '451.00', '550.00', 'NO', b'1'),
 (8, 2, 1, '41256', 'La otra vez', NULL, '12.000', '41.00', '55.00', 'SI', b'1'),
 (9, 2, 1, '41288', 'La otra vez con imgs', NULL, '12.000', '41.00', '55.00', 'SI', b'1'),
-(10, 2, 1, '4174', 'Mil veces', NULL, '12.000', '41.00', '55.00', 'SI', b'1'),
-(11, 3, 1, '85699', 'Casa de alguien', NULL, '45.000', '412.00', '520.00', 'SI', b'1'),
-(12, 3, 1, '4589', 'Casa de alguie', NULL, '45.000', '412.00', '520.00', 'SI', b'1'),
-(13, 1, 1, '4889', 'Casa de tuya', NULL, '45.000', '412.00', '520.00', 'SI', b'1'),
-(15, 3, 1, '51395', 'la casa de quien', NULL, '745.000', '125.00', '521.00', 'SI', b'1'),
-(16, 3, 1, '74588', 'pedazo', NULL, '22.000', '41.00', '123.00', 'SI', b'1'),
+(10, 2, 1, '4174', 'Mil veces', NULL, '12.000', '46.00', '55.00', 'SI', b'0'),
+(11, 3, 1, '85699', 'Casa de alguien', '{\"Tama\\u00f1o\":\"Regulable\",\"Medidas\":\"22 x 52 x 36\"}', '45.000', '412.00', '520.00', 'NO', b'1'),
+(12, 3, 1, '4589', 'Casa de alguien', '{\"Cabezal\":\"Fijo\",\"Movilidad\":\"Variable\"}', '45.000', '412.00', '520.00', 'NO', b'1'),
+(13, 3, 1, '4889', 'Casa de tuya', NULL, '45.000', '412.00', '22520.00', 'SI', b'1'),
+(15, 3, 1, '51395', 'la casa de quien', NULL, '745.000', '125.00', '521.00', 'NO', b'1'),
+(16, 3, 1, '74588', 'pedazo', NULL, '22.000', '41.00', '123.00', 'NO', b'1'),
 (17, 1, 1, '41744', 'Jebus', NULL, '23.000', '12.00', '34.00', 'SI', b'1'),
-(18, 3, 1, '741', 'Casucha tuya', NULL, '122.000', '123.00', '321.00', 'SI', b'1'),
-(19, 2, 1, '742', 'Vamos', NULL, '741.000', '123.00', '233.00', 'SI', b'1'),
-(20, 3, 1, '7425', 'Martillo', NULL, '123.000', '23.00', '32.00', 'NO', b'1');
+(18, 3, 1, '741', 'Casucha tuya', NULL, '122.000', '123.00', '321.00', 'NO', b'0');
 
 -- --------------------------------------------------------
 
@@ -323,6 +340,12 @@ ALTER TABLE `comprasdetalle`
   ADD KEY `ComprasDetalle_Productos_idx` (`id_pr`);
 
 --
+-- Indices de la tabla `imagenes`
+--
+ALTER TABLE `imagenes`
+  ADD PRIMARY KEY (`id_img`);
+
+--
 -- Indices de la tabla `marcas`
 --
 ALTER TABLE `marcas`
@@ -415,6 +438,12 @@ ALTER TABLE `comprasdetalle`
   MODIFY `id_compra_det` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `imagenes`
+--
+ALTER TABLE `imagenes`
+  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de la tabla `marcas`
 --
 ALTER TABLE `marcas`
@@ -430,13 +459,13 @@ ALTER TABLE `portadas`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `productos_fotos`
 --
 ALTER TABLE `productos_fotos`
-  MODIFY `id_foto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id_foto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedores`

@@ -14,7 +14,7 @@ class Portadas_controller extends CI_Controller
 	public function index()
 	{
 		$data['title'] = 'Portadas';
-		$data['act'] = '2Port';
+		$data['act'] = '4Port';
 		$data['act_desplegado'] = '';
 		$data['item_desplegado'] = '';
 		$this->load->view('admin/portadas/index', $data);
@@ -132,24 +132,6 @@ class Portadas_controller extends CI_Controller
 	} // fin de metodo editar
 
 	//--------------------------------------------------------------
-	public function habilitarDeshabilitar($id)
-	{
-		verificarConsulAjax();
-
-		$estado = ($this->input->post('est') == 1) ? true : false;
-		$msj = ($estado) ? 'habilitada' : 'deshabilitada';
-
-		$resp  = $this->Portadas->actualizar($id, ['estado' => $estado]);
-
-		if ($resp) {
-			$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Portada ' . $msj . '!']));
-			return;
-		}
-		$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Error', 'msj' => 'Intente más tarde.']));
-		return;
-	}
-
-	//--------------------------------------------------------------
 	public function publicar()
 	{
 		verificarConsulAjax();
@@ -169,6 +151,21 @@ class Portadas_controller extends CI_Controller
 			return;
 		}
 		$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Error', 'msj' => 'Intente más tarde.', 'est' => $prom]));
+		return;
+	}
+
+	//--------------------------------------------------------------
+	public function eliminar($id_portada)
+	{
+		verificarConsulAjax();
+		
+		$resp  = $this->Portadas->actualizar($id_portada, ['estado' => 0]);
+
+		if ($resp) {
+			$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Portada eliminada!']));
+			return;
+		}
+		$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Error', 'msj' => 'Intente más tarde.']));
 		return;
 	}
 }

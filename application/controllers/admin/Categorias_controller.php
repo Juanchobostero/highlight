@@ -15,7 +15,7 @@ class Categorias_controller extends CI_Controller
 	public function index()
 	{
 		$data['title'] = 'Categorias y subcategorias';
-		$data['act'] = '3_0Cat';
+		$data['act'] = '5_0Cat';
 		$data['act_desplegado'] = 'active';
 		$data['item_desplegado'] = 'menu-is-opening menu-open';
 		$this->load->view('admin/categorias/index', $data);

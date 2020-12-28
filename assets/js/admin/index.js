@@ -238,7 +238,7 @@ function validFormPage(e, metodo) {
 			let data = JSON.parse(resp);
 			if (data.result === 1) {
 				mostrarToast('success', data.titulo, data.msj);
-				window.location.href = data.url;
+				setTimeout(() => window.location.href = data.url, 1500);
 			}
 			else {
 				mostrarErrors('Oops... verifique los datos', data.errores);
@@ -303,6 +303,18 @@ function manejoSwitch(e, id, metodo, del = true) {
 		id: id,
 		prom: e.checked
 	}, function (data) {
+		if (data.result === 1) {
+			mostrarToast('success', data.titulo, data.msj);
+			if (del) $(e).closest('tr').fadeOut(1200);
+			return;
+		}
+	}, 'json')
+		.fail(ajaxErrors);
+}
+
+//-------------------QUITAR PRODUCTO DESTACADO-------------------
+function dejarDestacar(e, metodo, del = true) {
+	$.post(metodo, function (data) {
 		if (data.result === 1) {
 			mostrarToast('success', data.titulo, data.msj);
 			if (del) $(e).closest('tr').fadeOut(1200);

@@ -29,7 +29,7 @@ function verificarConsulAjax()
  * @param string $carpeta Nombre de la carpeta donde se subira la imagen
  * @param string $imgDefault Nombre de imagen por defecto, en caso de que no haya nada
  */
-function subirImagen($nombre, $carpeta, $imgDefault)
+function subirImagen($nombre, $carpeta, $imgDefault, $num = '')
 {
 	$CI = &get_instance();
 	$tipos  = array('image/jpeg', 'image/pjpeg', 'image/bmp', 'image/png', 'imagen/x-png');
@@ -42,7 +42,7 @@ function subirImagen($nombre, $carpeta, $imgDefault)
 			//cargar configuración 
 			$config['upload_path'] = $destino;
 			$config['allowed_types'] = 'bmp|jpeg|jpg|png';
-			$config['file_name'] = date('dmY') . '_' . time();
+			$config['file_name'] = date('dmY') . '_' . time() . $num;
 
 			$CI->upload->initialize($config); // Se inicializa la config
 

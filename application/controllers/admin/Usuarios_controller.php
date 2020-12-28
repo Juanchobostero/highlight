@@ -44,6 +44,7 @@ class Usuarios_controller extends CI_Controller
 	{
 		$data['title'] = 'Perfil';
 		$data['act'] = '';
+		$data['act_desplegado'] = '';
 		$data['item_desplegado'] = '';
 		$this->load->view('admin/perfil/editarPerfil', $data);
 	}

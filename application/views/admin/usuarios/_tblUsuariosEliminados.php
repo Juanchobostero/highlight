@@ -1,4 +1,4 @@
-<table class="table table-hover projects">
+<table class="table table-sm table-hover projects">
 	<thead>
 		<tr>
 			<th>Usuario</th>

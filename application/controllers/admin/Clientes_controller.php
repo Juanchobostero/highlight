@@ -15,7 +15,7 @@ class Clientes_controller extends CI_Controller
 	public function index()
 	{
 		$data['title'] = 'Clientes';
-		$data['act'] = '1C';
+		$data['act'] = '2C';
 		$data['act_desplegado'] = '';
 		$data['item_desplegado'] = '';
 		$this->load->view('admin/clientes/index', $data);

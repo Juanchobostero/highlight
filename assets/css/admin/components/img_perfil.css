@@ -1,0 +1,16 @@
+.box-img {
+	object-fit: contain;
+	width: 22vw;
+	height: 22vw;
+}
+
+.box-img-md {
+	object-fit: contain;
+	width: 100px;
+	height: 100px;
+}
+
+.projects .table-avatar img,
+.projects img.table-avatar {
+	height: 2.5rem;
+}

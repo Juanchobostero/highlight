@@ -36,13 +36,19 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="<?= base_url('admin/clientes'); ?>" class="nav-link <?= ($act == '1C') ? 'active' : '' ?>">
+					<a href="<?= base_url('admin/clientes'); ?>" class="nav-link <?= ($act == '2C') ? 'active' : '' ?>">
 						<i class="nav-icon fas fa-user-friends"></i>
 						<p>Clientes</p>
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="<?= base_url('admin/portadas'); ?>" class="nav-link <?= ($act == '2Port') ? 'active' : '' ?>">
+					<a href="<?= base_url('admin/imagenes'); ?>" class="nav-link <?= ($act == '3Img') ? 'active' : '' ?>">
+						<i class="nav-icon far fa-file-image"></i>
+						<p>Imágenes</p>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="<?= base_url('admin/portadas'); ?>" class="nav-link <?= ($act == '4Port') ? 'active' : '' ?>">
 						<i class="nav-icon far fa-images"></i>
 						<p>Portadas</p>
 					</a>
@@ -57,29 +63,41 @@
 					</a>
 					<ul class="nav nav-treeview">
 						<li class="nav-item">
-							<a href="<?= base_url('admin/categorias'); ?>" class="nav-link <?= ($act == '3_0Cat') ? 'active' : '' ?>">
+							<a href="<?= base_url('admin/categorias'); ?>" class="nav-link <?= ($act == '5_0Cat') ? 'active' : '' ?>">
 								<i class="nav-icon fas fa-th-list"></i>
 								<p>Categorias y Subcat.</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="<?= base_url('admin/marcas'); ?>" class="nav-link <?= ($act == '3_1Mar') ? 'active' : '' ?>">
+							<a href="<?= base_url('admin/marcas'); ?>" class="nav-link <?= ($act == '5_1Mar') ? 'active' : '' ?>">
 								<i class="nav-icon far fa-bookmark"></i>
 								<p>Marcas</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="<?= base_url('admin/productos'); ?>" class="nav-link <?= ($act == '3_2Prod') ? 'active' : '' ?>">
+							<a href="<?= base_url('admin/productos'); ?>" class="nav-link <?= ($act == '5_2Prod') ? 'active' : '' ?>">
 								<i class="nav-icon fas fa-tools"></i>
 								<p>Productos</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="<?= base_url('admin/productos-destacados'); ?>" class="nav-link <?= ($act == '5_3Dest') ? 'active' : '' ?>">
+								<i class="nav-icon fas fa-star"></i>
+								<p>Destacados</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="<?= base_url('admin/productos-ofertas'); ?>" class="nav-link <?= ($act == '5_4Ofer') ? 'active' : '' ?>">
+								<i class="nav-icon fab fa-forumbee"></i>
+								<p>Ofertas</p>
 							</a>
 						</li>
 					</ul>
 				</li>
 				<li class="nav-header">ESTADISTICAS</li>
 				<li class="nav-item">
-					<a href="pages/calendar.html" class="nav-link">
-						<i class="nav-icon fas fa-calendar-alt"></i>
+					<a href="<?= base_url('admin/inventario'); ?>" class="nav-link <?= ($act == '6Inv') ? 'active' : '' ?>">
+						<i class="nav-icon fas fa-boxes"></i>
 						<p>
 							Inventario
 							<span class="badge badge-info right">2</span>

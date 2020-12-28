@@ -7,10 +7,10 @@
 	<!-- Main content -->
 	<section class="content">
 		<div class="container-fluid">
-			<button class="btn bg-gradient-primary mb-3" onclick="cargarForm('<?= base_url('frmNuevaCategoria') ?>', 'small', 'modal-small')">
+			<button class="btn btn-sm bg-gradient-primary mb-3" onclick="cargarForm('<?= base_url('frmNuevaCategoria') ?>', 'small', 'modal-small')">
 				<i class="fas fa-plus fa-fw"></i> Nueva categoría
 			</button>
-			<button class="btn bg-gradient-primary mb-3" onclick="cargarForm('<?= base_url('frmNuevaSubcategoria') ?>', 'small', 'modal-small')">
+			<button class="btn btn-sm bg-gradient-primary mb-3" onclick="cargarForm('<?= base_url('frmNuevaSubcategoria') ?>', 'small', 'modal-small')">
 				<i class="fas fa-plus fa-fw"></i> Nueva subcategoría
 			</button>
 			<div class="row">
