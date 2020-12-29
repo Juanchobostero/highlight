@@ -1,6 +1,11 @@
 <?php $this->load->view('public/incl/header');?>
 
 <div class="product-main">
+    <div class="banner">
+        <div class="breadcrumb">
+            <?=$producto->descripcionCAT .'/' .$producto->descripcionSC?>      
+        </div>
+    </div>
     <div class="product-head">
         <h3 id="nameP" class="product-name"><?=$producto->nombrePR?></h3>
         <span id="catP" class="product-category"><?=$producto->descripcionCAT?></span>
@@ -9,7 +14,7 @@
     
     <div class="product-content">
         <div class="producto-img">
-            <img class="img-pro" src="#">
+            <img class="img-pro" src="<?=base_url($producto->foto)?>">
             </img>
             <div class="product-images">
                 <img src="#" class="img-mini">

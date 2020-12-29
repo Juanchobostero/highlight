@@ -1,7 +1,7 @@
 <section class="prod-ofertas section-slider container">
 	<h4 class="slider-titulo">OFERTAS</h4>
 	<hr class="hr-head">
-	<div class="slider-wraper slider-ofertas">
+	<!-- <div class="slider-wraper slider-ofertas">
 	
 		<?php foreach($ofertas as $producto):?>
 			<div class="slider-cell" data-idproducto="<?=$producto->id_producto?>">
@@ -24,5 +24,5 @@
 	</div>
 	<div class="total-ofertas"
 		data-total="<?=$total_ofertas?>">
-	</div>
+	</div> -->
 </section>
