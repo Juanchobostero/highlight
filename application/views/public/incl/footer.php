@@ -14,12 +14,12 @@
       <a href="#" class="insta-link">
         <img src="<?=base_url('assets/img/public/imgVarios/instagram.jpeg')?>" class="icon-insta">
       </a>
-      <a href="#" class="face-link">
+      <a href="https://www.facebook.com/HighLighTherramientas" class="face-link">
         <img src="<?=base_url('assets/img/public/imgVarios/facebook.jpeg')?>" class="icon-face">
       </a>
-      <a href="#" class="tw-link">
+      <!-- <a href="#" class="tw-link">
         <img src="<?=base_url('assets/img/public/imgVarios/tw.jpeg')?>" class="icon-tw"> 
-      </a>
+      </a> -->
     </div>
   
     
@@ -29,7 +29,13 @@
           <li class="footer-item-contacto">
             <a href="#" class="footer-link">
             <img src="<?=base_url('assets/img/public/imgVarios/whatsapp.jpeg')?>" class="icon-wpp">
-            +54 911 65403909
+            +54 9 11 65403909
+            </a>
+          </li>
+          <li class="footer-item-contacto">
+            <a href="#" class="footer-link">
+            <img src="<?=base_url('assets/img/public/imgVarios/whatsapp.jpeg')?>" class="icon-wpp">
+            +54 9 11 3879-2419
             </a>
           </li>
           <li class="footer-item-contacto">

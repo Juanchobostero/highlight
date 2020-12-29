@@ -85,3 +85,5 @@ $route['producto/(:num)'] = 'Inicio_controller/producto/$1';
 
 
 $route['api/destacados'] = 'public/APISlider/masDestacados';
+$route['api/novedades'] = 'public/APISlider/masNovedades';
+$route['api/ofertas'] = 'public/APISlider/masOfertas';

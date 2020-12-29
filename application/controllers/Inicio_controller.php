@@ -25,7 +25,11 @@ class Inicio_controller extends CI_Controller
 		$data['portadas'] = $this->Portadas_model->get_habs();
 		$data['productos'] = $this->Productos_model->get_productos();
 		$total_dest = $this->Productos_model->get_count_productos_destacados();
-		$data['total_destacados']  = ceil($total_dest/$perPage);
+		$total_nov = $this->Productos_model->get_count_productos_novedades();
+		$total_ofe = $this->Productos_model->get_count_productos_ofertas();
+		$data['total_destacados'] = ceil($total_dest/$perPage);
+		$data['total_novedades'] = ceil($total_nov/$perPage);
+		$data['total_ofertas'] = ceil($total_ofe/$perPage);
 		$data['destacados'] = $this->Productos_model->get_destacados($perPage, $start);
 		$data['novedades'] = $this->Productos_model->get_novedades($perPage, $start);
 		$data['ofertas'] = $this->Productos_model->get_ofertas($perPage, $start);

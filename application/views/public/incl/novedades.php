@@ -21,6 +21,8 @@
 				</div>
 			</div>
 		<?php endforeach?>
-	
+	</div>
+	<div class="total-novedades"
+		data-total="<?=$total_novedades?>">
 	</div>
 </section>

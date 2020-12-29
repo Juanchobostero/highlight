@@ -26,7 +26,7 @@
         color: var(--menu-links-color);
         background-color: var(--color-grey);
         height: 11vh;
-        padding-bottom: 0.1rem;
+        padding: 0.5rem;
     }
     
     .product-desc h5{
@@ -78,7 +78,7 @@
     .product-desc {
         color: var(--menu-links-color);
         background-color: var(--color-grey);
-        padding: 0.2rem;
+        padding: 0.4rem;
         height: 100%;
         top: 0;
     }
