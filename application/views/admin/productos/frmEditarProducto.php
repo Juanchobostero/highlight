@@ -8,35 +8,7 @@
 <div class="modal-body">
 	<form id="form_editProducto" method="post" enctype="multipart/form-data">
 		<div class="row">
-			<div class="col-lg-5">
-				<label class="mb-0">Imágenes</label>
-				<div id="noFoto" class="alert alert-danger text-center mb-1 mt-0 py-1 d-none">
-					<small><!-- Leyenda error --></small>
-				</div>
-				<div id="imagenes" class="grid-container">
-					<?php if ($fotos) : ?>
-						<?php foreach ($fotos as $foto) : ?>
-							<div id="<?= $foto->id_foto; ?>" class="grid-item" style="background-image: url('<?= base_url($foto->foto); ?>');">
-								<div class="capa">
-									<!-- <span><i class="fas fa-expand-arrows-alt"></i></span> -->
-									<span onclick="eliminarFotoBD(<?= $foto->id_foto; ?>)"><i class="fas fa-trash"></i></span>
-								</div>
-							</div>
-						<?php endforeach; ?>
-					<?php endif; ?>
-				</div>
-				<div>
-					<button type="button" class="btn btn-success file-button btn-sm mt-1" onclick="getFile()">
-						<i class="fas fa-camera mr-2"></i>Agregar
-					</button>
-					<div class="file-input">
-						<input id="fotos" type="file" name="file[]" multiple>
-					</div>
-				</div>
-				<br>
-			</div>
-
-			<div class="col-lg-7">
+			<div class="col-lg-6">
 				<div class="form-group">
 					<label for="codigo" class="mb-0" title="Obligatorio">Código <span class="text-danger" title="Obligatorio">*</span></label>
 					<input type="hidden" name="codigoAct" value="<?= $producto->codigoPR; ?>">
@@ -107,6 +79,37 @@
 					<input type="checkbox" id="destacar" name="destacar" <?= ($producto->destacadoPR == 'SI') ? 'checked' : ''; ?> data-bootstrap-switch data-off-text="NO" data-on-text="SI">
 				</div>
 			</div>
+			<div class="col-lg-6">
+				<div class="form-group">
+					<label for="summernote" class="mb-0">Descripción</label>
+					<textarea id="summernote" name="descripcion"><?= $producto->descripcionPR; ?></textarea>
+				</div>
+				<label class="mb-0">Imágenes</label>
+				<div id="noFoto" class="alert alert-danger text-center mb-1 mt-0 py-1 d-none">
+					<small><!-- Leyenda error --></small>
+				</div>
+				<div id="imagenes" class="grid-container">
+					<?php if ($fotos) : ?>
+						<?php foreach ($fotos as $foto) : ?>
+							<div id="<?= $foto->id_foto; ?>" class="grid-item" style="background-image: url('<?= base_url($foto->foto); ?>');">
+								<div class="capa">
+									<!-- <span><i class="fas fa-expand-arrows-alt"></i></span> -->
+									<span onclick="eliminarFotoBD(<?= $foto->id_foto; ?>)"><i class="fas fa-trash"></i></span>
+								</div>
+							</div>
+						<?php endforeach; ?>
+					<?php endif; ?>
+				</div>
+				<div>
+					<button type="button" class="btn btn-success file-button btn-sm mt-1" onclick="getFile()">
+						<i class="fas fa-camera mr-2"></i>Agregar
+					</button>
+					<div class="file-input">
+						<input id="fotos" type="file" name="file[]" multiple>
+					</div>
+				</div>
+				<br>
+			</div>
 		</div>
 	</form>
 </div>
@@ -133,6 +136,20 @@
 		getSubcategorias('<?= $producto->id_cat; ?>');
 		$('.select2').select2();
 		$("input[data-bootstrap-switch]").bootstrapSwitch();
+		$('#summernote').summernote({
+			lang: 'es-ES',
+			toolbar: [
+				['style', ['style']],
+				['font', ['bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear']],
+				['fontname', ['fontname']],
+				['fontsize', ['fontsize']],
+				['color', ['color']],
+				['para', ['ol', 'ul', 'paragraph', 'height']],
+				// ['table', ['table']],
+				// ['insert', ['link']],
+				['view', ['undo', 'redo', 'fullscreen', 'codeview', 'help']]
+			]
+		});
 	});
 
 	$('.modal').on('shown.bs.modal', function() {
@@ -160,7 +177,7 @@
 		$('#' + id).fadeOut();
 		form.delete(id);
 	};
-	
+
 	$('#form_editProducto').submit(function(event) {
 		let formComp = new FormData($('#form_editProducto')[0]);
 		for (let pair of form.entries()) {

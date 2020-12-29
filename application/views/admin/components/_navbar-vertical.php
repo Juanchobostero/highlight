@@ -29,12 +29,12 @@
 					</a>
 				</li>
 				<li class="nav-header">GESTIÓN</li>
-				<li class="nav-item">
-					<a href="<?= base_url('admin/usuarios'); ?>" class="nav-link <?= ($act == '1U') ? 'active' : '' ?>">
+				<!-- <li class="nav-item">
+					<a href="<?//= base_url('admin/usuarios'); ?>" class="nav-link <?//= ($act == '1U') ? 'active' : '' ?>">
 						<i class="nav-icon fas fa-users-cog"></i>
 						<p>Usuarios</p>
 					</a>
-				</li>
+				</li> -->
 				<li class="nav-item">
 					<a href="<?= base_url('admin/clientes'); ?>" class="nav-link <?= ($act == '2C') ? 'active' : '' ?>">
 						<i class="nav-icon fas fa-user-friends"></i>
@@ -86,24 +86,24 @@
 								<p>Destacados</p>
 							</a>
 						</li>
-						<li class="nav-item">
-							<a href="<?= base_url('admin/productos-ofertas'); ?>" class="nav-link <?= ($act == '5_4Ofer') ? 'active' : '' ?>">
+						<!-- <li class="nav-item">
+							<a href="<?//= base_url('admin/productos-ofertas'); ?>" class="nav-link <?//= ($act == '5_4Ofer') ? 'active' : '' ?>">
 								<i class="nav-icon fab fa-forumbee"></i>
 								<p>Ofertas</p>
 							</a>
-						</li>
+						</li> -->
 					</ul>
 				</li>
-				<li class="nav-header">ESTADISTICAS</li>
+				<!-- <li class="nav-header">ESTADISTICAS</li>
 				<li class="nav-item">
-					<a href="<?= base_url('admin/inventario'); ?>" class="nav-link <?= ($act == '6Inv') ? 'active' : '' ?>">
+					<a href="<?//= base_url('admin/inventario'); ?>" class="nav-link <?//= ($act == '6Inv') ? 'active' : '' ?>">
 						<i class="nav-icon fas fa-boxes"></i>
 						<p>
 							Inventario
 							<span class="badge badge-info right">2</span>
 						</p>
 					</a>
-				</li>
+				</li> -->
 			</ul>
 		</nav>
 		<!-- /.sidebar-menu -->

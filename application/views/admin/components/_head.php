@@ -13,6 +13,7 @@
 		<link rel="stylesheet" href="<?= base_url('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css'); ?>">
 		<link rel="stylesheet" href="<?= base_url('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css'); ?>">
 		<link rel="stylesheet" href="<?= base_url('assets/plugins/select2/css/select2.min.css'); ?>">
+		<link rel="stylesheet" href="<?= base_url('assets/plugins/summernote/summernote-bs4.min.css'); ?>">
 	<?php endif; ?>
 	<link rel="stylesheet" href="<?= base_url('assets/css/admin/adminlte.min.css'); ?>">
 	<link rel="stylesheet" href="<?= base_url('assets/css/admin/index.css'); ?>">

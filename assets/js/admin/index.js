@@ -93,10 +93,9 @@ function validarFile(all) {
 	let rutayarchivo = all.value;
 	let ultimo_punto = all.value.lastIndexOf(".");
 	let extension = rutayarchivo.slice(ultimo_punto, rutayarchivo.length);
-
 	if (rutayarchivo == '') return false;
 
-	if (extensiones_permitidas.indexOf(extension) == -1) {
+	if (extensiones_permitidas.indexOf(extension.toLowerCase()) == -1) {
 		$('#noFoto').removeClass('d-none');
 		$('#noFoto > small').text("Extensión de archivo no valida");
 		document.getElementById(all.id).value = "";

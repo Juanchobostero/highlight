@@ -103,16 +103,19 @@ function subirImagenes($carpeta)
  * Verifica que los archivos por subir sean todos imagenes
  * @return bool El resultado del analisis
  */
-function verificarTipoArchivo() {
+function verificarTipoArchivo()
+{
 	$tipos  = array('image/jpeg', 'image/pjpeg', 'image/bmp', 'image/png', 'imagen/x-png');
 
 	foreach ($_FILES as $file) :
 		if (!is_array($file['name'])) :
-			$mime  =  get_mime_by_extension($file['name']); //obtiene la extension del file
+			if (!empty($file['name'])) :
+				$mime  =  get_mime_by_extension($file['name']); //obtiene la extension del file
 
-			if (!in_array($mime,  $tipos)) {
-				return false;
-			}
+				if (!in_array($mime,  $tipos)) {
+					return false;
+				}
+			endif;
 		endif;
 	endforeach;
 

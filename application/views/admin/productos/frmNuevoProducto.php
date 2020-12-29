@@ -8,25 +8,7 @@
 <div class="modal-body">
 	<form id="form_producto" method="post" enctype="multipart/form-data">
 		<div class="row">
-			<div class="col-lg-5">
-				<label>Imágenes</label>
-				<div id="noFoto" class="alert alert-danger text-center mb-1 mt-0 py-1 d-none">
-					<small><!-- Leyenda error --></small>
-				</div>
-				<div id="imagenes" class="grid-container">
-					<!-- Se cargan las fotos del producto -->
-				</div>
-				<div>
-					<button type="button" class="btn btn-success file-button btn-sm mt-1" onclick="getFile()">
-						<i class="fas fa-camera mr-2"></i>Agregar
-					</button>
-					<div class="file-input">
-						<input id="fotos" type="file" name="file[]" multiple>
-					</div>
-				</div>
-				<br>
-			</div>
-			<div class="col-lg-7">
+			<div class="col-lg-6">
 				<div class="form-group">
 					<label for="codigo" class="mb-0" title="Obligatorio">Código <span class="text-danger" title="Obligatorio">*</span></label>
 					<input type="text" class="form-control" id="codigo" name="codigo" placeholder="Introduce un código">
@@ -94,6 +76,27 @@
 					<input type="checkbox" id="destacar" name="destacar" data-bootstrap-switch data-off-text="NO" data-on-text="SI">
 				</div>
 			</div>
+			<div class="col-lg-6">
+				<div class="form-group">
+					<label for="summernote" class="mb-0">Descripción</label>
+					<textarea id="summernote" name="descripcion"></textarea>
+				</div>
+				<label>Imágenes</label>
+				<div id="noFoto" class="alert alert-danger text-center mb-1 mt-0 py-1 d-none">
+					<small><!-- Leyenda error --></small>
+				</div>
+				<div id="imagenes" class="grid-container">
+					<!-- Se cargan las fotos del producto -->
+				</div>
+				<div>
+					<button type="button" class="btn btn-success file-button btn-sm mt-1" onclick="getFile()">
+						<i class="fas fa-camera mr-2"></i>Agregar
+					</button>
+					<div class="file-input">
+						<input id="fotos" type="file" name="file[]" multiple>
+					</div>
+				</div>
+			</div>
 		</div>
 	</form>
 </div>
@@ -119,6 +122,20 @@
 	$(function() {
 		$('.select2').select2();
 		$("input[data-bootstrap-switch]").bootstrapSwitch();
+		$('#summernote').summernote({
+			lang: 'es-ES',
+			toolbar: [
+				['style', ['style']],
+				['font', ['bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear']],
+				['fontname', ['fontname']],
+				['fontsize', ['fontsize']],
+				['color', ['color']],
+				['para', ['ol', 'ul', 'paragraph', 'height']],
+				// ['table', ['table']],
+				// ['insert', ['link']],
+				['view', ['undo', 'redo', 'fullscreen', 'codeview', 'help']]
+			]
+		});
 	});
 
 	$('.modal').on('shown.bs.modal', function() {

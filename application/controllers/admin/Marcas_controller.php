@@ -93,7 +93,7 @@ class Marcas_controller extends CI_Controller
 
 		// Reglas
 		$restriccion = '';
-		if ($marc != $this->input->post('marcaAct')) {
+		if (strtolower($marc) != strtolower($this->input->post('marcaAct'))) {
 			$restriccion = '|is_unique[marcas.descripcionM=]';
 		}
 		$this->form_validation->set_rules('marca', 'Marca', 'required|trim' . $restriccion);

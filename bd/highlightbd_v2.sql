@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-12-2020 a las 00:24:51
+-- Tiempo de generación: 29-12-2020 a las 15:28:49
 -- Versión del servidor: 10.4.13-MariaDB
 -- Versión de PHP: 7.4.7
 
@@ -38,7 +38,8 @@ CREATE TABLE `categorias` (
 
 INSERT INTO `categorias` (`id_categoria`, `descripcionCAT`) VALUES
 (1, 'Accesorios para iluminación'),
-(2, 'Verduras');
+(2, 'Verduras'),
+(3, 'Carasucias');
 
 -- --------------------------------------------------------
 
@@ -105,7 +106,7 @@ CREATE TABLE `marcas` (
 --
 
 INSERT INTO `marcas` (`id_marca`, `descripcionM`) VALUES
-(1, 'Interelec');
+(1, 'INTERELEC');
 
 -- --------------------------------------------------------
 
@@ -129,8 +130,8 @@ INSERT INTO `portadas` (`id_port`, `titulo`, `imagen`, `publicado`, `estado`) VA
 (1, 'La casa de papel', 'assets/img/portadas/no-portada.png', 'SI', 1),
 (2, 'Portal La campora', 'assets/img/portadas/no-portada.png', 'NO', 1),
 (3, 'Copacabana', 'assets/img/portadas/02102020_1601682643.jpg', 'NO', 1),
-(4, 'La cara visible 1', 'assets/img/portadas/no-portada.png', 'SI', 1),
-(5, 'Maria', 'assets/img/portadas/no-portada.png', 'NO', 1),
+(4, 'La cara visible 1', 'assets/img/portadas/no-portada.png', 'SI', 0),
+(5, 'Maria', 'assets/img/portadas/no-portada.png', 'NO', 0),
 (6, 'Se muestra', 'assets/img/portadas/no-portada.png', 'SI', 0);
 
 -- --------------------------------------------------------
@@ -145,7 +146,7 @@ CREATE TABLE `productos` (
   `id_mar` int(11) NOT NULL,
   `codigoPR` varchar(80) NOT NULL,
   `nombrePR` varchar(100) NOT NULL,
-  `descripcionPR` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`descripcionPR`)),
+  `descripcionPR` text DEFAULT NULL,
   `stockPR` decimal(18,3) NOT NULL,
   `precio_listaPR` decimal(18,2) NOT NULL,
   `precio_ventaPR` decimal(18,2) NOT NULL,
@@ -158,7 +159,7 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id_producto`, `id_subcat`, `id_mar`, `codigoPR`, `nombrePR`, `descripcionPR`, `stockPR`, `precio_listaPR`, `precio_ventaPR`, `destacadoPR`, `estadoPR`) VALUES
-(1, 2, 1, '300497', 'Fotocontrol alumbrado público 2200W 10Amp.', '{\"Cara lateral\":\"Azul\",\"Descripci\\u00f3n\":\"Tiene pelos en la lengua\",\"No es tuyo\":\"Es aquella\"}', '14.000', '500.00', '800.00', 'SI', b'1'),
+(1, 4, 1, '300497', 'Fotocontrol alumbrado público 2200W 10Amp.', '<ul><li>Casa</li><li>Allá</li></ul>', '14.000', '500.00', '800.00', 'SI', b'1'),
 (2, 3, 1, '7458', 'Caca doble', NULL, '41.000', '122.00', '156.00', 'NO', b'1'),
 (3, 2, 1, '300496', 'Fotocontrol domiciliario 1300W 6 amp.', NULL, '51.000', '512.00', '700.00', 'SI', b'1'),
 (4, 2, 1, '300498', 'ZÓCALO PARA FOTOCONTROL 2200W', NULL, '33.000', '333.00', '444.00', 'SI', b'1'),
@@ -167,12 +168,14 @@ INSERT INTO `productos` (`id_producto`, `id_subcat`, `id_mar`, `codigoPR`, `nomb
 (9, 2, 1, '41288', 'La otra vez con imgs', NULL, '12.000', '41.00', '55.00', 'SI', b'1'),
 (10, 2, 1, '4174', 'Mil veces', NULL, '12.000', '46.00', '55.00', 'SI', b'0'),
 (11, 3, 1, '85699', 'Casa de alguien', '{\"Tama\\u00f1o\":\"Regulable\",\"Medidas\":\"22 x 52 x 36\"}', '45.000', '412.00', '520.00', 'NO', b'1'),
-(12, 3, 1, '4589', 'Casa de alguien', '{\"Cabezal\":\"Fijo\",\"Movilidad\":\"Variable\"}', '45.000', '412.00', '520.00', 'NO', b'1'),
+(12, 3, 1, '4589', 'Casa de alguien 2', '<b><i>Todo pasará</i></b>', '45.000', '412.00', '520.00', 'NO', b'0'),
 (13, 3, 1, '4889', 'Casa de tuya', NULL, '45.000', '412.00', '22520.00', 'SI', b'1'),
 (15, 3, 1, '51395', 'la casa de quien', NULL, '745.000', '125.00', '521.00', 'NO', b'1'),
 (16, 3, 1, '74588', 'pedazo', NULL, '22.000', '41.00', '123.00', 'NO', b'1'),
 (17, 1, 1, '41744', 'Jebus', NULL, '23.000', '12.00', '34.00', 'SI', b'1'),
-(18, 3, 1, '741', 'Casucha tuya', NULL, '122.000', '123.00', '321.00', 'NO', b'0');
+(18, 3, 1, '741', 'Casucha tuya', NULL, '122.000', '123.00', '321.00', 'NO', b'0'),
+(22, 1, 1, '7412', 'Casas tuys', '<ul><li>vamis</li><li>gaso</li></ul>', '12.000', '12.00', '32.00', 'NO', b'1'),
+(23, 3, 1, 'CA-4125', 'Arco luminico', '<ul><li><b>Vamos</b></li><li><b>Ya está</b></li></ul>', '74.000', '452.00', '625.00', 'NO', b'1');
 
 -- --------------------------------------------------------
 
@@ -197,12 +200,13 @@ INSERT INTO `productos_fotos` (`id_foto`, `id_prod`, `foto`) VALUES
 (19, 16, 'assets/img/productos/14122020_1607978399_2.jpg'),
 (20, 2, 'assets/img/productos/14122020_1607978590_1.jpg'),
 (21, 2, 'assets/img/productos/14122020_1607978590_2.jpg'),
-(22, 12, 'assets/img/productos/14122020_1607978650_1.jpg'),
-(23, 12, 'assets/img/productos/14122020_1607978650_2.jpg'),
 (26, 19, 'assets/img/productos/15122020_1608063013_0.jpg'),
 (27, 19, 'assets/img/productos/15122020_1608063013_1.jpg'),
 (28, 20, 'assets/img/productos/15122020_1608064982_0.jpg'),
-(29, 20, 'assets/img/productos/15122020_1608064982_1.jpg');
+(29, 20, 'assets/img/productos/15122020_1608064982_1.jpg'),
+(37, 23, 'assets/img/productos/29122020_1609211031_0.JPG'),
+(38, 23, 'assets/img/productos/29122020_1609211031_1.PNG'),
+(39, 12, 'assets/img/productos/29122020_1609251258_0.jpg');
 
 -- --------------------------------------------------------
 
@@ -237,7 +241,9 @@ CREATE TABLE `subcategorias` (
 INSERT INTO `subcategorias` (`id_subcategoria`, `id_cat`, `descripcionSC`) VALUES
 (1, 2, 'Tomates'),
 (2, 1, 'Fotocontroles'),
-(3, 2, 'toma');
+(3, 2, 'toma'),
+(4, 1, 'Lamparas'),
+(5, 3, 'NEGRAS');
 
 -- --------------------------------------------------------
 
@@ -423,7 +429,7 @@ ALTER TABLE `ventasdetalle`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `compras`
@@ -459,13 +465,13 @@ ALTER TABLE `portadas`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `productos_fotos`
 --
 ALTER TABLE `productos_fotos`
-  MODIFY `id_foto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id_foto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedores`
@@ -477,7 +483,7 @@ ALTER TABLE `proveedores`
 -- AUTO_INCREMENT de la tabla `subcategorias`
 --
 ALTER TABLE `subcategorias`
-  MODIFY `id_subcategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_subcategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `tipousuarios`

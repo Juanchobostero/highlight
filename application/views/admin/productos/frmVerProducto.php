@@ -7,7 +7,7 @@
 
 <div class="modal-body">
 	<div class="row">
-		<div class="col-lg-6">
+		<div class="col-lg-5">
 			<label class="mb-0">Imágenes</label>
 			<?php if ($fotos) : ?>
 				<img src="<?= base_url($fotos[0]->foto); ?>" class="product-image" alt="Foto principal">
@@ -18,17 +18,9 @@
 				</div>
 			<?php endif; ?>
 		</div>
-		<div class="col-lg-6" style="background-color: #EEE;">
+		<div class="col-lg-7" style="background-color: #EEE;">
 			<label class="mb-1">Descripción</label>
-			<?php if ($producto->descripcionPR) : ?>
-				<?php $descProducto = json_decode($producto->descripcionPR, true); ?>
-
-				<ul>
-					<?php foreach ($descProducto as $key => $valor) : ?>
-						<li><strong><?= $key; ?></strong>&nbsp;&nbsp;<?= $valor; ?></li>
-					<?php endforeach; ?>
-				</ul>
-			<?php endif; ?>
+			<?= $producto->descripcionPR; ?>
 			<dl class="row">
 				<dt class="col-sm-4">Código</dt>
 				<dd class="col-sm-8"><?= $producto->codigoPR; ?></dd>

@@ -82,7 +82,7 @@ class Subcategorias_controller extends CI_Controller
 
 		// Reglas
 		$restriccion = '';
-		if ($categoria_id != $this->input->post('categoriaAct_id') || $subcateg != $this->input->post('subcategoriaAct')) {
+		if ($categoria_id != $this->input->post('categoriaAct_id') || strtolower($subcateg) != strtolower($this->input->post('subcategoriaAct'))) {
 			$restriccion = '|is_unique[subcategorias.id_cat='.$categoria_id.' AND '.'descripcionSC=]';
 		}
 		$this->form_validation->set_rules('categoria_id', 'Categoría', 'required|trim');

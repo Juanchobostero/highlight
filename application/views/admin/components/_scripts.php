@@ -9,6 +9,8 @@
 			<script src="<?= base_url('assets/plugins/datatables-responsive/js/dataTables.responsive.min.js'); ?>"></script>
 			<script src="<?= base_url('assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js'); ?>"></script>
 			<script src="<?= base_url('assets/plugins/select2/js/select2.full.min.js'); ?>"></script>
+			<script src="<?= base_url('assets/plugins/summernote/summernote-bs4.min.js'); ?>"></script>
+			<script src="<?= base_url('assets/plugins/summernote/lang/summernote-es-ES.min.js'); ?>"></script>
 		<?php endif; ?>
 		<script src="<?= base_url('assets/plugins/sweetalert2/sweetalert2.all.min.js'); ?>"></script>
 		<script src="<?= base_url('assets/js/admin/adminlte.min.js'); ?>"></script>

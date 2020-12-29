@@ -55,15 +55,6 @@ class Productos_controller extends CI_Controller
 	}
 
 	//--------------------------------------------------------------
-	public function frmEditarDescripcion($id_producto)
-	{
-		verificarConsulAjax();
-
-		$data['producto'] = $this->Productos->get_producto($id_producto);
-		$this->load->view('admin/productos/frmEditarDescripcion', $data);
-	}
-
-	//--------------------------------------------------------------
 	public function frmVer($id_producto)
 	{
 		verificarConsulAjax();
@@ -96,6 +87,7 @@ class Productos_controller extends CI_Controller
 				'id_mar'					=> $this->input->post('marca_id'),
 				'codigoPR' 				=> $this->input->post('codigo'),
 				'nombrePR' 				=> $this->input->post('nombre'),
+				'descripcionPR'		=> $this->input->post('descripcion'),
 				'stockPR' 				=> $this->input->post('stock'),
 				'precio_listaPR'	=> $this->input->post('pLista'),
 				'precio_ventaPR'	=> $this->input->post('pVenta'),
@@ -152,6 +144,7 @@ class Productos_controller extends CI_Controller
 				'id_mar'					=> $this->input->post('marca_id'),
 				'codigoPR' 				=> $codigo,
 				'nombrePR' 				=> $this->input->post('nombre'),
+				'descripcionPR'		=> $this->input->post('descripcion'),
 				'stockPR' 				=> $this->input->post('stock'),
 				'precio_listaPR'	=> $this->input->post('pLista'),
 				'precio_ventaPR'	=> $this->input->post('pVenta'),
@@ -173,40 +166,6 @@ class Productos_controller extends CI_Controller
 				return;
 			} else {
 				$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'msj' => 'Ha ocurrido un error al intentar actualizar un producto.']));
-				return;
-			}
-		endif;
-
-		$this->output->set_output(json_encode(['result' => 3, 'titulo' => 'Ooops.. error!', 'errores' => $this->form_validation->error_array()]));
-		return;
-	}
-
-	//--------------------------------------------------------------
-	public function editarDescripcion($id_producto)
-	{
-		verificarConsulAjax();
-
-		// Reglas
-		$this->form_validation->set_rules('atributos[]', 'Atributo', 'required|trim');
-		$this->form_validation->set_rules('valores[]', 'Valor', 'required|trim');
-
-		if ($this->form_validation->run()) :
-			$atributos = $this->input->post('atributos');
-			$valores = $this->input->post('valores');
-
-			$datos = [];
-			for ($i = 0; $i < count($atributos); $i++) {
-				$datos[$atributos[$i]] = $valores[$i];
-			}
-			$descripcion = ['descripcionPR'	=> json_encode($datos)];
-
-			$resp = $this->Productos->actualizar($id_producto, $descripcion); // se inserta en bd
-
-			if ($resp) {
-				$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Descripción de producto actualizada.', 'tabs' => 'productos', 'tab' => 'activos']));
-				return;
-			} else {
-				$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'msj' => 'Ha ocurrido un error al intentar actualizar la descripción de un producto.']));
 				return;
 			}
 		endif;

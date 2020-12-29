@@ -99,7 +99,7 @@ class Categorias_controller extends CI_Controller
 
 		// Reglas
 		$restriccion = '';
-		if ($categ != $this->input->post('categoriaAct')) {
+		if (strtolower($categ) != strtolower($this->input->post('categoriaAct'))) {
 			$restriccion = '|is_unique[categorias.descripcionCAT=]';
 		}
 		$this->form_validation->set_rules('categoria', 'Categoría', 'required|trim' . $restriccion);

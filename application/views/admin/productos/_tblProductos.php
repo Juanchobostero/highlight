@@ -31,9 +31,6 @@
 						<button type="button" class="btn btn-warning" title="Editar" onclick="cargarForm('<?= base_url('frmEditarProducto/' . $producto->id_producto) ?>', 'extra-large', 'modal-extra-large')">
 							<i class="fas fa-pen text-white"></i>
 						</button>
-						<button type="button" class="btn bg-olive" title="Editar descripción" onclick="cargarForm('<?= base_url('frmEditarDescripcion/' . $producto->id_producto) ?>', 'small', 'modal-small')">
-							<i class="fas fa-list-ul"></i>
-						</button>
 						<button type="button" class="btn btn-danger" title="Eliminar" onclick="eliminar(this, 'eliminarProducto/<?= $producto->id_producto; ?>')">
 							<i class="fas fa-trash-alt"></i>
 						</button>
