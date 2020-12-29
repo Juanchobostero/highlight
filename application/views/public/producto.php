@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="product-info">
-            <h3 class="product-title">Descripción</h3>
+            <h3 class="des-title">Descripción</h3>
             <div class="product-descrip"></div>
             <h2 class="product-price"></h2>
             <span class="product-stock">Stock disponible: 3 unidades</span>

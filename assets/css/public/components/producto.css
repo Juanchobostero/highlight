@@ -6,7 +6,7 @@
     grid-gap: -2rem;
     display: grid;
     padding: 4rem 10rem;
-    grid-template: 1fr 1fr 3fr / 3fr 1fr;
+    grid-template: 1fr 1fr 4fr / 3fr 1fr;
     grid-template-areas: "banner banner"
                          "name category"
                          "content content";
@@ -79,29 +79,37 @@
     grid-area: content;
     margin-top: 0;
     width: 53vw;
+    height: 80vh;
     display: flex;
     flex-direction: row;
     justify-self: center;
     gap: 1rem;
+    
 
 }
 
 .producto-img{
     display: block;
     background-color: var(--titulo-seccion-color);
-    width: 50%;
-    border-style: solid;
+    width: 55%;
     border-color: var(--color-grey);
 }
 
 .img-pro {
     object-fit: cover;
     width: 100%;
-    height: 37vh;
+    height: 60vh;
+    border-style: solid;
+    border-color: var(--color-grey);
     
 }
 
 .product-info{
     background-color: var(--color-grey);
-    width: 50%;
+    width: 45%;
+}
+
+.des-title{
+    font-size: 1.3rem;
+    font-weight: 800;
 }

@@ -55,6 +55,7 @@ class Productos_model extends CI_Model {
     $this->db->join('productos_fotos as pf', 'pf.id_prod = pr.id_producto'); 
     $this->db->where('pf.foto IS NOT NULL');
     $this->db->where('pr.destacadoPR', 'SI');
+    $this->db->where('pr.estadoPR', 1);
     $this->db->group_by('pr.id_producto');
     $this->db->order_by('pr.id_producto', 'desc');
     $this->db->limit($limit, $start);
@@ -71,6 +72,7 @@ class Productos_model extends CI_Model {
     $this->db->join('productos_fotos as pf', 'pf.id_prod = pr.id_producto'); 
     $this->db->where('pf.foto IS NOT NULL');
     $this->db->where('pr.destacadoPR', 'NO');
+    $this->db->where('pr.estadoPR', 1);
     $this->db->group_by('pr.id_producto');
     $this->db->order_by('pr.id_producto', 'desc');
     $this->db->limit($limit, $start);
@@ -98,6 +100,7 @@ class Productos_model extends CI_Model {
     $this->db->select('id_producto');
     $this->db->where('stockPR >', 0);
     $this->db->where('destacadoPR', 'SI');
+    $this->db->where('pr.estadoPR', 1);
     $this->db->group_by('id_producto');
     $this->db->from('productos');
     return $this->db->count_all_results();
@@ -107,6 +110,7 @@ class Productos_model extends CI_Model {
     $this->db->select('id_producto');
     $this->db->where('stockPR >', 0);
     $this->db->where('destacadoPR', 'NO');
+    $this->db->where('pr.estadoPR', 1);
     $this->db->group_by('id_producto');
     $this->db->from('productos');
     return $this->db->count_all_results();
