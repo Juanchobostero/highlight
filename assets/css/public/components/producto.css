@@ -113,7 +113,10 @@
 }
 
 .product-descrip {
-    height: 45vh;
+    height: 44vh;
+    padding: 2rem;
+    overflow: scroll;
+    color: var(--menu-links-color);
 }
 
 .product-price {
@@ -131,6 +134,12 @@
 .des-title{
     font-size: 1.3rem;
     font-weight: 800;
+    color: var(--menu-links-color);
+}
+
+.product-detail {
+    margin-top: 2rem;
+    text-align: left;
 }
 
 .cantidad {
@@ -138,10 +147,15 @@
     height: 7vh;
     display: flex;
     flex-direction: row;
-    gap: 1rem;
+    gap: 0.8rem;
 }
 
 .product-cantidad {
     width: 15vw;
     height: 7vh;
+}
+
+.cart-img {
+    width: 7vw;
+    height: 6.8vh;
 }
