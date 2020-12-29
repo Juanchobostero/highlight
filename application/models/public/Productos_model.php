@@ -100,7 +100,7 @@ class Productos_model extends CI_Model {
     $this->db->select('id_producto');
     $this->db->where('stockPR >', 0);
     $this->db->where('destacadoPR', 'SI');
-    $this->db->where('pr.estadoPR', 1);
+    $this->db->where('estadoPR', 1);
     $this->db->group_by('id_producto');
     $this->db->from('productos');
     return $this->db->count_all_results();
@@ -110,7 +110,7 @@ class Productos_model extends CI_Model {
     $this->db->select('id_producto');
     $this->db->where('stockPR >', 0);
     $this->db->where('destacadoPR', 'NO');
-    $this->db->where('pr.estadoPR', 1);
+    $this->db->where('estadoPR', 1);
     $this->db->group_by('id_producto');
     $this->db->from('productos');
     return $this->db->count_all_results();

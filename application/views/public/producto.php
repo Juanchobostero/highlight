@@ -23,11 +23,11 @@
         <div class="product-info">
             <h3 class="des-title">Descripción</h3>
             <div class="product-descrip"></div>
-            <h2 class="product-price"></h2>
-            <span class="product-stock">Stock disponible: 3 unidades</span>
+            <h2 class="product-price">$<?=$producto->precio_ventaPR?></h2>
+            <h3 class="product-stock">Stock disponible: 3 unidades</h3>
             <div class="cantidad">
                 <input class="product-cantidad" type="text">
-                <button class="btn-comprar"></button>
+                <button class="btn btn-info btn-comprar">Icono</button>
             </div>
         </div>
     </div> 

@@ -1,6 +1,6 @@
 .product-main {
     background-color: white;
-    color: var(--menu-links-color);
+    
     width: 100%;
     height: 100vh;
     grid-gap: -2rem;
@@ -49,6 +49,7 @@
     width: 40rem;
     display: inline;
     transform: translateX(3rem);
+    color: var(--menu-links-color);
     
 }
 
@@ -107,9 +108,40 @@
 .product-info{
     background-color: var(--color-grey);
     width: 45%;
+    padding: 1rem;
+    text-align: justify;
 }
+
+.product-descrip {
+    height: 45vh;
+}
+
+.product-price {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--menu-links-color);
+}
+
+.product-stock {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #00000079;
+} 
 
 .des-title{
     font-size: 1.3rem;
     font-weight: 800;
+}
+
+.cantidad {
+    margin-top: 2rem;
+    height: 7vh;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.product-cantidad {
+    width: 15vw;
+    height: 7vh;
 }
