@@ -20,9 +20,19 @@ class Productos_model extends CI_Model {
     $this->db->join('productos_fotos as pf', 'productos.id_producto = pf.id_prod');
     $this->db->where('pf.foto IS NOT NULL');
     $this->db->where('productos.id_producto', $id);
+
     $producto = $this->db->get('productos')->row();
     return $producto;
+  }
 
+  public function get_fotos($id)
+  {
+    $this->db->select('productos_fotos.*');
+    $this->db->where('productos_fotos.id_prod', $id);
+
+    $fotos = $this->db->get('productos_fotos')->result();
+
+    return $fotos;
   }
 
   /* public function get_foto_producto($id)

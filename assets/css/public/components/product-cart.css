@@ -26,21 +26,21 @@
         color: var(--menu-links-color);
         background-color: var(--color-grey);
         height: 11vh;
-        padding: 0.5rem;
+        padding: 0.6rem;
     }
     
     .product-desc h5{
         font-size: 0.9rem;
         font-weight: 400;
-        margin-bottom: 0.5rem;
+        margin-bottom: auto;
     }
     
     .product-desc h6 {
         font-size: 1rem;
         font-weight: 600;
         bottom: 0;
-        margin-top: 0.3rem;
         padding: 0.2rem;
+        margin-top: auto;
     }
 }
 

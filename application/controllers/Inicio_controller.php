@@ -105,6 +105,7 @@ class Inicio_controller extends CI_Controller
 	public function producto($id){
 		$data['categorias'] = $this->Categorias_model->get_full();
 		$data['producto'] = $this->Productos_model->get_producto($id);
+		$data['fotos'] = $this->Productos_model->get_fotos($id);
 	
 		/* if(!$data['producto']){
 		  show_404($page = '', $log_error = TRUE);

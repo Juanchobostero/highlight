@@ -1,1 +1,0 @@
-quienes_somos.php

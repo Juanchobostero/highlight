@@ -138,6 +138,21 @@ if (ofertas){
  
 }
 
+/*/--- IMAGENES-MINIATURAS ---/*/
+const prodImages = document.querySelector('.slider-images');
+if (prodImages){
+
+  new Flickity( prodImages, {
+    cellAlign: 'center',
+    contain: true,
+  });
+}
+
+const change = src => {
+  document.getElementById('img-main').src = src;
+}
+
+
 function cargarMasCells(url, page, slider){
   $.ajax({
     method: "GET",
