@@ -60,7 +60,7 @@
             </ul>
             
           </li>
-          <li class="navbar-item"><a href="#" class="navbar-link">Nosotros</a></li>
+          <li class="navbar-item"><a id="nosotros" href="<?=base_url('nosotros')?>" class="navbar-link">Nosotros</a></li>
           <li class="navbar-item"><a href="#" class="navbar-link">Contactos</a></li>
         </ul>
       </nav>

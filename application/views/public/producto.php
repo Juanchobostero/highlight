@@ -1,10 +1,8 @@
 <?php $this->load->view('public/incl/header');?>
 
 <div class="product-main">
-    <div class="banner">
-        <div class="breadcrumb">
-            <?=$producto->descripcionCAT .'/' .$producto->descripcionSC?>      
-        </div>
+    <div class="banner" id="banner-pro">
+        <?=$producto->descripcionCAT .'/' .$producto->descripcionSC?>   
     </div>
     <div class="product-head">
         <h3 id="nameP" class="product-name"><?=$producto->nombrePR?></h3>
@@ -45,4 +43,4 @@
     </div> 
 </div>
 
-<?php $this->load->view('public/incl/footer')?>
+<?php $this->load->view('public/incl/footer');?>

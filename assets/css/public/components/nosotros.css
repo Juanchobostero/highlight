@@ -1,0 +1,154 @@
+@media (min-width: 768px) {
+    .nosotros-main {
+        font-family: 'Noto Sans', sans-serif;
+        width: 100%;
+        height: 100%;
+        padding: 4rem auto;
+        display: grid;
+        margin-bottom: 2rem;
+        grid-template: auto / 1fr;
+        grid-template-areas: "banner" 
+                            "title"
+                            "text";
+    }
+
+    .banner-nos {
+        grid-area: banner;
+        grid-column: 1 / -1;
+        width: 100%;
+        text-align: left;
+        margin-top: 6rem;
+        margin-bottom: 1rem;
+        height: 2rem;
+        background-color: var(--color-grey);
+        color: var(--menu-links-color);
+        font-family: "Lato", sans-serif;
+        font-weight: 490;
+        cursor: pointer;
+        padding-left: 10rem;
+        transform: translateY(-5rem);
+    }
+
+    .nosotros-title {
+        grid-area: title;
+        margin-top: 1rem;
+        margin-bottom: 3rem;
+        grid-column: 1 / -1;
+        height: 8vh;
+        display: block;
+        padding: 2rem 10rem;
+        transform: translateY(-5rem);
+    }
+
+    .h3-nos {
+        width: 100%;
+        font-size: 1.6rem;
+        font-style: italic;
+        color: var(--menu-links-color);
+        display: flex;
+        align-content: flex-start;
+    }
+
+    .hr-nos {
+        width: 100%;
+        margin-top: 0;
+    }
+
+    .nosotros-text {
+        grid-area: text;
+        grid-column: 1 / -1;
+        display: block;
+        text-align: justify;
+        height: 100%;
+        font-size: 1rem;
+        width: 82%;
+        padding: 2rem 8rem;
+        transform: translateY(-8rem);
+        margin-bottom: 5rem;
+        margin-left: 9rem;
+    }
+
+    .nosotros-txt {
+        height: auto;
+        width: 100%;
+        font-weight: 600;
+    }
+}
+
+@media (max-width: 768px) {
+    .nosotros-main {
+        font-family: 'Noto Sans', sans-serif;
+        width: 100%;
+        height: 100%;
+        padding: 4rem auto;
+        display: grid;
+        margin-bottom: 2rem;
+        grid-template: auto / 1fr;
+        grid-template-areas: "banner" 
+                            "title"
+                            "text";
+    }
+
+    .banner-nos {
+        grid-area: banner;
+        grid-column: 1 / -1;
+        width: 100%;
+        text-align: left;
+        margin-top: 6rem;
+        margin-bottom: 1rem;
+        height: 2rem;
+        background-color: var(--color-grey);
+        color: var(--menu-links-color);
+        font-family: "Lato", sans-serif;
+        font-weight: 490;
+        cursor: pointer;
+        padding-left: 4.5rem;
+        transform: translateY(-5rem);
+    }
+
+    .nosotros-title {
+        grid-area: title;
+        margin-top: 1rem;
+        margin-bottom: 3rem;
+        grid-column: 1 / -1;
+        height: 8vh;
+        display: block;
+        padding: 2rem 4.5rem;
+        transform: translateY(-5rem);
+    }
+
+    .h3-nos {
+        width: 100%;
+        font-size: 1.6rem;
+        font-style: italic;
+        color: var(--menu-links-color);
+        display: flex;
+        align-content: flex-start;
+    }
+
+    .hr-nos {
+        width: 100%;
+        margin-top: 0;
+    }
+
+    .nosotros-text {
+        grid-area: text;
+        grid-column: 1 / -1;
+        display: block;
+        text-align: justify;
+        height: 100%;
+        font-size: 0.8rem;
+        width: 80%;
+        padding: 2rem 0;
+        transform: translateY(-8rem);
+        margin-bottom: 5rem;
+        margin-left: 4.5rem;
+        margin-right: 2rem;
+    }
+
+    .nosotros-txt {
+        height: auto;
+        width: 90%;
+        font-weight: 600;
+    }
+}

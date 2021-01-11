@@ -14,11 +14,13 @@
 }
 
 html {
+  width: 100%;
   height: 100%;
 }
 
 body {
   font-family: "Lato", sans-serif;
+  width: 100%;
   font-size: 17px;
   min-height: 100%;
 }
@@ -29,7 +31,8 @@ img{
 
 .container{
   display: grid;
-  grid-template-columns: [start]  [main-start] 1fr [main-end]  [end];
+  grid-column: 1 / -1;
+  grid-template-columns: 1fr;
   grid-column-gap: 1.5rem;
 }
 
@@ -38,17 +41,20 @@ img{
 }
 
 .grid-container {
+  width: 100%;
   display: grid;
   gap: 0.1rem;
   border-style: solid;
+  margin: 0;
   bottom: 0;
   border-top-width: 1.1rem;
   border-bottom-width: 2.2rem;
   border-top-color: #031929;
   border-bottom-color: #031929;
-  grid-template-columns: repeat(1, auto);
+  grid-template-columns: repeat(1, 1fr);
+  grid-column: 1 / -1;
   grid-template-areas: 
-  	"header"
+    "header"
   	"portada"
   	"destacados"
     "portada_herramientas"
@@ -58,6 +64,23 @@ img{
   	"ofertas"
   	"footer";
 }
+
+.banner {
+  grid-area: banner;
+  grid-column: 1 / -1;
+  width: 100%;
+  text-align: left;
+  margin-top: 6rem;
+  margin-bottom: 3rem;
+  height: 2rem;
+  background-color: var(--color-grey);
+  color: var(--menu-links-color);
+  font-family: "Lato", sans-serif;
+  font-weight: 490;
+  cursor: pointer;
+  padding-left: 10rem;
+}
+
 
 .portada-herramientas {
   grid-area: portada_herramientas;
