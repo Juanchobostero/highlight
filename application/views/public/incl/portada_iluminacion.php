@@ -1,7 +1,7 @@
 <section class="portada-iluminacion">
 <div class="jumbotron jumbotron-fluid bg-dark">
       <div class="jumbotron-background">
-        <img src="<?=base_url('assets/img/public/portadas/portada7.jpeg')?>" class="blur ">
+        <img src="<?=base_url($imagen->imagen_2)?>" class="blur ">
       </div>
       <div class="jumbo-container text-white">
         <h5>Iluminación</h5>

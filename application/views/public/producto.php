@@ -1,24 +1,35 @@
 <?php $this->load->view('public/incl/header');?>
 
 <div class="product-main">
-    <div class="banner">
-        <div class="breadcrumb">
-            <?=$producto->descripcionCAT .'/' .$producto->descripcionSC?>      
-        </div>
+    <div class="banner" id="banner-pro">
+        <?=$producto->descripcionCAT .'/' .$producto->descripcionSC?>   
     </div>
     <div class="product-head">
         <h3 id="nameP" class="product-name"><?=$producto->nombrePR?></h3>
         <span id="catP" class="product-category"><?=$producto->descripcionCAT?></span>
-        <hr class="hr-prod">
+        
+    </div>
+    <div class="hr-pro">
+        <hr class="hr-prod">  
     </div>
     
     <div class="product-content">
         <div class="producto-img">
-            <img class="img-pro" src="<?=base_url($producto->foto)?>">
+            <img class="img-pro" id="img-main" src="<?=base_url($producto->foto)?>">
             </img>
-            <div class="product-images">
-                <img src="#" class="img-mini">
-            </div>
+            <?php 
+            if(count($fotos) > 1) { ?>
+                <div class="slider-images">
+                    <?php foreach($fotos as $foto):?>
+                        <?php if ($foto->foto != $producto->foto) { ?>
+                            <div class="img-cart">
+                                <img src="<?=base_url($foto->foto)?>" class="img-mini" onclick="change(this.src)">
+                            </div>
+                        <?php } ?>
+                        
+                    <?php endforeach?>
+                </div>
+            <?php } ?>
         </div>
         <div class="product-info">
             <h3 class="des-title">Descripción</h3>
@@ -35,4 +46,4 @@
     </div> 
 </div>
 
-<?php $this->load->view('public/incl/footer')?>
+<?php $this->load->view('public/incl/footer');?>

@@ -33,6 +33,7 @@ class Inicio_controller extends CI_Controller
 		$data['destacados'] = $this->Productos_model->get_destacados($perPage, $start);
 		$data['novedades'] = $this->Productos_model->get_novedades($perPage, $start);
 		$data['ofertas'] = $this->Productos_model->get_ofertas($perPage, $start);
+		$data['imagen'] = $this->Portadas_model->get_imagenes();
 
 		$this->load->view('public/index', $data);
 	}
@@ -105,6 +106,7 @@ class Inicio_controller extends CI_Controller
 	public function producto($id){
 		$data['categorias'] = $this->Categorias_model->get_full();
 		$data['producto'] = $this->Productos_model->get_producto($id);
+		$data['fotos'] = $this->Productos_model->get_fotos($id);
 	
 		/* if(!$data['producto']){
 		  show_404($page = '', $log_error = TRUE);
@@ -113,5 +115,10 @@ class Inicio_controller extends CI_Controller
 		 */
 		$this->load->view('public/producto', $data);
 		
-	  }
+	}
+
+	public function nosotros(){
+		$data['categorias'] = $this->Categorias_model->get_full();
+		$this->load->view('public/nosotros', $data);
+	}
 }

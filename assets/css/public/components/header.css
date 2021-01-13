@@ -27,6 +27,7 @@
   background-color: #ffffff;
   text-align: center;
   gap: 0.5rem;
+  grid-column: 1 / -1;
   
 }
 
@@ -112,6 +113,7 @@
 
 .header {
     grid-area: header;
+    grid-column: 1 / -1;
     display:flex;
     justify-self: center;
     justify-items: center;

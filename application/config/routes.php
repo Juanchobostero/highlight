@@ -94,7 +94,7 @@ $route = array(
 $route['admin/validar']['post'] = 'Inicio_controller/validar';
 $route['cerrarSesion']['post'] = 'Inicio_controller/cerrarSesion';
 $route['producto/(:num)'] = 'Inicio_controller/producto/$1';
-
+$route['nosotros'] = 'Inicio_controller/nosotros';
 
 $route['api/destacados'] = 'public/APISlider/masDestacados';
 $route['api/novedades'] = 'public/APISlider/masNovedades';
