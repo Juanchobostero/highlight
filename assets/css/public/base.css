@@ -34,6 +34,7 @@ img{
   grid-column: 1 / -1;
   grid-template-columns: 1fr;
   grid-column-gap: 1.5rem;
+  padding: 0 auto;
 }
 
 .grid-container > * {
@@ -83,44 +84,22 @@ img{
 
 
 .portada-herramientas {
-  grid-area: portada_herramientas;
-  z-index: 100;
+  grid-area: portada_herramientas;  
   margin: auto 0;
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
-.novedades {
-  grid-area: novedades;
-  box-shadow: -1px 1px 7px 0px rgba(0, 0, 0, 0.75);
-  background-color: #fdcfcf;
-  display:flex;
-  justify-self: center;
-  justify-items: center;
-  z-index: 100;
-  border: 0.01rem solid;
-}
+
 
 .portada_iluminacion {
   grid-area: portada_iluminacion;
-  box-shadow: -1px 1px 7px 0px rgba(0, 0, 0, 0.75);
-  background-color: #fdcfcf;
-  z-index: 100;
-  border: 0.01rem solid;
+  margin: auto 0;
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
-.ofertas {
-  grid-area: ofertas;
-  box-shadow: -1px 1px 7px 0px rgba(0, 0, 0, 0.75);
-  background-color: #fdcfcf;
-  display:flex;
-  justify-self: center;
-  justify-items: center;
-  z-index: 100;
-  border: 0.01rem solid;
-}
+
 
 .jumbotron {
   background-size: cover;

@@ -17,16 +17,19 @@
         <div class="producto-img">
             <img class="img-pro" id="img-main" src="<?=base_url($producto->foto)?>">
             </img>
-            <div class="slider-images">
-                <?php foreach($fotos as $foto):?>
-                    <?php if ($foto->foto != $producto->foto) { ?>
-                        <div class="img-cart">
-                            <img src="<?=base_url($foto->foto)?>" class="img-mini" onclick="change(this.src)">
-                        </div>
-                    <?php } ?>
-                    
-                <?php endforeach?>
-            </div>
+            <?php 
+            if(count($fotos) > 1) { ?>
+                <div class="slider-images">
+                    <?php foreach($fotos as $foto):?>
+                        <?php if ($foto->foto != $producto->foto) { ?>
+                            <div class="img-cart">
+                                <img src="<?=base_url($foto->foto)?>" class="img-mini" onclick="change(this.src)">
+                            </div>
+                        <?php } ?>
+                        
+                    <?php endforeach?>
+                </div>
+            <?php } ?>
         </div>
         <div class="product-info">
             <h3 class="des-title">Descripción</h3>

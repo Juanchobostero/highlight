@@ -71,7 +71,7 @@ if (destacados){
 
 /*/--- NOVEDADES ---/*/
 const novedades = document.querySelector('.slider-novedades');
-if (novedades){
+if (novedades){ 
 
   let total_pages = document.querySelector('.total-novedades').dataset.total;
   let page = 1;
@@ -140,13 +140,11 @@ if (ofertas){
 
 /*/--- IMAGENES-MINIATURAS ---/*/
 const prodImages = document.querySelector('.slider-images');
-if (prodImages){
-
   new Flickity( prodImages, {
     cellAlign: 'center',
     contain: true,
   });
-}
+
 
 const change = src => {
   document.getElementById('img-main').src = src;

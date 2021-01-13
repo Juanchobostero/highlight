@@ -30,9 +30,7 @@ class Productos_model extends CI_Model {
     $this->db->select('productos_fotos.*');
     $this->db->where('productos_fotos.id_prod', $id);
 
-    $fotos = $this->db->get('productos_fotos')->result();
-
-    return $fotos;
+    return  $this->db->get('productos_fotos')->result();
   }
 
   /* public function get_foto_producto($id)
