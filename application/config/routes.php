@@ -63,8 +63,20 @@ $route = array(
 	'admin/productos-destacados'	=> 'admin/Productos_destacados_controller',
 	'quitarDestacado/(:num)'			=> 'admin/Productos_destacados_controller/quitarDestacado/$1',
 
-	'admin/productos-ofertas'			=> 'admin/Productos_ofertas_controller',
-	'frmNuevaOferta'							=> 'admin/Productos_ofertas_controller/frmNueva',
+	'admin/productos-ofertas'								=> 'admin/Productos_ofertas_controller',
+	'admin/productos-ofertas/(:any)'				=> 'admin/Productos_ofertas_controller/getOfertas/$1',
+	'getProductoOferta/(:num)'							=> 'admin/Productos_ofertas_controller/getProducto/$1',
+	'getSubcategoriaOferta/(:num)'					=> 'admin/Productos_ofertas_controller/getSubcategoria/$1',
+	'frmNuevaOfertaIndividual'							=> 'admin/Productos_ofertas_controller/frmNuevaIndividual',
+	'frmNuevaOfertaPorSubcategoria'					=> 'admin/Productos_ofertas_controller/frmNuevaPorSubcategoria',
+	'frmEditarOfertaIndividual/(:num)'			=> 'admin/Productos_ofertas_controller/frmEditarIndividual/$1',
+	'frmEditarOfertaPorSubcategoria/(:num)'	=> 'admin/Productos_ofertas_controller/frmEditarPorSubcategoria/$1',
+	'altaOfertaIndividual'									=> 'admin/Productos_ofertas_controller/crearIndividual',
+	'altaOfertaPorSubcategoria'							=> 'admin/Productos_ofertas_controller/crearPorSubcategoria',
+	'editarOfertaIndividual/(:num)'					=> 'admin/Productos_ofertas_controller/editarIndividual/$1',
+	'editarOfertaPorSubcategoria/(:num)'		=> 'admin/Productos_ofertas_controller/editarPorSubcategoria/$1',
+	'eliminarOferta/(:num)'									=> 'admin/Productos_ofertas_controller/eliminar/$1',
+
 
 	'frmNuevaSubcategoria'					=> 'admin/Subcategorias_controller/frmNueva',
 	'frmEditarSubcategoria/(:num)'	=> 'admin/Subcategorias_controller/frmEditar/$1',

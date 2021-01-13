@@ -9,6 +9,30 @@ const Toast = Swal.mixin({
 	timer: 6000,
 })
 
+//------------------------FECHA ACTUAL------------------------
+function fechaHoy() {
+  let fHoy = new Date();
+  return [fHoy.getFullYear(), ("0" + (fHoy.getMonth() + 1)).slice(-2), ("0" + fHoy.getDate()).slice(-2)].join('-');
+}
+
+//**************** MODULO DE OFERTAS CALCULOS ****************
+//------------------CALCULA PRECIO DE OFERTA------------------
+function calcularPrecioOferta(precioVenta, porcentaje) {
+	if (porcentaje > 100) {
+		porcentaje = 100;
+	}
+	return (precioVenta - (precioVenta * porcentaje / 100)).toFixed(2);
+}
+
+//---------------------CALCULA PORCENTAJE---------------------
+function calcularPorcentaje(precioVenta, precioOferta) {
+	if (precioOferta > precioVenta) {
+		precioOferta = precioVenta;
+	}
+	return (100 - (precioOferta * 100 / precioVenta)).toFixed(2);
+}
+//************** FIN MODULO DE OFERTAS CALCULOS **************
+
 //---------------------DA FORMATO A TABLA---------------------
 function formatoTabla(tabla) {
 	return $(tabla).DataTable({
@@ -175,7 +199,22 @@ function cargarForm(metodo, modal, selector) {
 	}).fail(ajaxErrors);
 }
 
-//-----------------ALTA-UPDATE FORMULARIO MODAL-----------------
+//----------------CARGA VISTA MODAL DE FORMULARIO---------------
+function cargarPage(metodo, selector) {
+	$.post(baseUrl + metodo, function (data) {
+		$('#' + selector).html(data);
+	}).fail(ajaxErrors);
+}
+
+// //---------------------ACTUALIZAR UNA TABLA---------------------
+// function actualizarTabla(metodo) {
+// 	$.post(metodo, function (data) {
+// 		$('#tabla').html(data);
+// 		formatoTabla('table');
+// 	}).fail(ajaxErrors);
+// }
+
+//-------------ALTA-UPDATE FORMULARIO MODAL CON TAB-------------
 function validFormMod(e, metodo, form = '') {
 	e.preventDefault();
 	const formData = (form == '') ? new FormData(e.target) : form;
@@ -215,6 +254,47 @@ function validFormMod(e, metodo, form = '') {
 		}
 	});
 };
+
+// //-------------ALTA-UPDATE FORMULARIO MODAL SIN TAB-------------
+// function validFormModNoTab(e, metodo) {
+// 	e.preventDefault();
+// 	const formData = new FormData(e.target);
+
+// 	$.ajax({
+// 		url: metodo,
+// 		method: "POST",
+// 		data: formData,
+// 		cache: false,
+// 		contentType: false,
+// 		processData: false,
+
+// 		beforeSend: function () {
+// 			$('#btnForm').prop('disabled', true);
+// 			$('#cargandoSpinner').removeClass('d-none');
+// 			$('#nomForm').addClass('d-none');
+// 			$('.overlay').removeClass('d-none');
+// 		},
+// 		success: function (resp) {
+// 			let data = JSON.parse(resp);
+// 			if (data.result === 1) {
+// 				actualizarTabla(data.metodo);
+
+// 				mostrarToast('success', data.titulo, data.msj);
+// 				$('#cerrarModal').click();
+// 			}
+// 			else {
+// 				mostrarErrors('Oops... verifique los datos', data.errores);
+// 			}
+// 		},
+// 		error: ajaxErrors,
+// 		complete: function () {
+// 			$('#btnForm').prop('disabled', false);
+// 			$('#cargandoSpinner').addClass('d-none');
+// 			$('#nomForm').removeClass('d-none');
+// 			$('.overlay').addClass('d-none');
+// 		}
+// 	});
+// };
 
 //------------------ALTA-UPDATE FORMULARIO PAGE------------------
 function validFormPage(e, metodo) {

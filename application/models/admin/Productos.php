@@ -51,6 +51,14 @@ class Productos extends CI_Model
 	}
 
 	//--------------------------------------------------------------
+	public function total_productos_por_subcategoria($id_subcategoria)
+	{
+		$this->db->where('id_subcat', $id_subcategoria);
+		$this->db->from('productos');
+		return $this->db->count_all_results();
+	}
+
+	//--------------------------------------------------------------
 	public function get_inventario()
 	{
 		$this->db->select('COUNT(*) as total_productos, SUM(precio_listaPR) as total_costo');

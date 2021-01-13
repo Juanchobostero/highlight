@@ -14,6 +14,7 @@ class Subcategorias extends CI_Model
 	//--------------------------------------------------------------
 	public function get_subcategoria($id_subcategoria)
 	{
+		$this->db->join('categorias', 'subcategorias.id_cat = categorias.id_categoria');
 		$this->db->where('id_subcategoria', $id_subcategoria);
 		return $this->db->get('subcategorias')->row();
 	}

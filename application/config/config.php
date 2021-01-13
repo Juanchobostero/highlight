@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 date_default_timezone_set('America/Argentina/Buenos_Aires');
+setlocale(LC_TIME, 'spanish');
+
 /*
 |--------------------------------------------------------------------------
 | Base Site URL
