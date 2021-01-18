@@ -1,0 +1,316 @@
+@media (min-width: 768px) {
+    .login-main {
+        font-family: 'Lato', sans-serif;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        padding-bottom: 7rem;
+        background-color: white;
+        grid-template-areas: "banner"
+                             "head"
+                             "form";
+    }
+    
+    .login-head {
+        grid-area: head;/* 
+        padding: 1rem 10rem; */
+        display: block;
+        width: 90%;
+        text-align: left;
+        padding-left: 7rem;
+    }
+    
+    
+    .login-banner {
+        grid-area: banner;
+        grid-column: 1 / -1;
+        text-align: left;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        height: 2rem;
+        background-color: var(--color-grey);
+        color: var(--menu-links-color);
+        font-family: "Lato", sans-serif;
+        font-weight: 490;
+        cursor: pointer;
+        padding-left: 9rem; 
+    }
+    
+    .login-img {
+        display: inline;
+        margin: -1rem 1rem;
+        object-fit: cover;
+        width: 3vw;
+        height: 7vh;
+        transform: translateY(-0.5rem);
+    }
+    
+    .login-title {
+        display: inline;
+        color: var(--titulo-seccion-color);
+        font-size: 1.5rem;
+        font-weight: 800;/* 
+        margin: -1.6rem 10rem; */
+        white-space: nowrap;
+        margin: 0.5rem auto;
+    }
+    
+    .login-hr {
+        border: 0.059rem solid var(--titulo-seccion-color);
+        margin: 0.5rem auto;
+    }
+
+    .title-secondary {
+        font-size: 0.8rem;
+        color: var(--titulo-seccion-color);
+        margin: 0.5rem auto;
+        padding-left: 5rem;
+    }
+    
+    .form {
+        grid-area: form;
+        height: 100%;
+        margin-top: 3rem;
+    }
+    
+    
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        margin: 2rem auto;
+    }
+    
+    .btn-login {
+        background-color: rgb(2, 63, 175);
+        width: 22rem;
+        height: 3rem;
+        color: white;
+        border-radius: 0.3rem;
+        border: none;
+    }
+    
+    .btn-register {
+        background-color: rgba(6, 160, 6, 0.692);
+        width: 22rem;
+        height: 3rem;
+        color: white;
+        border-radius: 0.3rem;
+        border: none;
+        text-decoration: none;
+        padding: 0.5rem;
+    }
+    
+    
+    
+    .btn-login:hover,
+    .btn-register:hover {
+        filter: opacity(.4);
+        width: 20rem;
+        text-decoration: none;
+        color: white;
+    }
+    
+    .btn-login,
+    .btn-login:after,
+    .btn-login:before {
+      transition: all .5s;
+    }
+    
+    .btn-register,
+    .btn-register:after,
+    .btn-register:before {
+      transition: all .5s;
+    }
+    
+    #remember-pass {
+        padding: 0 0;
+    }
+    
+    .remember {
+        padding-right: 1.4rem;
+    }
+    
+    .forget {
+        padding-left: 1.4rem;
+    }
+    
+    .remember,
+    .forget {
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+    
+    .remember a,
+    .forget a{
+        text-decoration: none;
+        color: var(--menu-links-color);
+    }
+    
+    .remember a u {
+        transform: translateY(10rem);
+    }
+}
+
+@media (max-width: 768px) {
+    .login-main {
+        font-family: 'Lato', sans-serif;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        margin-top: 2rem;
+        padding-bottom: 7rem;
+        background-color: white;
+        grid-template-areas: "banner"
+                             "head"
+                             "form";
+    }
+    
+
+    .login-head {
+        grid-area: head;/* 
+        padding: 1rem 10rem; */
+        display: block;
+        width: 90%;
+        text-align: left;
+        padding-left: 2rem;
+    }
+    
+    
+    .login-banner {
+        grid-area: banner;
+        grid-column: 1 / -1;
+        text-align: left;
+        margin-bottom: 1rem;
+        height: 2rem;
+        background-color: var(--color-grey);
+        color: var(--menu-links-color);
+        font-family: "Lato", sans-serif;
+        font-weight: 490;
+        cursor: pointer;
+        padding-left: 3rem; 
+    }
+    
+    .login-img {
+        display: inline;
+        margin: -1rem 1rem;
+        object-fit: cover;
+        width: 6.5vw;
+        height: 5vh;
+        transform: translateY(-0.5rem);
+    }
+    
+    .login-title {
+        display: inline;
+        color: var(--titulo-seccion-color);
+        font-size: 1.2rem;
+        font-weight: 800;/* 
+        margin: -1.6rem 10rem; */
+        white-space: nowrap;
+        margin: 0.5rem auto;
+    }
+    
+    .login-hr {
+        border: 0.059rem solid var(--titulo-seccion-color);
+        margin: 0.5rem auto;
+    }
+
+    .title-secondary {
+        font-size: 0.8rem;
+        color: var(--titulo-seccion-color);
+        margin: 0.5rem auto;
+        padding-left: 1rem;
+    }
+    
+    .form {
+        grid-area: form;
+        height: 100%;
+        margin-top: 1rem;
+    }
+    
+    
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        margin: 2rem auto;
+    }
+    
+    .btn-login {
+        background-color: rgb(2, 63, 175);
+        width: 18rem;
+        height: 3rem;
+        color: white;
+        border-radius: 0.3rem;
+        border: none;
+    }
+    
+    .btn-register {
+        background-color: rgba(6, 160, 6, 0.692);
+        width: 18rem;
+        height: 3rem;
+        color: white;
+        border-radius: 0.3rem;
+        border: none;
+        text-decoration: none;
+        padding-top: 0.5rem;
+    }
+    
+    
+    
+    .btn-login:hover,
+    .btn-register:hover {
+        filter: opacity(.4);
+        width: 20rem;
+        text-decoration: none;
+        color: white;
+    }
+    
+    .btn-login,
+    .btn-login:after,
+    .btn-login:before {
+      transition: all .5s;
+    }
+    
+    .btn-register,
+    .btn-register:after,
+    .btn-register:before {
+      transition: all .5s;
+    }
+    
+    #remember-pass {
+        padding: 0 0;
+    }
+    
+    .remember {
+        padding-right: 1rem;
+    }
+    
+    .forget {
+        padding-left: 1rem;
+    }
+    
+    .remember,
+    .forget {
+        font-size: 0.65rem;
+        font-weight: 600;
+    }
+    
+    .remember a,
+    .forget a{
+        text-decoration: none;
+        color: var(--menu-links-color);
+    }
+    
+    .remember a u {
+        transform: translateY(10rem);
+    }
+
+}
+
+
+

@@ -61,7 +61,7 @@
             
           </li>
           <li class="navbar-item"><a id="nosotros" href="<?=base_url('nosotros')?>" class="navbar-link">Nosotros</a></li>
-          <li class="navbar-item"><a href="#" class="navbar-link">Contactos</a></li>
+          <li class="navbar-item"><a href="<?=base_url('contacto')?>" class="navbar-link">Contacto</a></li>
         </ul>
       </nav>
       
@@ -69,7 +69,7 @@
           <a href="<?=base_url()?>" class="busqueda">
             <img class="icon-lupa" src="<?=base_url('assets/img/public/imgVarios/lupa-icon.jpeg')?>" alt="logo">
           </a>
-          <a href="<?=base_url()?>" class="usuario">
+          <a href="<?=base_url('login')?>" class="usuario">
             <img class="icon-user" src="<?=base_url('assets/img/public/imgVarios/loguin.png')?>" alt="logo">
           </a>
           <a href="<?=base_url()?>" class="carrito">

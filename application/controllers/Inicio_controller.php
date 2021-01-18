@@ -48,6 +48,29 @@ class Inicio_controller extends CI_Controller
 	}
 
 	//--------------------------------------------------------------
+	// acceso a login publico
+	public function login_public()
+	{
+		$data['title'] = 'Iniciar Sesión';
+		$data['categorias'] = $this->Categorias_model->get_full();
+		$this->load->view('public/login', $data);
+	}
+
+	public function register()
+	{
+		$data['title'] = 'Registrarse';
+		$data['categorias'] = $this->Categorias_model->get_full();
+		$this->load->view('public/register', $data);
+	}
+
+	public function contact()
+	{
+		$data['title'] = 'Contactanos';
+		$data['categorias'] = $this->Categorias_model->get_full();
+		$this->load->view('public/contacto', $data);
+	}
+
+	//--------------------------------------------------------------
 	// Validacion del login del admin
 	public function validar()
 	{

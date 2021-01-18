@@ -1,0 +1,31 @@
+.contacto-head {
+    grid-area: head;/* 
+    padding: 1rem 10rem; */
+    display: block;
+    width: 90%;
+    text-align: left;
+    padding-left: 7rem;
+    margin-top: 3rem;
+}
+
+.contacto-title {
+    font-size: 1.6rem;
+    font-style: italic;
+    color: var(--menu-links-color);
+    padding-left: 2rem;
+}   
+
+.contacto-hr {
+    color: var(--menu-links-color);
+}
+
+@media (max-width: 768px) { 
+    .contacto-head {
+        padding-left: 2rem;
+        margin-top: 2rem;
+    }
+
+    .contacto-title {
+        padding-left: 1rem;
+    }
+}

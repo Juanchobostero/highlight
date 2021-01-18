@@ -241,6 +241,13 @@
   font-size: 1.09rem;
   padding-right: 0.5rem;
   padding-left: 0.5rem;
+  transition: all .5s;
+}
+
+.navbar-drop,
+.navbar-drop:after,
+.navbar-drop:before {
+  transition: all .5s ease-in;
 }
 
 .navbar-drop li {

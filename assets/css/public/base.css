@@ -178,6 +178,104 @@ img.blur {
   content: '"Hacemos envios a todo el país"';
 }
 
+.name {
+  width: 22rem;
+  height: 3rem;
+  background-color: var(--color-grey);
+  font-weight: 800;
+  padding-left: 0.6rem;
+  font-size: 1rem;
+  border-radius: 0.3rem;
+  border: 0.059rem solid var(--color-grey);
+}
+
+.telefono {
+  width: 22rem;
+  height: 3rem;
+  background-color: var(--color-grey);
+  font-weight: 800;
+  padding-left: 0.6rem;
+  font-size: 1rem;
+  border-radius: 0.3rem;
+  border: 0.059rem solid var(--color-grey);
+}
+
+.mail {
+  width: 22rem;
+  height: 3rem;
+  background-color: var(--color-grey);
+  font-weight: 800;
+  padding-left: 0.6rem;
+  font-size: 1rem;
+  border-radius: 0.3rem;
+  border: 0.059rem solid var(--color-grey);
+}
+
+.password {
+  width: 22rem;
+  height: 3rem;
+  background-color: var(--color-grey);
+  font-weight: 800;
+  padding-left: 0.6rem;
+  font-size: 1rem;
+  border-radius: 0.3rem;
+  border: 0.059rem solid var(--color-grey);
+}
+
+@media (max-width: 768px) {
+  .name {
+    width: 18rem;
+    height: 3rem;
+    background-color: var(--color-grey);
+    font-weight: 800;
+    padding-left: 0.6rem;
+    font-size: 1rem;
+    border-radius: 0.3rem;
+    border: 0.059rem solid var(--color-grey);
+  }
+  
+  .telefono {
+    width: 18rem;
+    height: 3rem;
+    background-color: var(--color-grey);
+    font-weight: 800;
+    padding-left: 0.6rem;
+    font-size: 1rem;
+    border-radius: 0.3rem;
+    border: 0.059rem solid var(--color-grey);
+  }
+  .mail {
+    width: 18rem;
+    height: 3rem;
+    background-color: var(--color-grey);
+    font-weight: 800;
+    padding-left: 0.6rem;
+    font-size: 1rem;
+    border-radius: 0.3rem;
+    border: 0.059rem solid var(--color-grey);
+  }
+  
+  .password {
+    width: 18rem;
+    height: 3rem;
+    background-color: var(--color-grey);
+    font-weight: 800;
+    padding-left: 0.6rem;
+    font-size: 1rem;
+    border-radius: 0.3rem;
+    border: 0.059rem solid var(--color-grey);
+  }
+}
+
+.name:focus,
+.telefono:focus,
+.mail:focus,
+.password:focus {
+  outline: none;
+  border: 0.059rem solid var(--color-grey);
+}
+
+
 
 
 @media (max-width: 950px) { 

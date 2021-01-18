@@ -95,6 +95,9 @@ $route['admin/validar']['post'] = 'Inicio_controller/validar';
 $route['cerrarSesion']['post'] = 'Inicio_controller/cerrarSesion';
 $route['producto/(:num)'] = 'Inicio_controller/producto/$1';
 $route['nosotros'] = 'Inicio_controller/nosotros';
+$route['login'] = 'Inicio_controller/login_public';
+$route['registro'] = 'Inicio_controller/register';
+$route['contacto'] = 'Inicio_controller/contact';
 
 $route['api/destacados'] = 'public/APISlider/masDestacados';
 $route['api/novedades'] = 'public/APISlider/masNovedades';
