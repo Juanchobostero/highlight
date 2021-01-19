@@ -2,8 +2,7 @@
 
 <section class="login-main">
 
-    <div class="login-banner">
-        Login    
+    <div class="login-banner">   
     </div>
 
     <div class="login-head">

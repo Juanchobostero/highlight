@@ -3,7 +3,7 @@
 <section class="login-main">
 
     <div class="login-banner">
-        Registro    
+           
     </div>
 
     <div class="login-head">
@@ -23,10 +23,10 @@
         <div class="form-group">
             <input class="password" type="password" name="pass" placeholder="*Confirmar contraseña">
         </div>
-        <div class="lost-pass">
+        <!-- <div class="lost-pass">
             <select name="prov" id="prov"></select>
             <select name="loc" id="loc"></select>
-        </div>
+        </div> -->
         <div class="buttons">
             <button class="btn-register">Registrate</button>
         </div>

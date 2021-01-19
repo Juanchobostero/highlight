@@ -3,7 +3,7 @@
 <section class="login-main">
 
     <div class="login-banner">
-        Contacto    
+           
     </div>
 
     <div class="contacto-head">
