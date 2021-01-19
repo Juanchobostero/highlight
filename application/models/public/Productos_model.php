@@ -97,6 +97,7 @@ class Productos_model extends CI_Model {
     $this->db->join('productos_fotos as pf', 'pf.id_prod = pr.id_producto'); 
     $this->db->where('pf.foto IS NOT NULL');
     $this->db->where('po.id_produc IS NOT NULL');
+    $this->db->where('po.estado_oferta', 1);
     $this->db->group_by('pr.id_producto');
     $this->db->order_by('pr.id_producto', 'desc');
     $this->db->limit($limit, $start);
