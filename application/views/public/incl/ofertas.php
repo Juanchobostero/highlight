@@ -8,14 +8,14 @@
 				<div class="product-cart">
 					<div class="product-img-top">
 						<img class="product-img" src="<?=base_url($producto->foto)?>">
+						<span class="new-price">AHORA: <?=$producto->precio_nuevo?></span>
 					</div>
 					<div class="product-desc">
 						<h5>
 							<?=$producto->nombrePR?>
 						</h5>
-						
 						<h6>
-							$<?=$producto->precio_ventaPR?>
+							Antes <s>$<?=$producto->precio_ventaPR?></s>
 						</h6>
 					</div>
 				</div>

@@ -56,6 +56,22 @@ class Inicio_controller extends CI_Controller
 		$this->load->view('public/login', $data);
 	}
 
+	//--------------------------------------------------------------
+	// Carrito
+	public function cart(){
+		$data['title'] = 'Mi carrito';
+		$data['categorias'] = $this->Categorias_model->get_full();
+		$this->load->view('public/carrito', $data);
+	}
+
+	//--------------------------------------------------------------
+	// Perfil
+	public function profile(){
+		$data['title'] = 'Mi perfil';
+		$data['categorias'] = $this->Categorias_model->get_full();
+		$this->load->view('public/perfil', $data);
+	}
+
 	public function register()
 	{
 		$data['title'] = 'Registrarse';
@@ -69,6 +85,12 @@ class Inicio_controller extends CI_Controller
 		$data['categorias'] = $this->Categorias_model->get_full();
 		$this->load->view('public/contacto', $data);
 	}
+
+	public function cerrar_sesion(){
+		$this->session->set_userdata('login', FALSE);
+		$this->session->sess_destroy();
+		redirect('login');
+  }
 
 	//--------------------------------------------------------------
 	// Validacion del login del admin

@@ -98,7 +98,13 @@ $route['nosotros'] = 'Inicio_controller/nosotros';
 $route['login'] = 'Inicio_controller/login_public';
 $route['registro'] = 'Inicio_controller/register';
 $route['contacto'] = 'Inicio_controller/contact';
+$route['carrito'] = 'Inicio_controller/cart';
+$route['perfil'] = 'Inicio_controller/profile';
+$route['logout'] = 'Inicio_controller/cerrar_sesion';
 
 $route['api/destacados'] = 'public/APISlider/masDestacados';
 $route['api/novedades'] = 'public/APISlider/masNovedades';
 $route['api/ofertas'] = 'public/APISlider/masOfertas';
+
+//APIS
+$route['api/user/login'] = 'public/APIUser/login';

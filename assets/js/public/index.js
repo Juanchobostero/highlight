@@ -5,6 +5,8 @@ const toggle = document.querySelector('.img-toggle');
 const celNav = document.querySelector('.cel-nav');
 const backdrop = document.querySelector('.backdrop');
 const closeToggle = document.querySelector('.nav-close');
+const pageLoader = document.querySelector('.page-loader');
+
 
 //ABRIR MENU TOGGLE
 toggle.addEventListener('click', e => {
@@ -14,6 +16,7 @@ toggle.addEventListener('click', e => {
     backdrop.classList.add('open-backdrop')
   }, 100);
 })
+
 
 //CERRAR MENU TOGGLE
 backdrop.addEventListener('click', e => {
@@ -120,6 +123,8 @@ if (ofertas){
     wrapAround: true,
   });
 
+  document.getElementById('prev-price').style.display="block";
+
   sliderOfertas.on('change', function(index) {
     if(index === sliderOfertas.slides.length - 1){
       if(page < total_pages){
@@ -168,8 +173,103 @@ function cargarMasCells(url, page, slider){
   .fail(ajaxErrors);
 }
 
+///////////////////////////LOGIN//////////////////////////////////////
+function login(e){
+  e.preventDefault();
+  pageLoader.classList.add('page-loader--show');
+  const formData = new FormData(e.target);
+  $.ajax({
+    method: "POST",
+    url: baseUrl + 'api/user/login',
+    data: formData,
+    cache: false,
+    contentType: false,
+    processData: false,
+  })
+  .done(( resp ) => {
+    pageLoader.classList.remove('page-loader--show');
+    data = JSON.parse(resp);
+    if(data.result === 1){
+      Swal.fire("Bienvenido!", data.msg , "success")
+      .then(() => {
+        window.location.href = data.url;
+      });
+    }else{
+      showErrors(data.errors);
+    }
+  })
+  .fail(ajaxErrors);
+}
 
+///////////////////////////REGISTRO//////////////////////////////////////
+function registrarse(e){
+  e.preventDefault();
+  pageLoader.classList.add('page-loader--show');
+  const formData = new FormData(e.target);
+  $.ajax({
+    method: "POST",
+    url: baseUrl + 'api/user/signin',
+    data: formData,
+    cache: false,
+    contentType: false,
+    processData: false,
+  })
+  .done(( resp ) => {
+    pageLoader.classList.remove('page-loader--show');
+    data = JSON.parse(resp);
+    if(data.result === 1){
+      Swal.fire("Bien!", data.msg , "success")
+      .then(() => {
+        window.location.href = data.url;
+      });
+    }else if(data.result === 2){
+      Swal.fire("Error!", data.msg , "error")
+    }else{
+      showErrors(data.errors);
+    }
+  })
+  .fail(ajaxErrors);
+}
 
+//muestra un arreglo de errores en un alert
+function showErrors(errors){
+  ul = document.createElement('ul');
+  for(error in errors){
+    li = document.createElement("li");
+    li.classList.add("list-group-item");
+    li.classList.add("list-group-item-danger");
+    text = document.createTextNode(errors[error]);
+    li.appendChild(text);
+    ul.appendChild(li);
+  }
+ 
+  ul.classList.add("list-group");
+  Swal.fire({
+    title: "Error",
+    text: "Hay errores en el formulario",
+    content: ul,
+    icon: 'error'
+  });
+
+}
+
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(e) {
+if (!e.target.matches('.dropbtn')) {
+
+  var dropdowns = document.getElementsByClassName("dropdown-content");
+  for (var d = 0; d < dropdowns.length; d++) {
+    var openDropdown = dropdowns[d];
+    if (openDropdown.classList.contains('show')) {
+      openDropdown.classList.remove('show');
+    }
+  }
+}
+}
  
 
 function ajaxErrors( jqXHR, textStatus) {

@@ -275,6 +275,27 @@ img.blur {
   border: 0.059rem solid var(--color-grey);
 }
 
+.page-loader{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  opacity: 0;
+  visibility: hidden;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  transition: opacity 0.3s linear;
+}
+
+.page-loader--show{
+  opacity: 1;
+  visibility: visible;
+}
+
 
 
 
