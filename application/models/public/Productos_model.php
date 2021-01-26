@@ -91,7 +91,8 @@ class Productos_model extends CI_Model {
 
   public function get_ofertas($limit, $start){
 
-    $this->db->select('pr.id_producto, pr.nombrePR, pr.precio_ventaPR, pf.foto');
+    $this->db->select('pr.id_producto, pr.nombrePR, pr.precio_ventaPR, pf.foto, 
+                      TRUNCATE(((pr.precio_ventaPR * po.porcentaje) / 100), 2) as precio_nuevo');
     $this->db->from('productos as pr');
     $this->db->join('productos_ofertas as po', 'po.id_produc = pr.id_producto'); 
     $this->db->join('productos_fotos as pf', 'pf.id_prod = pr.id_producto'); 

@@ -1,5 +1,5 @@
 <?php $this->load->view('public/incl/header');?>
 
-CARRITO
+MI PERFIL
 
 <?php $this->load->view('public/incl/footer');?>

@@ -38,7 +38,8 @@
       <nav class="navbar">
         <ul class="navbar-links">
           <li class="navbar-item"><a href="<?=base_url()?>" class="navbar-link">Inicio</a></li>
-          <li id="activa-drop" class="navbar-item"><a id="opcion-prod" class="navbar-link">Productos<img class="flecha-prod" src="<?=base_url('assets/img/public/imgVarios/flecha-prod.png')?>"></img> </a>
+          <li id="activa-drop" class="navbar-item">
+            <a id="opcion-prod" class="navbar-link">Productos<img class="flecha-prod" src="<?=base_url('assets/img/public/imgVarios/flecha-prod.png')?>"></img> </a>
 
             <ul class="navbar-drop">
               <li>
@@ -69,9 +70,26 @@
           <a href="<?=base_url()?>" class="busqueda">
             <img class="icon-lupa" src="<?=base_url('assets/img/public/imgVarios/lupa-icon.jpeg')?>" alt="logo">
           </a>
-          <a href="<?=base_url('login')?>" class="usuario">
+          <?php if($this->session->userdata('login')):?>
+
+            <ul class="user-logout">
+              <li class="dropdown-logout">
+                <a href="javascript:void(0)" class="logout-link" onclick="myFunction()">
+                  <img class="logout-user" src="<?=base_url('assets/img/public/imgVarios/loguin.png')?>" alt="logo">
+                </a>
+                <span class="bad"></span>
+                <div class="dropdown-content" id="myDropdown">
+                  <a href="<?=base_url('perfil')?>" class="navbar-drop-link" id="categoria">Mi perfil</a>
+                  <a href="<?=base_url('logout')?>" class="navbar-drop-link" id="categoria">Salir</a>
+                </div>
+              </li>
+            </ul>
+          <?php else:?>
+            <a href="<?=base_url('login')?>" class="usuario">
             <img class="icon-user" src="<?=base_url('assets/img/public/imgVarios/loguin.png')?>" alt="logo">
-          </a>
+            </a>
+          <?php endif?>
+          
           <a href="<?=base_url()?>" class="carrito">
             <img class="icon-cart" src="<?=base_url('assets/img/public/imgVarios/carrito-vector.png')?>" alt="logo">
           </a>

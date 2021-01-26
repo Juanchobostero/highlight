@@ -12,7 +12,7 @@
         <span class="title-secondary">Fácil y rápido</span>
     </div>
 
-    <form class="form">
+    <form onsubmit="login(event)" class="form">
         <div class="form-group">
             <input class="mail" type="mail" name="correo" placeholder="Correo electrónico">
         </div>
