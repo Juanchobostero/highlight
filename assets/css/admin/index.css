@@ -7,3 +7,17 @@
 	background-size: cover;
 	opacity: 0.8;
 }
+
+.single-line p {
+	display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+.unread {
+	background-color: #c5c5c5;
+}
+
+.unread td {
+	font-weight: 600;
+}

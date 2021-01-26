@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-01-2021 a las 15:50:41
+-- Tiempo de generación: 26-01-2021 a las 01:38:29
 -- Versión del servidor: 10.4.13-MariaDB
 -- Versión de PHP: 7.4.7
 
@@ -108,6 +108,31 @@ INSERT INTO `marcas` (`id_marca`, `descripcionM`) VALUES
 (1, 'INTERELEC'),
 (2, 'OMAHA'),
 (3, 'TOTAL');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mensajes`
+--
+
+CREATE TABLE `mensajes` (
+  `id_mensaje` int(11) NOT NULL,
+  `nombre` varchar(255) NOT NULL,
+  `correo` varchar(255) NOT NULL,
+  `teléfono` varchar(255) NOT NULL,
+  `motivo` varchar(255) NOT NULL,
+  `mensaje` text NOT NULL,
+  `fecha_envio` datetime NOT NULL,
+  `estado_mensaje` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `mensajes`
+--
+
+INSERT INTO `mensajes` (`id_mensaje`, `nombre`, `correo`, `teléfono`, `motivo`, `mensaje`, `fecha_envio`, `estado_mensaje`) VALUES
+(1, 'Pedro', 'pedro@ndd.com.ar', '3425162658', 'Consulta', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit dolor maxime esse sapiente nihil tempore autem quidem necessitatibus, doloremque sint cupiditate aliquid. Eaque, est non quos ipsam quo repellat voluptate.', '2021-01-25 18:52:26', 0),
+(2, 'Juan', 'ge@mmm.com.ar', '3435552676', 'Precio de producto', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque doloremque eius nisi harum temporibus minus quibusdam consequatur ea quam quasi corporis repudiandae deleniti incidunt iste quidem, vel minima ex veniam!', '2021-01-25 19:16:04', 1);
 
 -- --------------------------------------------------------
 
@@ -398,6 +423,12 @@ ALTER TABLE `marcas`
   ADD PRIMARY KEY (`id_marca`);
 
 --
+-- Indices de la tabla `mensajes`
+--
+ALTER TABLE `mensajes`
+  ADD PRIMARY KEY (`id_mensaje`);
+
+--
 -- Indices de la tabla `portadas`
 --
 ALTER TABLE `portadas`
@@ -502,6 +533,12 @@ ALTER TABLE `imagenes`
 --
 ALTER TABLE `marcas`
   MODIFY `id_marca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `mensajes`
+--
+ALTER TABLE `mensajes`
+  MODIFY `id_mensaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `portadas`

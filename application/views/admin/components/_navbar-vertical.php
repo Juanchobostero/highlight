@@ -94,9 +94,26 @@
 						</li>
 					</ul>
 				</li>
+				<!-- <li class="nav-header">MOVIMIENTOS</li>
+				<li class="nav-item">
+					<a href="<?//= base_url('admin/usuarios'); ?>" class="nav-link <?//= ($act == '1U') ? 'active' : '' ?>">
+						<i class="nav-icon fas fa-users-cog"></i>
+						<p>Pedidos</p>
+					</a>
+				</li> -->
+				<li class="nav-header">MENSAJES</li>
+				<li class="nav-item">
+					<a href="<?= base_url('admin/mensajes'); ?>" class="nav-link <?= ($act == '8Msj') ? 'active' : '' ?>">
+						<i class="nav-icon fas fa-envelope"></i>
+						<p>
+							Mensajes
+							<span class="badge badge-info right">2</span>
+						</p>
+					</a>
+				</li>
 				<!-- <li class="nav-header">ESTADISTICAS</li>
 				<li class="nav-item">
-					<a href="<?//= base_url('admin/inventario'); ?>" class="nav-link <?//= ($act == '6Inv') ? 'active' : '' ?>">
+					<a href="<?//= base_url('admin/inventario'); ?>" class="nav-link <?//= ($act == '8Inv') ? 'active' : '' ?>">
 						<i class="nav-icon fas fa-boxes"></i>
 						<p>
 							Inventario

@@ -40,6 +40,8 @@ $route = array(
 	'altaMarca'							=> 'admin/Marcas_controller/crear',
 	'editarMarca/(:num)'		=> 'admin/Marcas_controller/editar/$1',
 
+	'admin/mensajes'	=> 'admin/Mensajes_controller',
+
 	'admin/portadas'					=> 'admin/Portadas_controller',
 	'admin/portadas/(:any)' 	=> 'admin/Portadas_controller/getPortadas/$1',
 	'frmNuevaPortada'					=> 'admin/Portadas_controller/frmNueva',
