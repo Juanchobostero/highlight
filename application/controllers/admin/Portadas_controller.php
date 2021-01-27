@@ -17,6 +17,8 @@ class Portadas_controller extends CI_Controller
 		$data['act'] = '4Port';
 		$data['act_desplegado'] = '';
 		$data['item_desplegado'] = '';
+		$data['msjs_ult_tres'] = $this->Mensajes->get_mensajes_ult_tres();
+		$data['msj_no_leidos'] = $this->Mensajes->get_mensajes_no_leidos();
 		$this->load->view('admin/portadas/index', $data);
 	}
 
@@ -82,12 +84,12 @@ class Portadas_controller extends CI_Controller
 				$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Portada creada con éxito.', 'tabs' => 'portadas', 'tab' => $tab]));
 				return;
 			} else {
-				$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'msj' => 'Ha ocurrido un error al intentar crear una nueva portada.']));
+				$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'errores' => ['No se pudo crear la portada. Intente más tarde!']]));
 				return;
 			}
 		endif;
 
-		$this->output->set_output(json_encode(['result' => 3, 'titulo' => 'Ooops.. error!', 'errores' => $this->form_validation->error_array()]));
+		$this->output->set_output(json_encode(['result' => 3, 'titulo' => 'Ooops.. controle!', 'errores' => $this->form_validation->error_array()]));
 		return;
 	} // fin de metodo crear
 
@@ -122,12 +124,12 @@ class Portadas_controller extends CI_Controller
 				$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Portada actualizada con éxito.', 'tabs' => 'portadas', 'tab' => $tab]));
 				return;
 			} else {
-				$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'msj' => 'Ha ocurrido un error al intentar actualizar una portada.']));
+				$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'errores' => ['No se pudo actualizar la portada. Intente más tarde!']]));
 				return;
 			}
 		endif;
 
-		$this->output->set_output(json_encode(['result' => 3, 'titulo' => 'Ooops.. error!', 'errores' => $this->form_validation->error_array()]));
+		$this->output->set_output(json_encode(['result' => 3, 'titulo' => 'Ooops.. controle!', 'errores' => $this->form_validation->error_array()]));
 		return;
 	} // fin de metodo editar
 
@@ -150,7 +152,7 @@ class Portadas_controller extends CI_Controller
 			$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Portada ' . $msj]));
 			return;
 		}
-		$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Error', 'msj' => 'Intente más tarde.', 'est' => $prom]));
+		$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'errores' => ['No se pudo llevar a cabo la operación. Intente más tarde!']]));
 		return;
 	}
 
@@ -165,7 +167,7 @@ class Portadas_controller extends CI_Controller
 			$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Portada eliminada!']));
 			return;
 		}
-		$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Error', 'msj' => 'Intente más tarde.']));
+		$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'errores' => ['No se pudo eliminar la portada. Intente más tarde!']]));
 		return;
 	}
 }

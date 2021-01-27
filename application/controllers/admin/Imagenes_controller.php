@@ -18,6 +18,8 @@ class Imagenes_controller extends CI_Controller
 		$data['act'] = '3Img';
 		$data['act_desplegado'] = '';
 		$data['item_desplegado'] = '';
+		$data['msjs_ult_tres'] = $this->Mensajes->get_mensajes_ult_tres();
+		$data['msj_no_leidos'] = $this->Mensajes->get_mensajes_no_leidos();
 		$data['imagenes'] = $this->Imagenes->get_imagenes();
 		$this->load->view('admin/imagenes/index', $data);
 	}
@@ -50,7 +52,7 @@ class Imagenes_controller extends CI_Controller
 			$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Imágenes actualizadas.', 'url' => base_url('admin/imagenes')]));
 			return;
 		} else {
-			$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'msj' => 'Ha ocurrido un error al intentar actualizar las imágenes.']));
+			$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'errores' => ['No se pudo actualizar las imágenes. Intente más tarde!']]));
 			return;
 		}
 	} // fin de metodo editar

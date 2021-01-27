@@ -18,6 +18,8 @@ class Productos_controller extends CI_Controller
 		$data['act'] = '5_2Prod';
 		$data['act_desplegado'] = 'active';
 		$data['item_desplegado'] = 'menu-is-opening menu-open';
+		$data['msjs_ult_tres'] = $this->Mensajes->get_mensajes_ult_tres();
+		$data['msj_no_leidos'] = $this->Mensajes->get_mensajes_no_leidos();
 		$this->load->view('admin/productos/index', $data);
 	}
 
@@ -109,12 +111,12 @@ class Productos_controller extends CI_Controller
 				$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Producto creado con éxito.', 'tabs' => 'productos', 'tab' => 'activos']));
 				return;
 			} else {
-				$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'msj' => 'Ha ocurrido un error al intentar crear un nuevo producto.']));
+				$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'errores' => ['No se pudo crear el producto. Intente más tarde!']]));
 				return;
 			}
 		endif;
 
-		$this->output->set_output(json_encode(['result' => 3, 'titulo' => 'Ooops.. error!', 'errores' => $this->form_validation->error_array()]));
+		$this->output->set_output(json_encode(['result' => 3, 'titulo' => 'Ooops.. controle!', 'errores' => $this->form_validation->error_array()]));
 		return;
 	}
 
@@ -165,12 +167,12 @@ class Productos_controller extends CI_Controller
 				$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Producto actualizado con éxito.', 'tabs' => 'productos', 'tab' => 'activos']));
 				return;
 			} else {
-				$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'msj' => 'Ha ocurrido un error al intentar actualizar un producto.']));
+				$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'errores' => ['No se pudo actualizar el producto. Intente más tarde!']]));
 				return;
 			}
 		endif;
 
-		$this->output->set_output(json_encode(['result' => 3, 'titulo' => 'Ooops.. error!', 'errores' => $this->form_validation->error_array()]));
+		$this->output->set_output(json_encode(['result' => 3, 'titulo' => 'Ooops.. controle!', 'errores' => $this->form_validation->error_array()]));
 		return;
 	}
 
@@ -193,7 +195,7 @@ class Productos_controller extends CI_Controller
 			$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Producto ' . $msj]));
 			return;
 		}
-		$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Error', 'msj' => 'Intente más tarde.']));
+		$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'errores' => ['No se pudo llevar a cabo la operación. Intente más tarde!']]));
 		return;
 	}
 
@@ -208,7 +210,7 @@ class Productos_controller extends CI_Controller
 			$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Producto eliminado!']));
 			return;
 		}
-		$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Error', 'msj' => 'Intente más tarde.']));
+		$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'errores' => ['No se pudo eliminar el producto. Intente más tarde!']]));
 		return;
 	}
 

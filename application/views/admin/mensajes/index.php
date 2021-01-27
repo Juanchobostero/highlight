@@ -6,28 +6,29 @@
 
 	<!-- Main content -->
 	<section class="content">
-		<div class="row">
-			<div class="col-12">
-				<div class="card card-primary card-outline">
-					<div class="card-header">
-						<h3 class="card-title">Inbox</h3>
-					</div>
-					<!-- /.card-header -->
-					<div class="card-body p-0">
-						<div class="table-responsive mailbox-messages">
-							<?php $this->load->view('admin/mensajes/_tblMensajes'); ?>
-
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-12">
+					<div class="card card-primary card-outline">
+						<div class="card-body">
+							<div>
+								<?php $this->load->view('admin/mensajes/_tblMensajes'); ?>
+							</div>
+							<!-- /.mail-box-messages -->
 						</div>
-						<!-- /.mail-box-messages -->
+						<!-- /.card-body -->
 					</div>
-					<!-- /.card-body -->
+					<!-- /.card -->
 				</div>
-				<!-- /.card -->
+				<!-- /.col -->
 			</div>
-			<!-- /.col -->
+			<!-- /.row -->
 		</div>
-		<!-- /.row -->
 	</section><!-- /.content -->
 </div>
 
 <?php $this->load->view('admin/components/footer'); ?>
+
+<script>
+	formatoTabla('table');
+</script>

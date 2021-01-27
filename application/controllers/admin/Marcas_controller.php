@@ -18,6 +18,8 @@ class Marcas_controller extends CI_Controller
 		$data['act'] = '5_1Mar';
 		$data['act_desplegado'] = 'active';
 		$data['item_desplegado'] = 'menu-is-opening menu-open';
+		$data['msjs_ult_tres'] = $this->Mensajes->get_mensajes_ult_tres();
+		$data['msj_no_leidos'] = $this->Mensajes->get_mensajes_no_leidos();
 		$this->load->view('admin/marcas/index', $data);
 	}
 
@@ -75,12 +77,12 @@ class Marcas_controller extends CI_Controller
 				$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Marca creada con éxito.', 'tabs' => 'marcas', 'tab' => 'activas']));
 				return;
 			} else {
-				$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'msj' => 'Ha ocurrido un error al intentar crear una nueva marca.']));
+				$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'errores' => ['No se pudo crear la marca. Intente más tarde!']]));
 				return;
 			}
 		endif;
 
-		$this->output->set_output(json_encode(['result' => 3, 'titulo' => 'Ooops.. error!', 'errores' => $this->form_validation->error_array()]));
+		$this->output->set_output(json_encode(['result' => 3, 'titulo' => 'Ooops.. controle!', 'errores' => $this->form_validation->error_array()]));
 		return;
 	} // fin de metodo crear
 
@@ -109,12 +111,12 @@ class Marcas_controller extends CI_Controller
 				$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Marca actualizada con éxito.', 'tabs' => 'marcas', 'tab' => 'activas']));
 				return;
 			} else {
-				$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'msj' => 'Ha ocurrido un error al intentar actualizar la marca.']));
+				$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'errores' => ['No se pudo actualizar la marca. Intente más tarde!']]));
 				return;
 			}
 		endif;
 
-		$this->output->set_output(json_encode(['result' => 3, 'titulo' => 'Ooops.. error!', 'errores' => $this->form_validation->error_array()]));
+		$this->output->set_output(json_encode(['result' => 3, 'titulo' => 'Ooops.. controle!', 'errores' => $this->form_validation->error_array()]));
 		return;
 	} // fin de metodo editar
 }

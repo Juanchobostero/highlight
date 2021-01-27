@@ -38,6 +38,7 @@ function formatoTabla(tabla) {
 	return $(tabla).DataTable({
 		responsive: true,
 		autoWidth: false,
+		order: [],
 		language: {
 			processing: "Procesando...",
 			search: "Buscar",
@@ -243,7 +244,7 @@ function validFormMod(e, metodo, form = '') {
 				$('#cerrarModal').click();
 			}
 			else {
-				mostrarErrors('Oops... verifique los datos', data.errores);
+				mostrarErrors(data.titulo, data.errores);
 			}
 		},
 		error: ajaxErrors,
@@ -320,7 +321,7 @@ function validFormPage(e, metodo) {
 				setTimeout(() => window.location.href = data.url, 1500);
 			}
 			else {
-				mostrarErrors('Oops... verifique los datos', data.errores);
+				mostrarErrors(data.titulo, data.errores);
 			}
 		},
 		error: ajaxErrors,
@@ -369,7 +370,7 @@ function habDes(e, metodo, est, titulo, msj) {
 					$(e).closest('tr').fadeOut(1200);
 				}
 				else {
-					mostrarError(data.titulo, data.msj);
+					mostrarErrors(data.titulo, data.errores);
 				}
 			}, 'json').fail(ajaxErrors);
 		}
@@ -387,6 +388,9 @@ function manejoSwitch(e, id, metodo, del = true) {
 			if (del) $(e).closest('tr').fadeOut(1200);
 			return;
 		}
+		else {
+			mostrarErrors(data.titulo, data.errores);
+		}
 	}, 'json')
 		.fail(ajaxErrors);
 }
@@ -398,6 +402,9 @@ function dejarDestacar(e, metodo, del = true) {
 			mostrarToast('success', data.titulo, data.msj);
 			if (del) $(e).closest('tr').fadeOut(1200);
 			return;
+		}
+		else {
+			mostrarErrors(data.titulo, data.errores);
 		}
 	}, 'json')
 		.fail(ajaxErrors);

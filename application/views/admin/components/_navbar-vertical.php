@@ -107,7 +107,9 @@
 						<i class="nav-icon fas fa-envelope"></i>
 						<p>
 							Mensajes
-							<span class="badge badge-info right">2</span>
+							<?php if ($msj_no_leidos > 0) : ?>
+								<span class="badge badge-info right"><?= $msj_no_leidos; ?></span>
+							<?php endif; ?>
 						</p>
 					</a>
 				</li>

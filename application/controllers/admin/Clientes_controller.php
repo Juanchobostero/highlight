@@ -18,6 +18,8 @@ class Clientes_controller extends CI_Controller
 		$data['act'] = '2C';
 		$data['act_desplegado'] = '';
 		$data['item_desplegado'] = '';
+		$data['msjs_ult_tres'] = $this->Mensajes->get_mensajes_ult_tres();
+		$data['msj_no_leidos'] = $this->Mensajes->get_mensajes_no_leidos();
 		$this->load->view('admin/clientes/index', $data);
 	}
 
@@ -80,12 +82,12 @@ class Clientes_controller extends CI_Controller
 				$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Cliente actualizado con éxito.', 'tabs' => 'clientes', 'tab' => 'activos']));
 				return;
 			} else {
-				$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'msj' => 'Ha ocurrido un error al intentar actualizar un cliente.']));
+				$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'errores' => ['No se pudo actualizar el cliente. Intente más tarde!']]));
 				return;
 			}
 		endif;
 
-		$this->output->set_output(json_encode(['result' => 3, 'titulo' => 'Ooops.. error!', 'errores' => $this->form_validation->error_array()]));
+		$this->output->set_output(json_encode(['result' => 3, 'titulo' => 'Ooops.. controle!', 'errores' => $this->form_validation->error_array()]));
 		return;
 	} // fin de metodo editar
 
@@ -103,7 +105,7 @@ class Clientes_controller extends CI_Controller
 			$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Cliente ' . $msj . '!']));
 			return;
 		}
-		$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Error', 'msj' => 'Intente más tarde.']));
+		$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Error', 'errores' => ['No se pudo llevar a cabo la operación. Intente más tarde!']]));
 		return;
 	}
 }

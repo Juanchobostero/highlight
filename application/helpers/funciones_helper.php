@@ -121,3 +121,35 @@ function verificarTipoArchivo()
 
 	return true;
 }
+
+/**
+ * Envia un email a quien corresponda.
+ * @param array $datosEnvio datos del destinatario del mensaje.
+ * @return boolean true si se envio correctamente o false por lo contrario
+ */
+function enviar_email($datosEnvio)
+{
+	$CI = &get_instance();
+
+	$config = array(
+		'protocol'    => 'smtp',
+		'smtp_host'   => 'ssl://smtp.gmail.com',
+		'smtp_user'   => 'prueba.softcre@gmail.com',
+		'smtp_pass'   => 'prueba123456softcre',
+		'smtp_port'   => '465',
+		'charset'     => 'utf-8',
+		'mailtype'    => 'html',
+		'validate'    => TRUE,
+		'wordwrap'    => TRUE,
+	);
+
+	$CI->email->initialize($config);
+
+	$CI->email->from($datosEnvio['de'], $datosEnvio['titulo']);
+	$CI->email->to($datosEnvio['para']);
+	$CI->email->subject($datosEnvio['asunto']);
+	$CI->email->message($datosEnvio['mensaje']);
+	$CI->email->set_newline("\r\n");
+
+	return $CI->email->send();
+}

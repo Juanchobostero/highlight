@@ -19,6 +19,8 @@ class Usuarios_controller extends CI_Controller
 		$data['act'] = '1U';
 		$data['act_desplegado'] = '';
 		$data['item_desplegado'] = '';
+		$data['msjs_ult_tres'] = $this->Mensajes->get_mensajes_ult_tres();
+		$data['msj_no_leidos'] = $this->Mensajes->get_mensajes_no_leidos();
 		$this->load->view('admin/usuarios/index', $data);
 	}
 
@@ -46,6 +48,8 @@ class Usuarios_controller extends CI_Controller
 		$data['act'] = '';
 		$data['act_desplegado'] = '';
 		$data['item_desplegado'] = '';
+		$data['msjs_ult_tres'] = $this->Mensajes->get_mensajes_ult_tres();
+		$data['msj_no_leidos'] = $this->Mensajes->get_mensajes_no_leidos();
 		$this->load->view('admin/perfil/editarPerfil', $data);
 	}
 
@@ -90,11 +94,11 @@ class Usuarios_controller extends CI_Controller
 				$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Perfil actualizado.', 'url' => base_url('admin')]));
 				return;
 			} else {
-				$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'msj' => 'Ha ocurrido un error al intentar actualizar el perfil de usuario.']));
+				$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'errores' => ['No se pudo actualizar el perfil de usuario. Intente más tarde!']]));
 				return;
 			}
 		}
-		$this->output->set_output(json_encode(['result' => 3, 'titulo' => 'Ooops.. error!', 'errores' => $this->form_validation->error_array()]));
+		$this->output->set_output(json_encode(['result' => 3, 'titulo' => 'Ooops.. controle!', 'errores' => $this->form_validation->error_array()]));
 		return;
 	} // fin de metodo editar
 }
