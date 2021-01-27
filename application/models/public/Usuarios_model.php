@@ -13,6 +13,10 @@ class Usuarios_model extends CI_Model
 		return $this->db->get('usuarios')->result();
 	}
 
+	public function add($data){
+		return $this->db->insert('usuarios',$data);
+	}
+
 	//--------------------------------------------------------------
 	public function get_user_correo($correo)
 	{

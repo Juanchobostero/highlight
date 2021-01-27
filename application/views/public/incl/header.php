@@ -78,7 +78,7 @@
                   <img class="logout-user" src="<?=base_url('assets/img/public/imgVarios/loguin.png')?>" alt="logo">
                 </a>
                 <span class="bad"></span>
-                <div class="dropdown-content" id="myDropdown">
+                <div class="dropdown-content" id="myDropdown" onblur="hideDiv()">
                   <a href="<?=base_url('perfil')?>" class="navbar-drop-link" id="categoria">Mi perfil</a>
                   <a href="<?=base_url('logout')?>" class="navbar-drop-link" id="categoria">Salir</a>
                 </div>
