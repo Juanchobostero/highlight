@@ -6,6 +6,8 @@ const celNav = document.querySelector('.cel-nav');
 const backdrop = document.querySelector('.backdrop');
 const closeToggle = document.querySelector('.nav-close');
 const pageLoader = document.querySelector('.page-loader');
+const menu = document.querySelector('.dropdown-content');
+
 
 
 //ABRIR MENU TOGGLE
@@ -156,6 +158,15 @@ const change = src => {
 }
 
 
+function myFunction() {
+  menu.classList.toggle("show");
+}
+
+function hideDiv() {
+  menu.style.display = 'none';
+}
+
+
 function cargarMasCells(url, page, slider){
   $.ajax({
     method: "GET",
@@ -200,6 +211,7 @@ function login(e){
   })
   .fail(ajaxErrors);
 }
+
 
 ///////////////////////////REGISTRO//////////////////////////////////////
 function registrarse(e){
@@ -246,31 +258,12 @@ function showErrors(errors){
   ul.classList.add("list-group");
   Swal.fire({
     title: "Error",
-    text: "Hay errores en el formulario",
-    content: ul,
+    html: ul,
     icon: 'error'
   });
 
 }
 
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
-
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(e) {
-if (!e.target.matches('.dropbtn')) {
-
-  var dropdowns = document.getElementsByClassName("dropdown-content");
-  for (var d = 0; d < dropdowns.length; d++) {
-    var openDropdown = dropdowns[d];
-    if (openDropdown.classList.contains('show')) {
-      openDropdown.classList.remove('show');
-    }
-  }
-}
-}
- 
 
 function ajaxErrors( jqXHR, textStatus) {
   /* pageLoader.classList.remove('page-loader--show'); */

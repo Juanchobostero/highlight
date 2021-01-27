@@ -13,7 +13,7 @@
         <span class="title-secondary">Fácil y rápido</span>
     </div>
 
-    <form class="form">
+    <form onsubmit="registrarse(event)" class="form">
         <div class="form-group">
             <input class="mail" type="mail" name="correo" placeholder="Correo electrónico">
         </div>
@@ -21,14 +21,14 @@
             <input class="password" type="password" name="pass" placeholder="Contraseña">
         </div>
         <div class="form-group">
-            <input class="password" type="password" name="pass" placeholder="*Confirmar contraseña">
+            <input class="password" type="password" name="pass2" placeholder="*Confirmar contraseña">
         </div>
         <!-- <div class="lost-pass">
             <select name="prov" id="prov"></select>
             <select name="loc" id="loc"></select>
         </div> -->
         <div class="buttons">
-            <button class="btn-register">Registrate</button>
+            <button type="submit" class="btn-register">Registrate</button>
         </div>
     </form>
 </section>
