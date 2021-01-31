@@ -3,10 +3,12 @@ const baseUrl = 'http://localhost/highlight/';
 
 const toggle = document.querySelector('.img-toggle');
 const celNav = document.querySelector('.cel-nav');
+const navLinks = document.querySelectorAll('.nav-link');
 const backdrop = document.querySelector('.backdrop');
 const closeToggle = document.querySelector('.nav-close');
 const pageLoader = document.querySelector('.page-loader');
 const menu = document.querySelector('.dropdown-content');
+const userMenu = document.querySelector('.sub-nav-links');
 
 
 
@@ -17,7 +19,7 @@ toggle.addEventListener('click', e => {
   setTimeout(() => {
     backdrop.classList.add('open-backdrop')
   }, 100);
-})
+});
 
 
 //CERRAR MENU TOGGLE
@@ -27,7 +29,7 @@ backdrop.addEventListener('click', e => {
   setTimeout(() => {
     backdrop.classList.remove('open-backdrop')
   }, 100);
-})
+});
 
 closeToggle.addEventListener('click', e => {
   celNav.style.display = 'none';
@@ -35,7 +37,9 @@ closeToggle.addEventListener('click', e => {
   setTimeout(() => {
     backdrop.classList.remove('open-backdrop')
   }, 100);
-})
+});
+
+
 
 
 
@@ -162,6 +166,10 @@ function myFunction() {
   menu.classList.toggle("show");
 }
 
+function showMenu() {
+  userMenu.classList.toggle("show-nav");
+}
+
 function hideDiv() {
   menu.style.display = 'none';
 }
@@ -243,6 +251,36 @@ function registrarse(e){
   .fail(ajaxErrors);
 }
 
+///////////////////////////ENVIAR CONSULTA/MENSAJE//////////////////////////////////////
+function enviarConsulta(e){
+  e.preventDefault();
+  pageLoader.classList.add('page-loader--show');
+  const formData = new FormData(e.target);
+  $.ajax({
+    method: "POST",
+    url: baseUrl + 'message',
+    data: formData,
+    cache: false,
+    contentType: false,
+    processData: false,
+  })
+  .done(( resp ) => {
+    pageLoader.classList.remove('page-loader--show');
+    data = JSON.parse(resp);
+    if(data.result === 1){
+      Swal.fire("Bien!", data.msg , "success")
+      .then(() => {
+        window.location.href = data.url;
+      });
+    }else if(data.result === 2){
+      Swal.fire("Error!", data.msg , "error")
+    }else{
+      showErrors(data.errors);
+    }
+  })
+  .fail(ajaxErrors);
+}
+
 //muestra un arreglo de errores en un alert
 function showErrors(errors){
   ul = document.createElement('ul');
@@ -263,6 +301,7 @@ function showErrors(errors){
   });
 
 }
+
 
 
 function ajaxErrors( jqXHR, textStatus) {

@@ -84,19 +84,29 @@ img{
 
 
 .portada-herramientas {
-  grid-area: portada_herramientas;  
-  margin: auto 0;
+  grid-area: portada_herramientas;
+  width: 80%;  
   margin-top: 1rem;
   margin-bottom: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 
 
-.portada_iluminacion {
+.portada-iluminacion {
   grid-area: portada_iluminacion;
-  margin: auto 0;
+  width: 80%;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.portada-herramientas, .portada-iluminacion {
+  display:flex;
+  justify-self: center;
+  justify-items: center;
 }
 
 
@@ -108,6 +118,7 @@ img{
   overflow: hidden;
   width: 100%;
   height: auto;
+  
 }
 
 .jumbotron .jumbo-container {
@@ -214,6 +225,17 @@ img.blur {
 .password {
   width: 22rem;
   height: 3rem;
+  background-color: var(--color-grey);
+  font-weight: 800;
+  padding-left: 0.6rem;
+  font-size: 1rem;
+  border-radius: 0.3rem;
+  border: 0.059rem solid var(--color-grey);
+}
+
+.mensaje {
+  width: 22rem;
+  height: 6rem;
   background-color: var(--color-grey);
   font-weight: 800;
   padding-left: 0.6rem;

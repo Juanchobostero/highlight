@@ -11,7 +11,7 @@
         <hr class="contacto-hr">
     </div>
 
-    <form class="form">
+    <form class="form" onsubmit="enviarConsulta(event)">
         <div class="form-group">
             <input class="name" type="text" name="nombre" placeholder="Nombre">
         </div>
@@ -22,10 +22,10 @@
             <input class="telefono" type="text" name="telefono" placeholder="Telefono">
         </div>
         <div class="form-group">
-            <input class="password" type="password" name="pass" placeholder="Contraseña">
+            <textarea class="mensaje" name="mensaje" placeholder="mensaje"></textarea>
         </div>
         <div class="buttons">
-            <button class="btn-register">Enviar</button>
+            <button type="submit" class="btn-register">Enviar</button>
         </div>
     </form>
 </section>

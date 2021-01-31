@@ -106,6 +106,8 @@ $route['carrito'] = 'Inicio_controller/cart';
 $route['perfil'] = 'Inicio_controller/profile';
 $route['logout'] = 'Inicio_controller/cerrar_sesion';
 
+$route['message'] = 'public/Consultas_controller/mensaje';
+
 $route['api/destacados'] = 'public/APISlider/masDestacados';
 $route['api/novedades'] = 'public/APISlider/masNovedades';
 $route['api/ofertas'] = 'public/APISlider/masOfertas';
@@ -113,3 +115,4 @@ $route['api/ofertas'] = 'public/APISlider/masOfertas';
 //APIS
 $route['api/user/login'] = 'public/APIUser/login';
 $route['api/user/signin'] = 'public/APIUser/signin';
+
