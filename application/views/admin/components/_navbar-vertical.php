@@ -28,6 +28,36 @@
 						<p>Dashboard</p>
 					</a>
 				</li>
+				<li class="nav-header">INSTITUCIONAL</li>
+				<li class="nav-item <?= ($desplegado == 'ins') ? 'menu-is-opening menu-open' : ''; ?>">
+					<a href="#" class="nav-link <?= ($desplegado == 'ins') ? 'active' : ''; ?>">
+						<i class="nav-icon fas fa-university"></i>
+						<p>
+							Institucional
+							<i class="right fas fa-angle-left"></i>
+						</p>
+					</a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item">
+							<a href="<?= base_url('admin/nosotros'); ?>" class="nav-link <?= ($act == '0_1Nos') ? 'active' : '' ?>">
+								<i class="nav-icon fas fa-users"></i>
+								<p>Nosotros</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="<?= base_url('admin/terminos-y-condiciones'); ?>" class="nav-link <?= ($act == '0_2Ter') ? 'active' : '' ?>">
+								<i class="nav-icon fas fa-american-sign-language-interpreting"></i>
+								<p>Términos y condiciones</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="<?= base_url('admin/politica-de-privacidad'); ?>" class="nav-link <?= ($act == '0_3Pri') ? 'active' : '' ?>">
+								<i class="nav-icon fas fa-shield-alt"></i>
+								<p>Políticas de privacidad</p>
+							</a>
+						</li>
+					</ul>
+				</li>
 				<li class="nav-header">GESTIÓN</li>
 				<!-- <li class="nav-item">
 					<a href="<?//= base_url('admin/usuarios'); ?>" class="nav-link <?//= ($act == '1U') ? 'active' : '' ?>">
@@ -53,8 +83,8 @@
 						<p>Portadas</p>
 					</a>
 				</li>
-				<li class="nav-item <?= $item_desplegado; ?>">
-					<a href="#" class="nav-link <?= $act_desplegado; ?>">
+				<li class="nav-item <?= ($desplegado == 'prod') ? 'menu-is-opening menu-open' : ''; ?>">
+					<a href="#" class="nav-link <?= ($desplegado == 'prod') ? 'active' : ''; ?>">
 						<i class="nav-icon fas fa-gifts"></i>
 						<p>
 							Productos

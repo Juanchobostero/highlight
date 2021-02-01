@@ -30,6 +30,11 @@ $route = array(
 	'admin/imagenes' 				=> 'admin/Imagenes_controller',
 	'editarImagenes/(:num)'	=> 'admin/Imagenes_controller/editar/$1',
 
+	'admin/nosotros'								=> 'admin/Institucional_controller/nosotros',
+	'admin/terminos-y-condiciones'	=> 'admin/Institucional_controller/terminos',
+	'admin/politica-de-privacidad'	=> 'admin/Institucional_controller/politica',
+	'editarInstitucional/(:num)'		=> 'admin/Institucional_controller/editar/$1',
+
 	'admin/inventario'			=> 'admin/Inventario_controller',
 	
 	'admin/marcas'					=> 'admin/Marcas_controller',

@@ -22,6 +22,7 @@ $autoload['language'] = array();
 $autoload['model'] = array(
 	'admin/Categorias',
 	'admin/Imagenes',
+	'admin/Institucional',
 	'admin/Marcas',
 	'admin/Mensajes', 
     'admin/Portadas', 

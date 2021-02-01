@@ -17,8 +17,7 @@ class Usuarios_controller extends CI_Controller
 	{
 		$data['title'] = 'Usuarios';
 		$data['act'] = '1U';
-		$data['act_desplegado'] = '';
-		$data['item_desplegado'] = '';
+		$data['desplegado'] = '';
 		$data['msjs_ult_tres'] = $this->Mensajes->get_mensajes_ult_tres();
 		$data['msj_no_leidos'] = $this->Mensajes->get_mensajes_no_leidos();
 		$this->load->view('admin/usuarios/index', $data);
@@ -46,8 +45,7 @@ class Usuarios_controller extends CI_Controller
 	{
 		$data['title'] = 'Perfil';
 		$data['act'] = '';
-		$data['act_desplegado'] = '';
-		$data['item_desplegado'] = '';
+		$data['desplegado'] = '';
 		$data['msjs_ult_tres'] = $this->Mensajes->get_mensajes_ult_tres();
 		$data['msj_no_leidos'] = $this->Mensajes->get_mensajes_no_leidos();
 		$this->load->view('admin/perfil/editarPerfil', $data);

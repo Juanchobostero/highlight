@@ -16,8 +16,7 @@ class Productos_controller extends CI_Controller
 	{
 		$data['title'] = 'Productos';
 		$data['act'] = '5_2Prod';
-		$data['act_desplegado'] = 'active';
-		$data['item_desplegado'] = 'menu-is-opening menu-open';
+		$data['desplegado'] = 'prod';
 		$data['msjs_ult_tres'] = $this->Mensajes->get_mensajes_ult_tres();
 		$data['msj_no_leidos'] = $this->Mensajes->get_mensajes_no_leidos();
 		$this->load->view('admin/productos/index', $data);

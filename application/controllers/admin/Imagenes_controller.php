@@ -16,8 +16,7 @@ class Imagenes_controller extends CI_Controller
 	{
 		$data['title'] = 'Imágenes';
 		$data['act'] = '3Img';
-		$data['act_desplegado'] = '';
-		$data['item_desplegado'] = '';
+		$data['desplegado'] = '';
 		$data['msjs_ult_tres'] = $this->Mensajes->get_mensajes_ult_tres();
 		$data['msj_no_leidos'] = $this->Mensajes->get_mensajes_no_leidos();
 		$data['imagenes'] = $this->Imagenes->get_imagenes();

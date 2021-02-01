@@ -8,12 +8,8 @@
 			<div class="col-sm-6">
 				<ol class="breadcrumb float-sm-right">
 					<li class="breadcrumb-item"><a href="#">Home</a></li>
-					<?php if ($lectura) : ?>
-						<li class="breadcrumb-item"><a href="<?= base_url('admin/mensajes'); ?>">Mensajes</a></li>
-						<li class="breadcrumb-item active">Lectura de Mensaje</li>
-					<?php else : ?>
-						<li class="breadcrumb-item active">Mensajes</li>
-					<?php endif; ?>
+					<li class="breadcrumb-item"><a href="#">Institucional</a></li>
+					<li class="breadcrumb-item active"><?= $title; ?></li>
 				</ol>
 			</div>
 		</div>

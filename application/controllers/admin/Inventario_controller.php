@@ -16,8 +16,7 @@ class Inventario_controller extends CI_Controller
 	{
 		$data['title'] = 'Inventario';
 		$data['act'] = '8Inv';
-		$data['act_desplegado'] = '';
-		$data['item_desplegado'] = '';
+		$data['desplegado'] = '';
 		$data['inventario'] = $this->Productos->get_inventario();
 		$this->load->view('admin/inventario/index', $data);
 	}

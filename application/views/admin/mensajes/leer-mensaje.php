@@ -36,7 +36,6 @@
 							<div class="float-right">
 								<button type="button" id="responder" class="btn btn-default"><i class="fas fa-reply"></i> Responder</button>
 							</div>
-							<button type="button" class="btn btn-default"><i class="fas fa-print"></i> Print</button>
 						</div>
 						<!-- /.card-footer -->
 					</div>
@@ -48,7 +47,7 @@
 									<div class="form-group row">
 										<label for="para" class="col-sm-2 col-form-label">Para</label>
 										<div class="col-sm-10">
-											<input type="email" id="para" name="para" class="form-control"  placeholder="Introduce un email ... " value="<?= $msj->correo; ?>">
+											<input type="email" id="para" name="para" class="form-control" placeholder="Introduce un email ... " value="<?= $msj->correo; ?>">
 										</div>
 									</div>
 									<div class="form-group row">
@@ -70,7 +69,7 @@
 						<!-- /.card-body -->
 						<div class="card-footer p-2">
 							<div class="float-right">
-							<button type="submit" id="btnForm" form="resp-mensaje" class="btn btn-primary" name="button">
+								<button type="submit" id="btnForm" form="resp-mensaje" class="btn btn-primary" name="button">
 									<div id="cargandoSpinner" class="d-none">
 										<span class="spinner-grow spinner-grow-sm mr-1" role="status" aria-hidden="true"></span>
 										Enviando...

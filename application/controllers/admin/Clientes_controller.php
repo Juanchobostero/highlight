@@ -16,8 +16,7 @@ class Clientes_controller extends CI_Controller
 	{
 		$data['title'] = 'Clientes';
 		$data['act'] = '2C';
-		$data['act_desplegado'] = '';
-		$data['item_desplegado'] = '';
+		$data['desplegado'] = '';
 		$data['msjs_ult_tres'] = $this->Mensajes->get_mensajes_ult_tres();
 		$data['msj_no_leidos'] = $this->Mensajes->get_mensajes_no_leidos();
 		$this->load->view('admin/clientes/index', $data);

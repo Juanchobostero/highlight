@@ -16,11 +16,9 @@ class Mensajes_controller extends CI_Controller
 	{
 		$data['title'] = 'Mensajes';
 		$data['act'] = '8Msj';
-		$data['act_desplegado'] = '';
-		$data['item_desplegado'] = '';
+		$data['desplegado'] = '';
 		$data['msjs_ult_tres'] = $this->Mensajes->get_mensajes_ult_tres();
 		$data['msj_no_leidos'] = $this->Mensajes->get_mensajes_no_leidos();
-		$data['tit_mensaje'] = 'Mensajes';
 		$data['lectura'] = false;
 		$data['mensajes'] = $this->Mensajes->get_mensajes();
 		$this->load->view('admin/mensajes/index', $data);
@@ -32,11 +30,9 @@ class Mensajes_controller extends CI_Controller
 		$this->Mensajes->actualizar($id_mensaje, ['estado_mensaje' => 1]);
 		$data['title'] = 'Lectura de mensaje';
 		$data['act'] = '8Msj';
-		$data['act_desplegado'] = '';
-		$data['item_desplegado'] = '';
+		$data['desplegado'] = '';
 		$data['msjs_ult_tres'] = $this->Mensajes->get_mensajes_ult_tres();
 		$data['msj_no_leidos'] = $this->Mensajes->get_mensajes_no_leidos();
-		$data['tit_mensaje'] = 'Lectura de mensaje';
 		$data['lectura'] = true;
 		$data['msj'] = $this->Mensajes->get_mensaje($id_mensaje);
 		$this->load->view('admin/mensajes/leer-mensaje', $data);
