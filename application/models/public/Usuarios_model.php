@@ -17,6 +17,11 @@ class Usuarios_model extends CI_Model
 		return $this->db->insert('usuarios',$data);
 	}
 
+	public function set_profile($id, $data) {
+		$this->db->where('id_usuario', $id);
+    	return $this->db->update('usuarios',$data);
+	}
+
 	//--------------------------------------------------------------
 	public function get_user_correo($correo)
 	{

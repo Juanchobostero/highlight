@@ -41,8 +41,6 @@ closeToggle.addEventListener('click', e => {
 
 
 
-
-
 /*/--- DESTACADOS ---/*/
 const destacados = document.querySelector('.slider-destacados');
 if (destacados){
@@ -229,6 +227,36 @@ function registrarse(e){
   $.ajax({
     method: "POST",
     url: baseUrl + 'api/user/signin',
+    data: formData,
+    cache: false,
+    contentType: false,
+    processData: false,
+  })
+  .done(( resp ) => {
+    pageLoader.classList.remove('page-loader--show');
+    data = JSON.parse(resp);
+    if(data.result === 1){
+      Swal.fire("Bien!", data.msg , "success")
+      .then(() => {
+        window.location.href = data.url;
+      });
+    }else if(data.result === 2){
+      Swal.fire("Error!", data.msg , "error")
+    }else{
+      showErrors(data.errors);
+    }
+  })
+  .fail(ajaxErrors);
+}
+
+///////////////////////////REGISTRO//////////////////////////////////////
+function completarPerfil(e){
+  e.preventDefault();
+  pageLoader.classList.add('page-loader--show');
+  const formData = new FormData(e.target);
+  $.ajax({
+    method: "POST",
+    url: baseUrl + 'api/user/complete_profile',
     data: formData,
     cache: false,
     contentType: false,

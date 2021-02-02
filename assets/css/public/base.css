@@ -109,6 +109,19 @@ img{
   justify-items: center;
 }
 
+.foto-user {
+  display: block;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.img-user {
+  width: 8rem;
+  height: 9rem;
+  object-fit: cover;
+  border: 0.65rem solid var(--color-grey);
+}
+
 
 
 .jumbotron {

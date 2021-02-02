@@ -115,4 +115,5 @@ $route['api/ofertas'] = 'public/APISlider/masOfertas';
 //APIS
 $route['api/user/login'] = 'public/APIUser/login';
 $route['api/user/signin'] = 'public/APIUser/signin';
+$route['api/user/complete_profile'] = 'public/APIUser/set_profile';
 

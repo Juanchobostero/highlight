@@ -61,8 +61,8 @@ class APIUser extends CI_Controller {
       $this->session->set_userdata($data);
       $result = 1;
       $msg = 'Bienvenido a Highlight !';
-      if(!$user->nombreU || !$user->apellidoU || !$user->telefonoU || !$user->nickU){
-        $_SESSION['flash_msg'] = 'Completa tu perfil por unica vez para Continuar';
+      if(!$user->nombreU || !$user->apellidoU || !$user->telefonoU){
+        $_SESSION['flash_msg'] = 'Completá tu perfil por única vez para Continuar';
         $this->session->mark_as_flash('flash_msg');
         $url = base_url('perfil');
       }else if($this->cart->total_items() > 0){
@@ -111,6 +111,50 @@ class APIUser extends CI_Controller {
       }else{
         $result = 2;
         $msg = 'No se pudieron guardar los datos. Intente mas tarde!';
+        $this->output->set_output(json_encode(compact('result', 'msg')));
+      }
+
+    }else{
+      $result = 0;
+      $errors = $this->form_validation->error_array();
+      $this->output->set_output(json_encode(compact('result', 'errors')));
+      return;
+    }
+  }
+
+  public function set_profile(){
+    $this->form_validation->set_rules('nombre', 'Nombre de Usuario', 'required');
+    $this->form_validation->set_rules('apellido', 'Apellido de Usuario', 'required');
+    $this->form_validation->set_rules('telefono', 'Telefono de Usuario', 'required');
+    $this->form_validation->set_message("required", "El campo ({field}) es Requerido!");
+
+    if ($this->form_validation->run()){
+      $id = $this->input->post('id_usuario');
+      $data['nombreU'] = $this->input->post('nombre');
+      $data['apellidoU'] = $this->input->post('apellido');
+      $data['telefonoU'] = $this->input->post('telefono');
+
+      if(!empty($_FILES['foto']['name'])) {
+        $nombre_foto = 'foto';
+        $carpeta_foto = 'perfiles';
+        $img_default = 'no-user.jpg';
+        $data['fotoU'] = subirImagen($nombre_foto, $carpeta_foto, $img_default);
+      }
+      
+
+      if($this->Usuarios_model->set_profile($id, $data)){
+        $result = 1;
+        if($this->cart->total()){
+          $url = base_url('carrito');
+        }else{
+          $url = base_url();
+        }
+        $msg = 'Gracias por Completar su perfil, ahora puede seguir Comprando';
+        $this->output->set_output(json_encode(compact('result', 'url', 'msg')));
+        return;
+      }else{
+        $result = 2;
+        $msg = 'No se pudo guardar los datos. Intente mas tarde!';
         $this->output->set_output(json_encode(compact('result', 'msg')));
       }
 

@@ -67,9 +67,17 @@ class Inicio_controller extends CI_Controller
 	//--------------------------------------------------------------
 	// Perfil
 	public function profile(){
-		$data['title'] = 'Mi perfil';
-		$data['categorias'] = $this->Categorias_model->get_full();
-		$this->load->view('public/perfil', $data);
+		$data['title'] = 'Completá tus datos';
+		if(!$this->session->userdata('login')){
+			redirect('login');
+		  }
+		  $usuario = $this->Usuarios_model->get_user($this->session->userdata('id'));
+		  
+		  $data['usuario'] = $usuario;
+		  
+		  $data['categorias'] = $this->Categorias_model->get_full();
+		  $this->load->view('public/perfil', $data);
+		
 	}
 
 	public function register()
