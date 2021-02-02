@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-01-2021 a las 01:38:29
+-- Tiempo de generación: 01-02-2021 a las 23:24:41
 -- Versión del servidor: 10.4.13-MariaDB
 -- Versión de PHP: 7.4.7
 
@@ -92,6 +92,28 @@ INSERT INTO `imagenes` (`id_img`, `imagen_1`, `imagen_2`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `institucional`
+--
+
+CREATE TABLE `institucional` (
+  `id_institucional` int(11) NOT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `descripcion` text NOT NULL,
+  `fecha_update` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `institucional`
+--
+
+INSERT INTO `institucional` (`id_institucional`, `titulo`, `descripcion`, `fecha_update`) VALUES
+(1, 'Nosotros', 'HIGHLIGHT Herramientas e Iluminacion es una empresa joven, que cuenta con 1 sucursal en la ciudad de Quilmes donde de aquí despachamos nuestros productos a todo el pais, nuestro equipo comparte la filosofía de calidad de servicio y atención al cliente. Por esta razón, High Lights se ha ganado un excelente lugar en el mercado a la hora de buscar asesoramiento, garantía y calidad, siendo actualmente uno de los referentes en el rubro de ferretería, máquinas y herramientas y todo tipo de accesorios. Permanentemente tratamos de ofrece una gran variedad de marcas y modelos, precios muy competitivos, opciones de financiación y distintos tipos de bonificaciones en las compras. En esta nueva etapa High Light renueva su sitio web, incorporando su amplio catálogo de productos virtual, para brindar a sus clientes el mejor servicio y asesoramiento como es costumbre. Bienvenidos a nuestro nuevo sitio.HIGH LIGHTS Herramientas e Iluminacion es una empresa joven, que cuenta con 1 sucursal en la ciudad de Quilmes donde de aquí despachamos nuestros productos a todo el pais, nuestro equipo comparte la filosofía de calidad de servicio y atención al cliente. Por esta razón, High Lights se ha ganado un excelente lugar en el mercado a la hora de buscar asesoramiento, garantía y calidad, siendo actualmente uno de los referentes en el rubro de ferretería, máquinas y herramientas y todo tipo de accesorios. Permanentemente tratamos de ofrece una gran variedad de marcas y modelos, precios muy competitivos, opciones de financiación y distintos tipos de bonificaciones en las compras. En esta nueva etapa High Light renueva su sitio web, incorporando su amplio catálogo de productos virtual, para brindar a sus clientes el mejor servicio y asesoramiento como es costumbre. Bienvenidos a nuestro nuevo sitio.', '2021-02-01 11:44:01'),
+(2, 'Terminos y condiciones', '<p>Solo ponga los aqui&nbsp;<span style=\"font-size: 1rem;\">los terminos y condiciones</span></p>', '2021-02-01 19:23:40'),
+(3, 'Politica de Privacidad', 'Aqui y ahora por siempre', '2021-02-01 19:22:14');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `marcas`
 --
 
@@ -131,8 +153,10 @@ CREATE TABLE `mensajes` (
 --
 
 INSERT INTO `mensajes` (`id_mensaje`, `nombre`, `correo`, `teléfono`, `motivo`, `mensaje`, `fecha_envio`, `estado_mensaje`) VALUES
-(1, 'Pedro', 'pedro@ndd.com.ar', '3425162658', 'Consulta', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit dolor maxime esse sapiente nihil tempore autem quidem necessitatibus, doloremque sint cupiditate aliquid. Eaque, est non quos ipsam quo repellat voluptate.', '2021-01-25 18:52:26', 0),
-(2, 'Juan', 'ge@mmm.com.ar', '3435552676', 'Precio de producto', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque doloremque eius nisi harum temporibus minus quibusdam consequatur ea quam quasi corporis repudiandae deleniti incidunt iste quidem, vel minima ex veniam!', '2021-01-25 19:16:04', 1);
+(1, 'Pedro', 'pedro@ndd.com.ar', '3425162658', 'Consulta', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit dolor maxime esse sapiente nihil tempore autem quidem necessitatibus, doloremque sint cupiditate aliquid. Eaque, est non quos ipsam quo repellat voluptate.', '2021-01-25 18:52:26', 1),
+(2, 'Juan', 'ge@mmm.com.ar', '3435552676', 'Precio de producto', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque doloremque eius nisi harum temporibus minus quibusdam consequatur ea quam quasi corporis repudiandae deleniti incidunt iste quidem, vel minima ex veniam!', '2021-01-25 19:16:04', 1),
+(3, 'Rosario', 'rosa@ll.com', '341258562', 'Muy caro todo', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, excepturi voluptas impedit, deserunt in eligendi minima incidunt, libero eaque asperiores repellendus? Non harum cum numquam provident illum qui exercitationem laudantium!', '2021-01-26 19:03:57', 1),
+(4, 'Yo', 'gem_18@live.com', '4212848426', 'Probando ...', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam corporis ea debitis natus et repellat quos voluptatibus nam. Expedita maxime aut, minus animi quidem cupiditate nemo aspernatur voluptates totam? Officia?', '2021-01-27 16:07:07', 1);
 
 -- --------------------------------------------------------
 
@@ -353,7 +377,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `id_tu`, `nombreU`, `apellidoU`, `telefonoU`, `fotoU`, `emailU`, `nickU`, `passwordU`, `estadoU`) VALUES
-(1, 1, 'Guido', 'Muchut', '215484545', 'assets/img/perfiles/no-user.jpg', 'gem_18@live.com', 'guido', '$2y$10$4uSC0/FVz5BJNjBikAD1veXvqWqGAMTzXzT63FNz.nAcPcEDDtFxO', b'1'),
+(1, 1, 'Guido', 'Muchut', '21548454', 'assets/img/perfiles/no-user.jpg', 'gem_18@live.com', 'guido', '$2y$10$4uSC0/FVz5BJNjBikAD1veXvqWqGAMTzXzT63FNz.nAcPcEDDtFxO', b'1'),
 (2, 2, 'Juancho', 'Perez', '41255125', 'assets/img/perfiles/02102020_1601672099.jpg', 'juan_99999@gmail.com', 'juan', '123', b'1');
 
 -- --------------------------------------------------------
@@ -415,6 +439,12 @@ ALTER TABLE `comprasdetalle`
 --
 ALTER TABLE `imagenes`
   ADD PRIMARY KEY (`id_img`);
+
+--
+-- Indices de la tabla `institucional`
+--
+ALTER TABLE `institucional`
+  ADD PRIMARY KEY (`id_institucional`);
 
 --
 -- Indices de la tabla `marcas`
@@ -529,6 +559,12 @@ ALTER TABLE `imagenes`
   MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT de la tabla `institucional`
+--
+ALTER TABLE `institucional`
+  MODIFY `id_institucional` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT de la tabla `marcas`
 --
 ALTER TABLE `marcas`
@@ -538,7 +574,7 @@ ALTER TABLE `marcas`
 -- AUTO_INCREMENT de la tabla `mensajes`
 --
 ALTER TABLE `mensajes`
-  MODIFY `id_mensaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_mensaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `portadas`
