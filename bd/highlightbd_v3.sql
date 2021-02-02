@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-02-2021 a las 04:37:27
+-- Tiempo de generación: 02-02-2021 a las 04:40:26
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.2
 
@@ -2808,6 +2808,7 @@ INSERT INTO `tipousuarios` (`id_tipoUsuario`, `tipo_usuario`) VALUES
 CREATE TABLE `usuarios` (
   `id_usuario` int(11) NOT NULL,
   `id_tu` int(11) NOT NULL,
+  `id_loc` int(11) DEFAULT NULL,
   `nombreU` varchar(50) DEFAULT NULL,
   `apellidoU` varchar(50) DEFAULT NULL,
   `telefonoU` varchar(15) DEFAULT NULL,
@@ -2821,10 +2822,10 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id_usuario`, `id_tu`, `nombreU`, `apellidoU`, `telefonoU`, `fotoU`, `emailU`, `passwordU`, `estadoU`) VALUES
-(1, 1, 'Guido', 'Muchut', '21548454', 'assets/img/perfiles/no-user.jpg', 'admin@hl.com.ar', '$2y$10$4uSC0/FVz5BJNjBikAD1veXvqWqGAMTzXzT63FNz.nAcPcEDDtFxO', b'1'),
-(2, 2, 'Juancho', 'Perez', '41255125', 'assets/img/perfiles/02102020_1601672099.jpg', 'juan_99999@gmail.com', '123', b'1'),
-(3, 2, NULL, NULL, NULL, '', 'luks@gmail.com', '$2y$10$uVaPDEDM/16VX1mdmHpaye6/Rn6O68XBfppL/fHNs3dCVEmNWq8Rm', b'1');
+INSERT INTO `usuarios` (`id_usuario`, `id_tu`, `id_loc`, `nombreU`, `apellidoU`, `telefonoU`, `fotoU`, `emailU`, `passwordU`, `estadoU`) VALUES
+(1, 1, 920, 'Guido', 'Muchut', '21548454', 'assets/img/perfiles/no-user.jpg', 'admin@hl.com.ar', '$2y$10$4uSC0/FVz5BJNjBikAD1veXvqWqGAMTzXzT63FNz.nAcPcEDDtFxO', b'1'),
+(2, 2, 920, 'Juancho', 'Perez', '41255125', 'assets/img/perfiles/02102020_1601672099.jpg', 'juan_99999@gmail.com', '123', b'1'),
+(3, 2, 920, NULL, NULL, NULL, '', 'luks@gmail.com', '$2y$10$uVaPDEDM/16VX1mdmHpaye6/Rn6O68XBfppL/fHNs3dCVEmNWq8Rm', b'1');
 
 -- --------------------------------------------------------
 
@@ -2971,7 +2972,8 @@ ALTER TABLE `tipousuarios`
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id_usuario`),
   ADD UNIQUE KEY `emailU_UNIQUE` (`emailU`),
-  ADD KEY `Usuarios_TipoUsuarios_idx` (`id_tu`);
+  ADD KEY `Usuarios_TipoUsuarios_idx` (`id_tu`),
+  ADD KEY `id_loc` (`id_loc`);
 
 --
 -- Indices de la tabla `ventas`
@@ -3154,7 +3156,8 @@ ALTER TABLE `subcategorias`
 -- Filtros para la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD CONSTRAINT `Usuarios_TipoUsuarios` FOREIGN KEY (`id_tu`) REFERENCES `tipousuarios` (`id_tipoUsuario`);
+  ADD CONSTRAINT `Usuarios_TipoUsuarios` FOREIGN KEY (`id_tu`) REFERENCES `tipousuarios` (`id_tipoUsuario`),
+  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`id_loc`) REFERENCES `localidades` (`id_localidad`);
 
 --
 -- Filtros para la tabla `ventas`
