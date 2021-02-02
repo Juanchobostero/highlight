@@ -55,7 +55,6 @@ class APIUser extends CI_Controller {
         'emailU'    => $user->emailU,
         'id_tu'  => $user->id_tu,
         'estado'  => $user->estadoU,
-        'nickU' => $user->nickU,
         'login'       => TRUE
       ];
       $this->session->set_userdata($data);
