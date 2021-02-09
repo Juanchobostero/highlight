@@ -17,7 +17,7 @@
 
 @media (max-width: 560px) {
     .prod-novedades {
-        margin-bottom: -7rem;
+        margin-bottom: -2rem;
         transform:translateY(-5rem);
     }
 } 

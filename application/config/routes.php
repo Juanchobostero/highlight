@@ -121,4 +121,5 @@ $route['api/ofertas'] = 'public/APISlider/masOfertas';
 $route['api/user/login'] = 'public/APIUser/login';
 $route['api/user/signin'] = 'public/APIUser/signin';
 $route['api/user/complete_profile'] = 'public/APIUser/set_profile';
+$route['api/user/localidades'] = 'public/APIUser/get_prov_localidades';
 

@@ -257,6 +257,52 @@ img.blur {
   border: 0.059rem solid var(--color-grey);
 }
 
+.ubi-box {
+  text-align: center;
+  width: auto;  
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+}
+
+.cmb {
+  display: inline;
+  margin: 1rem auto;
+  width: 11rem;
+  margin-bottom: 3rem;
+}
+
+
+
+#localidad{
+  position: relative;
+}
+
+.ubi-labels {
+  color: var(--menu-links-color);
+  font-weight: 700;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+  margin-bottom: -1rem;
+}
+
+
+.pull-left, .pull-ri {
+  display: inline-block;
+}
+
+.ubi-labels .pull-left {
+  text-align: left;
+  margin-left: -12rem;
+}
+
+.pull-ri {
+  text-align: right;
+  transform: translateX(6rem);
+}
+
+
+
+
 @media (max-width: 768px) {
   .name {
     width: 18rem;
@@ -300,11 +346,35 @@ img.blur {
     border-radius: 0.3rem;
     border: 0.059rem solid var(--color-grey);
   }
+
+  .portada-herramientas, 
+  .portada-iluminacion {
+    width: 100%;  
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  
+
+  .pull-left{
+    text-align: left;
+    padding-left: -10rem;
+    padding-bottom: 0;
+  }
+  
+  
+  .pull-ri {
+    display: block;
+    text-align: left;
+    padding-left: 2.8rem;
+    transform: translateY(6rem);
+  }
+ 
 }
 
 .name:focus,
 .telefono:focus,
-.mail:focus,
+.mail:focu s,
 .password:focus {
   outline: none;
   border: 0.059rem solid var(--color-grey);

@@ -330,6 +330,28 @@ function showErrors(errors){
 
 }
 
+function getLocalidades(e) {
+  let id_prov = e.target.value;
+  pageLoader.classList.add('page-loader--show');
+  $.ajax({
+    method: "POST",
+    url: baseUrl + 'api/user/localidades',
+    data: { id_prov }
+  })
+  .done(( content ) => {
+    pageLoader.classList.remove('page-loader--show');
+    data = JSON.parse(content);
+    if(data.result === 1){
+      $("#localidad").html(data.html);
+      $( "#localidad" ).prop( "disabled", false );
+    }else{
+      console.log('Error....');
+    }
+  })
+  .fail(ajaxErrors);
+
+}
+
 
 
 function ajaxErrors( jqXHR, textStatus) {

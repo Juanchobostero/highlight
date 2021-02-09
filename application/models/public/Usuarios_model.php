@@ -47,4 +47,27 @@ class Usuarios_model extends CI_Model
 		$this->db->where('id_tu', 2);
 		return $this->db->get('usuarios')->num_rows();
 	}
+
+	//--------------------------------------------------------------
+	public function get_localidad($id) {
+		$this->db->where('id_localidad', $id);
+		return $this->db->get('localidades')->row();
+	}
+
+	//--------------------------------------------------------------
+	public function get_provincia($id) {
+		$this->db->where('id_provincia', $id);
+		return $this->db->get('provincias')->row();
+	}
+
+	//--------------------------------------------------------------
+	public function get_prov_localidades($id_prov) {
+		$this->db->where('id_prov', $id_prov);
+		return $this->db->get('localidades')->result();
+	}
+
+	//--------------------------------------------------------------
+	public function get_provincias() {
+		return $this->db->get('provincias')->result();
+	}
 }

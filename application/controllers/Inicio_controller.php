@@ -72,9 +72,18 @@ class Inicio_controller extends CI_Controller
 			redirect('login');
 		  }
 		  $usuario = $this->Usuarios_model->get_user($this->session->userdata('id'));
+		  $usuario->localidad = $this->Usuarios_model->get_localidad($usuario->id_loc);
+
+		  if($usuario->localidad){
+			$usuario->provincia = $this->Usuarios_model->get_provincia($usuario->localidad->id_prov);
+			$data['localidades'] = $this->Usuarios_model->get_prov_localidades($usuario->provincia->id_provincia);
+		  }else{
+			$usuario->provincia = null;
+			$data['localidades'] = null;
+		  }
 		  
 		  $data['usuario'] = $usuario;
-		  
+		  $data['provincias'] = $this->Usuarios_model->get_provincias();
 		  $data['categorias'] = $this->Categorias_model->get_full();
 		  $this->load->view('public/perfil', $data);
 		
