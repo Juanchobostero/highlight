@@ -132,6 +132,7 @@ class APIUser extends CI_Controller {
       $data['nombreU'] = $this->input->post('nombre');
       $data['apellidoU'] = $this->input->post('apellido');
       $data['telefonoU'] = $this->input->post('telefono');
+      $data['id_loc'] = $this->input->post('localidad');
 
       if(!empty($_FILES['foto']['name'])) {
         $nombre_foto = 'foto';
@@ -163,6 +164,14 @@ class APIUser extends CI_Controller {
       $this->output->set_output(json_encode(compact('result', 'errors')));
       return;
     }
+  }
+
+  public function get_prov_localidades() {
+    $id_prov = $this->input->post('id_prov');
+    $data['localidades'] = $this->Usuarios_model->get_prov_localidades($id_prov);
+    $html = $this->load->view('public/ajax/localidades', $data, TRUE);
+    $this->output->set_output(json_encode(['result' => 1, 'html' => $html]));
+    return;
   }
 
   

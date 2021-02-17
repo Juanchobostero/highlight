@@ -19,6 +19,8 @@
         text-align: left;
         padding-left: 7rem;
     }
+
+    
     
     
     .login-banner {
@@ -152,7 +154,12 @@
     .remember a u {
         transform: translateY(10rem);
     }
+    
+
+
 }
+
+
 
 @media (max-width: 768px) {
     .login-main {
