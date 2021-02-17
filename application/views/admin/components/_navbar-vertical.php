@@ -124,13 +124,13 @@
 						</li>
 					</ul>
 				</li>
-				<!-- <li class="nav-header">MOVIMIENTOS</li>
+				<li class="nav-header">MOVIMIENTOS</li>
 				<li class="nav-item">
-					<a href="<?//= base_url('admin/usuarios'); ?>" class="nav-link <?//= ($act == '1U') ? 'active' : '' ?>">
-						<i class="nav-icon fas fa-users-cog"></i>
-						<p>Pedidos</p>
+					<a href="<?= base_url('admin/ventas'); ?>" class="nav-link <?= ($act == '6Vent') ? 'active' : '' ?>">
+						<i class="nav-icon fas fa-shopping-cart"></i>
+						<p>Ventas</p>
 					</a>
-				</li> -->
+				</li>
 				<li class="nav-header">MENSAJES</li>
 				<li class="nav-item">
 					<a href="<?= base_url('admin/mensajes'); ?>" class="nav-link <?= ($act == '8Msj') ? 'active' : '' ?>">
@@ -143,16 +143,19 @@
 						</p>
 					</a>
 				</li>
-				<!-- <li class="nav-header">ESTADISTICAS</li>
+				<li class="nav-header">ESTADISTICAS</li>
 				<li class="nav-item">
-					<a href="<?//= base_url('admin/inventario'); ?>" class="nav-link <?//= ($act == '8Inv') ? 'active' : '' ?>">
+					<a href="<?= base_url('admin/inventario'); ?>" class="nav-link <?= ($act == '9Inv') ? 'active' : '' ?>">
 						<i class="nav-icon fas fa-boxes"></i>
-						<p>
-							Inventario
-							<span class="badge badge-info right">2</span>
-						</p>
+						<p>Inventario</p>
 					</a>
-				</li> -->
+				</li>
+				<li class="nav-item">
+					<a href="<?= base_url('admin/balance'); ?>" class="nav-link <?= ($act == '10Bal') ? 'active' : '' ?>">
+						<i class="nav-icon fas fa-boxes"></i>
+						<p>Balance</p>
+					</a>
+				</li>
 			</ul>
 		</nav>
 		<!-- /.sidebar-menu -->

@@ -54,7 +54,8 @@ class Subcategorias_controller extends CI_Controller
 		if ($this->form_validation->run()) :
 			$subcategoria = [
 				'id_cat' 				=> $categoria_id,
-				'descripcionSC'	=> $this->input->post('subcategoria')
+				'descripcionSC'	=> $this->input->post('subcategoria'),
+				'imagenSC'			=> subirImagen('file', 'subcategorias', 'no-subcategoria.png')
 			];
 
 			$resp = $this->Subcategorias->crear($subcategoria); // se inserta en bd
@@ -93,6 +94,10 @@ class Subcategorias_controller extends CI_Controller
 				'id_cat'				=> $categoria_id,
 				'descripcionSC' => $this->input->post('subcategoria')
 			];
+
+			if (!empty($_FILES['file']['name'])) {
+				$subcategoria['imagenSC'] = subirImagen('file', 'subcategorias', 'no-subcategoria.png');
+			}
 
 			$resp = $this->Subcategorias->actualizar($id_subcategoria, $subcategoria); // se hace un update en bd
 

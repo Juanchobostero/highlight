@@ -15,7 +15,7 @@
 					<input type="checkbox" name="publicar" <?= ($port->publicado == 'SI') ? 'checked' : '' ?> data-bootstrap-switch data-off-text="NO" data-on-text="SI" data-off-color="danger" onchange="manejoSwitch(this, <?= $port->id_port; ?>, '<?=base_url('publicarPort')?>')">
 				</td>
 				<td>
-					<img class="img-fluid m-auto d-block rounded" src="<?= base_url($port->imagen); ?>" style="width: 40px; height: 40px">
+					<img class="img-fluid m-auto d-block rounded" src="<?= base_url($port->imagen); ?>" style="object-fit: cover; min-height: 35px; max-width: 35px;">
 				</td>
 				<td class="text-center">
 					<div class="btn-group btn-group-sm">

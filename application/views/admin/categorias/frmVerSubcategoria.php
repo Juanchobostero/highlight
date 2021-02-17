@@ -6,6 +6,9 @@
 		</button>
 	</div>
 	<div class="card-body card-outline">
+		<div class="text-center">
+			<img class="box-img" src="<?= base_url($subcategoria->imagenSC); ?>" alt="Subcategoria">
+		</div>
 		<ul class="list-group list-group-unbordered mt-1">
 			<li class="list-group-item">
 				<strong>Categoría</strong>

@@ -15,9 +15,32 @@ class Inventario_controller extends CI_Controller
 	public function index()
 	{
 		$data['title'] = 'Inventario';
-		$data['act'] = '8Inv';
+		$data['act'] = '9Inv';
 		$data['desplegado'] = '';
+		$data['msjs_ult_tres'] = $this->Mensajes->get_mensajes_ult_tres();
+		$data['msj_no_leidos'] = $this->Mensajes->get_mensajes_no_leidos();
 		$data['inventario'] = $this->Productos->get_inventario();
 		$this->load->view('admin/inventario/index', $data);
+	}
+
+	//--------------------------------------------------------------
+	public function getInventario($estado)
+	{
+		verificarConsulAjax();
+
+		if ($estado == 'productos-bajo-stock') {
+			$data['productos'] = $this->Productos->get_inventario_bajo_stock();
+			$this->load->view('admin/inventario/_tblProductosBajoStock', $data);
+		}
+	}
+
+	//--------------------------------------------------------------
+	public function frmVer($id_producto)
+	{
+		verificarConsulAjax();
+		
+		$data['producto'] = $this->Productos->get_producto($id_producto);
+		$data['fotos'] = $this->Productos_fotos->get_producto_fotos($id_producto);
+		$this->load->view('admin/productos/frmVerProducto', $data);
 	}
 }
