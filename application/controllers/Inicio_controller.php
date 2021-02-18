@@ -176,7 +176,24 @@ class Inicio_controller extends CI_Controller
 		}
 		 */
 		$this->load->view('public/producto', $data);
-		
+	}
+
+	public function productos_todos(){
+		$data['categorias'] = $this->Categorias_model->get_full();
+		$data['productos'] = $this->Productos_model->get();
+		$this->load->view('public/productos', $data);
+	}
+
+	public function productos($cat, $subcat = null){
+
+		$data['categorias'] = $this->Categorias_model->get_full();
+
+		$data['categoria'] = $this->Categorias_model->get_categoria($cat);
+		$data['subcategoria'] = $this->Categorias_model->get_subcategoria($subcat);
+
+		$data['productos'] = $this->Productos_model->get_productos($cat, $subcat);
+
+		$this->load->view('public/productos', $data);
 	}
 
 	public function nosotros(){

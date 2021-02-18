@@ -17,12 +17,20 @@ class Categorias_model extends CI_Model {
 
     }
   
-
     public function get_categoria($id)
     {
         $this->db->where('id_categoria', $id);
-        return $this->db->get('categorias')->row();
+        $categoria = $this->db->get('categorias')->row();
+        $this->db->where('id_cat', $categoria->id_categoria);
+        $this->db->order_by('descripcionSC');
+        $categoria->subcategorias = $this->db->get('subcategorias')->result();
+
+        return $categoria;
     }
 
-  
+    public function get_subcategoria($id) {
+        $this->db->where('id_subcategoria', $id);
+        return $this->db->get('subcategorias')->row();
+    }
+
 }

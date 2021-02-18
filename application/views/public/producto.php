@@ -2,11 +2,19 @@
 
 <div class="product-main">
     <div class="banner" id="banner-pro">
-        <?=$producto->descripcionCAT .'/' .$producto->descripcionSC?>   
+        <a class="prod-link" href="<?=base_url('productos/'. $producto->id_categoria)?>">
+            <?=$producto->descripcionCAT?>
+        </a>
+        /
+        <a class="prod-link" href="<?=base_url('productos/'. $producto->id_categoria . '/' .$producto->id_subcategoria)?>">
+            <?=$producto->descripcionSC?>
+        </a>
     </div>
     <div class="product-head">
         <h3 id="nameP" class="product-name"><?=$producto->nombrePR?></h3>
-        <span id="catP" class="product-category"><?=$producto->descripcionCAT?></span>
+        <a href="<?=base_url('productos/'. $producto->id_categoria)?>">
+            <span id="catP" class="product-category"><?=$producto->descripcionCAT?></span>
+        </a>
         
     </div>
     <div class="hr-pro">

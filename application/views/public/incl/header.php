@@ -7,6 +7,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
+  <link href='https://css.gg/eye.css' rel='stylesheet'>
   <link href="<?=base_url('assets/plugins/sweetalert2/sweetalert2.min.css')?>">
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
@@ -43,17 +44,17 @@
 
             <ul class="navbar-drop">
               <li>
-                <a href="#" class="navbar-drop-link" id="categoria">Todos
+                <a href="<?=base_url('productos')?>" class="navbar-drop-link" id="categoria">Todos
                 </a>
               </li>
               <?php foreach($categorias as $categoria):?>
                 <li>
-                  <a href="#" class="navbar-drop-link" id="categoria"><?=$categoria->descripcionCAT?>
+                  <a href="<?=base_url('productos/'. $categoria->id_categoria)?>" class="navbar-drop-link" id="categoria"><?=$categoria->descripcionCAT?>
                   </a>
                 </li>
                 <?php foreach($categoria->subcategorias as $subcat):?>
                   <li>
-                    <a href="#" class="navbar-drop-link" id="subcategoria"><?=$subcat->descripcionSC?>
+                    <a href="<?=base_url('productos/'. $categoria->id_categoria . '/' . $subcat->id_subcategoria)?>" class="navbar-drop-link" id="subcategoria"><?=$subcat->descripcionSC?>
                     </a>
                   </li>
                 <?php endforeach?>

@@ -25,6 +25,10 @@ body {
   min-height: 100%;
 }
 
+a {
+  text-decoration: none;
+}
+
 img{
   image-orientation: from-image !important;
 }

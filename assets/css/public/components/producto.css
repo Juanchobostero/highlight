@@ -60,6 +60,12 @@
         border: 0.059rem solid var(--menu-links-color);
         width: 67%;
     }
+
+    .hr-prods {
+        border: 0.059rem solid var(--menu-links-color);
+        width: 76%;
+        transform: translateY(-2rem);
+    }
   
     .product-content {
         grid-area: content;
@@ -182,6 +188,59 @@
         transform: scale(1.5);
     }
 
+    #nameCat {
+        font-family: 'Noto Sans', sans-serif;
+        font-size: 1.6rem;
+        font-style: italic;
+        width: 100%;
+        display: block;
+        color: var(--menu-links-color);
+    }
+
+    #nameSubcat {
+        background-color: var(--menu-links-color);
+        color: white;
+        font-size: 1.2rem;
+        border-radius: 0.2rem;
+        height: 3rem;
+        padding: 0.2rem;
+        cursor: pointer;
+    }
+
+    .productos {
+        grid-area: content;
+        grid-column: 1 / -1;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        padding: 2rem 5rem;
+        background-color: var(--color-grey);
+        color: var(--menu-links-color);
+        margin: 1rem 10rem;
+    }
+
+    .categoria {
+        text-align: left;
+        padding-left: 10rem;
+        transform: translateY(-4rem);
+    }
+
+    .banner-prods {
+        transform: translateY(-5rem);
+        margin-bottom: 1rem;
+    }
+
+    .prod-link {
+        text-decoration: none;
+        color: var(--menu-links-color);
+    }
+    
+    .prod-link:hover {
+        text-decoration: none;
+        color: var(--menu-links-color);
+    }
+
 
 }
 
@@ -195,7 +254,6 @@
     }
 
     #banner-pro {
-        padding-left: 3rem;
         transform: translateY(-5rem);
     }
  
@@ -256,6 +314,12 @@
         border: 0.059rem solid var(--menu-links-color);
         width: 80%;
         transform: translateY(-1rem);
+    }
+
+    .hr-prods {
+        border: 0.059rem solid var(--menu-links-color);
+        width: 90%;
+        transform: translateY(4rem);
     }
     
     
@@ -380,5 +444,16 @@
         object-fit: cover;
         border-style: solid;
         border-color: var(--color-grey);
+    }
+
+    .prod-link {
+        text-decoration: none;
+        color: var(--menu-links-color);
+        float: left;
+    }
+    
+    .prod-link:hover {
+        text-decoration: none;
+        color: var(--menu-links-color);
     }
 }
