@@ -12,6 +12,8 @@ $route = array(
 
 	'admin/dashboard'	=> 'admin/Dashboard_controller',
 
+	'admin/balance'	=> 'admin/Balance_controller',
+	
 	'admin/categorias'					=> 'admin/Categorias_controller',
 	'admin/categorias/(:any)'		=> 'admin/Categorias_controller/getCategorias/$1',
 	'frmNuevaCategoria'					=> 'admin/Categorias_controller/frmNueva',
@@ -35,8 +37,10 @@ $route = array(
 	'admin/politica-de-privacidad'	=> 'admin/Institucional_controller/politica',
 	'editarInstitucional/(:num)'		=> 'admin/Institucional_controller/editar/$1',
 
-	'admin/inventario'			=> 'admin/Inventario_controller',
-	
+	'admin/inventario'								=> 'admin/Inventario_controller',
+	'admin/inventario/(:any)'					=> 'admin/Inventario_controller/getInventario/$1',
+	'frmVerProductoBajoStock/(:num)'	=> 'admin/Inventario_controller/frmVer/$1',
+
 	'admin/marcas'					=> 'admin/Marcas_controller',
 	'admin/marcas/(:any)'		=> 'admin/Marcas_controller/getMarcas/$1',
 	'frmNuevaMarca'					=> 'admin/Marcas_controller/frmNueva',
@@ -98,6 +102,9 @@ $route = array(
 	'admin/usuarios/(:any)'	=> 'admin/Usuarios_controller/getUsuarios/$1',
 	'admin/perfil/editar'		=> 'admin/Usuarios_controller/frmEditarPerfil',
 	'editarPerfil'					=> 'admin/Usuarios_controller/editarPerfil',
+
+	'admin/ventas'				=> 'admin/Ventas_controller',
+	'admin/ventas/(:any)'	=> 'admin/ventas_controller/getVentas/$1',
 );
 
 $route['admin/validar']['post'] = 'Inicio_controller/validar';

@@ -73,7 +73,8 @@ class Categorias_controller extends CI_Controller
 
 		if ($this->form_validation->run()) :
 			$categoria = [
-				'descripcionCAT'	=> $this->input->post('categoria')
+				'descripcionCAT'	=> $this->input->post('categoria'),
+				'imagenCAT'				=> subirImagen('file', 'categorias', 'no-categoria.png')
 			];
 
 			$resp = $this->Categorias->crear($categoria); // se inserta en bd
@@ -106,9 +107,11 @@ class Categorias_controller extends CI_Controller
 		$this->form_validation->set_rules('categoria', 'Categoría', 'required|trim' . $restriccion);
 
 		if ($this->form_validation->run()) : //Si la validación es correcta
-			$categoria = [
-				'descripcionCAT' => $categ
-			];
+			$categoria['descripcionCAT'] = $categ;
+
+			if (!empty($_FILES['file']['name'])) {
+				$categoria['imagenCAT'] = subirImagen('file', 'categorias', 'no-categoria.png');
+			}
 
 			$resp = $this->Categorias->actualizar($id_categoria, $categoria); // se hace un update en bd
 

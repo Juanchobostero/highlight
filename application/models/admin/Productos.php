@@ -65,4 +65,12 @@ class Productos extends CI_Model
 		$this->db->where('estadoPR', 1);
 		return $this->db->get('productos')->row();
 	}
+
+	//--------------------------------------------------------------
+	public function get_inventario_bajo_stock()
+	{
+		$this->db->where('stockPR <', 5);
+		$this->db->where('estadoPR', 1);
+		return $this->db->get('productos')->result();
+	}
 }

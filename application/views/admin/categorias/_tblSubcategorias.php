@@ -1,9 +1,10 @@
 <table class="table table-sm table-hover">
-	<thead>
+	<thead class="text-center">
 		<tr>
-			<th>Subcategoría</th>
-			<th>Categoría</th>
-			<th>Acciones</th>
+			<th scope="col">Subcategoría</th>
+			<th scope="col">Categoría</th>
+			<th scope="col">Imágen</th>
+			<th scope="col">Acciones</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -11,6 +12,9 @@
 			<tr>
 				<td><?= $subcategoria->descripcionSC; ?></td>
 				<td><?= $subcategoria->descripcionCAT; ?></td>
+				<td>
+					<img class="img-fluid m-auto d-block rounded" src="<?= base_url($subcategoria->imagenSC); ?>" style="object-fit: cover; min-height: 35px; max-width: 35px;">
+				</td>
 				<td class="text-center">
 					<div class="btn-group btn-group-sm">
 						<button type="button" class="btn btn-info" title="Ver" onclick="cargarForm('<?= base_url('frmVerSubcategoria/' . $subcategoria->id_subcategoria) ?>', 'small', 'modal-small')">

@@ -1,5 +1,6 @@
 @import "./components/img_perfil.css";
 @import "./components/grid_fotos.css";
+@import "./components/mensajes.css";
 
 .jumbotron-image {
   /* background-position: center center; */
@@ -8,16 +9,6 @@
 	opacity: 0.8;
 }
 
-.single-line p {
-	display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;  
-  overflow: hidden;
-}
-.unread {
-	background-color: #c5c5c5;
-}
-
-.unread td {
-	font-weight: 600;
+.table td {
+	vertical-align: middle;
 }
