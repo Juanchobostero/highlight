@@ -18,7 +18,7 @@
         height: 32vh;
         /* width: 12.3vw;
         height: 25vh; */
-        object-fit: cover;
+        object-fit: fill;
         border-top-right-radius: 2.5rem;
     }
     

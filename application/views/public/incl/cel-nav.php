@@ -43,16 +43,16 @@
 
         <div class="nav-prod">
             <li class="nav-item">
-                <a href="#" id="cat" class="nav-link">Todos</a>
+                <a href="<?=base_url('productos')?>" id="cat" class="nav-link">Todos</a>
             </li>
             <?php foreach($categorias as $categoria):?>
                 <li class="nav-item">
-                  <a href="#" class="nav-link" id="cat"><?=$categoria->descripcionCAT?>
+                  <a href="<?=base_url('productos/'. $categoria->id_categoria)?>" class="nav-link" id="cat"><?=$categoria->descripcionCAT?>
                   </a>
                 </li>
                 <?php foreach($categoria->subcategorias as $subcat):?>
                   <li class="nav-item">
-                    <a href="#" class="nav-link" id="subcat"><?=$subcat->descripcionSC?>
+                    <a href="<?=base_url('productos/'. $categoria->id_categoria . '/' . $subcat->id_subcategoria)?>" class="nav-link" id="subcat"><?=$subcat->descripcionSC?>
                     </a>
                   </li>
                 <?php endforeach?>

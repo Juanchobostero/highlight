@@ -159,6 +159,15 @@ const change = src => {
   document.getElementById('img-main').src = src;
 }
 
+/*/--- SUBCATEGORIAS ---/*/
+const subcats = document.querySelector('.subcategoria-slider');
+  new Flickity( subcats, {
+    cellAlign: 'center',
+    contain: true,
+    draggable: true,
+    selectedAttraction: 0.1,
+  });
+
 
 function myFunction() {
   menu.classList.toggle("show");

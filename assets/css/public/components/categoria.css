@@ -6,30 +6,29 @@
         text-align: center;
         margin-left: 9rem;
         margin-top: -4rem;
-        border: 0.5rem solid var(--menu-links-color);
+        
     }
     
     .portada {
         width: 100%;
-        border: 0.5rem solid var(--menu-links-color);
-        height: 18rem;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, 100%);
+        height: 47vh;
+        margin-bottom: 1rem;
     }
     
     .portada img {
         width: 100%;
-        height: 100%;
+        height: 47vh;
         object-fit: cover;
     }
     
     .subcategorias-wrapper {
-        width: 100%;
+        width: 100%; 
         display: grid;
-        grid-template-columns: repeat(auto-fit, 20.9rem);
-        border: 0.5rem solid var(--menu-links-color);
-        gap: 1rem;
-        margin-top: 2rem;
+        grid-template-columns: repeat(auto-fill, 21.05rem); 
+        gap: 2rem;
+        margin-top: 1rem;
+        margin-bottom: 3rem;
+        padding: 0 0;
     }
     
     .subcategoria-cell {
@@ -46,6 +45,7 @@
     .subcategoria-img-top {
         width: 100%;
         height: 30vh;
+        object-fit: contain;
     }
     
     .subcategoria-img-top .subcategoria-img {
@@ -62,7 +62,7 @@
     }
     
     .subcategoria-title {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         color: var(--menu-links-color);
     }
     
@@ -86,6 +86,10 @@
     
     a:hover {
         text-decoration: none;
+    }
+
+    .subcategoria-slider {
+        display: none;
     }
 }
 
@@ -98,13 +102,13 @@
         grid-gap: 1rem;
         text-align: center;
         margin-top: 2rem;
-        border: 0.5rem solid var(--menu-links-color);
+        
     }
     
     .portada {
         width: 100%;
-        border: 0.5rem solid var(--menu-links-color);
-        height: 18rem;
+        height: 12rem;
+        margin: -2rem 0;
     }
     
     .portada img {
@@ -113,44 +117,63 @@
     }
     
     .subcategorias-wrapper {
+       display: none;
+    }
+
+    .subcategoria-slider {
         width: 100%;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, 15rem);
-        border: 0.5rem solid var(--menu-links-color);
-        gap: 2.55rem;
-        margin-top: 2rem;
+        height: 45vh;
+        padding: 2rem 2rem;
+        gap: 1rem;
+        margin-top: 0.2rem;
+        gap: 2rem;   
+    }
+
+    .subcategoria-slider a {
+        text-decoration: none;
     }
     
-    .subcategoria-cell {
+    .subcat-cell {
         border: solid 0.2rem var(--color-grey);
-        width: 15rem;
+        width: 17rem;
         height: 37vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 1rem;
     }
-    
-    .subcategoria-img-top {
-        width: 100%;
-        height: 30vh;
-    }
-    
-    .subcategoria-img-top .subcategoria-img {
-        width: 100%;
+
+    .subcategoria-card {
+        width: 17rem;
         height: 100%;
     }
     
-    .subcategoria-name {
-        width: 100%;
+    .subcat-img-top {
+        width: 17rem;
+        height: 30vh;
+        object-fit: cover;
+    }
+    
+    .subcat-img-top .subcat-img {
+        width: 50vw;
+        height: 30vh;
+    }
+    
+    .subcat-name {
+        width: 17rem;
         height: 6vh;
         background-color: var(--color-grey);
         text-align: center;
         padding: 0.3rem;
+        margin: 0 0;
     }
     
-    .subcategoria-title {
+    .subcat-title {
         font-size: 1rem;
         color: var(--menu-links-color);
     }
     
-    .subcategoria-cell:hover {
+    .subcat-cell:hover {
         color: #ffffff !important;
         transform: scale(1.08);
         transition: all 0.5s ease;
@@ -158,19 +181,20 @@
         border-style: dashed !important;
     }
     
-    .subcategoria-cell:hover .subcategoria-name {
+    .subcat-cell:hover .subcat-name {
         background-color: var(--menu-links-color);
         color: #ffffff;
         width: 100%;
     }
     
-    .subcategoria-cell:hover .subcategoria-title  {
+    .subcat-cell:hover .subcat-title  {
         color: #ffffff;
+
     }
     
     a:hover {
         text-decoration: none;
-    }
+    } 
 }
 
 

@@ -4,8 +4,7 @@
     <div class="banner" id="banner-pro">
         <a class="prod-link" href="<?=base_url('productos/'. $producto->id_categoria)?>">
             <?=$producto->descripcionCAT?>
-        </a>
-        /
+        </a>/
         <a class="prod-link" href="<?=base_url('productos/'. $producto->id_categoria . '/' .$producto->id_subcategoria)?>">
             <?=$producto->descripcionSC?>
         </a>

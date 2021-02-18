@@ -35,8 +35,8 @@
 
     <?php if(isset($categoria) and !isset($subcategoria) ):?>
         <div class="categoria-wrapper">
-            <div class="portada">portada
-                <img src="#" alt="portada categoria">
+            <div class="portada">
+                <img src="<?=base_url($categoria->imagenCAT)?>" alt="portada categoria">
             </div>
             <div class="subcategorias-wrapper">
             <?php foreach($categoria->subcategorias as $subcat):?>
@@ -44,7 +44,7 @@
                             <div class="subcategoria-cell">
                                 <div class="subcategoria-card">
                                     <div class="subcategoria-img-top">
-                                        <img class="subcategoria-img" src="#" alt="subcat img">
+                                        <img class="subcategoria-img" src="<?=base_url($subcat->imagenSC)?>" alt="subcat img">
                                     </div>
                                     <div class="subcategoria-name">
                                         <h3 class="subcategoria-title"><?=$subcat->descripcionSC?></h3>
@@ -53,6 +53,23 @@
                             </div>
                         </a>
             <?php endforeach?>
+            </div>
+
+            <div class="subcategoria-slider">
+                <?php foreach($categoria->subcategorias as $subcat):?>
+                        <a href="<?=base_url('productos/'. $subcat->id_cat . '/' . $subcat->id_subcategoria)?>">
+                            <div class="subcat-cell">
+                                <div class="subcat-card">
+                                    <div class="subcat-img-top">
+                                        <img class="subcat-img" src="<?=base_url($subcat->imagenSC)?>" alt="subcat img">
+                                    </div>
+                                    <div class="subcat-name">
+                                        <h3 class="subcat-title"><?=$subcat->descripcionSC?></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                <?php endforeach?>
             </div>
 
         </div>
