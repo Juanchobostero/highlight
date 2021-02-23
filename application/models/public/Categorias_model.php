@@ -17,7 +17,7 @@ class Categorias_model extends CI_Model {
 
     }
   
-    public function get_categoria($id)
+    public function get_categoria($id= null)
     {
         $this->db->where('id_categoria', $id);
         $categoria = $this->db->get('categorias')->row();

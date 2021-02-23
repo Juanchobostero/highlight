@@ -35,4 +35,5 @@ $autoload['model'] = array(
     'public/Productos_model',
     'public/Categorias_model',
     'public/Usuarios_model',
+    'public/Institucional_model',
 );

@@ -1,7 +1,18 @@
 <?php $this->load->view('public/incl/header');?>
+<?php if(isset($categoria) && isset($subcategoria)):?>
+<div class="datos-paginado-productos" style="display:none;"
+    data-total="<?=$total_pages?>"
+    data-categoria="<?php $categoria?>"
+    data-subcategoria="<?php $subcategoria?>">
+</div>
+<?php else:?>
+    <div class="datos-paginado-productos" style="display:none;"
+    data-total="<?=$total_pages?>"
+    >
+    </div>
+<?php endif?>
 
 <div class="producto-main">
-
     <div class="banner banner-prods" id="banner-prod">
         <a class="prod-link" href="<?=base_url('productos')?>">
             Productos
@@ -11,8 +22,6 @@
                 /<?=$categoria->descripcionCAT?>
             </a>
         <?php endif?>
-
-        
     </div>
 
     <div class="product-head categoria">
@@ -92,7 +101,15 @@
         <?php endforeach?>
     </div>
     <?php endif?>
-
+    
+</div>
+<div class="gooey">
+    <span class="dot"></span>
+    <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
 </div>
 
 <?php $this->load->view('public/incl/footer');?>

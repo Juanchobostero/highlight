@@ -15,7 +15,7 @@ class Productos_model extends CI_Model {
   }
 
 //--------------------------------------------
-  public function get_productos($cat = null, $subcat = null)
+  public function get_productos($cat, $subcat, $limit, $start)
   {
     $this->db->select('productos.*, pf.foto, marcas.descripcionM, subcategorias.descripcionSC, categorias.descripcionCAT');
     $this->db->join('marcas', 'marcas.id_marca = productos.id_mar');
@@ -25,6 +25,7 @@ class Productos_model extends CI_Model {
     if($cat) $this->db->where('categorias.id_categoria', $cat);
     if($subcat) $this->db->where('productos.id_subcat', $subcat);
     $this->db->join('categorias', 'categorias.id_categoria = subcategorias.id_cat');
+    $this->db->limit($limit, $start);
     return $this->db->get('productos')->result();
   }
 
@@ -99,6 +100,30 @@ class Productos_model extends CI_Model {
     $ofertas = $this->db->get()->result();
 
     return $ofertas;
+  }
+
+  public function get_count($cat = null, $subcat = null){
+    $this->db->select('id_producto');
+    $this->db->join('subcategorias', 'id_subcat = id_subcategoria');
+    $this->db->join('categorias', 'id_cat = id_categoria');
+    $this->db->join('productos_fotos as pf', 'productos.id_producto = pf.id_prod');
+    $this->db->where('stockPR >', 0);
+    if($cat) $this->db->where('id_cat', $cat);
+    if($subcat) $this->db->where('id_subcat', $subcat);
+    $this->db->group_by('id_producto');
+    $this->db->from('productos');
+    return $this->db->count_all_results();
+  }
+
+  public function get_count_all() {
+    $this->db->select('id_producto');
+    $this->db->join('subcategorias', 'id_subcat = id_subcategoria');
+    $this->db->join('categorias', 'id_cat = id_categoria');
+    $this->db->join('productos_fotos as pf', 'productos.id_producto = pf.id_prod');
+    $this->db->where('stockPR >', 0);
+    $this->db->group_by('id_producto');
+    $this->db->from('productos');
+    return $this->db->count_all_results();
   }
 
   public function get_count_productos_destacados(){

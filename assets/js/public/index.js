@@ -358,7 +358,78 @@ function getLocalidades(e) {
     }
   })
   .fail(ajaxErrors);
+}
 
+//Variables globales para paginado ajax
+let continuePag = true;
+let currentPage = 1;
+
+if(history.state){
+  currentPage = history.state.page;
+  $(".productos-wrapper").html(history.state.contenido);
+}
+
+const loaderProds = document.querySelector('.gooey');
+
+///////////////////////////AJAX PRODUCTOS//////////////////////////////////////
+const datosProductos = document.querySelector('.datos-paginado-productos');
+if(datosProductos){
+  //se ejecuta solo si se esta en la pagina productos
+  if(datosProductos.hasAttribute('data-categoria') && datosProductos.hasAttribute('data-subcategoria')){
+
+    var total_pages = datosProductos.dataset.total;
+    var categoria = datosProductos.dataset.categoria;
+    var categoria = datosProductos.dataset.subcategoria;
+    var pageUrl = baseUrl + 'productos/' + categoria + '/' + subcategoria;
+  }
+  if(!datosProductos.hasAttribute('data-categoria') && !datosProductos.hasAttribute('data-subcategoria')){
+
+    var categoria = null;
+    var subcategoria = null;
+    var total_pages = datosProductos.dataset.total;
+
+    var pageUrl = baseUrl + 'productos';
+  }
+  
+  window.addEventListener('scroll', () => {
+    const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+    if ((scrollTop + clientHeight >= scrollHeight - 400) && continuePag) {
+      continuePag = false;
+      if(currentPage <= total_pages){
+        loaderProds.classList.add('show');
+        loadData(pageUrl);
+      }
+    }
+  });
+}
+
+function loadData(pageUrl) {
+  $.ajax({
+    method: "GET",
+    url: pageUrl,
+    data: { page: currentPage },
+  })
+  .done(( content ) => {
+    data = JSON.parse(content);
+    if(data.result === 1){
+      console.log(`Cargando Pagina ${currentPage}`);
+
+      $(".productos-wrapper").append(data.html);
+      currentPage++;
+      continuePag = true;
+      history.replaceState({contenido: $(".productos-wrapper").html(), page: currentPage}, null, window.location.href);
+    }else{
+      continuePag = false;
+      console.log('no hay mas datos....');
+      if(datosProductos){
+        console.log(`Total paginas: ${datosProductos.dataset.total}`);
+      }else{
+        console.log(`Total paginas: ${datosProductos.dataset.total}`);
+      }
+    }
+    loaderProds.classList.remove('show');
+  })
+  .fail(ajaxErrors);
 }
 
 

@@ -71,6 +71,7 @@
   <script src="<?=base_url('assets/js/public/flickity.pkgd.min.js')?>"></script>
   <script src="<?=base_url('assets/js/public/index.js')?>"></script>
   <script src="<?= base_url('assets/plugins/sweetalert2/sweetalert2.all.min.js'); ?>"></script>
+  <script src="<?=base_url('assets/js/public/history.js')?>"></script>
 </body>
 </html>
 

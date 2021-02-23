@@ -23,7 +23,7 @@ class Inicio_controller extends CI_Controller
 
 		$data['categorias'] = $this->Categorias_model->get_full();
 		$data['portadas'] = $this->Portadas_model->get_habs();
-		$data['productos'] = $this->Productos_model->get_productos();
+		$data['productos'] = $this->Productos_model->get_productos($cat = null, $subcat = null, $perPage, $start);
 		$total_dest = $this->Productos_model->get_count_productos_destacados();
 		$total_nov = $this->Productos_model->get_count_productos_novedades();
 		$total_ofe = $this->Productos_model->get_count_productos_ofertas();
@@ -179,25 +179,73 @@ class Inicio_controller extends CI_Controller
 	}
 
 	public function productos_todos(){
+
+		$perPage = 12;
+		$totalProducts = $this->Productos_model->get_count_all();
+		$data['total_pages']  = ceil($totalProducts/$perPage);
+		$cat = null;
+		$subcat = null;
+
 		$data['categorias'] = $this->Categorias_model->get_full();
-		$data['productos'] = $this->Productos_model->get();
-		$this->load->view('public/productos', $data);
+
+		if(!empty($this->input->get("page"))){
+			$start = $perPage * $this->input->get('page');
+			$productos = $this->Productos_model->get_productos($cat, $subcat, $perPage, $start); //limit,start
+			if($productos){
+			  $data['productos'] = $productos;
+			  $html = $this->load->view('public/ajax/productos', $data, TRUE);
+			  $this->output->set_output(json_encode(['result' => 1, 'html' => $html]));
+			  return;
+			}else{
+			  $this->output->set_output(json_encode(['result' => 0]));
+			  return;
+			}
+			
+		  }
+		  else{
+			$start =0;
+			$data['productos'] = $this->Productos_model->get_productos($cat, $subcat, $perPage, $start);
+			$this->load->view('public/productos', $data);
+		  }
+
 	}
+
 
 	public function productos($cat, $subcat = null){
 
 		$data['categorias'] = $this->Categorias_model->get_full();
-
 		$data['categoria'] = $this->Categorias_model->get_categoria($cat);
 		$data['subcategoria'] = $this->Categorias_model->get_subcategoria($subcat);
+		$totalProducts = $this->Productos_model->get_count($cat, $subcat);
+		$perPage = 12;
+		$data['total_pages']  = ceil($totalProducts/$perPage);
 
-		$data['productos'] = $this->Productos_model->get_productos($cat, $subcat);
+		if(!empty($this->input->get("page"))){
+			$start = $perPage * $this->input->get('page');
+			$productos = $this->Productos_model->get_productos($cat, $subcat, $perPage, $start); //limit,start
+			if($productos){
+			  $data['productos'] = $productos;
+			  $html = $this->load->view('public/ajax/productos', $data, TRUE);
+			  $this->output->set_output(json_encode(['result' => 1, 'html' => $html]));
+			  return;
+			}else{
+			  $this->output->set_output(json_encode(['result' => 0]));
+			  return;
+			}
+			
+		  }
+		  else{
+			$start =0;
+			$data['productos'] = $this->Productos_model->get_productos($cat, $subcat, $perPage, $start);
+			$this->load->view('public/productos', $data);
+		  }
 
-		$this->load->view('public/productos', $data);
+		
 	}
 
 	public function nosotros(){
 		$data['categorias'] = $this->Categorias_model->get_full();
+		$data['nosotros'] = $this->Institucional_model->get_nosotros();
 		$this->load->view('public/nosotros', $data);
 	}
 }

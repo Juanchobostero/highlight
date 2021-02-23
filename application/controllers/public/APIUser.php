@@ -171,6 +171,7 @@ class APIUser extends CI_Controller {
     $data['localidades'] = $this->Usuarios_model->get_prov_localidades($id_prov);
     $html = $this->load->view('public/ajax/localidades', $data, TRUE);
     $this->output->set_output(json_encode(['result' => 1, 'html' => $html]));
+    
     return;
   }
 
