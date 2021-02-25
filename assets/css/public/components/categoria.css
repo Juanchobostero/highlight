@@ -4,7 +4,7 @@
         display: grid;
         grid-gap: 1rem;
         text-align: center;
-        margin-left: 9rem;
+        margin-left: 8.4rem;
         margin-top: -4rem;
         
     }
@@ -24,16 +24,17 @@
     .subcategorias-wrapper {
         width: 100%; 
         display: grid;
-        grid-template-columns: repeat(auto-fill, 21.05rem); 
+        grid-template-columns: repeat(auto-fit, 20rem); 
         gap: 2rem;
         margin-top: 1rem;
+        margin-left: 1.6rem;
         margin-bottom: 3rem;
         padding: 0 0;
     }
     
     .subcategoria-cell {
         border: solid 0.2rem var(--color-grey);
-        width: 20.9rem;
+        width: 20rem;
         height: 37vh;
     }
 

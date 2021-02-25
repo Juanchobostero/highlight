@@ -15,16 +15,18 @@ class Productos_model extends CI_Model {
   }
 
 //--------------------------------------------
-  public function get_productos($cat, $subcat, $limit, $start)
+  public function get_productos($cat = null, $subcat = null, $limit, $start)
   {
     $this->db->select('productos.*, pf.foto, marcas.descripcionM, subcategorias.descripcionSC, categorias.descripcionCAT');
     $this->db->join('marcas', 'marcas.id_marca = productos.id_mar');
     $this->db->join('subcategorias', 'subcategorias.id_subcategoria = productos.id_subcat');
+    $this->db->join('categorias', 'categorias.id_categoria = subcategorias.id_cat');
     $this->db->join('productos_fotos as pf', 'productos.id_producto = pf.id_prod');
     $this->db->where('pf.foto IS NOT NULL');
+    $this->db->where('productos.stockPR >', 0);
     if($cat) $this->db->where('categorias.id_categoria', $cat);
     if($subcat) $this->db->where('productos.id_subcat', $subcat);
-    $this->db->join('categorias', 'categorias.id_categoria = subcategorias.id_cat');
+    
     $this->db->limit($limit, $start);
     return $this->db->get('productos')->result();
   }
@@ -148,8 +150,11 @@ class Productos_model extends CI_Model {
 
   public function get_count_productos_ofertas(){
     $this->db->select('id_producto');
+    $this->db->join('productos_ofertas as po', 'po.id_produc = productos.id_producto');
+    $this->db->join('productos_fotos as pf', 'productos.id_producto = pf.id_prod'); 
+    $this->db->where('pf.foto IS NOT NULL');
+    $this->db->where('po.id_produc IS NOT NULL');
     $this->db->where('stockPR >', 0);
-    $this->db->where('destacadoPR', 'NO');
     $this->db->group_by('id_producto');
     $this->db->from('productos');
     return $this->db->count_all_results();

@@ -22,6 +22,8 @@ class Inicio_controller extends CI_Controller
 		$start = 0;
 
 		$data['categorias'] = $this->Categorias_model->get_full();
+		$data['herramientas'] = $this->Categorias_model->get_cat_herramientas();
+		$data['iluminacion'] = $this->Categorias_model->get_cat_iluminacion();
 		$data['portadas'] = $this->Portadas_model->get_habs();
 		$data['productos'] = $this->Productos_model->get_productos($cat = null, $subcat = null, $perPage, $start);
 		$total_dest = $this->Productos_model->get_count_productos_destacados();
@@ -180,7 +182,7 @@ class Inicio_controller extends CI_Controller
 
 	public function productos_todos(){
 
-		$perPage = 12;
+		$perPage = 8;
 		$totalProducts = $this->Productos_model->get_count_all();
 		$data['total_pages']  = ceil($totalProducts/$perPage);
 		$cat = null;
@@ -217,8 +219,8 @@ class Inicio_controller extends CI_Controller
 		$data['categoria'] = $this->Categorias_model->get_categoria($cat);
 		$data['subcategoria'] = $this->Categorias_model->get_subcategoria($subcat);
 		$totalProducts = $this->Productos_model->get_count($cat, $subcat);
-		$perPage = 12;
-		$data['total_pages']  = ceil($totalProducts/$perPage);
+		$perPage = 8;
+		$data['total_pages'] = ceil($totalProducts/$perPage);
 
 		if(!empty($this->input->get("page"))){
 			$start = $perPage * $this->input->get('page');

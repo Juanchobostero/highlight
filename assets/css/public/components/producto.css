@@ -270,18 +270,21 @@
         align-content: left;
         align-items: flex-start;
         justify-content: flex-start;
+        transform: translateY(-5rem);
     }
     
     #nameP {
         grid-area: name;
         height: 1rem;
+        width: 70%;
         display: block;
         float: left;
         font-family: 'Noto Sans', sans-serif;
-        font-size: 1.1rem;
+        font-size: 1rem;
         font-style: italic;
         color: var(--menu-links-color);
-        transform: translateY(-5rem);
+        white-space: nowrap;
+        letter-spacing: -1px;
     }
     
     
@@ -293,9 +296,8 @@
         border-radius: 0.2rem;
         cursor: pointer;
         margin: 0.5rem 0.2rem;
-        height: 5vh;
+        height: 4vh;
         width: auto;
-        transform:translateY(-3.3rem);
         display: block;
         float: left;
         padding: 0.01rem 0.1rem;
@@ -309,19 +311,17 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        transform:translateY(-4rem);
     }
 
     .hr-prod {
         border: 0.059rem solid var(--menu-links-color);
         width: 80%;
-        transform: translateY(-1rem);
+        transform: translateY(-6.5rem);
     }
 
     .hr-prods {
         border: 0.059rem solid var(--menu-links-color);
         width: 90%;
-        transform: translateY(2.5rem);
     }
     
     
@@ -331,14 +331,13 @@
         width: 100%;
         grid-column: 1 / -1;
         margin-top: 0;
-        height: 100vh;
         display: flex;
         flex-direction: column;
         gap: 1rem;
+        margin-top: -3rem;
         margin-bottom: 4rem;
         align-content: center;
-        justify-content: center;
-        transform: translateY(-10rem);    
+        justify-content: center; 
         padding: 0 0.5rem;
     }
 
@@ -352,7 +351,7 @@
     .img-pro {
         object-fit: fill;
         width: 90%;
-        height: 60vh;
+        height: 40vh;
         border-style: solid;
         border-color: var(--color-grey);
         
@@ -478,6 +477,7 @@
         font-style: italic;
         display: block;
         color: var(--menu-links-color);
+        transform: translateY(6rem);
     }
 
     #nameSubcat {
@@ -485,8 +485,9 @@
         color: white;
         font-size: 1rem;
         border-radius: 0.2rem;
-        height: 3rem;
-        padding: 0.2rem;
+        height: 3.5vh;
         cursor: pointer;
+        display: block;
+        transform: translateY(6.5rem);
     }
 }

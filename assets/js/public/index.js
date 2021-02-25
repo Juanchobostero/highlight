@@ -53,8 +53,8 @@ if (destacados){
     cellAlign: 'center',
     contain: true,  
     groupCells: true, 
-    pageDots: false, 
-    wrapAround: true,
+    //pageDots: false, 
+    //wrapAround: true,
   });
 
   sliderDestacados.on('change', function(index) {
@@ -88,8 +88,8 @@ if (novedades){
     cellAlign: 'center',
     contain: true,  
     groupCells: true, 
-    pageDots: false, 
-    wrapAround: true,
+    //pageDots: false, 
+    //wrapAround: true,
   });
 
   sliderNovedades.on('change', function(index) {
@@ -123,11 +123,10 @@ if (ofertas){
     cellAlign: 'center',
     contain: true,  
     groupCells: true, 
-    pageDots: false, 
-    wrapAround: true,
+    //pageDots: false, 
+    //wrapAround: true,
   });
 
-  document.getElementById('prev-price').style.display="block";
 
   sliderOfertas.on('change', function(index) {
     if(index === sliderOfertas.slides.length - 1){

@@ -42,13 +42,15 @@
         <hr class="hr-prods">  
     </div>
 
-    <?php if(isset($categoria) and !isset($subcategoria) ):?>
+    <?php if(isset($categoria) && $subcategoria == null ):?>
         <div class="categoria-wrapper">
             <div class="portada">
                 <img src="<?=base_url($categoria->imagenCAT)?>" alt="portada categoria">
             </div>
             <div class="subcategorias-wrapper">
-            <?php foreach($categoria->subcategorias as $subcat):?>
+            <?php foreach($categorias as $cat):?>
+                <?php foreach($cat->subcategorias as $subcat):?>
+                    <?php if($subcat->id_cat == $categoria->id_categoria):?>
                         <a href="<?=base_url('productos/'. $subcat->id_cat . '/' . $subcat->id_subcategoria)?>">
                             <div class="subcategoria-cell">
                                 <div class="subcategoria-card">
@@ -61,23 +63,29 @@
                                 </div>
                             </div>
                         </a>
+                    <?php endif?>
+                <?php endforeach?>
             <?php endforeach?>
             </div>
 
             <div class="subcategoria-slider">
-                <?php foreach($categoria->subcategorias as $subcat):?>
-                        <a href="<?=base_url('productos/'. $subcat->id_cat . '/' . $subcat->id_subcategoria)?>">
-                            <div class="subcat-cell">
-                                <div class="subcat-card">
-                                    <div class="subcat-img-top">
-                                        <img class="subcat-img" src="<?=base_url($subcat->imagenSC)?>" alt="subcat img">
-                                    </div>
-                                    <div class="subcat-name">
-                                        <h3 class="subcat-title"><?=$subcat->descripcionSC?></h3>
+                <?php foreach($categorias as $cat):?>
+                    <?php foreach($cat->subcategorias as $subcat):?>
+                        <?php if($subcat->id_cat == $categoria->id_categoria):?>
+                            <a href="<?=base_url('productos/'. $subcat->id_cat . '/' . $subcat->id_subcategoria)?>">
+                                <div class="subcat-cell">
+                                    <div class="subcat-card">
+                                        <div class="subcat-img-top">
+                                            <img class="subcat-img" src="<?=base_url($subcat->imagenSC)?>" alt="subcat img">
+                                        </div>
+                                        <div class="subcat-name">
+                                            <h3 class="subcat-title"><?=$subcat->descripcionSC?></h3>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
+                        <?php endif?>
+                    <?php endforeach?>
                 <?php endforeach?>
             </div>
 

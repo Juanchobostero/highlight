@@ -1,8 +1,8 @@
 @media (min-width: 768px) {
     .productos-wrapper {
-        width: 65%;
+        width: 70%;
         display: grid;
-        grid-template-columns: repeat(auto-fit, 10rem);
+        grid-template-columns: repeat(auto-fill, 11rem);
         grid-gap: 1.5rem;
         justify-content: center;
         margin-top: -4rem;
@@ -17,7 +17,7 @@
     .producto-cell {
         border: solid 0.2rem var(--color-grey);
         border-style: dashed;
-        width: 10rem;
+        width: 11rem;
         height: 37vh;
         background-color: var(--color-grey);
     }

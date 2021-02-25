@@ -2,7 +2,6 @@
 	<h4 class="slider-titulo">OFERTAS</h4>
 	<hr class="hr-head">
 	<div class="slider-wraper slider-ofertas">
-	
 		<?php foreach($ofertas as $producto):?>
 			<div class="slider-cell" data-idproducto="<?=$producto->id_producto?>">
 				<div class="product-cart">

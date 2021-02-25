@@ -58,7 +58,7 @@ public function masOfertas() {
     $productos = $this->Productos_model->get_ofertas($perPage, $start);
     if($productos){
       $data['productos'] = $productos;
-      $html = $this->load->view('public/ajax/slider-cells', $data, TRUE);
+      $html = $this->load->view('public/ajax/ofertas-cells', $data, TRUE);
       $this->output->set_output(json_encode(['result' => 1, 'html' => $html]));
       return;
     }else{
