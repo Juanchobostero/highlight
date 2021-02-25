@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-02-2021 a las 01:52:48
+-- Tiempo de generación: 25-02-2021 a las 02:35:31
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.2
 
@@ -89,7 +89,7 @@ CREATE TABLE `imagenes` (
 --
 
 INSERT INTO `imagenes` (`id_img`, `imagen_1`, `imagen_2`) VALUES
-(1, 'assets/img/imagenes/25122020_16089381111.jpeg', 'assets/img/imagenes/25122020_16089381112.jpeg');
+(1, 'assets/img/imagenes/24022021_16142168931.jpg', 'assets/img/imagenes/24022021_16142168932.jpg');
 
 -- --------------------------------------------------------
 
