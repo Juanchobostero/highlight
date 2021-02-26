@@ -27,7 +27,7 @@
         color: var(--menu-links-color);
         background-color: var(--color-grey);
         height: 35%;
-        padding: 0.6rem;
+        padding-top: 0.5rem;
     }
     
     .product-desc h5{
@@ -45,7 +45,7 @@
         font-weight: 600;
         bottom: 0;
         padding: 0.2rem;
-        margin-top: auto;
+        margin-top: -1rem;
     }
 
     .new-price {

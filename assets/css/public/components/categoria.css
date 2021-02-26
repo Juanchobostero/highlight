@@ -24,17 +24,17 @@
     .subcategorias-wrapper {
         width: 100%; 
         display: grid;
-        grid-template-columns: repeat(auto-fit, 20rem); 
+        grid-template-columns: repeat(auto-fit, 17rem);
+        text-align: center; 
         gap: 2rem;
-        margin-top: 1rem;
-        margin-left: 1.6rem;
-        margin-bottom: 3rem;
-        padding: 0 0;
+        margin: 4rem 0;
+        padding-left: 3rem;
+        transform: translateX(2rem);
     }
     
     .subcategoria-cell {
         border: solid 0.2rem var(--color-grey);
-        width: 20rem;
+        width: 17rem;
         height: 37vh;
     }
 
@@ -94,12 +94,40 @@
     }
 }
 
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  
+    .categoria-wrapper {
+        width: 100%;
+        display: grid;
+        grid-gap: 1rem;
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+    
+
+    .portada img {
+        width: 100%;
+        height: 100%
+    }
+
+    .subcategorias-wrapper {
+        
+        grid-template-columns: repeat(auto-fit, 14rem);
+        
+    }
+    
+    .subcategoria-cell {
+        border: solid 0.2rem var(--color-grey);
+        width: 14rem;
+    }    
+}
+
 
 @media (max-width: 768px) {
     .categoria-wrapper {
         width: 100%;
         display: grid;
-        
         grid-gap: 1rem;
         text-align: center;
         margin-top: 2rem;
