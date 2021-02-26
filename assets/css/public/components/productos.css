@@ -158,15 +158,16 @@
     }
     
     .producto-img-top {
-        width: 100%;
+        width: 11rem;
         height: 65%;
         background-color: #ffff;
     }
     
     .producto-img-top img {
-        width: 100%;
+        width: 10.6rem;
         height: 100%;
         object-fit: cover;
+        
     }
     
     .producto-desc {

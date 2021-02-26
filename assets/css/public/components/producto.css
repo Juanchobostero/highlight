@@ -107,6 +107,7 @@
         padding: 2rem;
         overflow: scroll;
         color: var(--menu-links-color);
+        height: 45vh;
     }
     
     .product-price {
@@ -257,6 +258,7 @@
     #banner-pro {
         transform: translateY(-5rem);
         padding-left: 1rem;
+        width: 100%;
     }
  
     
@@ -267,24 +269,22 @@
         text-align: left;
         display: flex;
         flex-direction: column;
-        align-content: left;
-        align-items: flex-start;
-        justify-content: flex-start;
         transform: translateY(-5rem);
     }
     
     #nameP {
         grid-area: name;
         height: 1rem;
-        width: 70%;
         display: block;
         float: left;
         font-family: 'Noto Sans', sans-serif;
         font-size: 1rem;
         font-style: italic;
         color: var(--menu-links-color);
-        white-space: nowrap;
         letter-spacing: -1px;
+        margin-top: -1.2rem;
+        margin-bottom: -0.5rem;
+        margin-left: -0.6rem;
     }
     
     
@@ -295,12 +295,13 @@
         font-size: 1rem;
         border-radius: 0.2rem;
         cursor: pointer;
-        margin: 0.5rem 0.2rem;
+        margin: 0.5rem -0.6rem;
         height: 4vh;
         width: auto;
         display: block;
         float: left;
         padding: 0.01rem 0.1rem;
+        margin-top: 3rem;
     }
     
     
@@ -315,8 +316,9 @@
 
     .hr-prod {
         border: 0.059rem solid var(--menu-links-color);
-        width: 80%;
+        width: 90%;
         transform: translateY(-6.5rem);
+        margin: 1rem 1rem;
     }
 
     .hr-prods {
@@ -344,14 +346,16 @@
     
     .producto-img{
         display: block;
-        width: 100%;
+        width: 18rem;
+        height: 40vh;
         border-color: var(--color-grey);
+        margin: 0 1rem;
     }
     
     .img-pro {
-        object-fit: fill;
-        width: 90%;
-        height: 40vh;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
         border-style: solid;
         border-color: var(--color-grey);
         
@@ -360,15 +364,24 @@
     
     .product-info{
         background-color: var(--color-grey);
-        width: 100%;
+        width: 18rem;
         padding: 1rem;
         text-align: justify;
+        display: block;
+        margin: 0 1rem;
+        flex: 1; /* Allows the message area to expand with viewport height */
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
     }
     
     .product-descrip {
         padding: 2rem;
         overflow: auto;
         color: var(--menu-links-color);
+        height: 25vh;
+        font-size: 1rem;
+        letter-spacing: -1px;
     }
 
 
@@ -482,12 +495,17 @@
 
     #nameSubcat {
         background-color: var(--menu-links-color);
+        transform: translateY(3.5rem);
         color: white;
         font-size: 1rem;
         border-radius: 0.2rem;
-        height: 3.5vh;
         cursor: pointer;
+        margin: 0.5rem -0.6rem;
+        height: 4vh;
+        width: auto;
         display: block;
-        transform: translateY(6.5rem);
+        float: left;
+        padding: 0.01rem 0.1rem;
+        margin-top: 3rem;
     }
 }
