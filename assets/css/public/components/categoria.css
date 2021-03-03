@@ -1,69 +1,70 @@
-@media (min-width: 768px) {
+
     .categoria-wrapper {
-        width: 80%;
         display: grid;
+        grid-column: 1 / -1;
         grid-gap: 1rem;
-        text-align: center;
-        margin-left: 8.4rem;
         margin-top: -4rem;
-        
+        padding: 0.5rem;
+        width: 100%;
+        margin-bottom: 6rem;
+
     }
     
     .portada {
         width: 100%;
         height: 47vh;
         margin-bottom: 1rem;
+        display: grid;
+        grid-column: 1 / -1;
+        justify-content: center;
     }
     
     .portada img {
-        width: 100%;
+        width: 70vw;
         height: 47vh;
         object-fit: cover;
     }
     
     .subcategorias-wrapper {
-        width: 100%; 
         display: grid;
-        grid-template-columns: repeat(auto-fit, 17rem);
-        text-align: center; 
-        gap: 2rem;
-        margin: 4rem 0;
-        padding-left: 3rem;
-        transform: translateX(2rem);
+        grid-template-columns: repeat(auto-fit, 14rem);
+        justify-content: center;
+        grid-column: 1 / -1;
+        margin: 2rem 0;
+        padding: 1rem;
+        grid-gap: 1rem;
     }
     
     .subcategoria-cell {
         border: solid 0.2rem var(--color-grey);
-        width: 17rem;
-        height: 37vh;
+        height: 35vh;
+        display: flex;
+        flex-direction: column;
     }
 
     .subcategoria-card {
-        width: 100%;
         height: 100%;
     }
     
     .subcategoria-img-top {
-        width: 100%;
-        height: 30vh;
-        object-fit: contain;
+        height: 75%;
+        
     }
     
     .subcategoria-img-top .subcategoria-img {
-        width: 100%;
         height: 100%;
+        object-fit: cover;
     }
     
     .subcategoria-name {
-        width: 100%;
-        height: 6vh;
+        height: 25%;
         background-color: var(--color-grey);
         text-align: center;
         padding: 0.3rem;
     }
     
     .subcategoria-title {
-        font-size: 1.2rem;
+        font-size: 1rem;
         color: var(--menu-links-color);
     }
     
@@ -91,71 +92,56 @@
 
     .subcategoria-slider {
         display: none;
-    }
-}
-
-@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-  
-    .categoria-wrapper {
-        width: 100%;
-        display: grid;
-        grid-gap: 1rem;
-        text-align: center;
-        margin-top: 2rem;
+        visibility: hidden;
     }
 
-    
-
-    .portada img {
-        width: 100%;
-        height: 100%
-    }
-
+@media (min-width: 1280px) { 
     .subcategorias-wrapper {
-        
-        grid-template-columns: repeat(auto-fit, 14rem);
-        
+        grid-gap: 2rem;
+        grid-template-columns: repeat(auto-fit, 18rem);
     }
-    
-    .subcategoria-cell {
-        border: solid 0.2rem var(--color-grey);
-        width: 14rem;
-    }    
+    .subcategoria-name {
+        padding: 1rem;
+    }
 }
-
 
 @media (max-width: 768px) {
     .categoria-wrapper {
         width: 100%;
-        display: grid;
         grid-gap: 1rem;
-        text-align: center;
         margin-top: 2rem;
         
     }
     
     .portada {
         width: 100%;
-        height: 12rem;
-        margin: -2rem 0;
+        height: 47vh;
+        margin-bottom: 1rem;
+        display: grid;
+        grid-column: 1 / -1;
+        justify-content: center;
     }
     
     .portada img {
         width: 100%;
-        height: 100%
+        height: 35vh;
+        object-fit: cover;
     }
     
     .subcategorias-wrapper {
        display: none;
+       visibility: hidden;
     }
 
     .subcategoria-slider {
         width: 100%;
-        height: 45vh;
-        padding: 2rem 2rem;
-        gap: 1rem;
-        margin-top: 0.2rem;
-        gap: 2rem;   
+        padding: 2rem 3rem;
+        display: block;
+        visibility: visible;
+        margin-top: -5rem;
+        display: grid;
+        grid-gap: 1rem;
+        grid-template-columns: repeat(auto, 20rem);        
     }
 
     .subcategoria-slider a {
@@ -164,32 +150,25 @@
     
     .subcat-cell {
         border: solid 0.2rem var(--color-grey);
-        width: 17rem;
+        width: 90%;
         height: 37vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
         margin: 0 1rem;
     }
 
     .subcategoria-card {
-        width: 17rem;
         height: 100%;
     }
     
     .subcat-img-top {
-        width: 17rem;
         height: 30vh;
         object-fit: cover;
     }
     
     .subcat-img-top .subcat-img {
-        width: 50vw;
         height: 30vh;
     }
     
     .subcat-name {
-        width: 17rem;
         height: 6vh;
         background-color: var(--color-grey);
         text-align: center;
@@ -198,7 +177,7 @@
     }
     
     .subcat-title {
-        font-size: 1rem;
+        font-size: 0.8rem;
         color: var(--menu-links-color);
     }
     

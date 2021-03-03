@@ -21,7 +21,7 @@
     </div>
     
     <div class="product-content">
-        <div class="producto-img">
+        <div class="producto-img" >
             <img class="img-pro" id="img-main" src="<?=base_url($producto->foto)?>">
             </img>
             <?php 

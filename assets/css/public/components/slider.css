@@ -3,21 +3,22 @@
     position: relative;
     height: 57vh;
     object-fit: cover;
-    padding: 1rem;
+    margin-bottom: 6rem;
 }
 
 .slider-wraper {
     grid-area: slider-wraper;
+    grid-template-columns: repeat(auto, 5rem);
+    justify-content: center;
     width: 99%;
-    height: 67vh;
+    height: 60vh;
     transform: translate(0.2rem, -6rem);
 }
 
 .slider-titulo {
     grid-area: head;
     display: flex;
-    align-self: left;
-    width: 100%;
+    align-self: left;   
     font-family: 'Noto Sans', sans-serif;
     color: var(--titulo-seccion-color);
     margin-bottom: 0;
@@ -31,55 +32,30 @@
   
   
 .slider-cell{
-    
-    width: 23.5%;
     height: 100%;
     margin-right: 0.8rem;
     transform: translateY(5.7rem);
 }
 
-/* TABLET */
-
-@media (min-width: 600px) and (max-width: 1024px) and (orientation: landscape) {
-  
-    .slider-cell {
-        width: 30%;
-    }
-
-    .section-slider {
-        transform: translateY(2rem);
-    }
-    
-}
-
 
 /* CELU */
 
-@media (max-width: 600px) {
-
-    .slider-titulo {
-        transform: translateX(-2rem);
-    }
-
-    .hr-head {
-        transform: translateX(-2rem);
-        width: 85vw;
-    }
-
+@media (max-width: 768px) {
     .slider-wraper {
-        width: 80vw;
-        height: 60vh;
-        transform: translate(-2rem, -6rem);
+        transform: translateX(-2rem, -6rem);
+        grid-template-columns: repeat(auto, 10rem);
     }
 
     .section-slider {
-        height: 60vh;
-        margin-top: 3rem;
+        margin-top: 4rem;
+        margin-bottom: -3rem;
+        width: 100%;
     } 
 
     .slider-cell {
-        width: 45%;
+        width: 10rem;
         height: 100%;
+        margin: 0 0.5rem;
     }
     
 }

@@ -7,7 +7,6 @@
     display:flex;
     justify-self: center;
     bottom: 0;
-    margin-bottom: 1.5rem;
     display: grid;
     grid-template: min-content min-content 1fr / 3fr;
     grid-template-areas: "head"
@@ -15,9 +14,10 @@
                          "slider-wraper";
 }
 
-@media (max-width: 560px) {
+@media (max-width: 768px) {
     .prod-novedades {
         margin-bottom: -4rem;
-        transform: translateY(-2rem);
+        transform: translateY(-1rem);
+        width: 100%;
     }
 } 

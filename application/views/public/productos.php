@@ -42,7 +42,7 @@
         <hr class="hr-prods">  
     </div>
 
-    <?php if(isset($categoria) && $subcategoria == null ):?>
+    <?php if(isset($categoria) && !isset($subcategoria)):?>
         <div class="categoria-wrapper">
             <div class="portada">
                 <img src="<?=base_url($categoria->imagenCAT)?>" alt="portada categoria">

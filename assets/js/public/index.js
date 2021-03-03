@@ -53,7 +53,7 @@ if (destacados){
     cellAlign: 'center',
     contain: true,  
     groupCells: true, 
-    //pageDots: false, 
+    pageDots: false,
     //wrapAround: true,
   });
 
@@ -88,7 +88,7 @@ if (novedades){
     cellAlign: 'center',
     contain: true,  
     groupCells: true, 
-    //pageDots: false, 
+    pageDots: false, 
     //wrapAround: true,
   });
 
@@ -123,7 +123,7 @@ if (ofertas){
     cellAlign: 'center',
     contain: true,  
     groupCells: true, 
-    //pageDots: false, 
+    pageDots: false, 
     //wrapAround: true,
   });
 
@@ -148,10 +148,14 @@ if (ofertas){
 
 /*/--- IMAGENES-MINIATURAS ---/*/
 const prodImages = document.querySelector('.slider-images');
+if(prodImages){
   new Flickity( prodImages, {
     cellAlign: 'center',
     contain: true,
+    pageDots: false,
   });
+}
+  
 
 
 const change = src => {
@@ -160,12 +164,15 @@ const change = src => {
 
 /*/--- SUBCATEGORIAS ---/*/
 const subcats = document.querySelector('.subcategoria-slider');
+if(subcats){
   new Flickity( subcats, {
     cellAlign: 'center',
     contain: true,
     draggable: true,
     selectedAttraction: 0.1,
   });
+}
+  
 
 
 function myFunction() {
@@ -430,6 +437,7 @@ function loadData(pageUrl) {
   })
   .fail(ajaxErrors);
 }
+
 
 
 

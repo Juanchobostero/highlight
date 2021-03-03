@@ -7,7 +7,9 @@
 				<div class="product-cart">
 					<div class="product-img-top">
 						<img class="product-img" src="<?=base_url($producto->foto)?>">
-						<span class="new-price">AHORA: <?=$producto->precio_nuevo?></span>
+					</div>
+					<div class="new-price">
+						<span>AHORA  $<?=$producto->precio_nuevo?></span>
 					</div>
 					<div class="product-desc">
 						<h5>

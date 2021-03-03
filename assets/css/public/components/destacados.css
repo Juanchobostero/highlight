@@ -15,10 +15,11 @@
                          "slider-wraper";
 }
 
-@media (max-width: 560px) {
+@media (max-width: 768px) {
     .prod-destacados {
         margin-bottom: -4rem;
         transform: translateY(1rem);
+        width: 100%;
     }
 }
 
