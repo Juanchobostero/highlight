@@ -6,11 +6,11 @@ class Categorias_model extends CI_Model {
 
     //retorna todas las categorias con sus respectivas subcategorias
     public function get_full(){
+        $this->db->order_by('id_categoria', 'DESC');
         $categorias = $this->db->get('categorias')->result();
         foreach($categorias as $categoria){
-        $this->db->where('id_cat', $categoria->id_categoria);
-        $this->db->order_by('descripcionSC');
-        $categoria->subcategorias = $this->db->get('subcategorias')->result();
+            $this->db->where('id_cat', $categoria->id_categoria);  
+            $categoria->subcategorias = $this->db->get('subcategorias')->result();
         }
 
         return $categorias;

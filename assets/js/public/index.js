@@ -516,11 +516,13 @@ function addToCart(){
     
 }
 
-function uploadPrices(e, id) {
+function updateCantidad(e, id) {
   var precio = document.getElementById("precio-valor-" + id).innerHTML;
   var cantidad = e.target.value;
   var newPrice = precio * cantidad;
+
   document.getElementById("sub-valor-" + id).innerText = newPrice;
+
 }
 
 function delFromCart(id) {

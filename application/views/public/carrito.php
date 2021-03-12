@@ -7,7 +7,7 @@
     <div class="carrito-head">
         <div class="carrito-title">
             <span class="carrito-icono"><img src="#" alt="cart img"></span>
-            <h3>Mi carrito</h3>
+                <h3>Mi carrito</h3>
         </div>
         <hr class="carrito-hr">
     </div>
@@ -35,7 +35,7 @@
                         </h4></td>
                     <td>
                         <div class="quantity">
-                            <input id="cant-cart" value="<?=$item['qty']?>" onchange="uploadPrices(event, '<?=$item['id']?>')" name="cantidad" type="number" min="0" step="1">
+                            <input id="cant-cart" value="<?=$item['qty']?>" onchange="updateCantidad(event, '<?=$item['id']?>')" name="cantidad" type="number" min="0" step="1">
                         </div>
                     
                     </td>
@@ -48,7 +48,7 @@
                     </td>
                     
                     <td>
-                        <a class="delete" href="#" onclick='delFromCart("<?=$item["id"]?>")'>
+                        <a class="delete" href="#" onclick='delFromCart("<?=$item["rowid"]?>")'>
                             <img src="<?=base_url('assets/img/public/imgVarios/delete.png')?>">
                         </a>
                     </td>

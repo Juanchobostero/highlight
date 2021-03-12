@@ -65,7 +65,6 @@ class Inicio_controller extends CI_Controller
 		$data['categorias'] = $this->Categorias_model->get_full();
 
 		foreach($this->cart->contents() as $items){
-			$producto = $this->Productos_model->get_producto($items['id']);
 			$this->cart->update($items);
 		}
 

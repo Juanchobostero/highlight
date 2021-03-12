@@ -1,4 +1,3 @@
-
 <?php foreach($this->cart->contents() as $item):?>
     <tr class="carrito-item">
     <td><span class="carrito-foto"><img src="<?=base_url($item['foto'])?>" alt="cartimg"></span></td>
@@ -22,7 +21,7 @@
     </td>
     
     <td>
-        <a class="delete" href="#" onclick='delFromCart("<?=$item["id"]?>")'>
+        <a class="delete" href="#" onclick='delFromCart("<?=$item["rowid"]?>")'>
             <img src="<?=base_url('assets/img/public/imgVarios/delete.png')?>">
         </a>
     </td>

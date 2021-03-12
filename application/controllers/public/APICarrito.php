@@ -38,6 +38,7 @@ class APICarrito extends CI_Controller {
             'price'   => $precioVenta,
             'name'    => $producto->nombrePR,
             'foto'   => $producto->foto,
+            'stock' => $producto->stockPR,
         ];
 
         $this->cart->insert($data);
@@ -46,10 +47,6 @@ class APICarrito extends CI_Controller {
         $msg = "Producto Agregado!";
 
         $this->output->set_output(json_encode(compact('result', 'msg')));
-    }
-
-    public function update_qty(){
-
     }
 
     public function eliminar(){
