@@ -43,14 +43,23 @@
             <div class="product-descrip"><?=$producto->descripcionPR?></div>
             <div class="product-detail">
                 <h2 class="product-price">$<?=$producto->precio_ventaPR?></h2>
-                <h3 class="product-stock">Stock disponible: 3 unidades</h3>
+                <h3 class="product-stock">Stock disponible: <?=ceil($producto->stockPR)?> unidades</h3>
+                <label class="lbl-cant" for="cantidad">cantidad:</label>
                 <div class="cantidad">
-                    <input class="product-cantidad" type="text">
-                    <a href="#" class="cart-link"><img class="cart-img" src="<?=base_url('assets/img/public/imgVarios/carrito2.jpg')?>"></a>
+                    <div class="quantity">
+                        <input id="cantidad" name="cantidad" placeholder="cantidad" type="number" min="0" step="1" value="0">
+                    </div>
+                    <a href="#" class="cart-link" onclick="addToCart(event)"><img class="cart-img" src="<?=base_url('assets/img/public/imgVarios/carrito2.jpg')?>"></a>
                 </div>
             </div>
         </div>
     </div> 
+</div>
+
+<div id="producto-datos" style="display:none" 
+    data-idproducto="<?=$producto->id_producto?>"
+    data-stock="<?=ceil($producto->stockPR)?>"
+    data-precioventa="<?=$producto->precio_ventaPR?>">                        
 </div>
 
 <?php $this->load->view('public/incl/footer');?>

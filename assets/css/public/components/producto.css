@@ -143,9 +143,7 @@
         gap: 0.8rem;
     }
     
-    .product-cantidad {
-        width: 60%;
-    }
+    
     
     .cart-img {
         width: 6vw;
@@ -240,6 +238,82 @@
         text-decoration: none;
         color: var(--menu-links-color);
     }
+
+    .lbl-cant{
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+    }
+
+    .quantity {
+        position: relative;
+      }
+      
+      input[type=number]::-webkit-inner-spin-button,
+      input[type=number]::-webkit-outer-spin-button
+      {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      
+      input[type=number]
+      {
+        -moz-appearance: textfield;
+      }
+      
+      .quantity input {
+        width: 8rem;
+        height: 2.7rem;
+        border-radius: 0.3rem;
+        line-height: 1.65;
+        float: left;
+        display: block;
+        padding: 0;
+        margin: 0;
+        border: 1px solid #eee;
+      }
+      
+      .quantity input:focus {
+        outline: 0;
+      }
+      
+      .quantity-nav {
+        float: left;
+        position: relative;
+        height: 42px;
+      }
+      
+      .quantity-button {
+        position: relative;
+        cursor: pointer;
+        border-left: 1px solid #eee;
+        width: 20px;
+        text-align: center;
+        color: #333;
+        font-size: 0.9rem;
+        font-family: "Trebuchet MS", Helvetica, sans-serif !important;
+        line-height: 1.7;
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+      }
+      
+      .quantity-button.quantity-up {
+        position: absolute;
+        height: 50%;
+        top: 0;
+        border-bottom: 1px solid #eee;
+      }
+      
+      .quantity-button.quantity-down {
+        position: absolute;
+        bottom: -1px;
+        height: 50%;
+      }
 
 
 }
@@ -410,14 +484,82 @@
         flex-direction: row;
         gap: 0.8rem;
         display: block;
-        justify-content: center;
+    }
+
+    
+    .quantity {
+        position: relative;
+      }
+      
+      input[type=number]::-webkit-inner-spin-button,
+      input[type=number]::-webkit-outer-spin-button
+      {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      
+      input[type=number]
+      {
+        -moz-appearance: textfield;
+      }
+
+    .lbl-cant {
+        margin-bottom: -3rem;
     }
     
-    .product-cantidad {
-        width: 10rem;
-        height: 7vh;
+    .quantity input {
+        width: 8rem;
+        height: 2.7rem;
+        border-radius: 0.3rem;
+        line-height: 1.65;
+        float: left;
+        display: block;
+        padding: 0;
+        margin: 0;
+        border: 1px solid #eee;
+      }
+      
+      .quantity input:focus {
+        outline: 0;
+      }
+      
+      .quantity-nav {
+        float: left;
+        position: relative;
+        height: 42px;
+      }
+      
+      .quantity-button {
+        position: relative;
+        cursor: pointer;
+        border-left: 1px solid #eee;
+        width: 20px;
         text-align: center;
-    }
+        color: #333;
+        font-size: 0.9rem;
+        font-family: "Trebuchet MS", Helvetica, sans-serif !important;
+        line-height: 1.7;
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+      }
+      
+      .quantity-button.quantity-up {
+        position: absolute;
+        height: 50%;
+        top: 0;
+        border-bottom: 1px solid #eee;
+      }
+      
+      .quantity-button.quantity-down {
+        position: absolute;
+        bottom: -1px;
+        height: 50%;
+      }
     
     .cart-img {
         width: 4rem;

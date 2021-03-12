@@ -63,6 +63,12 @@ class Inicio_controller extends CI_Controller
 	public function cart(){
 		$data['title'] = 'Mi carrito';
 		$data['categorias'] = $this->Categorias_model->get_full();
+
+		foreach($this->cart->contents() as $items){
+			$producto = $this->Productos_model->get_producto($items['id']);
+			$this->cart->update($items);
+		}
+
 		$this->load->view('public/carrito', $data);
 	}
 

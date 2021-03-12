@@ -438,8 +438,114 @@ function loadData(pageUrl) {
   .fail(ajaxErrors);
 }
 
+//CARRITO SELECT NUMBER
+jQuery('<div class="quantity-nav"><div class="quantity-button quantity-up">+</div><div class="quantity-button quantity-down">-</div></div>').insertAfter('.quantity input');
+jQuery('.quantity').each(function() {
+  var spinner = jQuery(this),
+    input = spinner.find('input[type="number"]'),
+    btnUp = spinner.find('.quantity-up'),
+    btnDown = spinner.find('.quantity-down'),
+    min = input.attr('min'),
+    max = input.attr('max');
 
+  btnUp.click(function() {
+    var oldValue = parseFloat(input.val());
+    if (oldValue >= max) {
+      var newVal = oldValue;
+    } else {
+      var newVal = oldValue + 1;
+    }
+    spinner.find("input").val(newVal);
+    spinner.find("input").trigger("change");
+  });
 
+  btnDown.click(function() {
+    var oldValue = parseFloat(input.val());
+    if (oldValue <= min) {
+      var newVal = oldValue;
+    } else {
+      var newVal = oldValue - 1;
+    }
+    spinner.find("input").val(newVal);
+    spinner.find("input").trigger("change");
+  });
+
+});
+
+///////////////////////////PRODUCTO//////////////////////////////////////
+const productoDatos = document.querySelector('#producto-datos');
+const cantidadProducto = document.querySelector('#cantidad');
+const carritoItems = document.querySelector('.carrito-items');
+const carritoTotal = document.getElementById('total-cart');
+
+function addToCart(){
+  let idproducto = productoDatos.dataset.idproducto;
+  let stock = productoDatos.dataset.stock;
+  let cantidad = parseInt(cantidadProducto.value);
+  let precioVenta = productoDatos.dataset.precioventa;
+
+  // validaciones
+  if(isNaN(cantidad)){
+    Swal.fire("Error!", "Ingrese una Cantidad!", "error");
+    return;
+  }
+
+  if(cantidad <= 0){
+    Swal.fire("Error!", "La Cantidad debe ser mayor a Cero!", "error");
+    return;
+  }
+
+  //loaderProds.classList.add('show');
+
+  $.ajax({
+    method: "POST",
+    url: baseUrl + 'api/carrito/add',
+    data: { idproducto, stock, cantidad, precioVenta }
+  })
+  .done(( resp ) => {
+    //loaderProds.classList.remove('show');
+    data = JSON.parse(resp);
+    if(data.result === 1){
+      Swal.fire("Bien!", "Se Agrego al Carrito!", "success");
+      //actualizarTotalHeader();
+    }else{
+      Swal.fire("Error!", data.msg, "error");
+    }
+  })
+  .fail(ajaxErrors);
+    
+}
+
+function uploadPrices(e, id) {
+  var precio = document.getElementById("precio-valor-" + id).innerHTML;
+  var cantidad = e.target.value;
+  var newPrice = precio * cantidad;
+  document.getElementById("sub-valor-" + id).innerText = newPrice;
+}
+
+function delFromCart(id) {
+  //pageLoader.classList.add('page-loader--show');
+  $.ajax({
+    method: "POST",
+    url: baseUrl + 'api/carrito/delete',
+    data: { id }
+  })
+  .done(( resp ) => {
+    //pageLoader.classList.remove('page-loader--show');
+    data = JSON.parse(resp);
+    if(data.result === 1){
+      Swal.fire("Bien!", data.msg , "success")
+      .then(() => {
+        carritoItems.innerHTML = data.html
+        carritoTotal.innerHTML = data.total;
+      });
+      //actualizarTotalHeader();
+    }else{
+      Swal.fire("Error!", data.msg , "error");
+    }
+  })
+  .fail(ajaxErrors);
+}
 
 function ajaxErrors( jqXHR, textStatus) {
   /* pageLoader.classList.remove('page-loader--show'); */

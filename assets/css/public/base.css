@@ -13,6 +13,10 @@
   padding: 0;
 }
 
+*:focus {
+  outline: 0;
+}
+
 html {
   width: 100%;
   height: 100%;
@@ -23,6 +27,22 @@ body {
   width: 100%;
   font-size: 17px;
   min-height: 100%;
+}
+
+.delete {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.delete img {
+  width: 2rem;
+  height: 2rem;
+}
+
+.delete img:hover {
+  transform: scale(1.2, 1.2);
+  transition: .4s ease;
+  opacity: 0.5;
 }
 
 a {
@@ -303,6 +323,7 @@ img.blur {
   text-align: right;
   transform: translateX(6rem);
 }
+
 
 
 

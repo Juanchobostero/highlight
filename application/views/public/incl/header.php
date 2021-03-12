@@ -91,7 +91,7 @@
             </a>
           <?php endif?>
           
-          <a href="<?=base_url()?>" class="carrito">
+          <a href="<?=base_url('carrito')?>" class="carrito">
             <img class="icon-cart" src="<?=base_url('assets/img/public/imgVarios/carrito-vector.png')?>" alt="logo">
           </a>
       </div>

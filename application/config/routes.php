@@ -132,4 +132,7 @@ $route['api/user/login'] = 'public/APIUser/login';
 $route['api/user/signin'] = 'public/APIUser/signin';
 $route['api/user/complete_profile'] = 'public/APIUser/set_profile';
 $route['api/user/localidades'] = 'public/APIUser/get_prov_localidades';
+$route['api/carrito/add'] = 'public/APICarrito/agregar';
+$route['api/carrito/update/qty'] = 'public/APICarrito/update_qty';
+$route['api/carrito/delete'] = 'public/APICarrito/eliminar';
 
