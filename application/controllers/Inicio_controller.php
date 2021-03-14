@@ -65,7 +65,9 @@ class Inicio_controller extends CI_Controller
 		$data['categorias'] = $this->Categorias_model->get_full();
 
 		foreach($this->cart->contents() as $items){
-			$this->cart->update($items);
+			$producto = $this->Productos_model->get_producto($items['id']);
+			$items['stock'] = $producto->stockPR;
+			$this->cart->update(['rowid' => $items['rowid']]);
 		}
 
 		$this->load->view('public/carrito', $data);

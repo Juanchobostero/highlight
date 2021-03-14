@@ -22,7 +22,7 @@
     
     <div class="product-content">
         <div class="producto-img" >
-            <img class="img-pro" id="img-main" src="<?=base_url($producto->foto)?>">
+            <img class="img-pro" id="img-main" src="<?=base_url($producto->foto)?>" onclick="showModalImg(event)">
             </img>
             <?php 
             if(count($fotos) > 1) { ?>
@@ -49,7 +49,9 @@
                     <div class="quantity">
                         <input id="cantidad" name="cantidad" placeholder="cantidad" type="number" min="0" step="1" value="0">
                     </div>
-                    <a href="#" class="cart-link" onclick="addToCart(event)"><img class="cart-img" src="<?=base_url('assets/img/public/imgVarios/carrito2.jpg')?>"></a>
+                    <a href="#" class="cart-link" onclick="addToCart(event)">
+                        <img class="cart-img" src="<?=base_url('assets/img/public/imgVarios/carrito2.jpg')?>">
+                    </a>
                 </div>
             </div>
         </div>
@@ -61,5 +63,7 @@
     data-stock="<?=ceil($producto->stockPR)?>"
     data-precioventa="<?=$producto->precio_ventaPR?>">                        
 </div>
+
+<?php $this->load->view('public/incl/modal')?>
 
 <?php $this->load->view('public/incl/footer');?>

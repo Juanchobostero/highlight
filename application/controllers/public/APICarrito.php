@@ -66,4 +66,61 @@ class APICarrito extends CI_Controller {
         $this->output->set_output(json_encode(compact('result', 'msg', 'html', 'total')));
     }
 
+    public function total_items(){
+        $total = $this->cart->total_items();
+        $this->output->set_output(json_encode(compact('total')));
+    }
+
+    public function vaciar(){
+        
+        $this->cart->destroy();
+
+        $result = 1;
+        $msg = "El Carrito ha sido eliminado";
+        $newTotal = $this->cart->total();;
+        $html = $this->load->view('public/ajax/carrito', null, TRUE);
+
+        $this->output->set_output(json_encode(compact('result', 'msg', 'html', 'newTotal')));
+        
+        }
+
+     //actualizar cantidad item
+    public function update_qty(){
+        $rowid = $this->input->post('rowid');
+        $qty = $this->input->post('qty');
+        $item = $this->cart->get_item($rowid);
+        
+        //no existe item
+        if(!$item){
+            $result = 404;
+            $msg = 'No Existe el item!';
+            $this->output->set_output(json_encode(compact('result', 'msg')));
+            return;
+        }
+        //actualizo stock con lo que esta en la bd
+        $producto = $this->Productos_model->get_producto($item['id']);
+        $item['stock'] = $producto->stockPR;
+        $this->cart->update(['rowid' => $item['rowid']]);
+        $item = $this->cart->get_item($rowid);
+
+        //stock insuficiente
+        if($item['stock'] < $qty){
+            $result = 2;
+            $msg = 'Stock Insuficiente!';
+            $newStock = $item['stock'];
+            $this->output->set_output(json_encode(compact('result', 'msg', 'newStock')));
+            return;
+        }
+
+        $this->cart->update(['rowid' => $rowid, 'qty' => $qty]);
+
+        $result = 1;
+        $item = $this->cart->get_item($rowid);
+        $newtotal = $this->cart->total();
+        $newStock = $item['stock'];
+        $price = $item['price'];
+        $this->output->set_output(json_encode(compact('result','newtotal', 'newStock', 'price')));
+        return;
+    }
+
 }

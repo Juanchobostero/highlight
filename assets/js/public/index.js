@@ -9,8 +9,25 @@ const closeToggle = document.querySelector('.nav-close');
 const pageLoader = document.querySelector('.page-loader');
 const menu = document.querySelector('.dropdown-content');
 const userMenu = document.querySelector('.sub-nav-links');
+const carritoNumbers = document.querySelectorAll('.cart-number');
+const modal = document.querySelector("#modal-producto");
 
 
+$(document).ready(() => {
+  //controlar total items
+  actualizarTotalHeader();
+});
+
+///////////////////////////PRODUCTO MODAL//////////////////////////////////////
+function showModalImg(e){
+  modal.style.display = "block";
+  document.querySelector("#modal-img").src = e.target.src;
+  document.querySelector("#modal-download").href = e.target.src;
+}
+
+function closeModalImg(){
+  modal.style.display = "none";
+}
 
 //ABRIR MENU TOGGLE
 toggle.addEventListener('click', e => {
@@ -477,6 +494,12 @@ const productoDatos = document.querySelector('#producto-datos');
 const cantidadProducto = document.querySelector('#cantidad');
 const carritoItems = document.querySelector('.carrito-items');
 const carritoTotal = document.getElementById('total-cart');
+const btnSave = document.querySelector('.carrito-continuar');
+let itemsCarrito = document.querySelectorAll('.carrito-item');
+let qtyWaitTimer;
+let qtyPrevValue = "";
+
+
 
 function addToCart(){
   let idproducto = productoDatos.dataset.idproducto;
@@ -507,7 +530,7 @@ function addToCart(){
     data = JSON.parse(resp);
     if(data.result === 1){
       Swal.fire("Bien!", "Se Agrego al Carrito!", "success");
-      //actualizarTotalHeader();
+      actualizarTotalHeader();
     }else{
       Swal.fire("Error!", data.msg, "error");
     }
@@ -516,14 +539,126 @@ function addToCart(){
     
 }
 
-function updateCantidad(e, id) {
+function actualizarTotalHeader(){
+  console.log(baseUrl+'api/carrito/gettotal/');
+  fetch(baseUrl+'api/carrito/gettotal/')
+  .then((response)=> {
+    return response.json();
+  })
+  .then((myJson) => {
+    if( myJson.total > 0 ){
+      //actualizo tanto para cel como pc
+      carritoNumbers.forEach(carritoNumber => {
+        carritoNumber.innerHTML = myJson.total;
+        carritoNumber.style.display = "flex";
+      })
+    }else{
+      carritoNumbers.forEach(carritoNumber => {
+        carritoNumber.style.display = "none";
+      })
+    }
+  });
+}
+
+/* function updateCantidad(e, id) {
+  checkStockItems();
   var precio = document.getElementById("precio-valor-" + id).innerHTML;
   var cantidad = e.target.value;
   var newPrice = precio * cantidad;
-
   document.getElementById("sub-valor-" + id).innerText = newPrice;
+  
 
+} */
+
+if(itemsCarrito){
+  checkStockItems();
 }
+
+function updateCantidad(e, rowid){
+  checkStockItems();
+  let qty = parseInt(e.target.value);
+
+  if(isNaN(qty)){
+    clearTimeout(qtyWaitTimer);
+  }
+  
+  if(!isNaN(qty) && qty != qtyPrevValue && qty > 0){
+    clearTimeout(qtyWaitTimer);
+    btnSave.disabled = true;
+    qtyWaitTimer = setTimeout(() => sendUpdateQty(rowid, qty), 1000);
+  }
+  qtyPrevValue = qty;
+}
+
+function sendUpdateQty(rowid, qty){
+  let subtotal = document.querySelector('#sub-valor-'+ rowid);
+  let itemStock = document.querySelector('#producto-stock-'+rowid);
+  console.log('ejecutando ajax');
+  $.ajax({
+    method: "POST",
+    url: baseUrl + 'api/carrito/update/qty',
+    data: {qty, rowid}
+  })
+  .done(( resp ) => {
+    data = JSON.parse(resp);
+    if(data.result === 1){
+      subtotal.innerHTML = qty * data.price;
+      carritoTotal.innerHTML = data.newtotal;
+      itemStock.innerHTML = data.newStock;
+      btnSave.disabled = false;
+    }else if(data.result === 2){
+      itemStock.innerHTML = data.newStock;
+      checkStockItems();
+      btnSave.disabled = false;
+    }else{
+      Swal.fire("Error!", data.msg , "error");
+    }
+
+  })
+  .fail(ajaxErrors);
+}
+
+function vaciar(){
+  $.ajax({
+    method: "POST",
+    url: baseUrl + 'api/carrito/vaciar',
+  })
+  .done(( resp ) => {
+    data = JSON.parse(resp);
+    if(data.result === 1){
+      Swal.fire("Bien!", data.msg , "success")
+      .then(() => {
+        carritoItems.innerHTML = data.html;
+        carritoTotal.innerHTML = data.newTotal;
+      });
+      actualizarTotalHeader();
+    }else{
+      Swal.fire("Error!", data.msg , "error");
+    }
+
+  })
+}
+
+
+function checkStockItems(){
+  let flagError = false;
+  itemsCarrito = document.querySelectorAll('.carrito-item');
+  itemsCarrito.forEach(item => {
+   
+    let itemStock = document.getElementById('producto-stock-' + item.id);
+    let itemCantidad = document.querySelector('#cant-item-'+item.id);
+    let stock = parseInt(itemStock.innerHTML);
+    let cantidad = parseInt(itemCantidad.value);
+    if(isNaN(cantidad) || cantidad <= 0 || stock < cantidad){
+      itemCantidad.classList.add('error');
+      flagError = true;
+    }else{
+      itemCantidad.classList.remove('error');
+    }
+  });
+  return flagError;
+}
+
 
 function delFromCart(id) {
   //pageLoader.classList.add('page-loader--show');
@@ -541,7 +676,7 @@ function delFromCart(id) {
         carritoItems.innerHTML = data.html
         carritoTotal.innerHTML = data.total;
       });
-      //actualizarTotalHeader();
+      actualizarTotalHeader();
     }else{
       Swal.fire("Error!", data.msg , "error");
     }

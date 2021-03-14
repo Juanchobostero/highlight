@@ -26,34 +26,51 @@
                 </thead>
                 <tbody class="carrito-items">
                 <?php foreach($this->cart->contents() as $item):?>
-                    <tr class="carrito-item">
-                    <td><span class="carrito-foto"><img src="<?=base_url($item['foto'])?>" alt="cartimg"></span></td>
-                    <td><?=$item['name']?></td>
-                    <td>
-                        <h4 id="precio">$
-                            <span id="precio-valor-<?=$item['id']?>"><?=$item['price']?></span>
-                        </h4></td>
-                    <td>
-                        <div class="quantity">
-                            <input id="cant-cart" value="<?=$item['qty']?>" onchange="updateCantidad(event, '<?=$item['id']?>')" name="cantidad" type="number" min="0" step="1">
-                        </div>
-                    
-                    </td>
-                    <td>
-                        <h4 id="subtotal">$
-                            <span id="sub-valor-<?=$item['id']?>">
-                                <?=$item['price'] * $item['qty']?>
+                    <tr class="carrito-item" id="<?=$item['rowid']?>">
+                        <td>
+                            <span class="carrito-foto"><img src="<?=base_url($item['foto'])?>" alt="cartimg">
                             </span>
-                        </h4>
-                    </td>
-                    
-                    <td>
-                        <a class="delete" href="#" onclick='delFromCart("<?=$item["rowid"]?>")'>
-                            <img src="<?=base_url('assets/img/public/imgVarios/delete.png')?>">
-                        </a>
-                    </td>
+                        </td>
+                        <td><?=$item['name']?></td>
+                        <td>
+                            <h4 id="precio">$
+                                <span id="precio-valor-<?=$item['rowid']?>"><?=$item['price']?></span>
+                            </h4></td>
+                        <td>
+                            <span 
+                                id="producto-stock-<?=$item['rowid']?>"
+                                style="display: none;" 
+                            >
+                                <?=ceil($item['stock'])?>                     
+                            </span>
+                            <div class="quantity">
+                                <input id="cant-item-<?=$item['rowid']?>" 
+                                value="<?=$item['qty']?>" 
+                                onchange="updateCantidad(event, '<?=$item['rowid']?>')" 
+                                name="cantidad" 
+                                type="number" 
+                                min="0" 
+                                step="1">
+                            </div>
+                        
+                        </td>
+                        <td>
+                            <h4 id="subtotal">$
+                                
+                                <span id="sub-valor-<?=$item['rowid']?>">
+                                    <?=$item['price'] * $item['qty']?>
+                                </span>
+                            </h4>
+                        </td>
+                        
+                        <td>
+                            <a class="delete" href="#" onclick='delFromCart("<?=$item["rowid"]?>")'>
+                                <img src="<?=base_url('assets/img/public/imgVarios/delete.png')?>">
+                            </a>
+                        </td>
                     
                     </tr>
+                    
                 <?php endforeach?>
                 </tbody>
             </table>
@@ -70,13 +87,10 @@
         <hr class="total">
 
         <div class="carrito-botones">
-            <button class="carrito-vaciar">Vaciar</button>
+            <button class="carrito-vaciar" onclick="vaciar()">Vaciar</button>
             <button class="carrito-continuar">Continuar</button>
         </div>
     </div>
-  
-
-
 </div>
 
 <?php $this->load->view('public/incl/footer');?>

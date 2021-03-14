@@ -93,6 +93,7 @@
           
           <a href="<?=base_url('carrito')?>" class="carrito">
             <img class="icon-cart" src="<?=base_url('assets/img/public/imgVarios/carrito-vector.png')?>" alt="logo">
+            <span class="cart-number" style="display:none;"></span>
           </a>
       </div>
     
