@@ -147,11 +147,14 @@
         gap: 0.8rem;
     }
     
-    
+    .cart-link {
+        width: 4rem;
+        height: 3rem;
+    }
     
     .cart-img {
-        width: 6vw;
-        height: 6.8vh;
+        width: 100%;
+        height: 100%;
         border-radius: 0.2rem;
     }
     

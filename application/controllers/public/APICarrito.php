@@ -72,13 +72,24 @@ class APICarrito extends CI_Controller {
     }
 
     public function vaciar(){
-        
-        $this->cart->destroy();
 
-        $result = 1;
-        $msg = "El Carrito ha sido eliminado";
-        $newTotal = $this->cart->total();;
-        $html = $this->load->view('public/ajax/carrito', null, TRUE);
+        if($this->cart->total_items() > 0) {
+            $this->cart->destroy();
+            $result = 1;
+            $msg = "El Carrito ha sido eliminado";
+            $newTotal = $this->cart->total();
+            $html = $this->load->view('public/ajax/carrito', null, TRUE);
+
+        }else {
+            $result = 0;
+            $msg = "El Carrito ya se encuentra vacio !";
+            $newTotal = $this->cart->total();
+            $html = $this->load->view('public/ajax/carrito', null, TRUE);
+        }
+        
+        
+
+        
 
         $this->output->set_output(json_encode(compact('result', 'msg', 'html', 'newTotal')));
         

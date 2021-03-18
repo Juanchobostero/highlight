@@ -21,14 +21,21 @@
 
 .carrito-head {
     grid-area: head;
-    height: 100%;
+    height: 60%;
     text-align: left;
-    padding-left: 10rem;
+    padding-left: 7rem;
+    margin-bottom: 1.5rem;
 }
 
 .carrito-head h3,
 .carrito-head span {
     display: inline;
+}
+
+.carrito-icono  img{
+    width: 3rem;
+    height: 3rem;
+    margin-bottom: 1.9rem;
 }
 
 .carrito-head h3 {
@@ -46,11 +53,12 @@
 .carrito-hr {
     border: 0.059rem solid var(--titulo-seccion-color);
     width: 90%;
+    margin-top: -1rem;
 }
 
 .tabla-main {
     width: 100%;
-    height: 60%;
+    height: 50%;
     display: flex;
     justify-content: center;
     margin: 1rem 0;
@@ -78,7 +86,7 @@ table {
     font-size: 0.9rem;
     font-weight: 500;
     color: var(--menu-links-color);
-    text-align: justify;
+    text-align: left;
 }
 
 .carrito-tabla tbody tr {
@@ -134,10 +142,11 @@ table {
     transition: all .5s;
 }
 
+
+
 .carrito-foto img {
     object-fit: cover;
-    width: 5rem;
-    height: 5rem;
+    width: 6rem;
     border: 0.2rem solid var(--color-grey);
 }
 
@@ -162,7 +171,43 @@ table {
     font-weight: 800;
 }
 
+.delete {
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.delete img {
+    width: 2rem;
+    height: 2rem;
+}
+
+.delete img:hover {
+    transform: scale(1.2, 1.2);
+    transition: .4s ease;
+    opacity: 0.5;
+}
+
+
+
+
 @media (max-width: 768px) { 
+
+    .carrito-icono  img{
+        width: 2rem;
+        height: 2rem;
+        margin-bottom: 1rem;
+    }
+    
+
+    .delete img {
+        width: 1.4rem;
+        height: 1.4rem;
+    }
+
+    #subtotal, #precio {
+        font-size: 0.8rem;
+        font-weight: 800;
+    }
     .carrito-head {
         padding-left: 1rem;
     }
@@ -175,19 +220,15 @@ table {
         padding-left: 1rem;
     }
 
-    .carrito-content {
-        width: 100%;
-        height: 70vh;
+    .carrito-tabla {
+        width: 95%;
+        margin: 0 -0.2rem;
+        
     }
 
     .tabla-main {
-        width: 100%;
-        height: 50vh;
-        margin: 1rem 0;
-    }
-
-    .table {
-        width: 100%;
+        overflow-y: auto;
+        overflow-x: auto;
     }
 
     .carrito-tabla thead th{
@@ -197,20 +238,22 @@ table {
 
     .carrito-tabla tbody td {
         font-size: 0.7rem;
-        white-space: normal;
-        text-align: center;
+       
     }
 
     .carrito-total {
         margin-top: 0.2rem;
     }
 
-    .total, .carrito-total {
-        transform: translateY(-5rem);
-    }
+    
 
     .carrito-botones {
         width: 100%;
-        transform: translateY(-3rem);
+        transform: translateY(1rem);
     }
+
+    .carrito-foto img { 
+        width: 4rem;
+    }
+    
 }

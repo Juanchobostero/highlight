@@ -2,12 +2,11 @@
 
 <div class="carrito-main">
     <div class="banner" id="carrito-ban">
-        Carrito
     </div>
     <div class="carrito-head">
         <div class="carrito-title">
-            <span class="carrito-icono"><img src="#" alt="cart img"></span>
-                <h3>Mi carrito</h3>
+            <span class="carrito-icono"><img src="<?=base_url('assets/img/public/imgVarios/carrito.jpeg')?>" alt="cart img"></span>
+            <h3>Mi carrito</h3>
         </div>
         <hr class="carrito-hr">
     </div>
@@ -43,15 +42,16 @@
                             >
                                 <?=ceil($item['stock'])?>                     
                             </span>
-                            <div class="quantity">
-                                <input id="cant-item-<?=$item['rowid']?>" 
-                                value="<?=$item['qty']?>" 
-                                onchange="updateCantidad(event, '<?=$item['rowid']?>')" 
-                                name="cantidad" 
+                            
+                            <input 
                                 type="number" 
-                                min="0" 
-                                step="1">
-                            </div>
+                                class="item-cantidad"
+                                id="cant-item-<?=$item['rowid']?>"
+                                value="<?=$item['qty']?>"
+                                onchange="updateCantidad(event, '<?=$item['rowid']?>')" 
+                                type="number"
+                                min="0"  
+                            >
                         
                         </td>
                         <td>
@@ -64,7 +64,7 @@
                         </td>
                         
                         <td>
-                            <a class="delete" href="#" onclick='delFromCart("<?=$item["rowid"]?>")'>
+                            <a class="delete" onclick='delFromCart("<?=$item["rowid"]?>")'>
                                 <img src="<?=base_url('assets/img/public/imgVarios/delete.png')?>">
                             </a>
                         </td>
