@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 18, 2021 at 12:21 AM
+-- Generation Time: Mar 18, 2021 at 12:40 AM
 -- Server version: 10.4.14-MariaDB-cll-lve
 -- PHP Version: 7.2.34
 
@@ -39,9 +39,9 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`id_categoria`, `descripcionCAT`, `imagenCAT`) VALUES
-(1, 'Iluminación', 'assets/img/categorias/09032021_1615329850.jpg'),
-(3, 'Herramientas', 'assets/img/categorias/09032021_1615329871.png'),
-(4, 'Bombas', 'assets/img/categorias/12032021_1615555825.jpg');
+(1, 'Iluminación', 'assets/img/categorias/17032021_1616027432.jpeg'),
+(3, 'Herramientas', 'assets/img/categorias/17032021_1616027476.png'),
+(4, 'Bombas', 'assets/img/categorias/17032021_1616027499.jpg');
 
 -- --------------------------------------------------------
 
@@ -2850,14 +2850,14 @@ CREATE TABLE `subcategorias` (
 --
 
 INSERT INTO `subcategorias` (`id_subcategoria`, `id_cat`, `descripcionSC`, `imagenSC`) VALUES
-(2, 1, 'Fotocontroles', 'assets/img/subcategorias/09032021_1615329909.jpg'),
-(4, 1, 'Lamparas LED', 'assets/img/subcategorias/09032021_1615329923.PNG'),
-(6, 3, 'Eléctricas', 'assets/img/subcategorias/09032021_1615329932.jpg'),
-(7, 3, 'Manuales', 'assets/img/subcategorias/09032021_1615329943.jpg'),
-(8, 3, 'Inalámbricas', 'assets/img/subcategorias/09032021_1615329953.jpg'),
-(9, 1, 'Alta Potencia', 'assets/img/subcategorias/09032021_1615329962.jpg'),
-(10, 1, 'Paneles de techo', 'assets/img/subcategorias/12032021_1615555680.jpg'),
-(11, 4, 'Autocebante', 'assets/img/subcategorias/12032021_1615555858.jpg');
+(2, 1, 'Fotocontroles', 'assets/img/subcategorias/17032021_1616027566.jpg'),
+(4, 1, 'Lamparas LED', 'assets/img/subcategorias/17032021_1616027768.jpg'),
+(6, 3, 'Eléctricas', 'assets/img/subcategorias/17032021_1616027638.jpeg'),
+(7, 3, 'Manuales', 'assets/img/subcategorias/17032021_1616027669.jpeg'),
+(8, 3, 'Inalámbricas', 'assets/img/subcategorias/17032021_1616027698.jpg'),
+(9, 1, 'Alta Potencia', 'assets/img/subcategorias/17032021_1616027744.PNG'),
+(10, 1, 'Paneles de techo', 'assets/img/subcategorias/17032021_1616027722.jpg'),
+(11, 4, 'Autocebante', 'assets/img/subcategorias/17032021_1616027813.jpg');
 
 -- --------------------------------------------------------
 
