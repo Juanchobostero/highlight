@@ -311,7 +311,7 @@ img.blur {
 }
 
 .item-cantidad {
-  width: 10rem;
+  width: 5rem;
   text-align: center;
   border: 0.118rem solid var(--menu-links-color);
   border-radius: 0.5rem;
@@ -321,7 +321,7 @@ img.blur {
 
 @media (max-width: 768px) {
   .item-cantidad {
-    width: 7rem; 
+    width: 4rem; 
   }
 
   .name {
