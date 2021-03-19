@@ -1,0 +1,33 @@
+/* smaller, dark, rounded square */
+.flickity-button {
+    background: var(--menu-links-color);
+  }
+  .flickity-button:hover {
+    background: var(--titulo-seccion-color);
+  }
+  
+  .flickity-prev-next-button {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+  }
+  /* icon color */
+  .flickity-button-icon {
+    fill: white;
+  }
+  /* position outside */
+  .flickity-prev-next-button.previous {
+    left: -10px;
+  }
+  .flickity-prev-next-button.next {
+    right: -10px;
+  }
+
+  @media (max-width: 768px) { 
+    .flickity-prev-next-button.previous {
+        left: 0;
+      }
+      .flickity-prev-next-button.next {
+        right: 0;
+      }
+  }
