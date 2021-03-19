@@ -15,11 +15,11 @@
             <table class="carrito-tabla">
                 <thead>
                     <tr>
-                    <th>Producto</th>
+                    <th id="th-prod">Producto</th>
                     <th></th>
-                    <th>Precio/unidad</th>
-                    <th>Cantidad</th>
-                    <th>Subtotal</th>
+                    <th id="th-pu">Precio/unidad</th>
+                    <th id="th-cant">Cantidad</th>
+                    <th id="th-st">Subtotal</th>
                     <th></th>
                     </tr>
                 </thead>
@@ -45,7 +45,7 @@
                             
                             <input 
                                 type="number" 
-                                class="item-cantidad"
+                                class="item-cantidad item-cantidad-cart"
                                 id="cant-item-<?=$item['rowid']?>"
                                 value="<?=$item['qty']?>"
                                 onchange="updateCantidad(event, '<?=$item['rowid']?>')" 

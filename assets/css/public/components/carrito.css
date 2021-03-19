@@ -187,11 +187,28 @@ table {
     opacity: 0.5;
 }
 
+.item-cantidad-cart {
+    width: 4rem;
+}
+
 
 
 
 @media (max-width: 768px) { 
 
+    #th-pu {
+        transform: translateX(-1rem);
+    }
+
+    #th-cant {
+        transform: translateX(-0.5rem);
+    }
+
+    .item-cantidad-cart {
+        width: 2.2rem;
+        margin-bottom: 0.5rem;
+    }
+    
     .carrito-icono  img{
         width: 2rem;
         height: 2rem;
@@ -234,17 +251,20 @@ table {
     .carrito-tabla thead th{
         font-size: 0.8rem;
         white-space: normal;
+        padding: 0.01rem;
     }
 
     .carrito-tabla tbody td {
         font-size: 0.7rem;
-       
     }
 
     .carrito-total {
         margin-top: 0.2rem;
     }
 
+    table {
+        height: 35vh;
+    }
     
 
     .carrito-botones {

@@ -18,7 +18,7 @@
             </span>
             <input 
                 type="number" 
-                class="item-cantidad"
+                class="item-cantidad item-cantidad-cart"
                 id="cant-item-<?=$item['rowid']?>"
                 value="<?=$item['qty']?>"
                 onchange="updateCantidad(event, '<?=$item['rowid']?>')" 
