@@ -6,7 +6,7 @@
   <div class="modal-content">
     <img id="modal-img">
     <a id="modal-download" href="#" download>
-      <img src="<?=base_url('assets/img/descargar.png')?>" alt="descargar">
+      <img src="<?=base_url('assets/img/public/imgVarios/download.jpg')?>" alt="descargar">
     </a>
   </div>
 </div>

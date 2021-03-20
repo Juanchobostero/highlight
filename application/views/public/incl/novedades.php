@@ -11,7 +11,7 @@
 				</div>
 				<div class="product-desc">
 				<h5>
-					<?=$producto->nombrePR?>
+					<?php echo word_limiter($producto->nombrePR, 5)?>
 				</h5>
 				
 				<h6>

@@ -32,10 +32,9 @@
     .product-desc h5{
         font-size: 1rem;
         font-weight: 400;
-        height: 2rem;
-        white-space: nowrap;
+        /* white-space: nowrap;
         text-overflow: ellipsis;
-        overflow: hidden;
+        overflow: hidden; */
     }
     
     .product-desc h6 {
@@ -43,7 +42,7 @@
         font-weight: 600;
         bottom: 0;
         padding: 0.2rem;
-        margin-top: -1rem;
+        margin-top: 0.1rem;
     }
 
     .new-price {

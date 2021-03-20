@@ -6,7 +6,7 @@
         grid-gap: 1.5rem;
         justify-content: center;
         margin-top: -4rem;
-        margin-left: 15rem;
+        margin-left: 11rem;
         padding: 1rem 1rem;
     }
     
@@ -18,7 +18,7 @@
         border: solid 0.2rem var(--color-grey);
         border-style: dashed;
         width: 11rem;
-        height: 37vh;
+        height: 40vh;
         background-color: var(--color-grey);
     }
     
@@ -138,6 +138,7 @@
         grid-gap: 1.5rem;
         justify-content: center;
         margin-top: 1rem;
+        margin-left: 2.3rem;
         padding: 1rem 1rem;
     }
     
@@ -149,7 +150,7 @@
         border: solid 0.2rem var(--color-grey);
         border-style: dashed;
         width: 12rem;
-        height: 37vh;
+        height: 40vh;
         background-color: var(--color-grey);
     }
     

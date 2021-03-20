@@ -455,39 +455,7 @@ function loadData(pageUrl) {
   .fail(ajaxErrors);
 }
 
-//CARRITO SELECT NUMBER
-jQuery('<div class="quantity-nav"><div class="quantity-button quantity-up">+</div><div class="quantity-button quantity-down">-</div></div>').insertAfter('.quantity input');
-jQuery('.quantity').each(function() {
-  var spinner = jQuery(this),
-    input = spinner.find('input[type="number"]'),
-    btnUp = spinner.find('.quantity-up'),
-    btnDown = spinner.find('.quantity-down'),
-    min = input.attr('min'),
-    max = input.attr('max');
 
-  btnUp.click(function() {
-    var oldValue = parseFloat(input.val());
-    if (oldValue >= max) {
-      var newVal = oldValue;
-    } else {
-      var newVal = oldValue + 1;
-    }
-    spinner.find("input").val(newVal);
-    spinner.find("input").trigger("change");
-  });
-
-  btnDown.click(function() {
-    var oldValue = parseFloat(input.val());
-    if (oldValue <= min) {
-      var newVal = oldValue;
-    } else {
-      var newVal = oldValue - 1;
-    }
-    spinner.find("input").val(newVal);
-    spinner.find("input").trigger("change");
-  });
-
-});
 
 ///////////////////////////PRODUCTO//////////////////////////////////////
 const productoDatos = document.querySelector('#producto-datos');
@@ -605,6 +573,7 @@ function sendUpdateQty(rowid, qty){
       subtotal.innerHTML = qty * data.price;
       carritoTotal.innerHTML = data.newtotal;
       itemStock.innerHTML = data.newStock;
+      actualizarTotalHeader();
       btnSave.disabled = false;
     }else if(data.result === 2){
       itemStock.innerHTML = data.newStock;
