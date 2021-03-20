@@ -60,8 +60,31 @@
         border-radius: 0.2rem;
         font-size: 1rem;
     }
+      
 
- 
+@media (min-width: 1500px){
+    .product-cart {
+        width: 16.5rem;
+    }
+} 
+
+
+
+@media (max-width: 768px) and (orientation: landscape) {
+
+    .product-cart {
+        margin-top: -1rem;
+    }
+
+    .product-desc h6 {
+        font-size: 1rem;
+        font-weight: 600;
+        bottom: 0.5rem;
+        padding: 0.2rem;
+        margin-top: -1rem;
+    }
+
+}
 
 @media (max-width: 768px) {
     
@@ -71,7 +94,7 @@
         border-style: solid;
         border-color: var(--color-grey);
         width: 100%;
-        height: 30vh;
+        height: 50vh;
         background-color: var(--titulo-seccion-color);
     }
     
@@ -90,7 +113,7 @@
     .product-desc {
         color: var(--menu-links-color);
         background-color: var(--color-grey);
-        padding: 0.4rem;
+        padding: 0.2rem;
         height: 35%;
         top: 0;
     }
@@ -132,3 +155,11 @@
     }
 
 } 
+
+@media (min-width: 320px) and (max-width: 480px) {
+  
+    .product-cart {
+        height: 30vh;
+    }
+    
+  }

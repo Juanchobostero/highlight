@@ -16,12 +16,22 @@
                          "slider-wraper";
 }
 
+
+
 @media (max-width: 768px) {
     .prod-destacados {
-        transform: translateY(0.7rem);
+        transform: translateY(-1rem);
         width: 100%;
     }
 }
+
+@media (min-width: 320px) and (max-width: 480px) {
+  
+    .prod-destacados {
+        top: 5rem;
+    }
+    
+  }
 
 
 

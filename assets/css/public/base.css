@@ -314,12 +314,35 @@ img.blur {
   width: 5rem;
   text-align: center;
   border: 0.118rem solid var(--menu-links-color);
-  border-radius: 0.5rem;
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+  
+  .jumbo-container {
+    margin-top: -5rem;
+  }
+  
 }
 
 
 
 @media (max-width: 768px) {
+
+  /* Jumbotron */
+  .jumbotron {
+    height: 55vh;
+  }
+  
+  .jumbotron .container {
+    padding: 1.5rem;
+    height: auto;
+    transform: translateY(0);
+  }
+  .jumbotron .container p {
+    font-size: 1rem;
+  } 
+
+
   .item-cantidad {
     width: 3rem; 
   }
@@ -446,21 +469,7 @@ img.blur {
   }
 }
 
-/* Jumbotron */
-@media (max-width: 768px) {
-  .jumbotron {
-    height: 55vh;
-  }
-  
-  .jumbotron .container {
-    padding: 1.5rem;
-    height: 10vh;
-    transform: translateY(1rem);
-  }
-  .jumbotron .container p {
-    font-size: 1rem;
-  } 
-}
+
 
 @media (max-width: 560px) {
   .jumbotron {
