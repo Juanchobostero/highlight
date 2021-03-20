@@ -133,7 +133,7 @@
 	var form = new FormData();
 
 	$(function() {
-		getSubcategorias('<?= $producto->id_cat; ?>');
+		getSubcategorias('<?= $producto->id_subcat; ?>');
 		$('.select2').select2();
 		$("input[data-bootstrap-switch]").bootstrapSwitch();
 		$('#summernote').summernote({

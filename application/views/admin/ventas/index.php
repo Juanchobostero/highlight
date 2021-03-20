@@ -34,7 +34,7 @@
 										<div class="overlay dark"><i class="fas fa-3x fa-sync-alt fa-spin"></i>
 											<div class="text-bold pt-2">Cargando...</div>
 										</div>
-										<div class="tabla">
+										<div id="tabla-nuevas">
 										</div>
 									</div>
 								</div>
@@ -43,7 +43,7 @@
 										<div class="overlay dark"><i class="fas fa-3x fa-sync-alt fa-spin"></i>
 											<div class="text-bold pt-2">Cargando...</div>
 										</div>
-										<div class="tabla">
+										<div id="tabla-confirmadas">
 										</div>
 									</div>
 								</div>
@@ -52,7 +52,7 @@
 										<div class="overlay dark"><i class="fas fa-3x fa-sync-alt fa-spin"></i>
 											<div class="text-bold pt-2">Cargando...</div>
 										</div>
-										<div class="tabla">
+										<div id="tabla-entregadas">
 										</div>
 									</div>
 								</div>
@@ -61,7 +61,7 @@
 										<div class="overlay dark"><i class="fas fa-3x fa-sync-alt fa-spin"></i>
 											<div class="text-bold pt-2">Cargando...</div>
 										</div>
-										<div class="tabla">
+										<div id="tabla-canceladas">
 										</div>
 									</div>
 								</div>

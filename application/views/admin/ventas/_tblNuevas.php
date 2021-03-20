@@ -1,4 +1,4 @@
-<table class="table table-sm table-hover">
+<table id="tblnuevas" class="table table-sm table-hover">
 	<thead>
 		<tr class="text-center">
 			<th>Venta N°</th>

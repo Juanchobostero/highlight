@@ -31,7 +31,7 @@
 										<div class="overlay dark"><i class="fas fa-3x fa-sync-alt fa-spin"></i>
 											<div class="text-bold pt-2">Cargando...</div>
 										</div>
-										<div class="tabla">
+										<div id="tabla-publicadas">
 										</div>
 									</div>
 								</div>
@@ -40,7 +40,7 @@
 										<div class="overlay dark"><i class="fas fa-3x fa-sync-alt fa-spin"></i>
 											<div class="text-bold pt-2">Cargando...</div>
 										</div>
-										<div class="tabla">
+										<div id="tabla-no-publicadas">
 										</div>
 									</div>
 								</div>
@@ -66,19 +66,9 @@
 			manageHashTab($tabs, $titulo, nomTab);
 		});
 
-		// $(window).on('hashchange', function() {
-		// 	manageHashTab(tabs, titulo, nomTab);
-		// });
-
-
 		if (window.location.hash == '') {
 			window.location.hash = $tabs[0].hash;
-			
 		}
 		manageHashTab($tabs, $titulo, nomTab);
-		// 		$(window).resize(function() {
-		// $('.table').fnAdjustColumnSizing();
-		// });
-
 	}
 </script>

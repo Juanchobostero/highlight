@@ -34,7 +34,7 @@
 										<div class="overlay dark"><i class="fas fa-3x fa-sync-alt fa-spin"></i>
 											<div class="text-bold pt-2">Cargando...</div>
 										</div>
-										<div class="tabla">
+										<div id="tabla-categorias">
 										</div>
 									</div>
 								</div>
@@ -43,7 +43,7 @@
 										<div class="overlay dark"><i class="fas fa-3x fa-sync-alt fa-spin"></i>
 											<div class="text-bold pt-2">Cargando...</div>
 										</div>
-										<div class="tabla">
+										<div id="tabla-subcategorias">
 										</div>
 									</div>
 								</div>
@@ -74,5 +74,6 @@
 			
 		}
 		manageHashTab($tabs, $titulo, nomTab);
+		formatoTabla('tblcategorias');
 	}
 </script>

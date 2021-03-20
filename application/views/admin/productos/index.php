@@ -2,7 +2,7 @@
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-	<?php $this->load->view('admin/productos/_headerProductos');?>
+	<?php $this->load->view('admin/productos/_headerProductos'); ?>
 
 	<!-- Main content -->
 	<section class="content">
@@ -28,7 +28,7 @@
 										<div class="overlay dark"><i class="fas fa-3x fa-sync-alt fa-spin"></i>
 											<div class="text-bold pt-2">Cargando...</div>
 										</div>
-										<div class="tabla">
+										<div id="tabla-activos">
 										</div>
 									</div>
 								</div>

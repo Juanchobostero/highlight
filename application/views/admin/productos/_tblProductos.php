@@ -1,4 +1,4 @@
-<table class="table table-sm table-hover">
+<table id="tblactivos" class="table table-sm table-hover">
 	<thead>
 		<tr>
 			<th>Código</th>

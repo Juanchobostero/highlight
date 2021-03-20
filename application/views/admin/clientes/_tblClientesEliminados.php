@@ -1,4 +1,4 @@
-<table class="table table-sm table-hover">
+<table id="tbldeshabilitados" class="table table-sm table-hover">
 	<thead>
 		<tr>
 			<th>Cliente</th>

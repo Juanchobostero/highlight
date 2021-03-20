@@ -152,7 +152,7 @@
 				</li>
 				<li class="nav-item">
 					<a href="<?= base_url('admin/balance'); ?>" class="nav-link <?= ($act == '10Bal') ? 'active' : '' ?>">
-						<i class="nav-icon fas fa-boxes"></i>
+						<i class="nav-icon fas fa-balance-scale"></i>
 						<p>Balance</p>
 					</a>
 				</li>

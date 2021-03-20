@@ -11,8 +11,8 @@ const Toast = Swal.mixin({
 
 //------------------------FECHA ACTUAL------------------------
 function fechaHoy() {
-  let fHoy = new Date();
-  return [fHoy.getFullYear(), ("0" + (fHoy.getMonth() + 1)).slice(-2), ("0" + fHoy.getDate()).slice(-2)].join('-');
+	let fHoy = new Date();
+	return [fHoy.getFullYear(), ("0" + (fHoy.getMonth() + 1)).slice(-2), ("0" + fHoy.getDate()).slice(-2)].join('-');
 }
 
 //**************** MODULO DE OFERTAS CALCULOS ****************
@@ -35,7 +35,7 @@ function calcularPorcentaje(precioVenta, precioOferta) {
 
 //---------------------DA FORMATO A TABLA---------------------
 function formatoTabla(tabla) {
-	return $(tabla).DataTable({
+	return $('#' + tabla).DataTable({
 		responsive: true,
 		autoWidth: false,
 		order: [],
@@ -60,8 +60,29 @@ function formatoTabla(tabla) {
 				sortAscending: ": Activar para ordenar la columna en orden ascendente",
 				sortDescending: ": Activar para ordenar la columna en orden descendente.",
 			}
+		},
+		initComplete: function () {
+			// saber si la tabla esta definida
+			if ($.fn.dataTable.isDataTable('#' + tabla)) {
+				let objTabla = $('#' + tabla).DataTable();
+				volverApagina(objTabla);
+			}
 		}
 	});
+}
+
+//---------------VUELVE A PAGINA ESPECIFICA TABLE---------------
+function volverApagina(tabla) {
+	let pagina = localStorage.getItem("pagina_actual");
+
+	// Preguntamos si existe el item
+	if (pagina != undefined) {
+		//Decimos a la table que cargue la página requerida
+		tabla.page(parseInt(pagina)).draw('page');
+
+		//Eliminamos el item para que no genere conflicto a la hora de dar click en otro botón detalle
+		localStorage.removeItem("pagina_actual");
+	}
 }
 
 //--------------------CARGA DATOS EN UN TAB--------------------
@@ -79,16 +100,16 @@ function manageHashTab($tabs, $titulo, nomTab) {
 			overlay.removeClass('d-none');
 
 			let url = window.location.origin + window.location.pathname + '/' + hrefTab;
-			$('.tabla').empty();
+
+			$('#tabla-'+hrefTab ).empty();
+
 			$.post(url, function (data) {
-				$('.tabla').html(data);
+				$('#tabla-'+hrefTab ).html(data);
 			}).done(() => {
 				overlayWrap.removeClass('py-5');
 				overlay.addClass('d-none');
 				$("input[data-bootstrap-switch]").bootstrapSwitch();
-				formatoTabla('table').columns.adjust();;
-				// $('.table').DataTable()
-				// $.fn.dataTable.tables({ visible: true, api: true }).columns.adjust();
+				formatoTabla('tbl'+hrefTab);
 			});
 		}
 	})
@@ -184,7 +205,7 @@ function getSubcategorias(id = '') {
 	}, function (data) {
 		if (data != false) {
 			data.forEach(ele => {
-				let selec = (id == ele.id_cat) ? 'selected' : '';
+				let selec = (id == ele.id_subcategoria) ? 'selected' : '';
 
 				subcat.append('<option value=' + ele.id_subcategoria + ' ' + selec + '>' + ele.descripcionSC + '</option>');
 			});
@@ -236,6 +257,10 @@ function validFormMod(e, metodo, form = '') {
 		success: function (resp) {
 			let data = JSON.parse(resp);
 			if (data.result === 1) {
+				let pagina_actual = $('#tbl' + data.tab).DataTable().page();
+				//Guardamos la página actual en el local storage
+				localStorage.setItem("pagina_actual", pagina_actual);
+
 				let reDirigir = $('#' + data.tabs + ' a[href="#' + data.tab + '"]');
 				reDirigir.click();
 				reDirigir.tab('show');
@@ -256,7 +281,6 @@ function validFormMod(e, metodo, form = '') {
 	});
 };
 
-// //-------------ALTA-UPDATE FORMULARIO MODAL SIN TAB-------------
 // function validFormModNoTab(e, metodo) {
 // 	e.preventDefault();
 // 	const formData = new FormData(e.target);
