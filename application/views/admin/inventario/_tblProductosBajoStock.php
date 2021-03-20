@@ -1,4 +1,4 @@
-<table class="table table-sm table-hover">
+<table id="tblproductos-bajo-stock" class="table table-sm table-hover">
 	<thead>
 		<tr class="text-center">
 			<th>Código</th>

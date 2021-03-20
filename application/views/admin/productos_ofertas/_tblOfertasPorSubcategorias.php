@@ -1,4 +1,4 @@
-<table class="table table-sm table-hover">
+<table id="tblsubcategorias" class="table table-sm table-hover">
 	<thead class="text-center">
 		<tr>
 			<th>Categoría</th>

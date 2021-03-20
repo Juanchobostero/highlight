@@ -1,4 +1,4 @@
-<table class="table table-sm table-hover display" width="100%">
+<table id="tblno-publicadas" class="table table-sm table-hover display" width="100%">
 	<thead class="text-center">
 		<tr>
 			<th>Título</th>

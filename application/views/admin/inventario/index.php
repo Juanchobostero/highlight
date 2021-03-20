@@ -51,7 +51,7 @@
 										<div class="overlay dark"><i class="fas fa-3x fa-sync-alt fa-spin"></i>
 											<div class="text-bold pt-2">Cargando...</div>
 										</div>
-										<div class="tabla">
+										<div id="tabla-productos-bajo-stock">
 										</div>
 									</div>
 								</div>

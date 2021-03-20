@@ -1,4 +1,4 @@
-<table class="table table-sm table-hover display">
+<table id="tblactivas" class="table table-sm table-hover display">
 	<thead class="text-center">
 		<tr>
 			<th>Marca</th>
