@@ -74,9 +74,19 @@
 						</div>
 					</div>
 				</div>
-				<div class="form-group">
-					<label for="destacar" class="mb-0 mr-2" title="Obligatorio">Destacar? <span class="text-danger" title="Obligatorio">*</span></label>
-					<input type="checkbox" id="destacar" name="destacar" <?= ($producto->destacadoPR == 'SI') ? 'checked' : ''; ?> data-bootstrap-switch data-off-text="NO" data-on-text="SI">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="destacar" class="mb-0 mr-2" title="Obligatorio">Destacar? <span class="text-danger" title="Obligatorio">*</span></label>
+							<input type="checkbox" id="destacar" name="destacar" <?= ($producto->destacadoPR == 'SI') ? 'checked' : ''; ?> data-bootstrap-switch data-off-text="NO" data-on-text="SI">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="pausar" class="mb-0 mr-2" title="Obligatorio">Pausar? <span class="text-danger" title="Obligatorio">*</span></label>
+							<input type="checkbox" id="pausar" name="pausar" <?= ($producto->pausadoPR == 'SI') ? 'checked' : ''; ?> data-bootstrap-switch data-off-text="NO" data-on-text="SI">
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="col-lg-6">
@@ -86,7 +96,9 @@
 				</div>
 				<label class="mb-0">Imágenes</label>
 				<div id="noFoto" class="alert alert-danger text-center mb-1 mt-0 py-1 d-none">
-					<small><!-- Leyenda error --></small>
+					<small>
+						<!-- Leyenda error -->
+					</small>
 				</div>
 				<div id="imagenes" class="grid-container">
 					<?php if ($fotos) : ?>

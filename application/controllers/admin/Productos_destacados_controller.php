@@ -15,7 +15,7 @@ class Productos_destacados_controller extends CI_Controller
 	public function index()
 	{
 		$data['title'] = 'Productos Destacados';
-		$data['act'] = '5_3Dest';
+		$data['act'] = '5_4Dest';
 		$data['desplegado'] = 'prod';
 		$data['msjs_ult_tres'] = $this->Mensajes->get_mensajes_ult_tres();
 		$data['msj_no_leidos'] = $this->Mensajes->get_mensajes_no_leidos();

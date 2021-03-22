@@ -1,4 +1,4 @@
-<table id="tblProductosDestacados" class="table table-sm table-hover">
+<table id="tblProductosPausados" class="table table-sm table-hover">
 	<thead>
 		<tr>
 			<th>Código</th>
@@ -10,7 +10,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<?php foreach ($productos_destacados as $producto) : ?>
+		<?php foreach ($productos_pausados as $producto) : ?>
 			<tr>
 				<td><?= $producto->codigoPR; ?></td>
 				<td><?= $producto->nombrePR; ?></td>
@@ -19,7 +19,7 @@
 				<td><?= $producto->descripcionCAT; ?></td>
 				<td class="text-center">
 					<div class="btn-group btn-group-sm">
-						<button type="button" class="btn btn-danger" title="Dejar de destacar" onclick="dejarPropiedad(this, '<?= base_url('quitarDestacado/' . $producto->id_producto); ?>')">
+						<button type="button" class="btn btn-danger" title="Dejar de pausar" onclick="dejarPropiedad(this, '<?= base_url('quitarPausado/' . $producto->id_producto); ?>')">
 							<i class="fas fa-times"></i>
 						</button>
 					</div>

@@ -37,6 +37,7 @@
 				<dt class="col-sm-4">Precio Venta</dt>
 				<dd class="col-sm-8">$ <?= number_format($producto->precio_ventaPR, 0, ',', '.'); ?></dd>
 				<dt class="col-sm-12">Producto <?= ($producto->destacadoPR == 'NO') ? 'NO' : ''; ?> destacado</dt>
+				<dt class="col-sm-12">Producto <?= ($producto->pausadoPR == 'NO') ? 'NO' : ''; ?> pausado</dt>
 			</dl>
 		</div>
 	</div>

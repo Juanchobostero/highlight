@@ -4,9 +4,8 @@
 			<th>Código</th>
 			<th>Producto</th>
 			<th>Marca</th>
-			<th>Subcategoría</th>
-			<th>Categoría</th>
 			<th>Precio Venta</th>
+			<th>Pausado</th>
 			<th>Destacado</th>
 			<th>Acciones</th>
 		</tr>
@@ -17,9 +16,10 @@
 				<td><?= $producto->codigoPR; ?></td>
 				<td><?= $producto->nombrePR; ?></td>
 				<td><?= $producto->descripcionM; ?></td>
-				<td><?= $producto->descripcionSC; ?></td>
-				<td><?= $producto->descripcionCAT; ?></td>
-				<td>$ <?= number_format($producto->precio_ventaPR, 0, ',', '.'); ?></td>
+				<td class="text-right">$ <?= number_format($producto->precio_ventaPR, 0, ',', '.'); ?></td>
+				<td class="text-center">
+					<input type="checkbox" name="pausar" <?= ($producto->pausadoPR == 'SI') ? 'checked' : '' ?> data-bootstrap-switch data-off-text="NO" data-on-text="SI" data-off-color="danger" onchange="manejoSwitch(this, <?= $producto->id_producto; ?>, '<?= base_url('pausarProducto') ?>', false)">
+				</td>
 				<td class="text-center">
 					<input type="checkbox" name="destacar" <?= ($producto->destacadoPR == 'SI') ? 'checked' : '' ?> data-bootstrap-switch data-off-text="NO" data-on-text="SI" data-off-color="danger" onchange="manejoSwitch(this, <?= $producto->id_producto; ?>, '<?= base_url('destacarProducto') ?>', false)">
 				</td>

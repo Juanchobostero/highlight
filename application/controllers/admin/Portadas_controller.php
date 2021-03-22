@@ -29,13 +29,14 @@ class Portadas_controller extends CI_Controller
 		switch ($estado) {
 			case 'publicadas':
 				$data['portadas'] = $this->Portadas->get_portadas(1, 1);
-				$this->load->view('admin/portadas/_tblPortadasPublicadas', $data);
+				$data['id_tabla'] = 'tblpublicadas';
 				break;
 			case 'no-publicadas':
 				$data['portadas'] = $this->Portadas->get_portadas(1, 2);
-				$this->load->view('admin/portadas/_tblPortadasNoPublicadas', $data);
+				$data['id_tabla'] = 'tblno-publicadas';
 				break;
 		}
+		$this->load->view('admin/portadas/_tblPortadas', $data);
 	}
 
 	//--------------------------------------------------------------
@@ -159,7 +160,7 @@ class Portadas_controller extends CI_Controller
 	public function eliminar($id_portada)
 	{
 		verificarConsulAjax();
-		
+
 		$resp  = $this->Portadas->actualizar($id_portada, ['estado' => 0]);
 
 		if ($resp) {

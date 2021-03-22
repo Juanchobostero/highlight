@@ -419,8 +419,8 @@ function manejoSwitch(e, id, metodo, del = true) {
 		.fail(ajaxErrors);
 }
 
-//-------------------QUITAR PRODUCTO DESTACADO-------------------
-function dejarDestacar(e, metodo, del = true) {
+//-------------QUITAR PRODUCTO DESTACADO / PAUSADO -------------
+function dejarPropiedad(e, metodo, del = true) {
 	$.post(metodo, function (data) {
 		if (data.result === 1) {
 			mostrarToast('success', data.titulo, data.msj);

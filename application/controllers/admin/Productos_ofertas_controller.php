@@ -15,7 +15,7 @@ class Productos_ofertas_controller extends CI_Controller
 	public function index()
 	{
 		$data['title'] = 'Ofertas';
-		$data['act'] = '5_4Ofer';
+		$data['act'] = '5_5Ofer';
 		$data['desplegado'] = 'prod';
 		$data['msjs_ult_tres'] = $this->Mensajes->get_mensajes_ult_tres();
 		$data['msj_no_leidos'] = $this->Mensajes->get_mensajes_no_leidos();

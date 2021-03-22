@@ -6,10 +6,11 @@ class Productos extends CI_Model
 	//--------------------------------------------------------------
 	public function get_productos()
 	{
-		$this->db->select('productos.*, marcas.descripcionM, subcategorias.descripcionSC, categorias.descripcionCAT');
+		// $this->db->select('productos.*, marcas.descripcionM, subcategorias.descripcionSC, categorias.descripcionCAT');
+		$this->db->select('productos.*, marcas.descripcionM');
 		$this->db->join('marcas', 'marcas.id_marca = productos.id_mar');
-		$this->db->join('subcategorias', 'subcategorias.id_subcategoria = productos.id_subcat');
-		$this->db->join('categorias', 'categorias.id_categoria = subcategorias.id_cat');
+		// $this->db->join('subcategorias', 'subcategorias.id_subcategoria = productos.id_subcat');
+		// $this->db->join('categorias', 'categorias.id_categoria = subcategorias.id_cat');
 		$this->db->where('estadoPR', 1);
 		return $this->db->get('productos')->result();
 	}
@@ -23,6 +24,18 @@ class Productos extends CI_Model
 		$this->db->join('categorias', 'categorias.id_categoria = subcategorias.id_cat');
 		$this->db->where('estadoPR', 1);
 		$this->db->where('destacadoPR', 'SI');
+		return $this->db->get('productos')->result();
+	}
+
+	//--------------------------------------------------------------
+	public function get_productos_pausados()
+	{
+		$this->db->select('productos.*, marcas.descripcionM, subcategorias.descripcionSC, categorias.descripcionCAT');
+		$this->db->join('marcas', 'marcas.id_marca = productos.id_mar');
+		$this->db->join('subcategorias', 'subcategorias.id_subcategoria = productos.id_subcat');
+		$this->db->join('categorias', 'categorias.id_categoria = subcategorias.id_cat');
+		$this->db->where('estadoPR', 1);
+		$this->db->where('pausadoPR', 'SI');
 		return $this->db->get('productos')->result();
 	}
 

@@ -111,13 +111,19 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="<?= base_url('admin/productos-destacados'); ?>" class="nav-link <?= ($act == '5_3Dest') ? 'active' : '' ?>">
+							<a href="<?= base_url('admin/productos-pausados') ?>" class="nav-link <?= ($act == '5_3Paus') ? 'active' : '' ?>">
+								<i class="nav-icon fas fa-pause"></i>
+								<p>Pausados</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="<?= base_url('admin/productos-destacados'); ?>" class="nav-link <?= ($act == '5_4Dest') ? 'active' : '' ?>">
 								<i class="nav-icon fas fa-star"></i>
 								<p>Destacados</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="<?= base_url('admin/productos-ofertas'); ?>" class="nav-link <?= ($act == '5_4Ofer') ? 'active' : '' ?>">
+							<a href="<?= base_url('admin/productos-ofertas'); ?>" class="nav-link <?= ($act == '5_5Ofer') ? 'active' : '' ?>">
 								<i class="nav-icon fab fa-forumbee"></i>
 								<p>Ofertas</p>
 							</a>

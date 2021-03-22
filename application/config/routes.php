@@ -69,6 +69,7 @@ $route = array(
 	'frmVerProducto/(:num)'				=> 'admin/Productos_controller/frmVer/$1',
 	'altaProducto'								=> 'admin/Productos_controller/crear',
 	'editarProducto/(:num)'				=> 'admin/Productos_controller/editar/$1',
+	'pausarProducto'							=> 'admin/Productos_controller/pausar',
 	'destacarProducto'						=> 'admin/Productos_controller/destacar',
 	'eliminarProducto/(:num)'			=> 'admin/Productos_controller/eliminar/$1',
 	'eliminarFoto/(:num)'					=> 'admin/Productos_controller/eliminarFoto/$1',
@@ -90,6 +91,8 @@ $route = array(
 	'editarOfertaPorSubcategoria/(:num)'		=> 'admin/Productos_ofertas_controller/editarPorSubcategoria/$1',
 	'eliminarOferta/(:num)'									=> 'admin/Productos_ofertas_controller/eliminar/$1',
 
+	'admin/productos-pausados'	=> 'admin/Productos_pausados_controller',
+	'quitarPausado/(:num)'			=> 'admin/Productos_pausados_controller/quitarPausado/$1',
 
 	'frmNuevaSubcategoria'					=> 'admin/Subcategorias_controller/frmNueva',
 	'frmEditarSubcategoria/(:num)'	=> 'admin/Subcategorias_controller/frmEditar/$1',

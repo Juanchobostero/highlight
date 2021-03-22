@@ -59,7 +59,7 @@ class Productos_controller extends CI_Controller
 	public function frmVer($id_producto)
 	{
 		verificarConsulAjax();
-		
+
 		$data['producto'] = $this->Productos->get_producto($id_producto);
 		$data['fotos'] = $this->Productos_fotos->get_producto_fotos($id_producto);
 		$this->load->view('admin/productos/frmVerProducto', $data);
@@ -82,7 +82,9 @@ class Productos_controller extends CI_Controller
 		$this->form_validation->set_rules('file[]', 'Archivo', 'callback_verificarArchivos');
 
 		if ($this->form_validation->run()) :
+			$pausado = $this->input->post('pausar') ? 1 : 2; // 1 => SI; 2 => NO
 			$destacado = $this->input->post('destacar') ? 1 : 2; // 1 => SI; 2 => NO
+
 			$producto = [
 				'id_subcat' 			=> $this->input->post('subcategoria_id'),
 				'id_mar'					=> $this->input->post('marca_id'),
@@ -92,6 +94,7 @@ class Productos_controller extends CI_Controller
 				'stockPR' 				=> $this->input->post('stock'),
 				'precio_listaPR'	=> $this->input->post('pLista'),
 				'precio_ventaPR'	=> $this->input->post('pVenta'),
+				'pausadoPR'				=> $pausado,
 				'destacadoPR'			=> $destacado,
 				'estadoPR' 				=> 1
 			];
@@ -139,7 +142,9 @@ class Productos_controller extends CI_Controller
 		$this->form_validation->set_rules('file[]', 'Archivo', 'callback_verificarArchivos');
 
 		if ($this->form_validation->run()) :
+			$pausado = $this->input->post('pausar') ? 1 : 2; // 1 => SI; 2 => NO
 			$destacado = $this->input->post('destacar') ? 1 : 2; // 1 => SI; 2 => NO
+
 			$producto = [
 				'id_subcat' 			=> $this->input->post('subcategoria_id'),
 				'id_mar'					=> $this->input->post('marca_id'),
@@ -149,6 +154,7 @@ class Productos_controller extends CI_Controller
 				'stockPR' 				=> $this->input->post('stock'),
 				'precio_listaPR'	=> $this->input->post('pLista'),
 				'precio_ventaPR'	=> $this->input->post('pVenta'),
+				'pausadoPR'				=> $pausado,
 				'destacadoPR'			=> $destacado
 			];
 
@@ -172,6 +178,29 @@ class Productos_controller extends CI_Controller
 		endif;
 
 		$this->output->set_output(json_encode(['result' => 3, 'titulo' => 'Ooops.. controle!', 'errores' => $this->form_validation->error_array()]));
+		return;
+	}
+
+	//--------------------------------------------------------------
+	public function pausar()
+	{
+		verificarConsulAjax();
+
+		if ($this->input->post('prom') == 'true') {
+			$prom = 1; // SI
+			$msj = 'pausado';
+		} else {
+			$prom = 2; // NO
+			$msj = 'NO pausado';
+		}
+
+		$resp  = $this->Productos->actualizar($this->input->post('id'), ['pausadoPR' => $prom]);
+
+		if ($resp) {
+			$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Producto ' . $msj]));
+			return;
+		}
+		$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'errores' => ['No se pudo llevar a cabo la operación. Intente más tarde!']]));
 		return;
 	}
 

@@ -1,4 +1,4 @@
-<table id="tblpublicadas" class="table table-sm table-hover">
+<table id="<?= $id_tabla; ?>" class="table table-sm table-hover">
 	<thead>
 		<tr>
 			<th>Título</th>
@@ -12,7 +12,7 @@
 			<tr>
 				<td><?= $port->titulo; ?></td>
 				<td class="text-center">
-					<input type="checkbox" name="publicar" <?= ($port->publicado == 'SI') ? 'checked' : '' ?> data-bootstrap-switch data-off-text="NO" data-on-text="SI" data-off-color="danger" onchange="manejoSwitch(this, <?= $port->id_port; ?>, '<?=base_url('publicarPort')?>')">
+					<input type="checkbox" name="publicar" <?= ($port->publicado == 'SI') ? 'checked' : '' ?> data-bootstrap-switch data-off-text="NO" data-on-text="SI" data-off-color="danger" onchange="manejoSwitch(this, <?= $port->id_port; ?>, '<?= base_url('publicarPort') ?>')">
 				</td>
 				<td>
 					<img class="img-fluid m-auto d-block rounded" src="<?= base_url($port->imagen); ?>" style="object-fit: cover; min-height: 35px; max-width: 35px;">
