@@ -113,7 +113,7 @@
         grid-column: 1 / -1;
         height: 8vh;
         display: block;
-        padding: 2rem 4.5rem;
+        padding: 2rem 3rem;
         transform: translateY(-5rem);
     }
 
@@ -141,8 +141,8 @@
         width: 80%;
         padding: 2rem 0;
         transform: translateY(-8rem);
-        margin-bottom: 5rem;
-        margin-left: 4.5rem;
+        margin-bottom: 1rem;
+        margin-left: 3rem;
         margin-right: 2rem;
     }
 
