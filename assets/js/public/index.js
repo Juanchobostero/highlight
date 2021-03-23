@@ -653,6 +653,8 @@ function delFromCart(id) {
   .fail(ajaxErrors);
 }
 
+
+
 function ajaxErrors( jqXHR, textStatus) {
   /* pageLoader.classList.remove('page-loader--show'); */
   if (jqXHR.status === 0) {

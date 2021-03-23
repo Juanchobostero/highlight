@@ -212,7 +212,7 @@ img.blur {
   content: '"Hacemos envios a todo el país"';
 }
 
-.name {
+.name, .surname {
   width: 22rem;
   height: 3rem;
   background-color: var(--color-grey);
@@ -256,7 +256,7 @@ img.blur {
   border: 0.059rem solid var(--color-grey);
 }
 
-.mensaje {
+.mensaje, .motivo {
   width: 22rem;
   height: 6rem;
   background-color: var(--color-grey);
@@ -327,6 +327,10 @@ img.blur {
 
 
 @media (max-width: 768px) {
+
+  .mensaje, .motivo {
+    width: 18rem;
+  }
 
   /* Jumbotron */
   .jumbotron {

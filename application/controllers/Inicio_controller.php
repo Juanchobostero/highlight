@@ -257,4 +257,11 @@ class Inicio_controller extends CI_Controller
 		$data['nosotros'] = $this->Institucional_model->get_nosotros();
 		$this->load->view('public/nosotros', $data);
 	}
+
+	public function pedir_presupuesto(){
+		$data['categorias'] = $this->Categorias_model->get_full();
+		$data['title'] = 'Pedir presupuesto';
+
+		$this->load->view('public/presupuesto', $data);
+	}
 }

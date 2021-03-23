@@ -38,7 +38,7 @@
       
       <nav class="navbar">
         <ul class="navbar-links">
-          <li class="navbar-item"><a href="<?=base_url()?>" class="navbar-link">Pedir presupuesto</a></li>
+          <li class="navbar-item"><a href="<?=base_url('presupuesto')?>" class="navbar-link">Pedir presupuesto</a></li>
           <li id="activa-drop" class="navbar-item">
             <a id="opcion-prod" class="navbar-link">Productos<img class="flecha-prod" src="<?=base_url('assets/img/public/imgVarios/flecha-prod.png')?>"></img> </a>
 
