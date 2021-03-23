@@ -66,6 +66,7 @@ img{
   grid-column: 1 / -1;
   grid-template-areas: 
     "header"
+		"search"
   	"portada"
   	"destacados"
     "portada_herramientas"
