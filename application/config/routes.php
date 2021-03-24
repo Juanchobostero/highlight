@@ -141,4 +141,5 @@ $route['api/carrito/update/qty'] = 'public/APICarrito/update_qty';
 $route['api/carrito/vaciar'] = 'public/APICarrito/vaciar';
 $route['api/carrito/delete'] = 'public/APICarrito/eliminar';
 $route['api/carrito/gettotal'] = 'public/APICarrito/total_items';
+$route['api/search/get'] = 'public/APISearch/get';
 

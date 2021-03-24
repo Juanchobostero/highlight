@@ -1,15 +1,15 @@
 <section class="search">
 	<!-- <div class="header-form"> -->
 		<div class="search-wrap">
-			<input type="text" class="header-input" placeholder="¿Que estas buscando?">
+			<input type="text" class="header-input" placeholder="¿Qué estas buscando?">
 			<div class="search-controls">
 				<div class="circle-loader"></div>
-				<!-- <button class="header-btn btn-x">
-					<img class="lupa-img" src="<?//= base_url('assets/img/imgVarios/cel/x.png') ?>" alt="usuario">
-				</button> -->
-				<button class="header-btn btn-lupa">
+				<a class="header-btn btn-x">
+					<img class="close-img" src="<?= base_url('assets/img/public/imgVarios/close2.jpg') ?>" alt="close search">
+				</a> 
+				<a class="header-btn btn-lupa">
 					<img class="lupa-img" src="<?=base_url('assets/img/public/imgVarios/lupa-icon.jpeg')?>" alt="usuario">
-				</button>
+				</a>
 			</div>
 			<div class="search-container">
 			</div>

@@ -1,5 +1,7 @@
 <?php $this->load->view('public/incl/header');?>
+
 <?php $this->load->view('public/incl/search');?>
+
 <?php $this->load->view('public/incl/portadas');?>
 
 <?php $this->load->view('public/incl/destacados');?>

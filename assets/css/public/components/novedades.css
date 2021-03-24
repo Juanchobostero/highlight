@@ -16,7 +16,7 @@
 
 @media (max-width: 768px) {
     .prod-novedades {
-        margin-bottom: -1rem;
+        margin-bottom: -3rem;
         transform: translateY(-1rem);
         width: 100%;
     }
@@ -25,7 +25,7 @@
 @media (min-width: 320px) and (max-width: 480px) {
   
     .prod-novedades {
-        top: 2.7rem;
+        top: 1rem;
     }
     
   }

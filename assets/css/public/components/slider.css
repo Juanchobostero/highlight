@@ -3,7 +3,7 @@
     position: relative;
     height: 57vh;
     object-fit: cover;
-    margin-bottom: 6rem;
+    margin-bottom: 3rem;
 }
 
 .slider-wraper {
@@ -54,7 +54,7 @@
 @media (min-width: 320px) and (max-width: 480px) {
 
     .slider-wraper {
-        margin-bottom: 1rem;
+        margin-bottom: -5rem;
     }
 
 }

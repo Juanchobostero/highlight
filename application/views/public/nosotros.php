@@ -1,4 +1,5 @@
 <?php $this->load->view('public/incl/header');?>
+<?php $this->load->view('public/incl/search');?>
 
 <section class="nosotros-main">
     <div class="banner-nos">
