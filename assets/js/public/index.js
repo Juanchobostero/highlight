@@ -653,6 +653,90 @@ function delFromCart(id) {
   .fail(ajaxErrors);
 }
 
+// /////////////////////////////SEARCH//////////////////////////////////
+const btnLupa = document.querySelector('.btn-lupa');
+const btnClose = document.querySelector('.btn-x');
+const searchLoader = document.querySelector('.circle-loader');
+const searchContainer = document.querySelector('.search-container');
+const inputSearch = document.querySelector('.header-input');
+const search = document.querySelector('.search');
+let searchWaitTimer;
+let previousValue = "";
+
+inputSearch.addEventListener('keyup', () => keyPressHandler());
+
+btnClose.addEventListener('click', () => clearSearch());
+
+
+function clearSearch(){
+  searchContainer.classList.remove('search-visible');
+  searchLoader.classList.remove('loader-show');
+  btnClose.classList.remove('btn-x-show');
+  $(searchContainer).html("");
+  inputSearch.value = "";
+}
+
+function keyPressHandler(){
+  let value = inputSearch.value;
+
+  if(value == ""){
+    clearTimeout(searchWaitTimer);
+    searchLoader.classList.remove('loader-show');
+    btnClose.classList.remove('btn-x-show');
+    searchContainer.classList.remove('search-visible');
+  }
+  
+  if(value != "" && value != previousValue){
+    clearTimeout(searchWaitTimer);
+    btnClose.classList.remove('btn-x-show');
+    searchLoader.classList.add('loader-show');
+    searchContainer.classList.remove('search-visible');
+    searchWaitTimer = setTimeout(() => sendRequest(), 750);
+  }
+  previousValue = value;
+}
+
+function sendRequest(){
+  let value = inputSearch.value;
+  $.ajax({
+    method: "POST",
+    url: baseUrl + 'api/search/get',
+    data: {value}
+  })
+  .done(( content ) => {
+    data = JSON.parse(content);
+    $(searchContainer).html("");
+    $(searchContainer).html(data.html);
+    searchContainer.classList.add('search-visible');
+    searchLoader.classList.remove('loader-show');
+    btnClose.classList.add('btn-x-show');
+  })
+  .fail(ajaxErrors);
+}
+
+
+function openSearch() {
+  search.classList.add('search-show');
+} 
+
+//Abrir y cerrar busqueda
+
+$('#search').on('click', function () {
+  if (!$(this).is(".step")) {
+    // first click
+    $(this).addClass('step');
+    clearTimeout(searchWaitTimer);
+    searchWaitTimer = setTimeout(() => openSearch(), 100);
+    
+  } else {
+    // second click
+    $(this).removeClass('step');
+    searchWaitTimer = setTimeout(() => search.classList.remove('search-show'), 100);
+  }
+});
+
+
+
 function ajaxErrors( jqXHR, textStatus) {
   /* pageLoader.classList.remove('page-loader--show'); */
   if (jqXHR.status === 0) {

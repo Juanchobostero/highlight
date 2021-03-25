@@ -1,4 +1,5 @@
 <?php $this->load->view('public/incl/header');?>
+<?php $this->load->view('public/incl/search');?>
 
 <div class="carrito-main">
     <div class="banner" id="carrito-ban">

@@ -171,6 +171,7 @@ span {
 /* MOVIL */
 @media (max-width: 919px) { 
   .footer {
+    grid-area: footer;
     background-color: var(--color-grey);
     padding: 0.1rem;
     z-index: 90;

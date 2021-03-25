@@ -1,4 +1,5 @@
 <?php $this->load->view('public/incl/header');?>
+<?php $this->load->view('public/incl/search');?>
 
 <div class="product-main">
     <div class="banner" id="banner-pro">

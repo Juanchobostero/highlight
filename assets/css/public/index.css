@@ -1,5 +1,7 @@
 @import "http://localhost/highlight/assets/css/public/base.css";
 @import "http://localhost/highlight/assets/css/public/components/header.css";
+@import "http://localhost/highlight/assets/css/public/components/search.css";
+@import "http://localhost/highlight/assets/css/public/components/search-loader.css";
 @import "http://localhost/highlight/assets/css/public/components/cel-nav.css";
 @import "http://localhost/highlight/assets/css/public/components/footer.css";
 @import "http://localhost/highlight/assets/css/public/components/carrusel.css";

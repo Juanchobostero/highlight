@@ -18,7 +18,7 @@
 
 @media (max-width: 768px) {
     .prod-ofertas {
-        margin-bottom: -4rem;
+        margin-bottom: 0;
         transform: translateY(-2rem);
         width: 100%;
     }

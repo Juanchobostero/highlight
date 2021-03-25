@@ -1,4 +1,5 @@
 <?php $this->load->view('public/incl/header');?>
+<?php $this->load->view('public/incl/search');?>
 <?php if(isset($categoria) && isset($subcategoria)):?>
 <div class="datos-paginado-productos" style="display:none;"
     data-total="<?=$total_pages?>"

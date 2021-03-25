@@ -159,4 +159,16 @@ class Productos_model extends CI_Model {
     $this->db->from('productos');
     return $this->db->count_all_results();
   }
+
+  public function buscar($stg){
+    $this->db->select('productos.*, pf.foto');
+    $this->db->join('productos_fotos as pf', 'pf.id_prod = productos.id_producto');
+    $this->db->where('pf.foto IS NOT NULL');
+    $this->db->where('stockPR >', 0);
+    $this->db->like('nombrePR', $stg);
+    $this->db->or_like('descripcionPR', $stg);
+    $this->db->group_by('id_producto');
+    return $this->db->get('productos')->result();
+  
+  }
 }
