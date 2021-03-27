@@ -21,6 +21,7 @@ $(document).ready(() => {
 ///////////////////////////PRODUCTO MODAL//////////////////////////////////////
 function showModalImg(e){
   modal.style.display = "block";
+  modal.style.visibility = "visible";
   document.querySelector("#modal-img").src = e.target.src;
   document.querySelector("#modal-download").href = e.target.src;
 }
