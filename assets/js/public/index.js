@@ -719,19 +719,24 @@ function openSearch() {
   search.classList.add('search-show');
 } 
 
+function closeSearch() {
+  search.classList.remove('search-show');
+} 
+
 //Abrir y cerrar busqueda
 
 $('#search').on('click', function () {
   if (!$(this).is(".step")) {
     // first click
     $(this).addClass('step');
-    clearTimeout(searchWaitTimer);
-    searchWaitTimer = setTimeout(() => openSearch(), 100);
+    $('.search').fadeToggle();
+    openSearch();
     
   } else {
     // second click
     $(this).removeClass('step');
-    searchWaitTimer = setTimeout(() => search.classList.remove('search-show'), 100);
+    $('.search').fadeToggle();
+    closeSearch();
   }
 });
 

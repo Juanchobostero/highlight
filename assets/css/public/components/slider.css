@@ -53,8 +53,8 @@
 
 @media (min-width: 320px) and (max-width: 480px) {
 
-    .slider-wraper {
-        margin-bottom: -5rem;
+    .section-slider {
+        height:38vh;
     }
 
 }
