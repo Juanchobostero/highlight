@@ -254,7 +254,8 @@
 
     .modal {
         display: none; 
-        position: fixed; 
+        position: fixed;
+        visibility: hidden;
         z-index: 2000; 
         padding-top: 100px; 
         left: 0;
@@ -263,6 +264,7 @@
         height: 100%;
         overflow: auto;
         background: rgba(0, 0, 0, 0.6);
+        animation: fadein .5s;
       }
       
       .modal-content {
@@ -282,6 +284,7 @@
         position: absolute;
         top: 15px;
         right: 15px;
+        
       }
       
       .modal-content{
@@ -658,3 +661,9 @@
     }
     
   }
+
+
+@keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+}

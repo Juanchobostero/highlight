@@ -20,7 +20,7 @@
 
 @media (max-width: 768px) {
     .prod-destacados {
-        transform: translateY(-1rem);
+        transform: translateY(0);
         width: 100%;
     }
 }
@@ -28,10 +28,13 @@
 @media (min-width: 320px) and (max-width: 480px) {
   
     .prod-destacados {
-        top: 5rem;
+        top: 2.8rem;
+        height: 85vh;
     }
     
   }
+
+  
 
 
 

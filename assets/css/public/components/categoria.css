@@ -146,17 +146,14 @@
 
     .subcategoria-slider a {
         text-decoration: none;
+        width: auto;
     }
     
     .subcat-cell {
         border: solid 0.2rem var(--color-grey);
-        width: 90%;
+        width: 15rem;
         height: 37vh;
         margin: 0 1rem;
-    }
-
-    .subcategoria-card {
-        height: 100%;
     }
     
     .subcat-img-top {
@@ -203,6 +200,13 @@
     a:hover {
         text-decoration: none;
     } 
+}
+
+@media (min-width: 320px) and (max-width: 480px) { 
+    .subcat-cell {
+        width: 14rem;
+        margin-right: 1rem;
+    }
 }
 
 

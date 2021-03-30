@@ -21,6 +21,7 @@ $(document).ready(() => {
 ///////////////////////////PRODUCTO MODAL//////////////////////////////////////
 function showModalImg(e){
   modal.style.display = "block";
+  modal.style.visibility = "visible";
   document.querySelector("#modal-img").src = e.target.src;
   document.querySelector("#modal-download").href = e.target.src;
 }
@@ -187,6 +188,7 @@ if(subcats){
     contain: true,
     draggable: true,
     selectedAttraction: 0.1,
+    pageDots: false,
   });
 }
   
@@ -719,19 +721,24 @@ function openSearch() {
   search.classList.add('search-show');
 } 
 
+function closeSearch() {
+  search.classList.remove('search-show');
+} 
+
 //Abrir y cerrar busqueda
 
 $('#search').on('click', function () {
   if (!$(this).is(".step")) {
     // first click
     $(this).addClass('step');
-    clearTimeout(searchWaitTimer);
-    searchWaitTimer = setTimeout(() => openSearch(), 100);
+    $('.search').fadeToggle();
+    openSearch();
     
   } else {
     // second click
     $(this).removeClass('step');
-    searchWaitTimer = setTimeout(() => search.classList.remove('search-show'), 100);
+    $('.search').fadeToggle();
+    closeSearch();
   }
 });
 

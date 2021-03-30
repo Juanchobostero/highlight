@@ -23,3 +23,11 @@
         width: 100%;
     }
 }
+
+@media (min-width: 320px) and (max-width: 480px) {
+  
+    .prod-ofertas {
+        top: 0.3rem;
+    }
+    
+  }

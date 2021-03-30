@@ -329,6 +329,18 @@ img.blur {
 
 @media (max-width: 768px) {
 
+  .portada-herramientas{
+    transform: translateY(4rem);
+  }
+
+  .portada-iluminacion{
+    transform: translateY(3rem);
+  }
+
+  .frase-txt {
+    transform: translateY(3rem);
+  }
+
   .mensaje, .motivo {
     width: 18rem;
   }
@@ -463,6 +475,7 @@ img.blur {
   }
 
   .frase-txt:after {
+    font-size: 1.5rem;
     visibility: visible;
     content: '"Enviamos a todo el país"';
   }

@@ -75,13 +75,11 @@
                         <?php if($subcat->id_cat == $categoria->id_categoria):?>
                             <a href="<?=base_url('productos/'. $subcat->id_cat . '/' . $subcat->id_subcategoria)?>">
                                 <div class="subcat-cell">
-                                    <div class="subcat-card">
-                                        <div class="subcat-img-top">
-                                            <img class="subcat-img" src="<?=base_url($subcat->imagenSC)?>" alt="subcat img">
-                                        </div>
-                                        <div class="subcat-name">
-                                            <h3 class="subcat-title"><?=$subcat->descripcionSC?></h3>
-                                        </div>
+                                    <div class="subcat-img-top">
+                                        <img class="subcat-img" src="<?=base_url($subcat->imagenSC)?>" alt="subcat img">
+                                    </div>
+                                    <div class="subcat-name">
+                                        <h3 class="subcat-title"><?=$subcat->descripcionSC?></h3>
                                     </div>
                                 </div>
                             </a>
