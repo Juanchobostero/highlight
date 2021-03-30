@@ -1,13 +1,12 @@
-@media (min-width: 768px) {
+
     .productos-wrapper {
-        width: 70%;
+        width: 100%;
         display: grid;
-        grid-template-columns: repeat(auto-fill, 11rem);
-        grid-gap: 1.5rem;
+        grid-template-columns: repeat(auto-fit, 15rem);
+        grid-gap: 1.2rem;
         justify-content: center;
         margin-top: -4rem;
-        margin-left: 11rem;
-        padding: 1rem 1rem;
+        padding: 1rem 4rem;
     }
     
     .productos-wrapper a {
@@ -17,8 +16,8 @@
     .producto-cell {
         border: solid 0.2rem var(--color-grey);
         border-style: dashed;
-        width: 11rem;
-        height: 40vh;
+        width: 100%;
+        height: 48vh;
         background-color: var(--color-grey);
     }
     
@@ -29,7 +28,7 @@
     
     .producto-img-top {
         width: 100%;
-        height: 65%;
+        height: 70%;
         background-color: #ffff;
     }
     
@@ -42,7 +41,7 @@
     
     .producto-desc {
         width: 100%;
-        height: 35%;
+        height: 30%;
         color: var(--menu-links-color);
         padding: 0.5rem;
         
@@ -128,35 +127,13 @@
         bottom: 4px;
         left: 8px;
     }
-}
-/* .productos-wrapper {
-    grid-template-columns: repeat(auto-fit, 15rem);
-    margin: 0 1rem;
-}
 
-.producto-cell {
-    width: 100%;
-}
-
-.producto-desc {
-    height: 25%;
-
-}
-
-.producto-img-top {
-    height: 75%;
-} */
 
 @media (max-width: 768px) {
     .productos-wrapper {
-        width: 90%;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, 12rem);
-        grid-gap: 1.5rem;
-        justify-content: center;
+        
         margin-top: 1rem;
-        margin-left: 2.3rem;
-        padding: 1rem 1rem;
+        padding: 1rem 2rem;
     }
     
     .productos-wrapper a {
@@ -167,7 +144,7 @@
         border: solid 0.2rem var(--color-grey);
         border-style: dashed;
         width: 100%;
-        height: 60vh;
+        height: 50vh;
         background-color: var(--color-grey);
     }
     
@@ -178,7 +155,7 @@
     
     .producto-img-top {
         width: 100%;
-        height: 65%;
+        height: 70%;
         background-color: #ffff;
     }
     
@@ -191,7 +168,7 @@
     
     .producto-desc {
         width: 100%;
-        height: 35%;
+        height: 30%;
         color: var(--menu-links-color);
         padding: 0.5rem;
         
@@ -282,8 +259,8 @@
 @media (min-width: 320px) and (max-width: 480px) {
   
     .productos-wrapper {
-        grid-template-columns: repeat(auto-fit, 15rem);
-        margin: 0 1rem;
+        
+        margin: 0 0.2rem;
     }
 
     .producto-cell {
@@ -304,5 +281,33 @@
         height: 75%;
     }
     
+}
+
+@media (min-width: 1500px){
+    .productos-wrapper {
+        grid-template-columns: repeat(auto-fit, 16rem);
+        margin-left: 10rem;
+        width: 80%;
+    }
+
+    .producto-cell {
+        width: 100%;
+        height: 45vh;
+    }
+
+    .producto-img-top img { 
+        width: 100%;
+    }
+
+    .producto-desc {
+        height: 25%;
+    }
+
+    .producto-img-top {
+        height: 75%;
+    }
+    .producto-desc-title { 
+        font-size: 1rem;
+    }
   }
 
