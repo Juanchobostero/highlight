@@ -188,6 +188,7 @@ if(subcats){
     contain: true,
     draggable: true,
     selectedAttraction: 0.1,
+    pageDots: false,
   });
 }
   
