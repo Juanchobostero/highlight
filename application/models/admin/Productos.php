@@ -64,6 +64,14 @@ class Productos extends CI_Model
 	}
 
 	//--------------------------------------------------------------
+	public function devolverStock($id_producto, $cant)
+	{
+		$this->db->set('stockPR', "stockPR + $cant", FALSE);
+		$this->db->where('id_producto', $id_producto);
+		return $this->db->update('productos');
+	}
+
+	//--------------------------------------------------------------
 	public function total_productos_por_subcategoria($id_subcategoria)
 	{
 		$this->db->where('id_subcat', $id_subcategoria);

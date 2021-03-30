@@ -107,7 +107,8 @@ $route = array(
 	'editarPerfil'					=> 'admin/Usuarios_controller/editarPerfil',
 
 	'admin/ventas'				=> 'admin/Ventas_controller',
-	'admin/ventas/(:any)'	=> 'admin/ventas_controller/getVentas/$1',
+	'admin/ventas/(:any)'	=> 'admin/Ventas_controller/getVentas/$1',
+	'frmVerVenta/(:num)'	=> 'admin/Ventas_controller/frmVer/$1',
 );
 
 $route['admin/validar']['post'] = 'Inicio_controller/validar';
