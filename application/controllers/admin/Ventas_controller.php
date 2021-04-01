@@ -67,10 +67,17 @@ class Ventas_controller extends CI_Controller
 
 		$resp = $this->Ventas->actualizar($id_venta, $venta);
 
-		$detalleVenta = $this->Ventas_detalle->get_detalle_venta($id_venta);
+		// $detalleVenta = $this->Ventas_detalle->get_detalle_venta($id_venta);
 
-		foreach ($detalleVenta as $item) {
-			$this->Productos->devolverStock($item->id_producto, $item->cantidadVENT);
+		// foreach ($detalleVenta as $item) {
+		// 	$this->Productos->devolverStock($item->id_producto, $item->cantidadVENT);
+		// }
+
+		if ($resp) {
+			$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Venta N°' . $id_venta . ' cancelada']));
+			return;
 		}
+		$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'errores' => ['No se pudo cancelar la venta. Intente más tarde!']]));
+		return;
 	}
 }

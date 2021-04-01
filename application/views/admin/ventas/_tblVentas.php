@@ -33,12 +33,24 @@
 						<button type="button" class="btn btn-info" title="Ver" onclick="cargarForm('<?= base_url('frmVerVenta/' . $venta->id_venta) ?>', 'large', 'modal-large')">
 							<i class="fas fa-eye"></i>
 						</button>
-						<button type="button" class="btn btn-warning" title="Confirmar" onclick="cargarForm('<?= base_url('frmEditarProducto/' . 'id') ?>', 'extra-large', 'modal-extra-large')">
-							<i class="fas fa-check text-white"></i>
-						</button>
-						<button type="button" class="btn btn-danger" title="Cancelar" onclick="eliminar(this, 'eliminarProducto/<?= 'id'; ?>')">
-							<i class="fas fa-times"></i>
-						</button>
+
+						<?php if ($venta->estadoVENT == 'Nuevo') : ?>
+							<button type="button" class="btn btn-warning" title="Confirmar" onclick="cargarForm('<?= base_url('frmEditarProducto/' . 'id') ?>', 'extra-large', 'modal-extra-large')">
+								<i class="fas fa-check text-white"></i>
+							</button>
+						<?php endif; ?>
+
+						<?php if ($venta->estadoVENT == 'Confirmado') : ?>
+							<button type="button" class="btn btn-warning" title="Entregar" onclick="cargarForm('<?= base_url('frmEditarProducto/' . 'id') ?>', 'extra-large', 'modal-extra-large')">
+								<i class="fas fa-check text-white"></i>
+							</button>
+						<?php endif; ?>
+
+						<?php if ($venta->estadoVENT != 'Cancelado') : ?>
+							<button type="button" class="btn btn-danger" title="Cancelar" onclick="cancelar(this, 'cancelarVenta/<?= $venta->id_venta; ?>')">
+								<i class="fas fa-times"></i>
+							</button>
+						<?php endif; ?>
 					</div>
 				</td>
 			</tr>

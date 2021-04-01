@@ -221,7 +221,7 @@ function cargarForm(metodo, modal, selector) {
 	}).fail(ajaxErrors);
 }
 
-//----------------CARGA VISTA MODAL DE FORMULARIO---------------
+//----------------CARGA VISTA PAGE DE FORMULARIO---------------
 function cargarPage(metodo, selector) {
 	$.post(baseUrl + metodo, function (data) {
 		$('#' + selector).html(data);
@@ -357,29 +357,35 @@ function validFormPage(e, metodo) {
 	});
 }
 
+//------------------------CANCELAR VENTA------------------------
+function cancelar(e, metodo) {
+	// el tercer parametro no se usa, se hace en el back
+	cambiarEstado(e, metodo, 4, 'Cancelar', 'La venta se cancelará')
+}
+
 //---------------------------HABILITAR---------------------------
 function habilitar(e, metodo) {
-	habDes(e, metodo, 1, 'Habilitar', 'habilitará')
+	cambiarEstado(e, metodo, 1, 'Habilitar', 'El registro se habilitará')
 }
 
 //--------------------------INHABILITAR--------------------------
 function deshabilitar(e, metodo) {
-	habDes(e, metodo, 0, 'Deshabilitar', 'deshabilitará')
+	cambiarEstado(e, metodo, 0, 'Deshabilitar', 'El registro se deshabilitará')
 }
 
 //----------------------------ELIMINAR----------------------------
 function eliminar(e, metodo) {
-	habDes(e, metodo, 0, 'Eliminar', 'eliminará')
+	cambiarEstado(e, metodo, 0, 'Eliminar', 'El registro se eliminará')
 }
 
-//----------------HABILITAR-DESHABILITAR RESPONSE----------------
-function habDes(e, metodo, est, titulo, msj) {
+//----------------CAMBIA EL ESTADO DE UN REGISTRO----------------
+function cambiarEstado(e, metodo, est, titulo, msj) {
 	// let nom = $(e).closest('tr').children('td:first').text();
 
 	Swal.fire({
 		title: '¿' + titulo + '?',
 		// html: '<strong>' + nom + '</strong> se ' + msj + '.',
-		text: 'El registro se ' + msj,
+		text: msj,
 		icon: 'question',
 		showCancelButton: true,
 		confirmButtonColor: '#2c9faf',
@@ -400,6 +406,35 @@ function habDes(e, metodo, est, titulo, msj) {
 		}
 	});
 }
+
+// //-----------------CAMBIA EL ESTADO DE LA VENTA-----------------
+// function estadoVenta(metodo, estado, id_pedido){
+//   Swal.fire({
+//     title: estado + id_pedido + '?',
+//     icon : 'question',
+//     showCancelButton  : true,
+//     confirmButtonColor: '#2c9faf',
+//     cancelButtonColor : '#d33',
+//     confirmButtonText : 'Sí!',
+//     cancelButtonText  : 'Cancelar'
+//   })
+//   .then((result) => {
+//     if (result.value) {
+//       $.post(metodo, {
+//         id_pedido: id_pedido
+//       },
+//       function(data) {
+//         if (data.result === 1) {
+//           $('#' + data.url).click();
+//           msjAceptacion(data.titulo, data.msj, data.tab);
+//         }
+//         else {
+//           mostrarError(data.titulo, data.msj);
+//         }
+//       }, 'json').fail(ajaxErrors);
+//     }
+//   });
+// }
 
 //---------------------MANEJO SWITCH (SI-NO)---------------------
 function manejoSwitch(e, id, metodo, del = true) {
