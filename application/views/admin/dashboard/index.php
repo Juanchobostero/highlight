@@ -24,14 +24,14 @@
 	<section class="content">
 		<div class="container-fluid">
 			<?php $this->load->view('admin/dashboard/_totales'); ?>
-
+			<?php // json_decode(json_encode($grafico_ventas), true);?>
 			<div class="row">
 				<div class="col-12 col-md-8">
 					<!-- Ultimas 8 ventas nuevas -->
 					<?php $this->load->view('admin/dashboard/_ultimas_ventas'); ?>
 
 					<!-- Grafico de total de ventas en los ultimos 6 meses -->
-					<?php // $this->load->view('admin/dashboard/_grafico_ventas'); ?>
+					<?php $this->load->view('admin/dashboard/_grafico_ventas'); ?>
 				</div>
 
 				<div class="col-12 col-md-4">
@@ -45,5 +45,8 @@
 	<!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-
+<script>
+	// carga grafico
+	window.onload = function() { graficoVentas() }
+</script>
 <?php $this->load->view('admin/components/footer'); ?>

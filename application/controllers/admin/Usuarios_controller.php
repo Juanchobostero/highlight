@@ -7,9 +7,7 @@ class Usuarios_controller extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		if (!isset($_SESSION['id'])) {
-			show_404();
-		}
+		verificarSesionAdmin();
 	}
 
 	//--------------------------------------------------------------
@@ -18,8 +16,6 @@ class Usuarios_controller extends CI_Controller
 		$data['title'] = 'Usuarios';
 		$data['act'] = '1U';
 		$data['desplegado'] = '';
-		$data['msjs_ult_tres'] = $this->Mensajes->get_mensajes_ult_tres();
-		$data['msj_no_leidos'] = $this->Mensajes->get_mensajes_no_leidos();
 		$this->load->view('admin/usuarios/index', $data);
 	}
 
@@ -46,8 +42,6 @@ class Usuarios_controller extends CI_Controller
 		$data['title'] = 'Perfil';
 		$data['act'] = '';
 		$data['desplegado'] = '';
-		$data['msjs_ult_tres'] = $this->Mensajes->get_mensajes_ult_tres();
-		$data['msj_no_leidos'] = $this->Mensajes->get_mensajes_no_leidos();
 		$this->load->view('admin/perfil/editarPerfil', $data);
 	}
 

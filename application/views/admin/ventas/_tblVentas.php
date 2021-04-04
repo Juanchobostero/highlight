@@ -35,7 +35,7 @@
 						</button>
 
 						<?php if ($venta->estadoVENT == 'Nuevo') : ?>
-							<button type="button" class="btn btn-warning" title="Confirmar" onclick="cargarForm('<?= base_url('frmEditarProducto/' . 'id') ?>', 'extra-large', 'modal-extra-large')">
+							<button type="button" class="btn btn-warning" title="Confirmar" onclick="confirmar(this, 'confirmarVenta/<?= $venta->id_venta; ?>')">
 								<i class="fas fa-check text-white"></i>
 							</button>
 						<?php endif; ?>

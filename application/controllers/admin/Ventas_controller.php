@@ -17,8 +17,6 @@ class Ventas_controller extends CI_Controller
 		$data['title'] = 'Ventas';
 		$data['act'] = '6Vent';
 		$data['desplegado'] = '';
-		$data['msjs_ult_tres'] = $this->Mensajes->get_mensajes_ult_tres();
-		$data['msj_no_leidos'] = $this->Mensajes->get_mensajes_no_leidos();
 		$this->load->view('admin/ventas/index', $data);
 	}
 
@@ -48,7 +46,7 @@ class Ventas_controller extends CI_Controller
 
 		$this->load->view('admin/ventas/_tblVentas', $data);
 	}
-
+	
 	//--------------------------------------------------------------
 	public function frmVer($id_venta)
 	{
@@ -60,8 +58,28 @@ class Ventas_controller extends CI_Controller
 	}
 
 	//--------------------------------------------------------------
+	public function confirmar($id_venta)
+	{
+		verificarConsulAjax();
+
+		$venta['fechaConfirmado'] = date('Y-m-d H:i:s');
+		$venta['estadoVENT'] = 2;
+
+		$resp = $this->Ventas->actualizar($id_venta, $venta);
+
+		if ($resp) {
+			$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Venta N°' . $id_venta . ' confirmada']));
+			return;
+		}
+		$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'errores' => ['No se pudo cancelar la venta. Intente más tarde!']]));
+		return;
+	}
+
+	//--------------------------------------------------------------
 	public function cancelar($id_venta)
 	{
+		verificarConsulAjax();
+
 		$venta['fechaCancelado'] = date('Y-m-d H:i:s');
 		$venta['estadoVENT'] = 4;
 

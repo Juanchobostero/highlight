@@ -1,4 +1,4 @@
-<table class="table table-hover">
+<table id="tblMensajes" class="table table-hover">
 	<thead>
 		<tr class="text-center">
 			<th>Remitente</th>
