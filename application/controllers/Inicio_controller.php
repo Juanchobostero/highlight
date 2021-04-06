@@ -264,4 +264,19 @@ class Inicio_controller extends CI_Controller
 
 		$this->load->view('public/presupuesto', $data);
 	}
+
+	public function pagar() {
+		$data['categorias'] = $this->Categorias_model->get_full();
+		$data['title'] = 'Confirmar pago';
+
+		foreach($this->cart->contents() as $items){
+			$producto = $this->Productos_model->get_producto($items['id']);
+			$items['stock'] = $producto->stockPR;
+			$this->cart->update(['rowid' => $items['rowid']]);
+		}
+
+		$data['cart'] = $this->cart->contents();
+
+		$this->load->view('public/pagar', $data);
+	}
 }

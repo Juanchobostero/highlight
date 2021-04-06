@@ -89,9 +89,10 @@
 
         <div class="carrito-botones">
             <button class="carrito-vaciar" onclick="vaciar()">Vaciar</button>
-            <button class="carrito-continuar">Continuar</button>
+            <button class="carrito-continuar" onclick="guardarCompra()">Continuar</button>
         </div>
     </div>
 </div>
+
 
 <?php $this->load->view('public/incl/footer');?>
