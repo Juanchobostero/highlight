@@ -16,8 +16,6 @@ class Portadas_controller extends CI_Controller
 		$data['title'] = 'Portadas';
 		$data['act'] = '4Port';
 		$data['desplegado'] = '';
-		$data['msjs_ult_tres'] = $this->Mensajes->get_mensajes_ult_tres();
-		$data['msj_no_leidos'] = $this->Mensajes->get_mensajes_no_leidos();
 		$this->load->view('admin/portadas/index', $data);
 	}
 

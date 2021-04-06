@@ -14,6 +14,7 @@ class Mensajes extends CI_Model
 	public function get_mensajes_ult_tres()
 	{
 		$this->db->limit(3);
+		$this->db->order_by('estado_mensaje', 0);
 		$this->db->order_by('fecha_envio', 'desc');
 		return $this->db->get('mensajes')->result();
 	}
@@ -44,5 +45,12 @@ class Mensajes extends CI_Model
 	{
 		$this->db->where('id_mensaje', $id_mensaje);
 		return $this->db->update('mensajes', $mensaje);
+	}
+
+	//--------------------------------------------------------------
+	public function total_mensajes()
+	{
+		$this->db->from('mensajes');
+		return $this->db->count_all_results();
 	}
 }

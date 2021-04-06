@@ -7,7 +7,7 @@
 
 <div class="modal-body">
 	<div class="row">
-		<div class="col-12 col-md-4">
+		<div class="col-12 col-md-6">
 			<div class="info-box bg-light">
 				<div class="info-box-content">
 					<span class="info-box-text text-center text-muted">Cliente</span>
@@ -15,7 +15,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-12 col-md-3">
+		<div class="col-12 col-md-6">
 			<div class="info-box bg-light">
 				<div class="info-box-content">
 					<?php // Fecha del estado de venta
@@ -25,19 +25,21 @@
 					else : $fecha = $venta->fechaCancelado;
 					endif; ?>
 					<span class="info-box-text text-center text-muted">Fecha<?= ($venta->estadoVENT != 'Nuevo') ? ' ' . $venta->estadoVENT : ''; ?></span>
-					<span class="info-box-number text-center text-muted mb-0"><?= strftime("%d %b %Y", strtotime($fecha)); ?><span>
+					<span class="info-box-number text-center text-muted mb-0"><?= strftime("%d %b %Y", strtotime($fecha)); ?></span>
 				</div>
 			</div>
 		</div>
-		<div class="col-12 col-md-3">
+	</div>
+	<div class="row">
+		<div class="col-12 col-md-4">
 			<div class="info-box bg-light">
 				<div class="info-box-content">
 					<span class="info-box-text text-center text-muted">Total</span>
-					<span class="info-box-number text-center text-muted mb-0">$ <?= number_format($venta->totalVENT, 0, ',', '.'); ?><span>
+					<span class="info-box-number text-center text-muted mb-0">$ <?= number_format($venta->totalVENT, 0, ',', '.'); ?></span>
 				</div>
 			</div>
 		</div>
-		<div class="col-12 col-md-2">
+		<div class="col-12 col-md-4">
 			<div class="info-box bg-light">
 				<div class="info-box-content">
 					<?php // Estado de pago de la venta
@@ -46,7 +48,15 @@
 					else : $estPago = 'danger';
 					endif; ?>
 					<span class="info-box-text text-center text-muted">Pago</span>
-					<span class="info-box-number text-center mb-0"><span class="badge badge-<?= $estPago; ?>"><?= $venta->estadoPago; ?></span>
+					<span class="info-box-number text-center text-muted mb-0"><span class="badge badge-<?= $estPago; ?>"><?= $venta->estadoPago; ?></span></span>
+				</div>
+			</div>
+		</div>
+		<div class="col-12 col-md-4">
+			<div class="info-box bg-light">
+				<div class="info-box-content">
+					<span class="info-box-text text-center text-muted">Número de Pago</span>
+					<span class="info-box-number text-center text-muted mb-0"><?= $venta->nroPago; ?></span>
 				</div>
 			</div>
 		</div>

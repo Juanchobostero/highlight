@@ -11,6 +11,9 @@ $route = array(
 	'salir' 			=> 'Inicio_controller/frmSalir',
 
 	'admin/dashboard'	=> 'admin/Dashboard_controller',
+	'notificaciones' 	=> 'admin/Dashboard_controller/notificaciones',
+	'ultimos_msjs'		=> 'admin/Dashboard_controller/ultimos_msjs',
+	'graficoVentas'		=> 'admin/Dashboard_controller/graficoVentas',
 
 	'admin/balance'	=> 'admin/Balance_controller',
 	
@@ -106,9 +109,11 @@ $route = array(
 	'admin/perfil/editar'		=> 'admin/Usuarios_controller/frmEditarPerfil',
 	'editarPerfil'					=> 'admin/Usuarios_controller/editarPerfil',
 
-	'admin/ventas'				=> 'admin/Ventas_controller',
-	'admin/ventas/(:any)'	=> 'admin/Ventas_controller/getVentas/$1',
-	'frmVerVenta/(:num)'	=> 'admin/Ventas_controller/frmVer/$1',
+	'admin/ventas'					=> 'admin/Ventas_controller',
+	'admin/ventas/(:any)'		=> 'admin/Ventas_controller/getVentas/$1',
+	'frmVerVenta/(:num)'		=> 'admin/Ventas_controller/frmVer/$1',
+	'confirmarVenta/(:num)'	=> 'admin/Ventas_controller/confirmar/$1',
+	'cancelarVenta/(:num)'	=> 'admin/Ventas_controller/cancelar/$1'
 );
 
 $route['admin/validar']['post'] = 'Inicio_controller/validar';

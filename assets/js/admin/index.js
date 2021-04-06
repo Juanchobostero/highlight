@@ -9,6 +9,14 @@ const Toast = Swal.mixin({
 	timer: 6000,
 })
 
+$(function () {
+	// carga si no esta en el login
+	if (window.location.href != baseUrl + 'admin/login') {
+		notificaciones();
+	}
+});
+
+
 //------------------------FECHA ACTUAL------------------------
 function fechaHoy() {
 	let fHoy = new Date();
@@ -101,15 +109,15 @@ function manageHashTab($tabs, $titulo, nomTab) {
 
 			let url = window.location.origin + window.location.pathname + '/' + hrefTab;
 
-			$('#tabla-'+hrefTab ).empty();
+			$('#tabla-' + hrefTab).empty();
 
 			$.post(url, function (data) {
-				$('#tabla-'+hrefTab ).html(data);
+				$('#tabla-' + hrefTab).html(data);
 			}).done(() => {
 				overlayWrap.removeClass('py-5');
 				overlay.addClass('d-none');
 				$("input[data-bootstrap-switch]").bootstrapSwitch();
-				formatoTabla('tbl'+hrefTab);
+				formatoTabla('tbl' + hrefTab);
 			});
 		}
 	})
@@ -221,7 +229,7 @@ function cargarForm(metodo, modal, selector) {
 	}).fail(ajaxErrors);
 }
 
-//----------------CARGA VISTA MODAL DE FORMULARIO---------------
+//----------------CARGA VISTA PAGE DE FORMULARIO---------------
 function cargarPage(metodo, selector) {
 	$.post(baseUrl + metodo, function (data) {
 		$('#' + selector).html(data);
@@ -357,29 +365,41 @@ function validFormPage(e, metodo) {
 	});
 }
 
+//------------------------CONFIRMAR VENTA------------------------
+function confirmar(e, metodo) {
+	// el tercer parametro no se usa, se hace en el back
+	cambiarEstado(e, metodo, 2, 'Confirmar', 'La venta se confirmará');
+}
+
+//------------------------CANCELAR VENTA------------------------
+function cancelar(e, metodo) {
+	// el tercer parametro no se usa, se hace en el back
+	cambiarEstado(e, metodo, 4, 'Cancelar', 'La venta se cancelará')
+}
+
 //---------------------------HABILITAR---------------------------
 function habilitar(e, metodo) {
-	habDes(e, metodo, 1, 'Habilitar', 'habilitará')
+	cambiarEstado(e, metodo, 1, 'Habilitar', 'El registro se habilitará')
 }
 
 //--------------------------INHABILITAR--------------------------
 function deshabilitar(e, metodo) {
-	habDes(e, metodo, 0, 'Deshabilitar', 'deshabilitará')
+	cambiarEstado(e, metodo, 0, 'Deshabilitar', 'El registro se deshabilitará')
 }
 
 //----------------------------ELIMINAR----------------------------
 function eliminar(e, metodo) {
-	habDes(e, metodo, 0, 'Eliminar', 'eliminará')
+	cambiarEstado(e, metodo, 0, 'Eliminar', 'El registro se eliminará')
 }
 
-//----------------HABILITAR-DESHABILITAR RESPONSE----------------
-function habDes(e, metodo, est, titulo, msj) {
+//----------------CAMBIA EL ESTADO DE UN REGISTRO----------------
+function cambiarEstado(e, metodo, est, titulo, msj) {
 	// let nom = $(e).closest('tr').children('td:first').text();
 
 	Swal.fire({
 		title: '¿' + titulo + '?',
 		// html: '<strong>' + nom + '</strong> se ' + msj + '.',
-		text: 'El registro se ' + msj,
+		text: msj,
 		icon: 'question',
 		showCancelButton: true,
 		confirmButtonColor: '#2c9faf',
@@ -392,6 +412,7 @@ function habDes(e, metodo, est, titulo, msj) {
 				if (data.result === 1) {
 					mostrarToast('success', data.titulo, data.msj);
 					$(e).closest('tr').fadeOut(1200);
+					if (est === 2) notificaciones(); // para la parte de ventas
 				}
 				else {
 					mostrarErrors(data.titulo, data.errores);
@@ -419,7 +440,7 @@ function manejoSwitch(e, id, metodo, del = true) {
 		.fail(ajaxErrors);
 }
 
-//-------------QUITAR PRODUCTO DESTACADO / PAUSADO -------------
+//--------------QUITAR PRODUCTO DESTACADO / PAUSADO--------------
 function dejarPropiedad(e, metodo, del = true) {
 	$.post(metodo, function (data) {
 		if (data.result === 1) {
@@ -429,6 +450,105 @@ function dejarPropiedad(e, metodo, del = true) {
 		}
 		else {
 			mostrarErrors(data.titulo, data.errores);
+		}
+	}, 'json')
+		.fail(ajaxErrors);
+}
+
+// ----------GRAFICO DE VENTAS TOTALES ULTIMOS 6 MESES----------
+function graficoVentas() {
+	let ticksStyle = {
+		fontColor: '#495057',
+		fontStyle: 'bold'
+	}
+	let mode = 'index'
+	let intersect = true
+
+	$.post(baseUrl + 'graficoVentas', function (data) {
+		if (data.result === 1) {
+			let $salesChart = $('#sales-chart');
+			const salesChart = new Chart($salesChart, {
+				type: 'bar',
+				data: {
+					labels: data.periodos,//['JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+					datasets: [
+						{
+							backgroundColor: '#007bff',
+							borderColor: '#007bff',
+							data: data.totales//[1000, 2000, 3000, 2500, 2700, 2500, 3000]
+						},
+						// {
+						// 	backgroundColor: '#ced4da',
+						// 	borderColor: '#ced4da',
+						// 	data: [700, 1700, 2700, 2000, 1800, 1500, 2000]
+						// }
+					]
+				},
+				options: {
+					maintainAspectRatio: false,
+					tooltips: {
+						mode: mode,
+						intersect: intersect
+					},
+					hover: {
+						mode: mode,
+						intersect: intersect
+					},
+					legend: {
+						display: false
+					},
+					scales: {
+						yAxes: [{
+							// display: false,
+							gridLines: {
+								display: true,
+								lineWidth: '4px',
+								color: 'rgba(0, 0, 0, .2)',
+								zeroLineColor: 'transparent'
+							},
+							ticks: $.extend({
+								beginAtZero: true,
+
+								// Include a dollar sign in the ticks
+								callback: function (value, index, values) {
+									// if (value >= 1000) {
+									// 	value /= 1000
+									// 	value += 'k'
+									// }
+									return '$' + value
+								}
+							}, ticksStyle)
+						}],
+						xAxes: [{
+							display: true,
+							gridLines: {
+								display: false
+							},
+							ticks: ticksStyle
+						}]
+					}
+				}
+			});
+		}
+	}, 'json')
+		.fail(ajaxErrors);
+}
+
+//---------------NOTIFICACION DE MENSAJES Y VENTAS---------------
+function notificaciones() {
+	$.post(baseUrl + 'notificaciones', function (data) {
+		if (data.result === 1) {
+			let msjNoLeidos = data.msj_no_leidos;
+			let nuevasVentas = data.nuevas_ventas;
+			let totalNotif = msjNoLeidos + nuevasVentas;
+
+			$('.nh-notif').text((totalNotif > 0) ? totalNotif : '');
+
+			$('#nv-notif-msj').text(msjNoLeidos);
+			$('.notif-msjs').text((msjNoLeidos > 0) ? msjNoLeidos : '');
+
+			$('#nv-notif-ventas').text(nuevasVentas);
+			$('.notif-ventas').text((nuevasVentas > 0) ? nuevasVentas : '');
 		}
 	}, 'json')
 		.fail(ajaxErrors);

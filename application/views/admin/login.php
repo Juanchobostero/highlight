@@ -39,9 +39,9 @@
 				</form>
 				<!-- /.form -->
 
-				<p class="mb-1 mt-2 text-center">
+				<!-- <p class="mb-1 mt-2 text-center">
 					<a href="forgot-password.html"><small>Olvidé mi contraseña</small></a>
-				</p>
+				</p> -->
 			</div>
 			<!-- /.card-body -->
 		</div>
