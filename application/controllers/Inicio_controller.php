@@ -279,4 +279,19 @@ class Inicio_controller extends CI_Controller
 
 		$this->load->view('public/pagar', $data);
 	}
+
+	public function finalizar_compra(){
+		$data['categorias'] = $this->Categorias_model->get_full();
+		$data['title'] = 'Confirmar pago';
+
+		$insertar_pedido = $this->Productos_model->guardar_pedido();
+		
+		if($insertar_pedido) {
+			$this->cart->destroy();
+			$this->load->view('public/pagado', $data);
+		}else {
+			$this->load->view('public/error_pago', $data);
+		}
+	}
+
 }

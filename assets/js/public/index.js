@@ -786,6 +786,7 @@ function guardarCompra(){
 
 
 
+
 function ajaxErrors( jqXHR, textStatus) {
   /* pageLoader.classList.remove('page-loader--show'); */
   if (jqXHR.status === 0) {

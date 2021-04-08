@@ -131,6 +131,7 @@ $route['perfil'] = 'Inicio_controller/profile';
 $route['logout'] = 'Inicio_controller/cerrar_sesion';
 $route['presupuesto'] = 'Inicio_controller/pedir_presupuesto';
 $route['pagar'] = 'Inicio_controller/pagar';
+$route['finalizar_compra'] = 'Inicio_controller/finalizar_compra';
 
 $route['message'] = 'public/Consultas_controller/mensaje';
 
@@ -150,4 +151,5 @@ $route['api/carrito/delete'] = 'public/APICarrito/eliminar';
 $route['api/carrito/gettotal'] = 'public/APICarrito/total_items';
 $route['api/search/get'] = 'public/APISearch/get';
 $route['api/carrito/save'] = 'public/APICarrito/guardar_compra';
+
 

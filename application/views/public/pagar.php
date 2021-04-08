@@ -1,7 +1,6 @@
 <?php $this->load->view('public/incl/header');?>
 <?php $this->load->view('public/incl/search');?>
 
-
 <?php
 // SDK de Mercado Pago
 require_once $_SERVER['DOCUMENT_ROOT'] . '/highlight/assets/mercadopago/vendor/autoload.php';
@@ -12,6 +11,14 @@ MercadoPago\SDK::setAccessToken('TEST-2414639824456369-032503-61f53f82a0f1a0f989
 // Crea un objeto de preferencia
 $preference = new MercadoPago\Preference();
 
+$preference->back_urls = array(
+    'success' => base_url('finalizar_compra'),
+    'failure' => base_url('falla_compra'),
+    'pending' => base_url('pendiente_compra'),
+);
+
+$preference->auto_return = 'approved';
+
 // Crea un ítem en la preferencia
 $datos = array();
 foreach($cart as $itemCart) {
@@ -21,7 +28,6 @@ foreach($cart as $itemCart) {
     $item->unit_price = $itemCart['price'];
     $datos[]=$item;
 }
-
 
 $preference->items = $datos;
 $preference->save();
@@ -80,6 +86,17 @@ $preference->save();
                                 <h5 style="text-align: center; font-weight: bold">
                                     <?=$item['qty']?>
                                 </h5>
+
+                                <input 
+                                type="number" 
+                                class="item-cantidad item-cantidad-cart"
+                                id="cant-item-<?=$item['rowid']?>"
+                                value="<?=$item['qty']?>"
+                                onchange="updateCantidad(event, '<?=$item['rowid']?>')" 
+                                type="number"
+                                min="0"  
+                                style="display: none;"
+                            >
                                 
                             
                             </td>
@@ -105,7 +122,7 @@ $preference->save();
     <div class="pagar">
         <h2>Total: $<?=$this->cart->total()?></h2>
         <hr>
-        <form action="">
+        <form action="<?=base_url('finalizar_compra')?>" method="POST">
             <script
             src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
             data-preference-id="<?php echo $preference->id; ?>">
