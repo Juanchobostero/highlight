@@ -119,7 +119,6 @@ class Inicio_controller extends CI_Controller
   }
 
 	//--------------------------------------------------------------
-	// Validacion del login del admin
 	public function validar()
 	{
 		verificarConsulAjax();
@@ -276,6 +275,9 @@ class Inicio_controller extends CI_Controller
 		}
 
 		$data['cart'] = $this->cart->contents();
+
+		$usuario = $this->Usuarios_model->get_user($this->session->userdata('id'));
+		$data['usuario'] = $usuario;
 
 		$this->load->view('public/pagar', $data);
 	}

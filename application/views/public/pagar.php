@@ -6,7 +6,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/highlight/assets/mercadopago/vendor/autoload.php';
 
 // Agrega credenciales
-MercadoPago\SDK::setAccessToken('TEST-2414639824456369-032503-61f53f82a0f1a0f989a258a7a0d3cb3a-733853182');
+MercadoPago\SDK::setAccessToken('TEST-7764682637448613-112623-bd8da5701ce014e430960f099a01e57d__LC_LB__-61092162');
 
 // Crea un objeto de preferencia
 $preference = new MercadoPago\Preference();
@@ -28,6 +28,30 @@ foreach($cart as $itemCart) {
     $item->unit_price = $itemCart['price'];
     $datos[]=$item;
 }
+
+
+  /* $payer = new MercadoPago\Payer();
+  $payer->name = $usuario->nombreU;
+  $payer->surname = $usuario->apellidoU;
+  $payer->email = $usuario->emailU;
+  $payer->date_created = date("Y-m-d H:i:s");
+  $payer->phone = array(
+    "area_code" => "",
+    "number" => $usuario->telefonoU
+  );
+  
+  $payer->identification = array(
+    "type" => "DNI",
+    "number" => "12345678"
+  );
+  
+  $payer->address = array(
+    "street_name" => "Cuesta Miguel Armendáriz",
+    "street_number" => 1004,
+    "zip_code" => "11020"
+  );
+  // ... */
+
 
 $preference->items = $datos;
 $preference->save();

@@ -761,10 +761,7 @@ function guardarCompra(){
     pageLoader.classList.remove('page-loader--show');
     data = JSON.parse(resp);
     if(data.result === 1){
-      Swal.fire("Bien!", data.msg , "success")
-      .then(() => {
-        window.location.href = data.url;
-      });
+      window.location.href = data.url;
       actualizarTotalHeader();
     }else if(data.result === 2){
       Swal.fire("Error!", data.msg , "error")
