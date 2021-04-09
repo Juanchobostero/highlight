@@ -11,7 +11,16 @@ abstract class AbstractConfig
     /**
      * @var array|null
      */
-    protected $data = null;
+    protected $data = [
+            'base_url'      => 'https://api.mercadopago.com',
+            'CLIENT_ID'     => '61092162',
+            'CLIENT_SECRET' => 'GeQrRXWvdEvSC6p63VPYzuxa2E6WmbvJ',
+            'USER_ID'       => '7764682637448613',
+            'APP_ID'        => '',
+            'ACCESS_TOKEN'  => 'APP_USR-7764682637448613-040823-b64c83d78cf889a57a59f5a247605746-61092162',
+            'REFRESH_TOKEN' => '',
+            'sandbox_mode'  => true,
+        ];
 
     /**
      * @var array

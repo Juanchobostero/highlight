@@ -8,6 +8,14 @@ MercadoPago\SDK::setAccessToken('TEST-2414639824456369-032503-61f53f82a0f1a0f989
 // Crea un objeto de preferencia
 $preference = new MercadoPago\Preference();
 
+// URL de retorno
+$preference->back_urls = array(
+    "success" => "https://localhost/highlight/success.php",
+    "failure" => "http://localhost/highlight/errorpago.php?error=failure",
+    "pending" => "http://localhost/highlight/errorpago.php?error=pending"
+);
+$preference->auto_return = "approved";
+
 // Crea un ítem en la preferencia
 $datos = array();
 for ($i=0; $i < 10; $i++) { 
@@ -41,7 +49,7 @@ $preference->save();
     <title>Document</title>
 </head>
 <body>
-    <form action="">
+    <form action="https://localhost/highlight/insertarpago.php" method="POST">
         <script
         src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
         data-preference-id="<?php echo $preference->id; ?>">
