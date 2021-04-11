@@ -92,6 +92,18 @@ class Ventas_controller extends CI_Controller
 		// }
 
 		if ($resp) {
+			$venta = $this->Ventas->get_venta($id_venta);
+			$cliente = $this->Clientes->get_cliente($venta->id_client);
+			$cancel_venta = [
+				'de'      => 'prueba.softcre@gmail.com',
+				'titulo'  => 'Highlight',
+				'para'    => $cliente->email,
+				'asunto'  => 'Cancelación de pedido N° ' . $id_venta,
+				'mensaje' => 'El pedido N° ' . $id_venta . ' ha sido cancelado.'
+			];
+
+			enviar_email($cancel_venta);
+			
 			$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Venta N°' . $id_venta . ' cancelada']));
 			return;
 		}
