@@ -171,4 +171,40 @@ class Productos_model extends CI_Model {
     return $this->db->get('productos')->result();
   
   }
+
+  public function guardar_pedido() {
+    $fechaPedido = date("Y-m-d H:i:s");
+    $pedcab = [
+      'id_us' => $this->session->userdata('id'),
+      'totalVENT' => $this->cart->total(),
+      'fechaENVIO' => $fechaPedido,
+      'estadoPAGO' => 'Aprobado',
+    ];
+
+    $this->db->insert('ventas', $pedcab);
+    $pedcab_id = $this->db->insert_id();
+
+    foreach($this->cart->contents() as $item){
+      $ped_det = [
+        'id_vent' => $pedcab_id,
+        'id_product' => $item['id'],
+        'cantidadVENT' => $item['qty'],
+        'precioVENT' => $item['price'],
+        'subtotalVENT' => $item['price'] * $item['qty']
+      ];
+      $this->db->insert('ventasdetalle', $ped_det);
+      $this->descontar_stock($ped_det);
+    }
+
+    return $pedcab_id;
+  }
+
+  public function descontar_stock($detalle){
+    $this->db->where('id_producto', $detalle['id_product']);
+    $producto = $this->db->get('productos')->row();
+    $newStock = $producto->stockPR - $detalle['cantidadVENT'];
+    $this->db->where('id_producto', $producto->id_producto);
+    $this->db->set('stockPR', $newStock);
+    $this->db->update('productos'); 
+  }
 }
