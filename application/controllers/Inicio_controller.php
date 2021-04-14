@@ -285,15 +285,43 @@ class Inicio_controller extends CI_Controller
 	public function finalizar_compra(){
 		$data['categorias'] = $this->Categorias_model->get_full();
 		$data['title'] = 'Confirmar pago';
+		$estado_pago = $_GET['status'];
 
-		$insertar_pedido = $this->Productos_model->guardar_pedido();
-		
-		if($insertar_pedido) {
+		//Solo inserta pago si el estado es aprobado
+		if($estado_pago == 'approved') {
+			$id_pedido = $this->Productos_model->guardar_pedido();
+			$data['pedido'] = $this->Productos_model->get_pedido($id_pedido);
+
 			$this->cart->destroy();
-			$this->load->view('public/pagado', $data);
-		}else {
-			$this->load->view('public/error_pago', $data);
+			$this->load->view('public/pedido', $data);
+		//Si no es aprobado redirige al carrito
+		}else{
+			$data['title'] = 'Mi carrito';
+			$this->load->view('public/carrito', $data);
 		}
+		
+	}
+
+	public function pedido($id){
+		$data['categorias'] = $this->Categorias_model->get_full();
+		$data['title'] = 'Pedido';
+		$data['pedido'] = $this->Productos_model->get_pedido($id);
+
+		$this->load->view('public/pedido', $data);
+	}
+
+	public function pedidos(){
+		$data['categorias'] = $this->Categorias_model->get_full();
+		$data['title'] = 'Mis pedidos';
+
+		if(!$this->session->userdata('login')){
+			redirect('login');
+		}else{
+			$id_user = $this->session->userdata('id');
+			$data['pedidos'] = $this->Productos_model->get_pedidos($id_user);
+			$this->load->view('public/pedidos', $data);
+		}
+		
 	}
 
 }
