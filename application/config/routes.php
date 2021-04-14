@@ -15,7 +15,8 @@ $route = array(
 	'ultimos_msjs'		=> 'admin/Dashboard_controller/ultimos_msjs',
 	'graficoVentas'		=> 'admin/Dashboard_controller/graficoVentas',
 
-	'admin/balance'	=> 'admin/Balance_controller',
+	'admin/balance'					=> 'admin/Balance_controller',
+	'admin/balance/(:any)'	=> 'admin/Balance_controller/getBalance/$1',
 	
 	'admin/categorias'					=> 'admin/Categorias_controller',
 	'admin/categorias/(:any)'		=> 'admin/Categorias_controller/getCategorias/$1',

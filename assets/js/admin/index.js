@@ -11,8 +11,8 @@ const Toast = Swal.mixin({
 
 $(function () {
 	// carga si no esta en el login
-	// if (window.location.href != baseUrl + 'admin/login') {
-	if (window.location.pathname != '/admin/login') {
+	if (window.location.href != baseUrl + 'admin/login') {
+	// if (window.location.pathname != '/admin/login') {
 		notificaciones();
 	}
 });

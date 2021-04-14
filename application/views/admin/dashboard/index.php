@@ -24,7 +24,7 @@
 	<section class="content">
 		<div class="container-fluid">
 			<?php $this->load->view('admin/dashboard/_totales'); ?>
-			<?php // json_decode(json_encode($grafico_ventas), true);?>
+
 			<div class="row">
 				<div class="col-12 col-md-8">
 					<!-- Ultimas 8 ventas nuevas -->
@@ -35,6 +35,9 @@
 				</div>
 
 				<div class="col-12 col-md-4">
+					<!-- 8 productos mas vendidos -->
+					<?php $this->load->view('admin/dashboard/_productos_mas_vendidos'); ?>
+
 					<!-- Ultimos 4 productos agregados -->
 					<?php $this->load->view('admin/dashboard/_ultimos_productos'); ?>
 				</div>
@@ -47,6 +50,8 @@
 <!-- /.content-wrapper -->
 <script>
 	// carga grafico
-	window.onload = function() { graficoVentas() }
+	window.onload = function() {
+		graficoVentas()
+	}
 </script>
 <?php $this->load->view('admin/components/footer'); ?>

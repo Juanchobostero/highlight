@@ -5,17 +5,11 @@
 			<th>Cliente</th>
 			<th>Total</th>
 			<th>Fecha</th>
-			<th>Pago</th>
 			<th>Acciones</th>
 		</tr>
 	</thead>
 	<tbody>
 		<?php foreach ($ventas as $venta) : ?>
-			<?php // Estado de pago de la venta
-			if ($venta->estadoPago == 'Aprobado') : $estPago = 'success';
-			elseif ($venta->estadoPago == 'Pendiente') : $estPago = 'warning';
-			else : $estPago = 'danger';
-			endif; ?>
 			<?php // Fecha del estado de venta
 			if ($venta->estadoVENT == 'Nuevo') : $fecha = $venta->fechaEnvio;
 			elseif ($venta->estadoVENT == 'Confirmado') : $fecha = $venta->fechaConfirmado;
@@ -27,7 +21,6 @@
 				<td><?= $venta->apellidoU . ', ' . $venta->nombreU; ?></td>
 				<td class="text-right">$ <?= number_format($venta->totalVENT, 0, ',', '.'); ?></td>
 				<td class="text-center"><?= strftime("%d %b %Y", strtotime($fecha)); ?></td>
-				<td class="text-center"><span class="badge badge-<?= $estPago; ?>"><?= $venta->estadoPago; ?></span></td>
 				<td class="text-center">
 					<div class="btn-group btn-group-sm">
 						<button type="button" class="btn btn-info" title="Ver" onclick="cargarForm('<?= base_url('frmVerVenta/' . $venta->id_venta) ?>', 'large', 'modal-large')">
