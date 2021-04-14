@@ -1,0 +1,172 @@
+.venta-detalle {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-areas: "cabecera"
+                         "detalle";
+}
+
+.venta-cabecera {
+    grid-area: cabecera;
+    text-align: justify;
+    padding-left: 5rem;
+}
+
+
+.cabecera-title {
+    display: inline;
+    text-align: left;
+    font-style: italic;
+}
+
+.cabecera-data {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 18rem);
+}
+
+.item-detail {
+    width: 90%;
+    height: 5rem;
+    border: 2px solid var(--color-grey);
+    margin: 1rem;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+}
+
+.item-detail img {
+    margin-right: 0.5rem;
+}
+
+.cabecera-data span {
+    font-size: 1rem;
+    letter-spacing: normal;
+}
+
+span#status{
+    padding: 0.2rem;
+    background-color: rgb(76, 150, 2);
+    color: white;
+    cursor: pointer;
+    border-radius: 0.3rem;
+}
+
+.detail-name {
+    width: 100%;
+    height: 2rem;
+    background-color: var(--menu-links-color);
+    color: white;
+    padding: 0.2rem;
+    font-size: 0.9rem;
+}
+
+.mercadoPago, 
+.fecha, 
+.total,
+.status {
+    width: 3rem;
+    height: 3rem;
+}
+
+.detalle {
+    grid-area: detalle;
+    text-align: justify;
+    padding-left: 5rem;
+    margin-top: 3rem;
+}
+
+.head-detalle h3 {
+    display: inline;
+    text-align: center;
+    font-style: italic;
+}
+
+.body-detalle {
+    justify-content: center;
+    text-align: center;
+}
+
+.item-detalle {
+    justify-content: center;
+    text-align: center;
+    overflow: auto;
+    cursor: pointer;
+    overflow-x: auto;
+}
+
+
+.item-detalle img {
+    width: 6rem;
+    height: 6rem;
+    border: 2px solid var(--color-grey);
+}
+
+.detalle-barra {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--menu-links-color);
+}
+
+.detalle-foto {
+    width: 20%;
+    float: left;
+}
+
+.detalle-info {
+    width: 50%;
+    float: left;
+    text-align: justify;
+}
+
+.detalle-info > * {
+    display: block;
+    margin: 0.6rem 0;
+}
+
+span#detalle-cant,
+span#detalle-tot {
+    font-weight: 900;
+}
+
+@media (max-width: 768px) {
+    .venta-cabecera {
+        padding: 0.5rem;
+    }
+
+    .cabecera-title {
+        text-align: center;
+    }
+
+    .head-detalle {
+        text-align: center;
+    }
+
+    .cabecera-data {
+        grid-template-columns: repeat(auto-fit, 15rem);
+        justify-content: center;
+        padding: 0.5rem;
+    }
+
+    .item-detail span {
+        font-size: 0.8rem;
+    }
+
+    span#detalle-nombre {
+        font-size: 1rem;
+    }
+
+    span#detalle-cant {
+        margin-top: 3rem;
+    }
+
+    #hr-detalle {
+        display: none;
+    }
+    
+
+}
+
+
+
+
+
+
+

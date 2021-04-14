@@ -9,6 +9,32 @@
                          "content";
 }
 
+
+.venta-detail{
+    cursor: pointer;
+}
+
+#pedidos-title, #pedidos-hr {
+    color: var(--titulo-seccion-color);
+}
+
+#pedidos-head {
+    background-color: var(--color-grey);
+}
+
+.venta-detail img {
+    width: 2rem;
+    height: 2rem;
+    margin: 1rem 0;
+}
+
+.venta-detail img:hover{
+    transform: scale(1.2, 1.2);
+    transition: .4s ease;
+    opacity: 0.5;
+}
+
+
 #carrito-ban{
     grid-area: banner;
     grid-column: 1 / -1;

@@ -174,11 +174,13 @@ class Productos_model extends CI_Model {
 
   public function guardar_pedido() {
     $fechaPedido = date("Y-m-d H:i:s");
+    $id_mercadoPago = $_GET['payment_id'];
     $pedcab = [
       'id_us' => $this->session->userdata('id'),
       'totalVENT' => $this->cart->total(),
       'fechaENVIO' => $fechaPedido,
       'estadoPAGO' => 'Aprobado',
+      'nroPago' => $id_mercadoPago,
     ];
 
     $this->db->insert('ventas', $pedcab);
@@ -206,5 +208,37 @@ class Productos_model extends CI_Model {
     $this->db->where('id_producto', $producto->id_producto);
     $this->db->set('stockPR', $newStock);
     $this->db->update('productos'); 
+  }
+
+  public function get_pedidos($iduser){
+    $this->db->where('id_us', $iduser);
+    $this->db->order_by('id_venta', 'DESC');
+    return $this->db->get('ventas')->result();
+  }
+
+  public function get_detalle_pedido($idpedido){
+    $this->db->select('productos.*, ventasdetalle.*, productos_fotos.*');
+    $this->db->join('productos', 'id_product = id_producto');
+    $this->db->join('productos_fotos', 'id_prod = productos.id_producto');
+    $this->db->where('id_vent', $idpedido);
+    $detalle = $this->db->get('ventasdetalle')->result();
+    
+    return $detalle;
+  }
+
+  public function get_pedido($id){
+    $this->db->where('id_venta', $id);
+    $pedido = $this->db->get('ventas')->row();
+    if(!$pedido){
+      return null;
+    }
+    $pedido->detalle = $this->get_detalle_pedido($pedido->id_venta);
+    return $pedido;
+  }
+
+  //retorna un arreglo de imagenes de un producto
+  public function get_img($id_producto){
+    $this->db->where('id_prod', $id_producto);
+    return $this->db->get('productos_fotos')->result();
   }
 }
