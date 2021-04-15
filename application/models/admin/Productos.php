@@ -94,4 +94,24 @@ class Productos extends CI_Model
 		$this->db->where('estadoPR', 1);
 		return $this->db->get('productos')->result();
 	}
+
+	//--------------------------------------------------------------
+	public function total_productos()
+	{
+		$this->db->where('estadoPR', 1);
+		$this->db->from('productos');
+		return $this->db->count_all_results();
+	}
+
+	//--------------------------------------------------------------
+	public function ult_productos()
+	{
+		$this->db->select('productos.*, productos_fotos.foto');
+		$this->db->join('productos', 'productos.id_producto = productos_fotos.id_prod');
+		$this->db->where('productos.estadoPR', 1);
+		$this->db->order_by('productos.id_producto', 'desc');
+		$this->db->limit('4');
+		$this->db->group_by('productos.id_producto');
+		return $this->db->get('productos_fotos')->result();
+	}
 }

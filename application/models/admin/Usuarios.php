@@ -36,6 +36,7 @@ class Usuarios extends CI_Model
 	//--------------------------------------------------------------
 	public function total_clientes() {
 		$this->db->where('id_tu', 2);
-		return $this->db->get('usuarios')->num_rows();
+		$this->db->from('usuarios');
+		return $this->db->count_all_results();
 	}
 }

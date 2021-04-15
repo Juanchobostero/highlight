@@ -30,5 +30,5 @@
 <?php $this->load->view('admin/components/footer'); ?>
 
 <script>
-	formatoTabla('table');
+	formatoTabla('tblMensajes');
 </script>

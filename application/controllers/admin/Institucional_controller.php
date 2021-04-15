@@ -17,8 +17,6 @@ class Institucional_controller extends CI_Controller
 		$data['title'] = 'Nosotros';
 		$data['act'] = '0_1Nos';
 		$data['desplegado'] = 'ins';
-		$data['msjs_ult_tres'] = $this->Mensajes->get_mensajes_ult_tres();
-		$data['msj_no_leidos'] = $this->Mensajes->get_mensajes_no_leidos();
 		$data['institucional'] = $this->Institucional->get_institucional(1);
 		$this->load->view('admin/institucional/index', $data);
 	}
@@ -28,8 +26,6 @@ class Institucional_controller extends CI_Controller
 		$data['title'] = 'Términos y condiciones';
 		$data['act'] = '0_2Ter';
 		$data['desplegado'] = 'ins';
-		$data['msjs_ult_tres'] = $this->Mensajes->get_mensajes_ult_tres();
-		$data['msj_no_leidos'] = $this->Mensajes->get_mensajes_no_leidos();
 		$data['institucional'] = $this->Institucional->get_institucional(2);
 		$this->load->view('admin/institucional/index', $data);
 	}
@@ -39,8 +35,6 @@ class Institucional_controller extends CI_Controller
 		$data['title'] = 'Política de Privacidad';
 		$data['act'] = '0_3Pri';
 		$data['desplegado'] = 'ins';
-		$data['msjs_ult_tres'] = $this->Mensajes->get_mensajes_ult_tres();
-		$data['msj_no_leidos'] = $this->Mensajes->get_mensajes_no_leidos();
 		$data['institucional'] = $this->Institucional->get_institucional(3);
 		$this->load->view('admin/institucional/index', $data);
 	}
@@ -48,7 +42,7 @@ class Institucional_controller extends CI_Controller
 	//--------------------------------------------------------------
 	public function editar($id_institucional)
 	{
-		// verificarConsulAjax();
+		verificarConsulAjax();
 
 		// Reglas
 		$this->form_validation->set_rules('descripcion', 'Descripción', 'required|trim');

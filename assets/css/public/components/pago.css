@@ -1,0 +1,72 @@
+.pago {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(3, 0.1fr);
+    grid-template-areas: "head"
+                         "detalles"
+                         "pagar";
+    width: 100%;
+    padding: 1rem 2rem;
+    gap: 1rem;
+}
+
+.pago-title {
+    grid-area: head;
+    top: 0;
+    grid-column: 1 / -1;
+    display: block;
+    padding: 1rem 3rem;
+    height: 5rem;
+}
+
+.h3-pago {
+    width: 100%;
+    font-size: 1.6rem;
+    font-style: italic;
+    color: var(--menu-links-color);
+    display: flex;
+    align-content: flex-start;
+}
+
+.hr-pago  {
+    width: 100%;
+    margin-top: 0;
+}
+
+
+
+.detalles {
+    grid-area: detalles;
+    width: 100%;
+}
+
+.pagar {
+    grid-area: pagar;
+    width: 100%;
+    padding: 0.5rem;
+}
+
+.pagar h2 {
+    font-weight: bold;
+    color: var(--menu-links-color);
+}
+
+.detalles-productos {
+    overflow: auto;
+    height: 45vh;
+    margin: 0.5rem;
+}
+
+@media (max-width: 768px) { 
+    .pago {
+        padding: 1rem 0;
+    }
+
+    .pago-title {
+        padding: 1rem 1rem;
+    }
+
+    .detalles h2 {
+        font-size: 1.5rem;
+    }
+}

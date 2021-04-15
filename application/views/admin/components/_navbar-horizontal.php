@@ -14,57 +14,30 @@
 	<ul class="navbar-nav ml-auto">
 		<!-- Messages Dropdown Menu -->
 		<li class="nav-item dropdown">
-			<a class="nav-link" data-toggle="dropdown" href="#">
+			<a class="nav-link" data-toggle="dropdown" href="#" onclick="cargarPage('ultimos_msjs', 'carga-msj')">
 				<i class="far fa-comments"></i>
-				<?php if ($msj_no_leidos > 0) : ?>
-					<span class="badge badge-danger navbar-badge"><?= $msj_no_leidos; ?></span>
-				<?php endif; ?>
+				<span class="badge badge-danger navbar-badge notif-msjs"></span>
 			</a>
-			<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-				<?php foreach ($msjs_ult_tres as $msj) : ?>
-					<a href="<?= base_url('admin/mensajes/nro-mensaje/' . $msj->id_mensaje); ?>" class="dropdown-item <?= ($msj->estado_mensaje == 0) ? 'unread' : ''; ?>">
-						<!-- Message Start -->
-						<div class="media">
-							<div class="media-body single-line">
-								<h3 class="dropdown-item-title">
-									<?= $msj->nombre; ?>
-								</h3>
-								<p class="text-sm"><?= $msj->mensaje; ?></p>
-								<p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> <?= (date('Y-m-d') == date('Y-m-d', strtotime($msj->fecha_envio))) ? date('H:i', strtotime($msj->fecha_envio)) : date('d/m/Y', strtotime($msj->fecha_envio)); ?></p>
-							</div>
-						</div>
-						<!-- Message End -->
-					</a>
-					<div class="dropdown-divider"></div>
-				<?php endforeach; ?>
-				<a href="<?= base_url('admin/mensajes'); ?>" class="dropdown-item dropdown-footer">Ver todos los mensajes</a>
-			</div>
+			<div id="carga-msj" class="dropdown-menu dropdown-menu-lg dropdown-menu-right"></div>
 		</li>
+
 		<!-- Notifications Dropdown Menu -->
 		<li class="nav-item dropdown">
 			<a class="nav-link" data-toggle="dropdown" href="#">
 				<i class="far fa-bell"></i>
-				<span class="badge badge-warning navbar-badge">15</span>
+					<span class="badge badge-warning navbar-badge nh-notif"></span>
 			</a>
 			<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-				<span class="dropdown-item dropdown-header">15 Notifications</span>
+				<span class="dropdown-item dropdown-header"><span class="nh-notif"></span> Notificaciones</span>
 				<div class="dropdown-divider"></div>
-				<a href="#" class="dropdown-item">
-					<i class="fas fa-envelope mr-2"></i> 4 new messages
-					<span class="float-right text-muted text-sm">3 mins</span>
+				<a href="<?= base_url('admin/mensajes'); ?>" class="dropdown-item">
+					<i class="fas fa-envelope mr-2 fa-fw"></i> <span id="nv-notif-msj"></span> nuevos mensajes
+					<!-- <span class="float-right text-muted text-sm">3 mins</span> -->
 				</a>
 				<div class="dropdown-divider"></div>
-				<a href="#" class="dropdown-item">
-					<i class="fas fa-users mr-2"></i> 8 friend requests
-					<span class="float-right text-muted text-sm">12 hours</span>
+				<a href="<?= base_url('admin/ventas'); ?>" class="dropdown-item">
+					<i class="fas fa-shopping-cart mr-2 fa-fw"></i> <span id="nv-notif-ventas"></span> nuevas ventas
 				</a>
-				<div class="dropdown-divider"></div>
-				<a href="#" class="dropdown-item">
-					<i class="fas fa-file mr-2"></i> 3 new reports
-					<span class="float-right text-muted text-sm">2 days</span>
-				</a>
-				<div class="dropdown-divider"></div>
-				<a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
 			</div>
 		</li>
 		<!-- Login user -->

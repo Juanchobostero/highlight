@@ -17,8 +17,6 @@ class Clientes_controller extends CI_Controller
 		$data['title'] = 'Clientes';
 		$data['act'] = '2C';
 		$data['desplegado'] = '';
-		$data['msjs_ult_tres'] = $this->Mensajes->get_mensajes_ult_tres();
-		$data['msj_no_leidos'] = $this->Mensajes->get_mensajes_no_leidos();
 		$this->load->view('admin/clientes/index', $data);
 	}
 
@@ -75,7 +73,7 @@ class Clientes_controller extends CI_Controller
 				$cliente['fotoU'] = subirImagen('file', 'perfiles', 'no-user.png');
 			}
 
-			$resp = $this->Usuarios->editar($id, $cliente); // se hace un update en bd
+			$resp = $this->Usuarios->actualizar($id, $cliente); // se hace un update en bd
 
 			if ($resp) {
 				$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Cliente actualizado con éxito.', 'tabs' => 'clientes', 'tab' => 'activos']));

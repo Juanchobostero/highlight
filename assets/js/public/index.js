@@ -1,5 +1,5 @@
 // CAMBIAR EN SERVER
-const baseUrl = 'http://localhost/highlight/';
+const baseUrl = '/';
 
 const toggle = document.querySelector('.img-toggle');
 const celNav = document.querySelector('.cel-nav');
@@ -741,6 +741,46 @@ $('#search').on('click', function () {
     closeSearch();
   }
 });
+
+function guardarCompra(){
+  let error = checkStockItems();
+  console.log(error);
+  if(error){
+    Swal.fire("Error!", "Controle la cantidad de cada Producto!" , "error");
+    return;
+  }
+
+  pageLoader.classList.add('page-loader--show');
+
+  $.ajax({
+    method: "POST",
+    url: baseUrl + 'api/carrito/save',
+    data: {}
+  })
+  .done(( resp ) => {
+    pageLoader.classList.remove('page-loader--show');
+    data = JSON.parse(resp);
+    if(data.result === 1){
+      window.location.href = data.url;
+      actualizarTotalHeader();
+    }else if(data.result === 2){
+      Swal.fire("Error!", data.msg , "error")
+      .then(() => {
+        window.location.href = data.url;
+      });
+    }else if(data.result === 0){
+      Swal.fire("Error!", data.msg , "error");
+      return;
+    }
+    else{
+      showErrors(data.errors);
+      carritoItems.innerHTML = data.html
+      checkStockItems();    
+    }
+  })
+  .fail(ajaxErrors);
+}
+
 
 
 

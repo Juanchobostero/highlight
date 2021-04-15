@@ -119,7 +119,6 @@ class Inicio_controller extends CI_Controller
   }
 
 	//--------------------------------------------------------------
-	// Validacion del login del admin
 	public function validar()
 	{
 		verificarConsulAjax();
@@ -264,4 +263,37 @@ class Inicio_controller extends CI_Controller
 
 		$this->load->view('public/presupuesto', $data);
 	}
+
+	public function pagar() {
+		$data['categorias'] = $this->Categorias_model->get_full();
+		$data['title'] = 'Confirmar pago';
+
+		foreach($this->cart->contents() as $items){
+			$producto = $this->Productos_model->get_producto($items['id']);
+			$items['stock'] = $producto->stockPR;
+			$this->cart->update(['rowid' => $items['rowid']]);
+		}
+
+		$data['cart'] = $this->cart->contents();
+
+		$usuario = $this->Usuarios_model->get_user($this->session->userdata('id'));
+		$data['usuario'] = $usuario;
+
+		$this->load->view('public/pagar', $data);
+	}
+
+	public function finalizar_compra(){
+		$data['categorias'] = $this->Categorias_model->get_full();
+		$data['title'] = 'Confirmar pago';
+
+		$insertar_pedido = $this->Productos_model->guardar_pedido();
+		
+		if($insertar_pedido) {
+			$this->cart->destroy();
+			$this->load->view('public/pagado', $data);
+		}else {
+			$this->load->view('public/error_pago', $data);
+		}
+	}
+
 }

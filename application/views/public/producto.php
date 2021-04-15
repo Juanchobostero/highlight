@@ -47,7 +47,7 @@
                 <h3 class="product-stock">Stock disponible: <?=ceil($producto->stockPR)?> unidades</h3>
                 <label class="lbl-cant" for="cantidad">cantidad:</label>
                 <div class="cantidad">
-                    <input type="number" class="item-cantidad" id="cantidad" value="0">
+                    <input type="number" class="item-cantidad" id="cantidad" value="0" min="0" max="15">
                     <a href="#" class="cart-link" onclick="addToCart(event)">
                         <img class="cart-img" src="<?=base_url('assets/img/public/imgVarios/add-cart.jpeg')?>">
                     </a>

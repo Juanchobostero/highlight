@@ -17,8 +17,6 @@ class Balance_controller extends CI_Controller
 		$data['title'] = 'Balance';
 		$data['act'] = '10Bal';
 		$data['desplegado'] = '';
-		$data['msjs_ult_tres'] = $this->Mensajes->get_mensajes_ult_tres();
-		$data['msj_no_leidos'] = $this->Mensajes->get_mensajes_no_leidos();
 		// $data['inventario'] = $this->Productos->get_inventario();
 		$this->load->view('admin/balance/index', $data);
 	}

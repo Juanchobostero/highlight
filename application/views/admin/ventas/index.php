@@ -2,7 +2,7 @@
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-	<?php $this->load->view('admin/ventas/_headerVentas');?>
+	<?php $this->load->view('admin/ventas/_headerVentas'); ?>
 
 	<!-- Main content -->
 	<section class="content">
@@ -13,7 +13,9 @@
 						<div class="card-header p-0 pt-2">
 							<ul class="nav nav-tabs" id="ventas" role="tablist">
 								<li class="nav-item">
-									<a class="nav-link active" data-toggle="tab" href="#nuevas" role="tab">Nuevas <span class="badge badge-danger">15</span></a>
+									<a class="nav-link active" data-toggle="tab" href="#nuevas" role="tab">Nuevas
+										<span class="badge badge-danger notif-ventas"></span>
+									</a>
 								</li>
 								<li class="nav-item">
 									<a class="nav-link" data-toggle="tab" href="#confirmadas" role="tab">Confirmadas</a>
@@ -89,7 +91,6 @@
 
 		if (window.location.hash == '') {
 			window.location.hash = $tabs[0].hash;
-			
 		}
 		manageHashTab($tabs, $titulo, nomTab);
 	}

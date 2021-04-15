@@ -21,7 +21,6 @@
 		<!-- Sidebar Menu -->
 		<nav class="mt-2">
 			<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-				<!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
 				<li class="nav-item">
 					<a href="<?= base_url('admin'); ?>" class="nav-link <?= ($act == '0D') ? 'active' : '' ?>">
 						<i class="nav-icon fas fa-tachometer-alt"></i>
@@ -134,7 +133,9 @@
 				<li class="nav-item">
 					<a href="<?= base_url('admin/ventas'); ?>" class="nav-link <?= ($act == '6Vent') ? 'active' : '' ?>">
 						<i class="nav-icon fas fa-shopping-cart"></i>
-						<p>Ventas</p>
+						<p>Ventas
+							<span class="badge badge-info right notif-ventas"></span>
+						</p>
 					</a>
 				</li>
 				<li class="nav-header">MENSAJES</li>
@@ -143,9 +144,7 @@
 						<i class="nav-icon fas fa-envelope"></i>
 						<p>
 							Mensajes
-							<?php if ($msj_no_leidos > 0) : ?>
-								<span class="badge badge-info right"><?= $msj_no_leidos; ?></span>
-							<?php endif; ?>
+							<span class="badge badge-info right notif-msjs"></span>
 						</p>
 					</a>
 				</li>
