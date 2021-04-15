@@ -6,7 +6,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/highlight/assets/mercadopago/vendor/autoload.php';
 
 // Agrega credenciales
-MercadoPago\SDK::setAccessToken('TEST-7764682637448613-112623-bd8da5701ce014e430960f099a01e57d__LC_LB__-61092162');
+MercadoPago\SDK::setAccessToken('TEST-807757061207747-041023-dbcf30f993bada9daed346e6151e4af4-741603910');
 
 // Crea un objeto de preferencia
 $preference = new MercadoPago\Preference();
@@ -56,13 +56,13 @@ foreach($cart as $itemCart) {
 $preference->items = $datos;
 $preference->save();
 
-//curl -X POST -H "Content-Type: application/json" "https://api.mercadopago.com/users/test_user?access_tokne=TEST-7764682637448613-112623-bd8da5701ce014e430960f099a01e57d__LC_LB__-61092162" -d "{'site_id':'MLA'}"
-
+//curl -X POST -H "Content-Type: application/json" "https://api.mercadopago.com/users/test_user?access_token=TEST-6517227164665383-040822-5d43aaed77c7f48c5d17af8782a9585a-223361114" -d "{'site_id':'MLA'}"
+//curl -G -X GET -H "accept: application/json" -H 'Authorization: Bearer TEST-807757061207747-041023-dbcf30f993bada9daed346e6151e4af4-741603910' "https://api.mercadopago.com/v1/payments/1235666412" -d "status=approved" -d "offset=0" -d "limit=10"`
 // CREDENCIALES VENDEDOR
-//{"id":733853182,"nickname":"TESTP7J2NPIA","password":"qatest1678","site_status":"active","email":"test_user_24512024@testuser.com"}
+//{"id":741603910,"nickname":"TESTMASKK07H","password":"qatest4522","site_status":"active","email":"test_user_71615187@testuser.com"}
 
 //CREDENCIALES COMPRADOR
-//{"id":733853366,"nickname":"TESTEZMWJYKX","password":"qatest7647","site_status":"active","email":"test_user_95853136@testuser.com"}
+//{"id":741608660,"nickname":"TETE8934678","password":"qatest8581","site_status":"active","email":"test_user_81131039@testuser.com"}
 
 ?>
 <div class="pago">

@@ -39,6 +39,7 @@ img{
   image-orientation: from-image !important;
 }
 
+
 .container{
   display: grid;
   grid-column: 1 / -1;

@@ -132,6 +132,8 @@ $route['logout'] = 'Inicio_controller/cerrar_sesion';
 $route['presupuesto'] = 'Inicio_controller/pedir_presupuesto';
 $route['pagar'] = 'Inicio_controller/pagar';
 $route['finalizar_compra'] = 'Inicio_controller/finalizar_compra';
+$route['pedido/(:num)'] = 'Inicio_controller/pedido/$1';
+$route['pedidos'] = 'Inicio_controller/pedidos';
 
 $route['message'] = 'public/Consultas_controller/mensaje';
 

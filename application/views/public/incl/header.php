@@ -81,6 +81,7 @@
                 <span class="bad"></span>
                 <div class="dropdown-content" id="myDropdown" onblur="hideDiv()">
                   <a href="<?=base_url('perfil')?>" class="navbar-drop-link" id="categoria">Mi perfil</a>
+                  <a href="<?=base_url('pedidos')?>" class="navbar-drop-link" id="categoria">Mis pedidos</a>
                   <a href="<?=base_url('logout')?>" class="navbar-drop-link" id="categoria">Salir</a>
                 </div>
               </li>
