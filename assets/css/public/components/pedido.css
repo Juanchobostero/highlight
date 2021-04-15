@@ -18,6 +18,10 @@
     font-style: italic;
 }
 
+.cabecera-title h3 {
+    font-size: 1.4rem;
+}
+
 .cabecera-data {
     display: grid;
     grid-template-columns: repeat(auto-fit, 18rem);
@@ -77,6 +81,7 @@ span#status{
     display: inline;
     text-align: center;
     font-style: italic;
+    font-size: 1.4rem;
 }
 
 .body-detalle {
@@ -121,6 +126,11 @@ span#status{
     margin: 0.6rem 0;
 }
 
+span#detalle-nombre {
+    text-overflow: clip;
+    margin-bottom: 2rem;
+}
+
 span#detalle-cant,
 span#detalle-tot {
     font-weight: 900;
@@ -149,18 +159,26 @@ span#detalle-tot {
         font-size: 0.8rem;
     }
 
-    span#detalle-nombre {
+    span#detalle-nombre, 
+    span#detalle-cant,
+    span#detalle-tot {
         font-size: 1rem;
+        margin-left: 1.5rem;
     }
 
     span#detalle-cant {
         margin-top: 3rem;
     }
 
-    #hr-detalle {
-        display: none;
+    .detalle {
+        padding-left: 1rem;
     }
     
+    .body-detalle {
+        justify-content: left;
+        text-align: left;
+        width: 100%
+    }
 
 }
 

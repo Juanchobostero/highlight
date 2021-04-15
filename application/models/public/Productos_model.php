@@ -192,7 +192,8 @@ class Productos_model extends CI_Model {
         'id_product' => $item['id'],
         'cantidadVENT' => $item['qty'],
         'precioVENT' => $item['price'],
-        'subtotalVENT' => $item['price'] * $item['qty']
+        'subtotalVENT' => $item['price'] * $item['qty'],
+        'precioCosto' => $item['precioCosto'],
       ];
       $this->db->insert('ventasdetalle', $ped_det);
       $this->descontar_stock($ped_det);
