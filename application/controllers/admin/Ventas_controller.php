@@ -46,7 +46,7 @@ class Ventas_controller extends CI_Controller
 
 		$this->load->view('admin/ventas/_tblVentas', $data);
 	}
-	
+
 	//--------------------------------------------------------------
 	public function frmVer($id_venta)
 	{
@@ -55,6 +55,17 @@ class Ventas_controller extends CI_Controller
 		$venta = $this->Ventas->get_venta($id_venta);
 		$venta->detalle = $this->Ventas_detalle->get_detalle_venta($id_venta);
 		$this->load->view('admin/ventas/frmVerVenta', ['venta' => $venta]);
+	}
+
+	//--------------------------------------------------------------
+	public function frmEnviar($id_venta)
+	{
+		verificarConsulAjax();
+
+		// $venta = $this->Ventas->get_venta($id_venta);
+		// $venta->detalle = $this->Ventas_detalle->get_detalle_venta($id_venta);
+		// $this->load->view('admin/ventas/frmVerVenta', ['venta' => $venta]);
+		$this->load->view('admin/ventas/frmEnviar');
 	}
 
 	//--------------------------------------------------------------
@@ -103,7 +114,7 @@ class Ventas_controller extends CI_Controller
 			];
 
 			enviar_email($cancel_venta);
-			
+
 			$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Venta N°' . $id_venta . ' cancelada']));
 			return;
 		}

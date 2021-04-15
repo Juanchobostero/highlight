@@ -28,7 +28,8 @@
 						</button>
 
 						<?php if ($venta->estadoVENT == 'Nuevo') : ?>
-							<button type="button" class="btn btn-warning" title="Confirmar" onclick="confirmar(this, 'confirmarVenta/<?= $venta->id_venta; ?>')">
+							<!-- <button type="button" class="btn btn-warning" title="Confirmar" onclick="confirmar(this, 'confirmarVenta/<?//= $venta->id_venta; ?>')"> -->
+							<button type="button" class="btn btn-warning" title="Confirmar" onclick="cargarForm('<?= base_url('frmEnviarVenta/' . $venta->id_venta) ?>', 'small', 'modal-small')">
 								<i class="fas fa-check text-white"></i>
 							</button>
 						<?php endif; ?>

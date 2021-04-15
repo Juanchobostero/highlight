@@ -113,6 +113,7 @@ $route = array(
 	'admin/ventas'					=> 'admin/Ventas_controller',
 	'admin/ventas/(:any)'		=> 'admin/Ventas_controller/getVentas/$1',
 	'frmVerVenta/(:num)'		=> 'admin/Ventas_controller/frmVer/$1',
+	'frmEnviarVenta/(:num)'	=> 'admin/Ventas_controller/frmEnviar/$1',
 	'confirmarVenta/(:num)'	=> 'admin/Ventas_controller/confirmar/$1',
 	'cancelarVenta/(:num)'	=> 'admin/Ventas_controller/cancelar/$1'
 );
