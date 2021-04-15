@@ -39,6 +39,7 @@ class APICarrito extends CI_Controller {
             'name'    => $producto->nombrePR,
             'foto'   => $producto->foto,
             'stock' => $producto->stockPR,
+            'precioCosto' => $producto->precio_listaPR,
         ];
 
         $this->cart->insert($data);
