@@ -144,7 +144,22 @@ $preference->save();
     </div>
 
     <div class="pagar">
-        <h2>Total: $<?=$this->cart->total()?></h2>
+        <div class="total-title">
+            <h2>Total: $<?=$this->cart->total()?></h2>
+        </div>
+
+        <div class="label-elige">
+            <span>Elige una opción: </span>
+        </div>
+        
+        <div class="retiro-envio">
+            
+            <label class="container-enviar-ret">
+                <input name="envio" id="checkRetiro" type="checkbox" value="1" checked="checked"><label for="boxid">Retiro en local</label>
+                <span class="checkmark"></span>
+                
+            </label>
+        </div>
         <hr>
         <form action="<?=base_url('finalizar_compra')?>" method="POST">
             <script

@@ -781,7 +781,20 @@ function guardarCompra(){
   .fail(ajaxErrors);
 }
 
+let check = document.getElementById("checkRetiro");
 
+$('#checkRetiro').click(function() {
+  if ($(this).is(':checked')) {
+    check.value = 1;
+    console.log(check.value);
+    $(this).siblings('label').html('Retiro en local');
+    
+  } else {
+    check.value = 0;
+    console.log(check.value);
+    $(this).siblings('label').html('Envío');
+  }
+});
 
 
 function ajaxErrors( jqXHR, textStatus) {
