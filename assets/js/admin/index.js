@@ -367,9 +367,9 @@ function validFormPage(e, metodo) {
 }
 
 //------------------------CONFIRMAR VENTA------------------------
-function confirmar(e, metodo) {
+function confirmarEnvio(e, metodo) {
 	// el tercer parametro no se usa, se hace en el back
-	cambiarEstado(e, metodo, 2, 'Confirmar', 'La venta se confirmará');
+	cambiarEstado(e, metodo, 2, 'Confirmar envio', 'El cliente retirará en su pedido en la sucursal.');
 }
 
 //------------------------CANCELAR VENTA------------------------
