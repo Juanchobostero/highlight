@@ -9,6 +9,7 @@ class Ventas extends CI_Model
 		$this->db->select('ventas.*, usuarios.nombreU, usuarios.apellidoU');
 		$this->db->join('usuarios', 'usuarios.id_usuario = ventas.id_us');
 		$this->db->where('ventas.estadoVENT', $estado);
+		$this->db->order_by('ventas.id_venta', 'DESC');
 		return $this->db->get('ventas')->result();
 	}
 

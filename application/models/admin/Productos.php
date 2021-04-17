@@ -114,4 +114,27 @@ class Productos extends CI_Model
 		$this->db->group_by('productos.id_producto');
 		return $this->db->get('productos_fotos')->result();
 	}
+
+	//--------------------------------------------------------------
+	public function productos_mas_vendidos()
+	{
+		$this->db->select('p.*, SUM(vd.cantidadVENT) as cantidad');
+		$this->db->from('ventasdetalle vd');
+		$this->db->join('productos p', 'p.id_producto = vd.id_product');
+		$this->db->group_by('vd.id_product');
+		$this->db->order_by('SUM(vd.cantidadVENT)', 'desc');
+		return $this->db->get()->result();
+	}
+	
+	//--------------------------------------------------------------
+	public function productos_mas_vendidos_con_foto()
+	{
+		$this->db->select('p.*, (SELECT foto FROM productos_fotos WHERE id_prod = p.id_producto LIMIT 1) as foto, SUM(vd.cantidadVENT) as cantidad');
+		$this->db->from('ventasdetalle vd');
+		$this->db->join('productos p', 'p.id_producto = vd.id_product');
+		$this->db->group_by('vd.id_product');
+		$this->db->order_by('SUM(vd.cantidadVENT)', 'desc');
+		$this->db->limit('6');
+		return $this->db->get()->result();
+	}
 }

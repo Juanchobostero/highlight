@@ -12,6 +12,7 @@ const Toast = Swal.mixin({
 $(function () {
 	// carga si no esta en el login
 	if (window.location.href != baseUrl + 'admin/login') {
+	// if (window.location.pathname != '/admin/login') {
 		notificaciones();
 	}
 });
@@ -366,9 +367,9 @@ function validFormPage(e, metodo) {
 }
 
 //------------------------CONFIRMAR VENTA------------------------
-function confirmar(e, metodo) {
+function confirmarEnvio(e, metodo) {
 	// el tercer parametro no se usa, se hace en el back
-	cambiarEstado(e, metodo, 2, 'Confirmar', 'La venta se confirmará');
+	cambiarEstado(e, metodo, 2, 'Confirmar envio', 'El cliente retirará en su pedido en la sucursal.');
 }
 
 //------------------------CANCELAR VENTA------------------------
