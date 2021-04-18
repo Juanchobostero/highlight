@@ -286,6 +286,7 @@ class Inicio_controller extends CI_Controller
 		$data['categorias'] = $this->Categorias_model->get_full();
 		$data['title'] = 'Confirmar pago';
 		$estado_pago = $_GET['status'];
+
 		$envioVENT = $this->input->post('envio');
 
 		//Solo inserta pago si el estado es aprobado

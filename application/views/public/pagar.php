@@ -147,21 +147,15 @@ $preference->save();
         <div class="total-title">
             <h2>Total: $<?=$this->cart->total()?></h2>
         </div>
-
-        <div class="label-elige">
-            <span>Elige una opción: </span>
-        </div>
-        
-        <div class="retiro-envio">
-            
-            <label class="container-enviar-ret">
-                <input name="envio" id="checkRetiro" type="checkbox" value="1" checked="checked"><label for="boxid">Retiro en local</label>
-                <span class="checkmark"></span>
-                
-            </label>
-        </div>
-        <hr>
         <form action="<?=base_url('finalizar_compra')?>" method="POST">
+            <div class="retiro-envio">
+                <select id="ddlViewBy" name="envio">
+                    <option value="1">Retiro en local</option>
+                    <option value="2">Envío</option>
+                </select>
+            </div>
+            <hr>
+            
             <script
             src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
             data-preference-id="<?php echo $preference->id; ?>">

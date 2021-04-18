@@ -18,6 +18,10 @@ $(document).ready(() => {
   actualizarTotalHeader();
 });
 
+function prueba(e) {
+  console.log(e.value);
+}
+
 ///////////////////////////PRODUCTO MODAL//////////////////////////////////////
 function showModalImg(e){
   modal.style.display = "block";
@@ -781,20 +785,13 @@ function guardarCompra(){
   .fail(ajaxErrors);
 }
 
-let check = document.getElementById("checkRetiro");
 
-$('#checkRetiro').click(function() {
-  if ($(this).is(':checked')) {
-    check.value = 1;
-    console.log(check.value);
-    $(this).siblings('label').html('Retiro en local');
-    
-  } else {
-    check.value = 0;
-    console.log(check.value);
-    $(this).siblings('label').html('Envío');
-  }
-});
+
+document.querySelector('#get-value').addEventListener('click', ()=> {
+  var elmValue = document.querySelector('#ddlViewBy').value;
+  document.querySelector('#result').innerHTML = elmValue;
+  console.log(elmValue);
+})
 
 
 function ajaxErrors( jqXHR, textStatus) {
