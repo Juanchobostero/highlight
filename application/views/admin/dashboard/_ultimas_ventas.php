@@ -11,7 +11,6 @@
 						<th>Venta N°</th>
 						<th>Cliente</th>
 						<th>Total</th>
-						<th>Pago</th>
 						<th>Fecha</th>
 					</tr>
 				</thead>
@@ -23,14 +22,6 @@
 							</td>
 							<td><?= $venta->apellidoU . ', ' . $venta->nombreU; ?></td>
 							<td class="text-right">$ <?= number_format($venta->totalVENT, 0, ',', '.'); ?></td>
-							<td class="text-center">
-								<?php // Estado de pago de la venta
-								if ($venta->estadoPago == 'Aprobado') : $estPago = 'success';
-								elseif ($venta->estadoPago == 'Pendiente') : $estPago = 'warning';
-								else : $estPago = 'danger';
-								endif; ?>
-								<span class="badge badge-<?= $estPago; ?>"><?= $venta->estadoPago; ?></span>
-							</td>
 							<td class="text-center"><?= strftime("%d %b %Y", strtotime($venta->fechaEnvio)); ?></td>
 						</tr>
 					<?php endforeach; ?>

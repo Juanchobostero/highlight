@@ -44,6 +44,7 @@
     grid-area: pagar;
     width: 100%;
     padding: 0.5rem;
+    
 }
 
 .pagar h2 {
@@ -57,7 +58,24 @@
     margin: 0.5rem;
 }
 
+.retiro-envio,
+.total-title,
+.label-elige {
+    display: inline-block;
+}
+
+.label-elige {
+    margin-left: 4rem;
+}
+
+
+
+
 @media (max-width: 768px) { 
+
+    .label-elige {
+        margin-left: 2rem;
+    }
     .pago {
         padding: 1rem 0;
     }

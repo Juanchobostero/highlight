@@ -84,7 +84,14 @@
                     <?=$this->cart->total()?>
                 </span>
             </h4>
+            <div class="retiro-envio">
+                <select id="ddlViewBy" name="envio">
+                    <option value="1">Retiro en local</option>
+                    <option value="2">Envío</option>
+                </select>
+            </div>
         </div>
+        
         <hr class="total">
 
         <div class="carrito-botones">

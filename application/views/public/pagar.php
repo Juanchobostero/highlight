@@ -12,7 +12,7 @@ MercadoPago\SDK::setAccessToken('TEST-807757061207747-041023-dbcf30f993bada9daed
 $preference = new MercadoPago\Preference();
 
 $preference->back_urls = array(
-    'success' => base_url('finalizar_compra'),
+    'success' => base_url('finalizar_compra/' .$envioVENT),
     'failure' => base_url('falla_compra'),
     'pending' => base_url('pendiente_compra'),
 );
@@ -121,12 +121,9 @@ $preference->save();
                                 min="0"  
                                 style="display: none;"
                             >
-                                
-                            
                             </td>
                             <td>
                                 <h4 id="subtotal">$
-                                    
                                     <span id="sub-valor-<?=$item['rowid']?>">
                                         <?=$item['price'] * $item['qty']?>
                                     </span>
@@ -144,8 +141,9 @@ $preference->save();
     </div>
 
     <div class="pagar">
-        <h2>Total: $<?=$this->cart->total()?></h2>
-        <hr>
+        <div class="total-title">
+            <h2>Total: $<?=$this->cart->total()?></h2>
+        </div>
         <form action="<?=base_url('finalizar_compra')?>" method="POST">
             <script
             src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"

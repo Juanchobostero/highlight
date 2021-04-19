@@ -138,16 +138,6 @@
 						</p>
 					</a>
 				</li>
-				<li class="nav-header">MENSAJES</li>
-				<li class="nav-item">
-					<a href="<?= base_url('admin/mensajes'); ?>" class="nav-link <?= ($act == '8Msj') ? 'active' : '' ?>">
-						<i class="nav-icon fas fa-envelope"></i>
-						<p>
-							Mensajes
-							<span class="badge badge-info right notif-msjs"></span>
-						</p>
-					</a>
-				</li>
 				<li class="nav-header">ESTADISTICAS</li>
 				<li class="nav-item">
 					<a href="<?= base_url('admin/inventario'); ?>" class="nav-link <?= ($act == '9Inv') ? 'active' : '' ?>">
@@ -159,6 +149,16 @@
 					<a href="<?= base_url('admin/balance'); ?>" class="nav-link <?= ($act == '10Bal') ? 'active' : '' ?>">
 						<i class="nav-icon fas fa-balance-scale"></i>
 						<p>Balance</p>
+					</a>
+				</li>
+				<li class="nav-header">MENSAJES</li>
+				<li class="nav-item">
+					<a href="<?= base_url('admin/mensajes'); ?>" class="nav-link <?= ($act == '8Msj') ? 'active' : '' ?>">
+						<i class="nav-icon fas fa-envelope"></i>
+						<p>
+							Mensajes
+							<span class="badge badge-info right notif-msjs"></span>
+						</p>
 					</a>
 				</li>
 			</ul>

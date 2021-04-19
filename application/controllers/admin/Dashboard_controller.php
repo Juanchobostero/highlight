@@ -22,6 +22,7 @@ class Dashboard_controller extends CI_Controller
 		$data['total_clientes'] = $this->Usuarios->total_clientes();
 		$data['ult_ventas'] = $this->Ventas->ult_ventas();
 		$data['ult_productos'] = $this->Productos->ult_productos();
+		$data['prods_mas_vendidos'] = $this->Productos->productos_mas_vendidos_con_foto();
 		$this->load->view('admin/dashboard/index', $data);
 	}
 

@@ -131,6 +131,24 @@ table {
     font-weight: 800;
 }
 
+.retiro-envio {
+    display: block;
+    margin: 0 0.5rem;
+}
+
+.retiro-envio select {
+    background-color: var(--menu-links-color);
+    color: white;
+    border-radius: 0.2rem;
+    padding: 0.3rem;
+    cursor: pointer;
+}
+
+.retiro-envio .select option:hover {
+    background-color: var(--menu-links-color);
+}
+
+
 .carrito-botones {
     width: 80%;
     height: 5vh;

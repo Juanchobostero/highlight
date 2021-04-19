@@ -17,18 +17,17 @@ class Balance_controller extends CI_Controller
 		$data['title'] = 'Balance';
 		$data['act'] = '10Bal';
 		$data['desplegado'] = '';
-		// $data['inventario'] = $this->Productos->get_inventario();
 		$this->load->view('admin/balance/index', $data);
 	}
 
-	// //--------------------------------------------------------------
-	// public function getBalance($estado)
-	// {
-	// 	verificarConsulAjax();
+	//--------------------------------------------------------------
+	public function getBalance($estado)
+	{
+		verificarConsulAjax();
 
-	// 	if ($estado == 'productos-mas-vendidos') {
-	// 		$data['productos'] = $this->Productos->get_inventario_bajo_stock();
-	// 		$this->load->view('admin/inventario/_tblProductosBajoStock', $data);
-	// 	}
-	// }
+		if ($estado == 'productos-mas-vendidos') {
+			$data['productos'] = $this->Productos->productos_mas_vendidos();
+			$this->load->view('admin/balance/_tblProductosMasVendidos', $data);
+		}
+	}
 }
