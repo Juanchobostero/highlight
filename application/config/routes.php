@@ -132,8 +132,8 @@ $route['carrito'] = 'Inicio_controller/cart';
 $route['perfil'] = 'Inicio_controller/profile';
 $route['logout'] = 'Inicio_controller/cerrar_sesion';
 $route['presupuesto'] = 'Inicio_controller/pedir_presupuesto';
-$route['pagar'] = 'Inicio_controller/pagar';
-$route['finalizar_compra'] = 'Inicio_controller/finalizar_compra';
+$route['pagar'] = 'Inicio_controller/pagar/$1';
+$route['finalizar_compra/(:num)'] = 'Inicio_controller/finalizar_compra/$1';
 $route['pedido/(:num)'] = 'Inicio_controller/pedido/$1';
 $route['pedidos'] = 'Inicio_controller/pedidos';
 

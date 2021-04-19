@@ -748,6 +748,7 @@ $('#search').on('click', function () {
 
 function guardarCompra(){
   let error = checkStockItems();
+  let envioVENT = document.getElementById('ddlViewBy').value;
   console.log(error);
   if(error){
     Swal.fire("Error!", "Controle la cantidad de cada Producto!" , "error");
@@ -765,7 +766,7 @@ function guardarCompra(){
     pageLoader.classList.remove('page-loader--show');
     data = JSON.parse(resp);
     if(data.result === 1){
-      window.location.href = data.url;
+      window.location.href = data.url + '?envioVENT=' + envioVENT;
       actualizarTotalHeader();
     }else if(data.result === 2){
       Swal.fire("Error!", data.msg , "error")

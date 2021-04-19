@@ -275,6 +275,7 @@ class Inicio_controller extends CI_Controller
 		}
 
 		$data['cart'] = $this->cart->contents();
+		$data['envioVENT'] = $_GET['envioVENT'];
 
 		$usuario = $this->Usuarios_model->get_user($this->session->userdata('id'));
 		$data['usuario'] = $usuario;
@@ -282,12 +283,10 @@ class Inicio_controller extends CI_Controller
 		$this->load->view('public/pagar', $data);
 	}
 
-	public function finalizar_compra(){
+	public function finalizar_compra($envioVENT){
 		$data['categorias'] = $this->Categorias_model->get_full();
 		$data['title'] = 'Confirmar pago';
 		$estado_pago = $_GET['status'];
-
-		$envioVENT = $this->input->post('envio');
 
 		//Solo inserta pago si el estado es aprobado
 		if($estado_pago == 'approved') {
