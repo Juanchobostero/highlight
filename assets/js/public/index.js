@@ -1,5 +1,5 @@
 // CAMBIAR EN SERVER
-const baseUrl = '/';
+const baseUrl = 'http://localhost/highlight/';
 
 const toggle = document.querySelector('.img-toggle');
 const celNav = document.querySelector('.cel-nav');
