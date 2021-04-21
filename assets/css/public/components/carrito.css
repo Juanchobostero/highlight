@@ -87,7 +87,7 @@
     height: 50%;
     display: flex;
     justify-content: center;
-    margin: 1rem 0;
+    margin: 0.3rem 0;
     overflow: auto;
 }
 
@@ -116,36 +116,40 @@ table {
 }
 
 .carrito-tabla tbody tr {
-    height: 4rem;
+    height: 2.5rem;
 }
 
 .carrito-total {
     width: 70%;
     height: 5vh;
-    display: flex;
-    justify-content: flex-end;
-    margin: 2rem 0;
+    display: block;
+    text-align: right;
+    margin: 1rem 0;
 }
 
 .carrito-total h4 {
     font-weight: 800;
+    display: block;
 }
+
+/* .carrito-total .tabla-main*/
 
 .retiro-envio {
     display: block;
     margin: 0 0.5rem;
 }
 
-.retiro-envio select {
-    background-color: var(--menu-links-color);
-    color: white;
-    border-radius: 0.2rem;
-    padding: 0.3rem;
-    cursor: pointer;
+.retiro, .envio {
+    display: block;
+    text-align: justify;
 }
 
-.retiro-envio .select option:hover {
-    background-color: var(--menu-links-color);
+.retiro {
+    margin-bottom: -1.6rem;
+}
+
+#retiro-lbl, #envio-lbl {
+    font-size: 0.9rem;
 }
 
 

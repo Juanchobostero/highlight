@@ -2,8 +2,7 @@
     .product-cart {
         display: flex;
         flex-direction: column;
-        border-style: solid;
-        border-color: var(--color-grey);
+        border-color: var(--menu-links-color);
         width: 13rem;
         height: 45vh;
         background-color: var(--titulo-seccion-color);
@@ -65,6 +64,7 @@
 @media (min-width: 1500px){
     .product-cart {
         width: 16.5rem;
+        height: 38vh;
     }
 } 
 

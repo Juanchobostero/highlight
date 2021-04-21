@@ -27,7 +27,7 @@
             </img>
             <?php 
             if(count($fotos) > 1) { ?>
-                <div class="slider-images">
+                <div class="slider-images" style="display: none;">
                     <?php foreach($fotos as $foto):?>
                         <?php if ($foto->foto != $producto->foto) { ?>
                             <div class="img-cart">

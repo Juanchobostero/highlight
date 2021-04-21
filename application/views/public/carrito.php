@@ -85,10 +85,21 @@
                 </span>
             </h4>
             <div class="retiro-envio">
-                <select id="ddlViewBy" name="envio">
+                <!-- <select id="ddlViewBy" name="envio">
                     <option value="1">Retiro en local</option>
                     <option value="2">Envío</option>
-                </select>
+                </select> -->
+                <div class="retiro">
+                    <input type="checkbox" id="retiro" name="retiro" onchange="check()" value="1" checked>
+                    <span for="retiro" id="retiro-lbl"> Retiro en local</span><br><br>
+                </div>
+
+                <div class="envio">
+                    <input type="checkbox" id="envio" name="envio" onclick="check()" value="2">
+                    <span for="retiro" id="envio-lbl"> Envio</span><br><br>
+                </div>
+                
+                
             </div>
         </div>
         

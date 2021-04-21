@@ -2,7 +2,8 @@
 :root {
   --menu-links-color: #031929;
   --titulo-seccion-color: #e37222;
-  --color-grey: #e8e7e7;
+  /*--color-grey: #e8e7e7;*/
+  --color-grey: #f7f7f7;
 }
 
 /* General Styles */
