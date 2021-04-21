@@ -16,6 +16,12 @@ const modal = document.querySelector("#modal-producto");
 $(document).ready(() => {
   //controlar total items
   actualizarTotalHeader();
+
+  var checkBox = document.getElementById("retiro");
+
+  if(checkBox) {
+    console.log(checkBox.value);
+  }
 });
 
 function prueba(e) {
@@ -748,7 +754,29 @@ $('#search').on('click', function () {
 
 function guardarCompra(){
   let error = checkStockItems();
-  let envioVENT = document.getElementById('ddlViewBy').value;
+
+  let checkRetiro = document.getElementById('retiro');
+  let checkEnvio = document.getElementById('envio');
+  let envioVENT = '';
+
+  if(checkRetiro.checked && checkEnvio.checked){
+    Swal.fire("Ups...", "Debes seleccionar sólo una opción", "error");
+    return;
+  }
+  if(!checkRetiro.checked && !checkEnvio.checked){
+    Swal.fire("Ups...", "Debes seleccionar al menos una opción", "error");
+    return;
+  }
+
+  if(checkRetiro.checked) {
+    envioVENT = checkRetiro.value;
+  }
+  if(checkEnvio.checked) {
+    envioVENT = checkEnvio.value;
+  }
+
+  console.log('Valor del check: ' + envioVENT);
+
   console.log(error);
   if(error){
     Swal.fire("Error!", "Controle la cantidad de cada Producto!" , "error");
@@ -787,12 +815,36 @@ function guardarCompra(){
 }
 
 
-
 document.querySelector('#get-value').addEventListener('click', ()=> {
   var elmValue = document.querySelector('#ddlViewBy').value;
   document.querySelector('#result').innerHTML = elmValue;
   console.log(elmValue);
 })
+
+$('input[type="checkbox"]').on('change', function() {
+  $('input[type="checkbox"]').not(this).prop('checked', false);
+});
+
+
+function check() {
+  // Get the checkbox
+  var checkBoxRetiro = document.getElementById("retiro");
+  var checkBoxEnvio = document.getElementById("envio");
+  var checkValue = '';
+
+  if(checkBoxRetiro.checked && checkBoxEnvio.checked) {
+    Swal.fire("Ups...", "Debes seleccionar sólo una opción", "error");
+  }
+  if (checkBoxRetiro.checked) {
+    checkValue = checkBoxRetiro.value;
+    console.log(checkValue);
+  }
+  if (checkBoxEnvio.checked) {
+    checkValue = checkBoxEnvio.value;
+    console.log(checkValue);
+  }
+
+} 
 
 
 function ajaxErrors( jqXHR, textStatus) {
