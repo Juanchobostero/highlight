@@ -14,7 +14,7 @@
     }
     
     .producto-cell {
-        border: solid 0.2rem var(--color-grey);
+        border: solid 0.1rem var(--color-grey);
         border-style: dashed;
         width: 100%;
         height: 48vh;

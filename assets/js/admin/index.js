@@ -1,5 +1,5 @@
 // CAMBIAR EN SERVER
-const baseUrl = '/';
+const baseUrl = 'http://localhost/highlight/';
 
 // DEFINICION DE TOAST (alert)
 const Toast = Swal.mixin({
