@@ -45,8 +45,8 @@ class Mensajes_controller extends CI_Controller
 
 		if ($this->form_validation->run()) :
 			$resp_msj = array(
-				'de'      => 'prueba.softcre@gmail.com',
-				'titulo'  => 'Highlight',
+				'de'      => APP_MAIL,
+				'titulo'  => APP_NAME,
 				'para'    => $this->input->post('para'),
 				'asunto'  => $this->input->post('asunto'),
 				'mensaje' => $this->input->post('mensaje')

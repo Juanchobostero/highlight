@@ -12,7 +12,7 @@
 		<?php foreach ($ventas as $venta) : ?>
 			<?php // Fecha del estado de venta
 			if ($venta->estadoVENT == 'Nuevo') : $fecha = $venta->fechaEnvio;
-			elseif ($venta->estadoVENT == 'Confirmado') : $fecha = $venta->fechaConfirmado;
+			elseif ($venta->estadoVENT == 'Enviado') : $fecha = $venta->fechaConfirmado;
 			elseif ($venta->estadoVENT == 'Entregado') : $fecha = $venta->fechaEntregado;
 			else : $fecha = $venta->fechaCancelado;
 			endif; ?>
@@ -28,18 +28,18 @@
 						</button>
 
 						<?php if ($venta->estadoVENT == 'Nuevo') : ?>
-							<button type="button" class="btn btn-success" title="Confirmar envio" <?php if ($venta->envioVENT) : ?> onclick="confirmarEnvio(this, 'confirmarVenta/<?= $venta->id_venta; ?>')" <?php else : ?> onclick="cargarForm('<?= base_url('frmEnviarVenta/' . $venta->id_venta) ?>', 'small', 'modal-small')"<?php endif; ?>>
+							<button type="button" class="btn btn-success" title="Confirmar envio" <?php if ($venta->envioVENT) : ?> onclick="envioVenta(this, 'enviarVentaSucursal/<?= $venta->id_venta; ?>')" <?php else : ?> onclick="cargarForm('<?= base_url('frmEnviarVenta/' . $venta->id_venta) ?>', 'small', 'modal-small')"<?php endif; ?>>
 								<i class="fas fa-paper-plane fa-fw"></i>
 							</button>
 						<?php endif; ?>
 
 						<?php if ($venta->estadoVENT == 'Enviado') : ?>
-							<button type="button" class="btn btn-success" title="Marcar como entregado" onclick="cargarForm('<?= base_url('frmEditarProducto/' . 'id') ?>', 'extra-large', 'modal-extra-large')">
-								<i class="fas fa-check text-white"></i>
+							<button type="button" class="btn btn-success" title="Marcar como entregado" onclick="entregar(this, 'entregarVenta/<?= $venta->id_venta;?>')">
+								<i class="fas fa-check"></i>
 							</button>
 						<?php endif; ?>
 
-						<?php if ($venta->estadoVENT != 'Cancelado') : ?>
+						<?php if ($venta->estadoVENT == 'Nuevo') : ?>
 							<button type="button" class="btn btn-danger" title="Cancelar" onclick="cancelar(this, 'cancelarVenta/<?= $venta->id_venta; ?>')">
 								<i class="fas fa-times fa-fw"></i>
 							</button>

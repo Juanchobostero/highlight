@@ -18,7 +18,7 @@
 									</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" data-toggle="tab" href="#confirmadas" role="tab">Confirmadas</a>
+									<a class="nav-link" data-toggle="tab" href="#enviados" role="tab">Enviados</a>
 								</li>
 								<li class="nav-item">
 									<a class="nav-link" data-toggle="tab" href="#entregadas" role="tab">Entregadas</a>
@@ -40,12 +40,12 @@
 										</div>
 									</div>
 								</div>
-								<div class="tab-pane fade" id="confirmadas" role="tabpanel">
+								<div class="tab-pane fade" id="enviados" role="tabpanel">
 									<div class="overlay-wrapper py-5">
 										<div class="overlay dark"><i class="fas fa-3x fa-sync-alt fa-spin"></i>
 											<div class="text-bold pt-2">Cargando...</div>
 										</div>
-										<div id="tabla-confirmadas">
+										<div id="tabla-enviados">
 										</div>
 									</div>
 								</div>

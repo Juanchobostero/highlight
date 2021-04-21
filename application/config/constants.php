@@ -88,3 +88,4 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
  * CONSTANTES
  */
 define('APP_NAME', 'Highlight');
+define('APP_MAIL', 'prueba.softcre@gmail.com');
