@@ -172,15 +172,17 @@ class Productos_model extends CI_Model {
   
   }
 
-  public function guardar_pedido() {
+  public function guardar_pedido($envioVENT) {
     $fechaPedido = date("Y-m-d H:i:s");
     $id_mercadoPago = $_GET['payment_id'];
+    
     $pedcab = [
       'id_us' => $this->session->userdata('id'),
       'totalVENT' => $this->cart->total(),
       'fechaENVIO' => $fechaPedido,
       'estadoPAGO' => 'Aprobado',
       'nroPago' => $id_mercadoPago,
+      'envioVENT' => $envioVENT
     ];
 
     $this->db->insert('ventas', $pedcab);
