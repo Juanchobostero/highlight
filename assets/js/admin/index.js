@@ -367,15 +367,21 @@ function validFormPage(e, metodo) {
 }
 
 //------------------------CONFIRMAR VENTA------------------------
-function confirmarEnvio(e, metodo) {
+function envioVenta(e, metodo) {
 	// el tercer parametro no se usa, se hace en el back
-	cambiarEstado(e, metodo, 2, 'Confirmar envio', 'El cliente retirará en su pedido en la sucursal.');
+	cambiarEstado(e, metodo, 2, 'Confirmar envio', 'El cliente retirará su pedido en la sucursal.');
+}
+
+//------------------------ENTREGAR VENTA------------------------
+function entregar(e, metodo) {
+	// el tercer parametro no se usa, se hace en el back
+	cambiarEstado(e, metodo, 3, 'Entregar', 'La venta se marcará como entregada')
 }
 
 //------------------------CANCELAR VENTA------------------------
 function cancelar(e, metodo) {
 	// el tercer parametro no se usa, se hace en el back
-	cambiarEstado(e, metodo, 4, 'Cancelar', 'La venta se cancelará')
+	cambiarEstado(e, metodo, 2, 'Cancelar', 'La venta se cancelará')
 }
 
 //---------------------------HABILITAR---------------------------

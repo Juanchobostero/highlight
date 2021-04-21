@@ -1,5 +1,5 @@
 <div class="modal-header bg-primary py-2">
-	<h5 class="modal-title">Enviar pedido</h5>
+	<h5 class="modal-title">Enviar pedido N° <?=$idVenta;?> a destino</h5>
 	<button type="button" id="cerrarModal" class="close text-white" data-dismiss="modal" aria-label="Close">
 		<span aria-hidden="true">&times;</span>
 	</button>
@@ -9,18 +9,18 @@
 	<div class="mb-2">
 		<small class="text-muted">Introduce los datos de seguimiento del envio. Estos serán enviados al cliente.</small>
 	</div>
-	<form id="form_enviarVenta" method="post" onsubmit="validFormMod(event, '<?= base_url('enviarVenta'); ?>')">
+	<form id="form_enviarVenta" method="post" onsubmit="validFormMod(event, '<?= base_url('enviarVentaDestino/'.$idVenta); ?>')">
 		<div class="form-group">
 			<label for="num-seguimiento" title="Obligatorio">N° de seguimiento <span class="text-danger" title="Obligatorio">*</span></label>
-			<input type="text" class="form-control" id="num-seguimiento" name="nseguimiento" placeholder="Introduce el número de seguimiento">
+			<input type="text" class="form-control" id="num-seguimiento" name="nseguimiento" placeholder="Introduce el número de seguimiento" required>
 		</div>
 		<div class="form-group">
 			<label for="empresa" title="Obligatorio">Empresa <span class="text-danger" title="Obligatorio">*</span></label>
-			<input type="text" class="form-control" id="empresa" name="empresa" placeholder="Introduce la empresa">
+			<input type="text" class="form-control" id="empresa" name="empresa" placeholder="Introduce la empresa" required>
 		</div>
 		<div class="form-group">
 			<label for="link" title="Obligatorio">Link <span class="text-danger" title="Obligatorio">*</span></label>
-			<input type="text" class="form-control" id="link" name="link" placeholder="Introduce el enlace de seguimiento">
+			<input type="url" class="form-control" id="link" name="link" placeholder="Introduce el enlace de seguimiento" required>
 		</div>
 	</form>
 </div>
