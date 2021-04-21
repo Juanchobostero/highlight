@@ -30,8 +30,8 @@ class Ventas_controller extends CI_Controller
 				$data['id_tabla'] = 'tblnuevas';
 				$data['ventas'] = $this->Ventas->get_ventas(1);
 				break;
-			case 'confirmadas':
-				$data['id_tabla'] = 'tblconfirmadas';
+			case 'enviados':
+				$data['id_tabla'] = 'tblenviados';
 				$data['ventas'] = $this->Ventas->get_ventas(2);
 				break;
 			case 'entregadas':
@@ -62,14 +62,11 @@ class Ventas_controller extends CI_Controller
 	{
 		verificarConsulAjax();
 
-		// $venta = $this->Ventas->get_venta($id_venta);
-		// $venta->detalle = $this->Ventas_detalle->get_detalle_venta($id_venta);
-		// $this->load->view('admin/ventas/frmVerVenta', ['venta' => $venta]);
-		$this->load->view('admin/ventas/frmEnviar');
+		$this->load->view('admin/ventas/frmEnviar', ['idVenta' => $id_venta]);
 	}
 
 	//--------------------------------------------------------------
-	public function confirmarEnvioDestino($id_venta)
+	public function enviarADestino($id_venta)
 	{
 		verificarConsulAjax();
 
@@ -78,33 +75,33 @@ class Ventas_controller extends CI_Controller
 		$this->form_validation->set_rules('link', 'Link', 'required|trim');
 
 		if ($this->form_validation->run()) :
+			$nroSeguimiento = $this->input->post('nseguimiento');
+			$empresa = $this->input->post('empresa');
 			$link = $this->input->post('link');
 
-			$venta['nroSeguimiento'] = $this->input->post('nseguimiento');
-			$venta['empresa'] = $this->input->post('empresa');
+			$venta['nroSeguimiento'] = $nroSeguimiento;
+			$venta['empresa'] = $empresa;
 			$venta['fechaConfirmado'] = date('Y-m-d H:i:s');
 			$venta['estadoVENT'] = 2;
 
 			$resp = $this->Ventas->actualizar($id_venta, $venta);
 
 			if ($resp) {
-				$venta = $this->Ventas->get_venta($id_venta);
-				$cliente = $this->Clientes->get_cliente($venta->id_client);
+				$venta = $this->Ventas->get_venta($id_venta); //obtiene datos de venta
+				$cliente = $this->Usuarios->get_user($venta->id_us); // obtiene datos del cliente
 				$envio_venta = [
-					'de'      => 'prueba.softcre@gmail.com',
-					'titulo'  => 'Highlight',
-					'para'    => $cliente->email,
+					'de'      => APP_MAIL,
+					'titulo'  => APP_NAME,
+					'para'    => $cliente->emailU,
 					'asunto'  => 'Envio de pedido N° ' . $id_venta,
-					'mensaje' => "El pedido N° $id_venta ha sido enviado.<br><br> <b>Datos de envio para seguimiento</b><br>Empresa: " . $venta['empresa'] . "<br>Nro Seguimiento: " . $venta['nroSeguimiento'] . "<br>Enlace: $link"
+					'mensaje' => "El pedido N° $id_venta ha sido enviado.<br><br> <b>Datos de envio para seguimiento</b><br>Empresa: $empresa <br>Nro Seguimiento: $nroSeguimiento <br>Enlace: $link"
 				];
+				// enviar_email($envio_venta);
 
-				enviar_email($envio_venta);
-
-				$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Venta N°' . $id_venta . ' enviada a destino
-				
-				']));
+				$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Venta N°' . $id_venta . ' enviada a destino', 'tabs' => 'ventas', 'tab' => 'nuevas']));
+				return;
 			} else {
-				$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'errores' => ['No se pudo crear la categoría. Intente más tarde!']]));
+				$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'errores' => ['No se pudo enviar la venta. Intente más tarde!']]));
 				return;
 			}
 		endif;
@@ -114,7 +111,7 @@ class Ventas_controller extends CI_Controller
 	}
 
 	//--------------------------------------------------------------
-	public function confirmarEnvioSucursal($id_venta)
+	public function envioASucursal($id_venta)
 	{
 		verificarConsulAjax();
 
@@ -125,21 +122,51 @@ class Ventas_controller extends CI_Controller
 
 		if ($resp) {
 			$venta = $this->Ventas->get_venta($id_venta);
-			$cliente = $this->Clientes->get_cliente($venta->id_client);
-			$cancel_venta = [
-				'de'      => 'prueba.softcre@gmail.com',
-				'titulo'  => 'Highlight',
-				'para'    => $cliente->email,
-				'asunto'  => 'Cancelación de pedido N° ' . $id_venta,
-				'mensaje' => 'El pedido N° ' . $id_venta . ' ha sido cancelado.'
+			$cliente = $this->Usuarios->get_user($venta->id_us);
+			$envio_venta = [
+				'de'      => APP_MAIL,
+				'titulo'  => APP_NAME,
+				'para'    => $cliente->emailU,
+				'asunto'  => 'Retiro de pedido N° ' . $id_venta,
+				'mensaje' => 'El pedido N° ' . $id_venta . ' ya se encuetra en nuestra sucursal para ser retirado.'
 			];
 
-			enviar_email($cancel_venta);
+			// enviar_email($envio_venta);
 
-			$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Venta N°' . $id_venta . ' confirmada']));
+			$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Venta N°' . $id_venta . ' enviado a sucursal']));
 			return;
 		}
-		$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'errores' => ['No se pudo cancelar la venta. Intente más tarde!']]));
+		$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'errores' => ['No se pudo enviar la venta. Intente más tarde!']]));
+		return;
+	}
+
+	//--------------------------------------------------------------
+	public function entregar($id_venta)
+	{
+		verificarConsulAjax();
+
+		$venta['fechaEntregado'] = date('Y-m-d H:i:s');
+		$venta['estadoVENT'] = 3;
+
+		$resp = $this->Ventas->actualizar($id_venta, $venta);
+
+		if ($resp) {
+			$venta = $this->Ventas->get_venta($id_venta);
+			$cliente = $this->Usuarios->get_user($venta->id_us);
+			$entregar_venta = [
+				'de'      => APP_MAIL,
+				'titulo'  => APP_NAME,
+				'para'    => $cliente->emailU,
+				'asunto'  => 'Entrega de pedido N° ' . $id_venta,
+				'mensaje' => 'El pedido N° ' . $id_venta . ' ha sido entregado.'
+			];
+
+			// enviar_email($entregar_venta);
+
+			$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Venta N°' . $id_venta . ' entregada']));
+			return;
+		}
+		$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'errores' => ['No se pudo entregar la venta. Intente más tarde!']]));
 		return;
 	}
 
@@ -153,24 +180,23 @@ class Ventas_controller extends CI_Controller
 
 		$resp = $this->Ventas->actualizar($id_venta, $venta);
 
-		// $detalleVenta = $this->Ventas_detalle->get_detalle_venta($id_venta);
-
-		// foreach ($detalleVenta as $item) {
-		// 	$this->Productos->devolverStock($item->id_producto, $item->cantidadVENT);
-		// }
+		$detalleVenta = $this->Ventas_detalle->get_detalle_venta($id_venta);
+		foreach ($detalleVenta as $item) {
+			$this->Productos->devolverStock($item->id_product, $item->cantidadVENT);
+		}
 
 		if ($resp) {
 			$venta = $this->Ventas->get_venta($id_venta);
-			$cliente = $this->Clientes->get_cliente($venta->id_client);
+			$cliente = $this->Usuarios->get_user($venta->id_us);
 			$cancel_venta = [
-				'de'      => 'prueba.softcre@gmail.com',
-				'titulo'  => 'Highlight',
-				'para'    => $cliente->email,
+				'de'      => APP_MAIL,
+				'titulo'  => APP_NAME,
+				'para'    => $cliente->emailU,
 				'asunto'  => 'Cancelación de pedido N° ' . $id_venta,
 				'mensaje' => 'El pedido N° ' . $id_venta . ' ha sido cancelado.'
 			];
 
-			enviar_email($cancel_venta);
+			// enviar_email($cancel_venta);
 
 			$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Venta N°' . $id_venta . ' cancelada']));
 			return;

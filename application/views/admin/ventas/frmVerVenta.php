@@ -20,7 +20,7 @@
 				<div class="info-box-content">
 					<?php // Fecha del estado de venta
 					if ($venta->estadoVENT == 'Nuevo') : $fecha = $venta->fechaEnvio;
-					elseif ($venta->estadoVENT == 'Confirmado') : $fecha = $venta->fechaConfirmado;
+					elseif ($venta->estadoVENT == 'Enviado') : $fecha = $venta->fechaConfirmado;
 					elseif ($venta->estadoVENT == 'Entregado') : $fecha = $venta->fechaEntregado;
 					else : $fecha = $venta->fechaCancelado;
 					endif; ?>
