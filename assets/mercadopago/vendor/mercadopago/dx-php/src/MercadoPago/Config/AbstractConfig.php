@@ -11,7 +11,16 @@ abstract class AbstractConfig
     /**
      * @var array|null
      */
-    protected $data = null;
+    protected $data = [
+            'base_url'      => 'https://api.mercadopago.com',
+            'CLIENT_ID'     => '',
+            'CLIENT_SECRET' => '',
+            'USER_ID'       => '',
+            'APP_ID'        => '',
+            'ACCESS_TOKEN'  => '',
+            'REFRESH_TOKEN' => '',
+            'sandbox_mode'  => true,
+        ];
 
     /**
      * @var array
