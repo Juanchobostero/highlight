@@ -1,6 +1,6 @@
 .search {
 	grid-area: search;
-	max-width: 500px;
+	width: 33%;
 	height: 6vh;
 	text-align: right;
   justify-content: center;
@@ -41,9 +41,8 @@
   font-weight: 300;
   color: var(--menu-links-color);
   background-color: var(--color-grey-1);
-  padding: .1rem 1rem;
-  width: 90%;
-  margin-right: 1rem;
+  padding: .1rem 0;
+  width: 100%;
   border: none;
   border-radius: 8px 0px 0px 8px;
 }
@@ -162,6 +161,7 @@
 @media (max-width: 768px) { 
   .search {
     height: 8vh;
+    width: 60%;
   }
 
   .header-input {

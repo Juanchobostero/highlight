@@ -27,9 +27,7 @@
     }
     
     #nameP {
-        font-family: 'Noto Sans', sans-serif;
         font-size: 1.6rem;
-        font-style: italic;
         width: 100%;
         display: inline;
         color: var(--menu-links-color);
@@ -355,9 +353,7 @@
         height: 1rem;
         display: block;
         float: left;
-        font-family: 'Noto Sans', sans-serif;
         font-size: 1rem;
-        font-style: italic;
         color: var(--menu-links-color);
         letter-spacing: -1px;
         margin-top: -1.2rem;

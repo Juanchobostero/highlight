@@ -77,7 +77,6 @@
             </table>
         </div>
         
-        <hr class="total">
         <div class="carrito-total">
             <h4>Total: $ 
                 <span id="total-cart">
@@ -90,7 +89,7 @@
                     <option value="2">Envío</option>
                 </select> -->
                 <div class="retiro">
-                    <input type="checkbox" id="retiro" name="retiro" onchange="check()" value="1" checked>
+                    <input type="checkbox" id="retiro" name="retiro" onchange="check()" value="1">
                     <span for="retiro" id="retiro-lbl"> Retiro en local</span><br><br>
                 </div>
 
@@ -103,7 +102,7 @@
             </div>
         </div>
         
-        <hr class="total">
+        
 
         <div class="carrito-botones">
             <button class="carrito-vaciar" onclick="vaciar()">Vaciar</button>

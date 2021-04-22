@@ -144,6 +144,13 @@ $preference->save();
         <div class="total-title">
             <h2>Total: $<?=$this->cart->total()?></h2>
         </div>
+        <div class="env">
+            <?php if($envioVENT == '1'):?>
+                <span>Retiro en local</span>
+            <?php else:?>
+                <span>Envío</span>
+            <?php endif;?>
+        </div>
         <form action="<?=base_url('finalizar_compra')?>" method="POST">
             <script
             src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"

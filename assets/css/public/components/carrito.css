@@ -145,8 +145,9 @@ table {
 }
 
 .retiro {
-    margin-bottom: -1.6rem;
+    margin-bottom: -1.2rem;
 }
+
 
 #retiro-lbl, #envio-lbl {
     font-size: 0.9rem;
@@ -158,7 +159,7 @@ table {
     height: 5vh;
     display: flex;
     justify-content: flex-end;
-    margin: 1rem 0;
+    margin: 6rem 0;
 }
 
 .carrito-botones button {

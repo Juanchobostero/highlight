@@ -50,7 +50,7 @@
                     </div>
                     <div class="detalle-info">
                         <span id="detalle-nombre"><?=$detalle->nombrePR?></span>
-                        <span id="detalle-cant">Cantidad: <?=ceil($detalle->cantidadVENT)?></span>
+                        <span id="detalle-cant">Cantidad:<?=ceil($detalle->cantidadVENT)?></span>
                         <span id="detalle-tot">Total: $<?=$detalle->precioVENT?></span>
                     </div>
                 </div>

@@ -3,6 +3,7 @@
     grid-column: 1 / -1;
     grid-template-areas: "cabecera"
                          "detalle";
+    padding: 0 2rem;
 }
 
 .venta-cabecera {
@@ -15,7 +16,6 @@
 .cabecera-title {
     display: inline;
     text-align: left;
-    font-style: italic;
 }
 
 .cabecera-title h3 {
@@ -80,7 +80,6 @@ span#status{
 .head-detalle h3 {
     display: inline;
     text-align: center;
-    font-style: italic;
     font-size: 1.4rem;
 }
 
@@ -136,6 +135,13 @@ span#detalle-tot {
     font-weight: 900;
 }
 
+@media (min-width: 1500px){
+    /* Pantallas grandes */
+    .venta-detalle {
+        padding: 0 9rem;
+    }
+}
+
 @media (max-width: 768px) {
     .venta-cabecera {
         padding: 0.5rem;
@@ -159,11 +165,19 @@ span#detalle-tot {
         font-size: 0.8rem;
     }
 
+    span#detalle-nombre {
+        width: 100%;
+        padding: 0;
+        margin-bottom: 4rem;
+    }
+
+    
+
     span#detalle-nombre, 
     span#detalle-cant,
     span#detalle-tot {
         font-size: 1rem;
-        margin-left: 1.5rem;
+        margin-left: 3rem;
     }
 
     span#detalle-cant {
@@ -171,13 +185,14 @@ span#detalle-tot {
     }
 
     .detalle {
-        padding-left: 1rem;
+        padding: 1rem;
+        width: 100%;
     }
     
     .body-detalle {
         justify-content: left;
         text-align: left;
-        width: 100%
+        width: 100%;
     }
 
 }

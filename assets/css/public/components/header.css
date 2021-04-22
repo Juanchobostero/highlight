@@ -209,7 +209,7 @@
   padding: 0.594rem;
   text-decoration: none;
   color: #031929;
-  font-weight: 800;
+  font-weight: 600;
   text-transform: uppercase;
   margin: 0.294rem;
   float: none;
@@ -278,6 +278,10 @@
   color: var(--menu-links-color);
   text-decoration: none;
   display: block;
+}
+
+#nav {
+  font-size: 1rem;
 }
 
 #categoria {

@@ -14,6 +14,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital@1&display=swap" rel="stylesheet">
+
+
   
   
   <!-- estilos -->
@@ -40,7 +42,7 @@
         <ul class="navbar-links">
           <li class="navbar-item"><a href="<?=base_url()?>" class="navbar-link">Inicio</a></li>
           <li id="activa-drop" class="navbar-item">
-            <a id="opcion-prod" class="navbar-link">Productos<img class="flecha-prod" src="<?=base_url('assets/img/public/imgVarios/flecha-prod.png')?>"></img> </a>
+            <a id="opcion-prod" class="navbar-link">Productos</a>
 
             <ul class="navbar-drop">
               <li>
@@ -80,9 +82,9 @@
                 </a>
                 <span class="bad"></span>
                 <div class="dropdown-content" id="myDropdown" onblur="hideDiv()">
-                  <a href="<?=base_url('perfil')?>" class="navbar-drop-link" id="categoria">Mi perfil</a>
-                  <a href="<?=base_url('pedidos')?>" class="navbar-drop-link" id="categoria">Mis pedidos</a>
-                  <a href="<?=base_url('logout')?>" class="navbar-drop-link" id="categoria">Salir</a>
+                  <a href="<?=base_url('perfil')?>" class="navbar-link" id="nav">Mi perfil</a>
+                  <a href="<?=base_url('pedidos')?>" class="navbar-link" id="nav">Mis pedidos</a>
+                  <a href="<?=base_url('logout')?>" class="navbar-link" id="nav">Salir</a>
                 </div>
               </li>
             </ul>

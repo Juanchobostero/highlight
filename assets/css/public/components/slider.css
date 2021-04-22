@@ -19,7 +19,6 @@
     grid-area: head;
     display: flex;
     align-self: left;   
-    font-family: 'Noto Sans', sans-serif;
     color: var(--titulo-seccion-color);
     margin-bottom: 0;
 }
@@ -74,7 +73,7 @@
     } 
 
     .slider-cell {
-        width: 10rem;
+        width: 11rem;
         height: 100%;
         margin: 0 0.5rem;
     }
