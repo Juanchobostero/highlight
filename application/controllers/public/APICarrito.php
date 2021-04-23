@@ -202,25 +202,7 @@ class APICarrito extends CI_Controller {
       //$this->cart->destroy();
       $this->output->set_output(json_encode(compact('result', 'msg', 'url')));
   
-      /* //enviar mail
-      $envioAlCliente = array(
-        'de'      => 'server.email@nissijoyas.com',
-        'titulo'  => 'NISSI Joyas',
-        'para'    => $this->session->userdata('correo'),
-        'asunto'  => 'Confirmación de pedido',
-        'mensaje' => 'Hemos recibido su pedido nº '. $idPedido . '.<br/>No conteste este mail.<br/>Atte: NISSI Joyas',
-        );
       
-      $envioAlVendedor = array(
-        'de'      => 'server.email@nissijoyas.com',
-        'titulo'  => 'NUEVO PEDIDO',
-        'para'    => 'joyasnissi@gmail.com',
-        'asunto'  => 'Se registro un nuevo pedido',
-        'mensaje' => 'Nuevo pedido alojado en el buzon nº '.$idPedido,
-      );
-  
-      $this->email($envioAlCliente);
-      $this->email($envioAlVendedor); */
     
     }
 
