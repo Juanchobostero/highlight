@@ -13,6 +13,8 @@
   display: none;
 }
 
+
+
 .header {
   display: grid;
   grid-template:  1fr / 1fr 2fr 1fr;
@@ -215,6 +217,17 @@
   float: none;
 }
 
+.navbar-user {
+  display: block;
+  padding: 0.594rem;
+  text-decoration: none;
+  color: #031929;
+  font-weight: 600;
+  margin: 0.294rem;
+  float: none;
+  font-size: 0.8rem;
+}
+
 .navbar-link,
 .navbar-link:after,
 .navbar-link:before {
@@ -222,7 +235,8 @@
 }
 
 
-.navbar-link:hover {
+.navbar-link:hover,
+.navbar-user:hover {
   color: #e8e7e7;
   text-decoration: none;
   cursor: pointer;

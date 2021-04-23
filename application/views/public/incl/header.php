@@ -95,9 +95,9 @@
                 </a>
                 <span class="bad"></span>
                 <div class="dropdown-content" id="myDropdown" onblur="hideDiv()">
-                  <a href="<?=base_url('perfil')?>" class="navbar-link" id="nav">Mi perfil</a>
-                  <a href="<?=base_url('pedidos')?>" class="navbar-link" id="nav">Mis pedidos</a>
-                  <a href="<?=base_url('logout')?>" class="navbar-link" id="nav">Salir</a>
+                  <a href="<?=base_url('perfil')?>" class="navbar-user" id="nav">Mi perfil</a>
+                  <a href="<?=base_url('pedidos')?>" class="navbar-user" id="nav">Mis pedidos</a>
+                  <a href="<?=base_url('logout')?>" class="navbar-user" id="nav">Salir</a>
                 </div>
               </li>
             </ul>

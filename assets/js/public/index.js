@@ -846,6 +846,15 @@ function check() {
 
 } 
 
+var sliderImg = document.getElementById('slider-img');
+var productInfo = document.getElementById('pro-info');
+
+if (sliderImg.style.display == 'block'){
+  productInfo.style.marginTop = '200px';
+  console.log('hola');
+}
+
+
 
 function ajaxErrors( jqXHR, textStatus) {
   /* pageLoader.classList.remove('page-loader--show'); */

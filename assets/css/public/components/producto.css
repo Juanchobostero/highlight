@@ -27,7 +27,7 @@
     }
     
     #nameP {
-        font-size: 1.6rem;
+        font-size: 1.3rem;
         width: 100%;
         display: inline;
         color: var(--menu-links-color);
@@ -171,7 +171,6 @@
     .slider-images {
         width: 100%;
         padding: 0.6rem;
-        display: block;
         display: grid;
         grid-template-columns: repeat(auto, 10rem);
     }
@@ -430,7 +429,7 @@
         width: 90%;
         padding: 1rem;
         display: block;
-        margin-top: 12rem;
+        margin-top: 14rem;
         margin-right: 1rem;
         margin-left: 1rem;
         margin-bottom: 4rem;
@@ -629,10 +628,15 @@
     }
 
     .slider-images {
-        grid-template-columns: repeat(auto, 10rem);
-        padding: 0.5rem;
-        margin-bottom: 2rem;
+        display: block;
+        height: 30vh;
+        padding: 1rem;
     }
+
+    .slider-images:empty {
+        display: none;
+    }
+
     
     .img-cart {
         margin: 0 1rem;
