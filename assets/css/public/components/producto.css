@@ -27,9 +27,7 @@
     }
     
     #nameP {
-        font-family: 'Noto Sans', sans-serif;
-        font-size: 1.6rem;
-        font-style: italic;
+        font-size: 1.3rem;
         width: 100%;
         display: inline;
         color: var(--menu-links-color);
@@ -88,7 +86,7 @@
     }
     
     .img-pro{
-        object-fit: fill;
+        object-fit: cover;
         width: 90%;
         border-style: solid;
         border-color: var(--color-grey);
@@ -102,7 +100,6 @@
     .product-info{
         background-color: var(--color-grey);
         width: 33%;
-        height: 90vh;
         padding: 1rem;
         text-align: justify;
     }
@@ -168,6 +165,8 @@
     .cart-img:before {
       transition: all .5s;
     }
+
+    
     
     .slider-images {
         width: 100%;
@@ -353,9 +352,7 @@
         height: 1rem;
         display: block;
         float: left;
-        font-family: 'Noto Sans', sans-serif;
         font-size: 1rem;
-        font-style: italic;
         color: var(--menu-links-color);
         letter-spacing: -1px;
         margin-top: -1.2rem;
@@ -432,7 +429,7 @@
         width: 90%;
         padding: 1rem;
         display: block;
-        margin-top: 12rem;
+        margin-top: 14rem;
         margin-right: 1rem;
         margin-left: 1rem;
         margin-bottom: 4rem;
@@ -631,10 +628,15 @@
     }
 
     .slider-images {
-        grid-template-columns: repeat(auto, 10rem);
+        display: block;
+        height: 30vh;
         padding: 1rem;
-        height: auto;
     }
+
+    .slider-images:empty {
+        display: none;
+    }
+
     
     .img-cart {
         margin: 0 1rem;

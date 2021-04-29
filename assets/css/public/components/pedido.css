@@ -3,6 +3,7 @@
     grid-column: 1 / -1;
     grid-template-areas: "cabecera"
                          "detalle";
+    padding: 0 3rem;
 }
 
 .venta-cabecera {
@@ -15,7 +16,6 @@
 .cabecera-title {
     display: inline;
     text-align: left;
-    font-style: italic;
 }
 
 .cabecera-title h3 {
@@ -24,14 +24,14 @@
 
 .cabecera-data {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 18rem);
+    grid-template-columns: repeat(auto-fit, 16rem);
 }
 
 .item-detail {
-    width: 90%;
+    width: 85%;
     height: 5rem;
     border: 2px solid var(--color-grey);
-    margin: 1rem;
+    margin: 0.7rem;
     padding: 0.5rem;
     border-radius: 0.25rem;
 }
@@ -40,10 +40,11 @@
     margin-right: 0.5rem;
 }
 
-.cabecera-data span {
-    font-size: 1rem;
-    letter-spacing: normal;
+.item-detail span {
+    letter-spacing: -1px;
+    font-size: 0.9rem;
 }
+
 
 span#status{
     padding: 0.2rem;
@@ -66,8 +67,8 @@ span#status{
 .fecha, 
 .total,
 .status {
-    width: 3rem;
-    height: 3rem;
+    width: 2.5rem;
+    height: 2.5rem;
 }
 
 .detalle {
@@ -80,7 +81,6 @@ span#status{
 .head-detalle h3 {
     display: inline;
     text-align: center;
-    font-style: italic;
     font-size: 1.4rem;
 }
 
@@ -136,6 +136,13 @@ span#detalle-tot {
     font-weight: 900;
 }
 
+@media (min-width: 1500px){
+    /* Pantallas grandes */
+    .venta-detalle {
+        padding: 0 12rem;
+    }
+}
+
 @media (max-width: 768px) {
     .venta-cabecera {
         padding: 0.5rem;
@@ -159,11 +166,19 @@ span#detalle-tot {
         font-size: 0.8rem;
     }
 
+    span#detalle-nombre {
+        width: 100%;
+        padding: 0;
+        margin-bottom: 4rem;
+    }
+
+    
+
     span#detalle-nombre, 
     span#detalle-cant,
     span#detalle-tot {
         font-size: 1rem;
-        margin-left: 1.5rem;
+        margin-left: 3rem;
     }
 
     span#detalle-cant {
@@ -171,13 +186,14 @@ span#detalle-tot {
     }
 
     .detalle {
-        padding-left: 1rem;
+        padding: 1rem;
+        width: 100%;
     }
     
     .body-detalle {
         justify-content: left;
         text-align: left;
-        width: 100%
+        width: 100%;
     }
 
 }

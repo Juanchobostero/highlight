@@ -26,8 +26,8 @@
             <img class="img-pro" id="img-main" src="<?=base_url($producto->foto)?>" onclick="showModalImg(event)">
             </img>
             <?php 
-            if(count($fotos) > 1) { ?>
-                <div class="slider-images">
+            if(count($fotos) > 1):?>
+                <div class="slider-images" id="slider-img">
                     <?php foreach($fotos as $foto):?>
                         <?php if ($foto->foto != $producto->foto) { ?>
                             <div class="img-cart">
@@ -37,9 +37,9 @@
                         
                     <?php endforeach?>
                 </div>
-            <?php } ?>
+            <?php endif; ?>
         </div>
-        <div class="product-info">
+        <div class="product-info" id="pro-info">
             <h3 class="des-title">Descripción</h3>
             <div class="product-descrip"><?=$producto->descripcionPR?></div>
             <div class="product-detail">

@@ -293,6 +293,26 @@ class Inicio_controller extends CI_Controller
 			$id_pedido = $this->Productos_model->guardar_pedido($envioVENT);
 			$data['pedido'] = $this->Productos_model->get_pedido($id_pedido);
 
+			//enviar mail
+			$envioAlCliente = array(
+				'de'      => 'prueba.softcre@gmail.com',
+				'titulo'  => 'HIGHLIGHT Herramientas',
+				'para'    => 'juancruzmart93@gmail.com',
+				'asunto'  => 'Confirmación de pedido',
+				'mensaje' => 'Hemos recibido su pedido nº '. $id_pedido . '.<br/>No conteste este mail.<br/>Atte: NISSI Joyas',
+				);
+			
+			/* $envioAlVendedor = array(
+				'de'      => 'server.email@nissijoyas.com',
+				'titulo'  => 'NUEVO PEDIDO',
+				'para'    => 'joyasnissi@gmail.com',
+				'asunto'  => 'Se registro un nuevo pedido',
+				'mensaje' => 'Nuevo pedido alojado en el buzon nº '.$idPedido,
+			); */
+		
+			enviar_email($envioAlCliente);
+			//$this->email($envioAlVendedor);
+
 			$this->cart->destroy();
 			$this->load->view('public/pedido', $data);
 		//Si no es aprobado redirige al carrito

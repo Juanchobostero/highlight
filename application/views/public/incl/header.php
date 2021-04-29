@@ -7,6 +7,15 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
+  <!-- Comment #1: OG Tags -->
+  <meta property="og:url"           content="https://hlherramientas.com.ar" />
+  <meta property="og:type"          content="website" />
+  <meta property="og:title"         content="HIGHLIGHT" />
+  <meta property="og:description"   content="Herramientas e Iluminación" />
+  <meta property="og:image"         content="https://www.hlherramientas.com.ar/assets/img/public/img/hl.png" />
+  <meta property="og:image:width"  content="200"/>
+  <meta property="og:image:height" content="200"/>
+
   <link href='https://css.gg/eye.css' rel='stylesheet'>
   <link href="<?=base_url('assets/plugins/sweetalert2/sweetalert2.min.css')?>">
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700;900&display=swap" rel="stylesheet">
@@ -14,11 +23,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital@1&display=swap" rel="stylesheet">
+
+
   
   
   <!-- estilos -->
   <link rel="stylesheet" href="<?=base_url('assets/css/public/index.css');?>">
 
+  <link rel="apple-touch-icon" href="favicon.png" type="image/x-icon">
+  <link rel="icon" href="favicon.png" type="image/x-icon">
+  <link rel="Shortcut Icon" href='favicon.png' type="image/x-icon" />
+  
   <title>HIGHLIGHT</title>
   
 </head>
@@ -40,7 +55,7 @@
         <ul class="navbar-links">
           <li class="navbar-item"><a href="<?=base_url()?>" class="navbar-link">Inicio</a></li>
           <li id="activa-drop" class="navbar-item">
-            <a id="opcion-prod" class="navbar-link">Productos<img class="flecha-prod" src="<?=base_url('assets/img/public/imgVarios/flecha-prod.png')?>"></img> </a>
+            <a id="opcion-prod" class="navbar-link">Productos</a>
 
             <ul class="navbar-drop">
               <li>
@@ -80,9 +95,9 @@
                 </a>
                 <span class="bad"></span>
                 <div class="dropdown-content" id="myDropdown" onblur="hideDiv()">
-                  <a href="<?=base_url('perfil')?>" class="navbar-drop-link" id="categoria">Mi perfil</a>
-                  <a href="<?=base_url('pedidos')?>" class="navbar-drop-link" id="categoria">Mis pedidos</a>
-                  <a href="<?=base_url('logout')?>" class="navbar-drop-link" id="categoria">Salir</a>
+                  <a href="<?=base_url('perfil')?>" class="navbar-user" id="nav">Mi perfil</a>
+                  <a href="<?=base_url('pedidos')?>" class="navbar-user" id="nav">Mis pedidos</a>
+                  <a href="<?=base_url('logout')?>" class="navbar-user" id="nav">Salir</a>
                 </div>
               </li>
             </ul>
