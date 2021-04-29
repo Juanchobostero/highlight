@@ -13,8 +13,12 @@
           <a class="sub-nav-link" href="<?=base_url('perfil')?>">Mi Perfil</a>
         </li>
         <li class="sub-nav-item">
+          <a class="sub-nav-link" href="<?=base_url('pedidos')?>">Mis pedidos</a>
+        </li>
+        <li class="sub-nav-item">
           <a class="sub-nav-link" href="<?=base_url('carrito')?>">Mi Carrito</a>
         </li>
+        
         <li class="sub-nav-item">
           <a href="<?=base_url('logout')?>" class="sub-nav-link">Salir</a>
         </li>

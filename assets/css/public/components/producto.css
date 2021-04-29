@@ -171,6 +171,7 @@
     .slider-images {
         width: 100%;
         padding: 0.6rem;
+        display: block;
         display: grid;
         grid-template-columns: repeat(auto, 10rem);
     }
@@ -631,10 +632,6 @@
         display: block;
         height: 30vh;
         padding: 1rem;
-    }
-
-    .slider-images:empty {
-        display: none;
     }
 
     

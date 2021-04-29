@@ -11,6 +11,8 @@ const menu = document.querySelector('.dropdown-content');
 const userMenu = document.querySelector('.sub-nav-links');
 const carritoNumbers = document.querySelectorAll('.cart-number');
 const modal = document.querySelector("#modal-producto");
+const sliderImg = document.getElementById('slider-img');
+const productInfo = document.getElementById('pro-info');
 
 
 $(document).ready(() => {
@@ -22,6 +24,16 @@ $(document).ready(() => {
   if(checkBox) {
     console.log(checkBox.value);
   }
+
+  if (sliderImg) { 
+    productInfo.style.marginTop = "16rem";
+    console.log('hola')
+  }else {
+    productInfo.style.marginTop = '2rem';
+    console.log('chau');
+  }
+
+
 });
 
 function prueba(e) {
@@ -844,14 +856,6 @@ function check() {
     console.log(checkValue);
   }
 
-} 
-
-var sliderImg = document.getElementById('slider-img');
-var productInfo = document.getElementById('pro-info');
-
-if (sliderImg.style.display == 'block'){
-  productInfo.style.marginTop = '200px';
-  console.log('hola');
 }
 
 

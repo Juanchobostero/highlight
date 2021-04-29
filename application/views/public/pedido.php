@@ -5,9 +5,10 @@
     <div class="venta-cabecera">
         <div class="cabecera-title">
             <h3>Pedido nro: <?=$pedido->id_venta?></h3>
-            <hr>
+            &nbsp;&nbsp;|
+            <span>Modo de entrega: <span id="mod-retiro"><?= $pedido->envioVENT == '0' ? 'Envío' : 'Retiro en local' ?></span></span>
         </div>
-
+        <hr>
         <div class="cabecera-data">
             <div class="item-detail">
                 <img class="mercadoPago" src="<?=base_url('assets/img/public/imgVarios/mp.jpg')?>" alt="mercado pago">
