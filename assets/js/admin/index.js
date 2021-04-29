@@ -1,5 +1,6 @@
 // CAMBIAR EN SERVER
 const baseUrl = window.location.origin + '/highlight/';
+const pathInicial = '/highlight/'; // cambair por '/'
 
 // DEFINICION DE TOAST (alert)
 const Toast = Swal.mixin({
@@ -11,8 +12,7 @@ const Toast = Swal.mixin({
 
 $(function () {
 	// carga si no esta en el login
-	if (window.location.href != baseUrl + 'admin/login') {
-	// if (window.location.pathname != '/admin/login') {
+	if (window.location.pathname != pathInicial + 'admin/login') {
 		notificaciones();
 	}
 });
@@ -273,6 +273,8 @@ function validFormMod(e, metodo, form = '') {
 				let reDirigir = $('#' + data.tabs + ' a[href="#' + data.tab + '"]');
 				reDirigir.click();
 				reDirigir.tab('show');
+
+				if(data.tabs == "ventas") notificaciones();
 
 				mostrarToast('success', data.titulo, data.msj);
 				$('#cerrarModal').click();

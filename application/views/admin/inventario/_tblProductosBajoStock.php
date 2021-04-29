@@ -10,9 +10,9 @@
 	<tbody>
 		<?php foreach ($productos as $producto) : ?>
 			<tr>
-				<td><?=$producto->codigoPR;?></td>
-				<td><?=$producto->nombrePR;?></td>
-				<td class="bg-danger text-center"><?=$producto->stockPR;?></td>
+				<td><?= $producto->codigoPR; ?></td>
+				<td><?= $producto->nombrePR; ?></td>
+				<td class="bg-danger text-center"><?= number_format($producto->stockPR, 0, ',', '.'); ?></td>
 				<td class="text-center">
 					<div class="btn-group btn-group-sm">
 						<button type="button" class="btn btn-info" title="Ver" onclick="cargarForm('<?= base_url('frmVerProductoBajoStock/' . $producto->id_producto) ?>', 'extra-large', 'modal-extra-large')">

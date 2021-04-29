@@ -14,7 +14,7 @@
 				<td><?= $item->codigoPR; ?></td>
 				<td><?= $item->nombrePR; ?></td>
 				<td class="text-right">$ <?= number_format($item->precioVENT, 0, ',', '.'); ?></td>
-				<td class="text-right"><?= number_format($item->cantidadVENT, 0, ',', '.'); ?></td>
+				<td class="text-center"><?= number_format($item->cantidadVENT, 0, ',', '.'); ?></td>
 				<td class="text-right">$ <?= number_format($item->subtotalVENT, 0, ',', '.'); ?></td>
 			</tr>
 		<?php endforeach; ?>
