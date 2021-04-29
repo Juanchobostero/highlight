@@ -6,6 +6,12 @@
 </div>
 
 <div class="modal-body">
+	<div class="row mb-2">
+		<div class="col-12">
+			<a href="<?= base_url('admin/ventas/PDF-detalle-venta/' . $venta->id_venta); ?>" class="btn btn-danger btn-sm float-right" target="_blank" title="Descargar en formato PDF" download><i class="fas fa-download mr-2"></i> Descargar</a>
+			<a href="<?= base_url('admin/ventas/PDF-detalle-venta/' . $venta->id_venta); ?>" class="btn btn-info btn-sm float-right mr-2" target="_blank" title="Ver en formato PDF"><i class="fas fa-file-pdf mr-2"></i> Ver</a>
+		</div>
+	</div>
 	<div class="row">
 		<div class="col-12 col-md-6">
 			<div class="info-box bg-light">

@@ -92,6 +92,7 @@ class Productos extends CI_Model
 	{
 		$this->db->where('stockPR <', 5);
 		$this->db->where('estadoPR', 1);
+		$this->db->order_by('stockPR', 'desc');
 		return $this->db->get('productos')->result();
 	}
 

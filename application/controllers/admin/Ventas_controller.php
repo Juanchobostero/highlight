@@ -108,7 +108,7 @@ class Ventas_controller extends CI_Controller
 
 		$this->output->set_output(json_encode(['result' => 3, 'titulo' => 'Ooops.. controle!', 'errores' => $this->form_validation->error_array()]));
 		return;
-	}
+	} // fin metodo envioADestino
 
 	//--------------------------------------------------------------
 	public function envioASucursal($id_venta)
@@ -138,7 +138,7 @@ class Ventas_controller extends CI_Controller
 		}
 		$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'errores' => ['No se pudo enviar la venta. Intente más tarde!']]));
 		return;
-	}
+	} // fin metodo envioASucursal
 
 	//--------------------------------------------------------------
 	public function entregar($id_venta)
@@ -168,7 +168,7 @@ class Ventas_controller extends CI_Controller
 		}
 		$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'errores' => ['No se pudo entregar la venta. Intente más tarde!']]));
 		return;
-	}
+	} // fin metodo entregar
 
 	//--------------------------------------------------------------
 	public function cancelar($id_venta)
@@ -203,5 +203,166 @@ class Ventas_controller extends CI_Controller
 		}
 		$this->output->set_output(json_encode(['result' => 2, 'titulo' => 'Ooops.. error!', 'errores' => ['No se pudo cancelar la venta. Intente más tarde!']]));
 		return;
+	} // fin metodo cancelar
+
+	//--------------------------------------------------------------
+	public function PDFDetalleVenta($id_venta)
+	{
+		// Datos de la venta
+		$venta = $this->Ventas->get_venta($id_venta);
+		$venta->items = $this->Ventas_detalle->get_detalle_venta($id_venta);
+
+		// Datos a imprimir
+		$numVenta = '<b>Venta N°:</b> ' . $id_venta;
+		$cliente = '<b>Cliente:</b> ' . $venta->apellidoU . ', ' . $venta->nombreU;
+		$estadoPago = '<b>Estado del Pago:</b> ' . $venta->estadoPago;
+
+		if ($venta->estadoVENT == 'Nuevo') :
+			$fecha = '<b>Fecha:</b> ' . strftime("%d-%m-%Y", strtotime($venta->fechaEnvio));
+		elseif ($venta->estadoVENT == 'Enviado') :
+			$fecha = '<b>Fecha Enviado:</b> ' . strftime("%d-%m-%Y", strtotime($venta->fechaConfirmado));
+		elseif ($venta->estadoVENT == 'Entregado') :
+			$fecha = '<b>Fecha Entregado:</b> ' . strftime("%d-%m-%Y", strtotime($venta->fechaEntregado));
+		else :
+			$fecha = '<b>Fecha Cancelado:</b> ' . strftime("%d-%m-%Y", strtotime($venta->fechaCancelado));
+		endif;
+
+		$pdf = new Pdf();
+		$pdf->encabezado('Venta N°' . $id_venta, 'Orden de venta');
+		// Datos de la venta
+		$pdf->celda(60, 6, $numVenta, 'L', FALSE, TRUE);
+		$pdf->celda(60, 6, $fecha, 'C', FALSE, TRUE);
+		$pdf->celda(60, 6, $estadoPago, 'R', FALSE, TRUE);
+		$pdf->ln(); // salto de linea
+		$pdf->celda(150, 8, $cliente, 'L', FALSE, TRUE);
+		$pdf->ln(); // salto de linea
+
+		$pdf->configHeaderTabla(); // letra, color etc para el encabezado de la tabla
+		// ------ Cabecera Tabla Detalle de venta ------
+		$pdf->celda(22, 10, 'Código', 'C', TRUE);
+		$pdf->celda(68, 10, 'Producto', 'C', TRUE);
+		$pdf->celda(25, 10, 'Cantidad', 'C', TRUE);
+		$pdf->celda(30, 10, 'Precio Unitario', 'C', TRUE);
+		$pdf->celda(35, 10, 'Subtotal', 'C', TRUE);
+		$pdf->Ln();
+
+		$pdf->configBodyTabla(); // letra, color etc para el cuerpo de la tabla
+		$pdf->setBorderCelda(['B'	=> ['width'	=> 0.2]]); // linea de abajo
+		// ------ Cuerpo Tabla Detalle de venta ------
+		foreach ($venta->items as $item) :
+			$pdf->celda(22, 10, $item->codigoPR, 'L');
+			$pdf->celda(68, 10, $item->nombrePR, 'L');
+			$pdf->celda(25, 10, number_format($item->cantidadVENT, 0), 'C');
+			$pdf->celda(30, 10, '$' . number_format($item->precioVENT, 2, ',', '.'), 'R');
+			$pdf->celda(35, 10, '$' . number_format($item->subtotalVENT, 2, ',', '.'), 'R');
+			$pdf->Ln();
+			if ($pdf->getY() >= 260) $pdf->AddPage();
+		endforeach;
+
+		$pdf->configFooterTabla(); // letra, color etc para el total
+		$pdf->setBorderCelda(['T'	=> ['width'	=> 0.5]]); // linea superior
+		// ------ Total a pagar ------
+		$pdf->celda(145, 10, 'Total a pagar', 'R');
+		$pdf->celda(35, 10, '$' . number_format($venta->totalVENT, 2, ',', '.'), 'R');
+		$pdf->Ln();
+
+		$pdf->Output("Highlight_VentaN$id_venta.pdf", 'I');
 	}
+
+	// public function PDFDetalleVenta($id_venta)
+	// {
+	// 	// Datos de la venta
+	// 	$venta = $this->Ventas->get_venta($id_venta);
+	// 	$venta->items = $this->Ventas_detalle->get_detalle_venta($id_venta);
+
+	// 	// Datos a imprimir
+	// 	$numVenta = '<b>Venta N°:</b> ' . $id_venta;
+	// 	$cliente = '<b>Cliente:</b> ' . $venta->apellidoU . ', ' . $venta->nombreU;
+	// 	$estadoPago = '<b>Estado del Pago:</b> ' . $venta->estadoPago;
+
+	// 	if ($venta->estadoVENT == 'Nuevo') : 
+	// 		$fecha = '<b>Fecha:</b> ' . strftime("%d-%m-%Y", strtotime($venta->fechaEnvio));
+	// 	elseif ($venta->estadoVENT == 'Enviado') : 
+	// 		$fecha = '<b>Fecha Enviado:</b> ' . strftime("%d-%m-%Y", strtotime($venta->fechaConfirmado));
+	// 	elseif ($venta->estadoVENT == 'Entregado') : 
+	// 		$fecha = '<b>Fecha Entregado:</b> ' . strftime("%d-%m-%Y", strtotime($venta->fechaEntregado));
+	// 	else : 
+	// 		$fecha = '<b>Fecha Cancelado:</b> ' . strftime("%d-%m-%Y", strtotime($venta->fechaCancelado));
+	// 	endif;
+
+	// 	require_once('./assets/TCPDF/config/tcpdf_config.php');
+	// 	require_once('./assets/TCPDF/tcpdf.php');
+
+	// 	$pdf = new TCPDF('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+	// 	$pdf->SetCreator(PDF_CREATOR);
+	// 	$pdf->SetAuthor('HighLight');
+	// 	$pdf->setPrintFooter(false);
+	// 	$pdf->SetTitle('Venta N°' . $id_venta . ' | Highlight');
+	// 	$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, "HighLight", 'Orden de compra');
+	// 	$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+	// 	$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+	// 	$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+	// 	$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+	// 	$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+	// 	$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+	// 	$pdf->setFontSubsetting(true);
+	// 	$pdf->SetFont(PDF_FONT_NAME_MAIN, '', 10, '', true);
+	// 	$pdf->AddPage();
+
+	// 	// Datos de la venta
+	// 	$pdf->MultiCell(61, 6, $numVenta, 0, 'L', FALSE, 0, '', '', TRUE, 1, TRUE, TRUE, 0, 'M', TRUE);
+	// 	$pdf->MultiCell(60, 6, $fecha, 0, 'C', FALSE, 0, '', '', TRUE, 1, TRUE, TRUE, 0, 'M', TRUE);
+	// 	$pdf->MultiCell(61, 6, $estadoPago, 0, 'R', FALSE, 0, '', '', TRUE, 1, TRUE, TRUE, 0, 'M', TRUE);
+	// 	$pdf->ln();
+	// 	$pdf->MultiCell(150, 8, $cliente, 0, 'L', FALSE, 0, '', '', TRUE, 1, TRUE, TRUE, 0, 'M', TRUE);
+
+	// 	$pdf->ln();
+
+	// 	// ------ Config Cabecera Tabla ------
+	// 	$pdf->setCellPaddings(0, 0, 0, 0);
+	// 	$pdf->SetFillColor(52, 58, 64); // color de fondo
+	// 	$pdf->SetTextColor(255, 255, 255); // color de letra
+	// 	$pdf->SetFont(PDF_FONT_NAME_MAIN, '', 10, '', TRUE);
+	// 	// ------ Cabecera Tabla Detalle de venta ------
+	// 	$pdf->MultiCell(22, 10, 'Código', 0, 'C', 1, 0, '', '', TRUE, 0, FALSE, TRUE, 10, 'M');
+	// 	$pdf->MultiCell(68, 10, 'Producto', 0, 'C', 1, 0, '', '', TRUE, 0, FALSE, TRUE, 10, 'M');
+	// 	$pdf->MultiCell(25, 10, 'Cantidad', 0, 'C', 1, 0, '', '', TRUE, 0, FALSE, TRUE, 10, 'M');
+	// 	$pdf->MultiCell(30, 10, 'Precio Unitario', 0, 'C', 1, 0, '', '', TRUE, 0, FALSE, TRUE, 10, 'M');
+	// 	$pdf->MultiCell(37, 10, 'Subtotal', 0, 'C', 1, 0, '', '', TRUE, 0, FALSE, TRUE, 10, 'M');
+	// 	$pdf->Ln();
+
+	// 	// ------ Config Cuerpo Tabla ------
+	// 	$pdf->SetTextColor(0, 0, 0); // color de letra
+	// 	$pdf->SetFont(PDF_FONT_NAME_MAIN, '', 9, '', TRUE);
+	// 	$bordeCuerpo = ['B'	=> ['width'	=> 0.2]]; // linea inferior
+
+	// 	// ------ Cuerpo Tabla Detalle de venta ------
+	// 	foreach ($venta->items as $item) :
+	// 		// MultiCell(w, h, txt, border, align, fill, ln, x, y, reseth, stretch, ishtml, autopadding, maxh)
+	// 		$pdf->MultiCell(25, 10, $item->codigoPR, $bordeCuerpo, 'L', FALSE, 0, '', '', TRUE, 1, FALSE, TRUE, 10,
+	// 		'M', TRUE);
+	// 		$pdf->MultiCell(65, 10, $item->nombrePR, $bordeCuerpo, 'L', FALSE, 0, '', '', TRUE, 1, FALSE, TRUE, 10,
+	// 		'M', TRUE);
+	// 		$pdf->MultiCell(25, 10, number_format($item->cantidadVENT, 0), $bordeCuerpo, 'C', FALSE, 0, '', '', TRUE, 1, FALSE, TRUE, 10, 'M', TRUE);
+	// 		$pdf->MultiCell(30, 10, '$'.number_format($item->precioVENT, 2, ',', '.'), $bordeCuerpo, 'R', FALSE, 0, '', '', TRUE, 1, FALSE, TRUE, 10, 'M', TRUE);
+	// 		$pdf->MultiCell(37, 10, '$'.number_format($item->subtotalVENT, 2, ',', '.'), $bordeCuerpo, 'R', FALSE, 0, '', '', TRUE, 1, FALSE, TRUE, 10, 'M', TRUE);
+	// 		$pdf->Ln();
+
+	// 		if($pdf->getY() >= 260) $pdf->AddPage();
+	// 	endforeach;
+
+	// 	// ------ Config Total Tabla ------
+	//   $pdf->SetFont(PDF_FONT_NAME_MAIN, 'B', 10, '', TRUE);
+	//   $bordeCuerpo = ['T'	=> ['width'	=> 0.5]]; // linea superior
+
+	//   // ------ Total a pagar ------
+	// 	$pdf->MultiCell(25, 10, '', $bordeCuerpo, 'L', FALSE, 0, '', '', TRUE, 1, FALSE, TRUE, 10, 'M', TRUE);
+	// 	$pdf->MultiCell(65, 10,'', $bordeCuerpo, 'L', FALSE, 0, '', '', TRUE, 1, FALSE, TRUE, 10, 'M', TRUE);
+	// 	$pdf->MultiCell(25, 10, '', $bordeCuerpo, 'C', FALSE, 0, '', '', TRUE, 1, FALSE, TRUE, 10, 'M', TRUE);
+	// 	$pdf->MultiCell(30, 10, 'Total a pagar', $bordeCuerpo, 'R', FALSE, 0, '', '', TRUE, 1, FALSE, TRUE, 10,'M', TRUE);
+	// 	$pdf->MultiCell(37, 10, '$'.number_format($venta->totalVENT, 2, ',', '.'), $bordeCuerpo, 'R', FALSE, 0, '', '', TRUE, 1, FALSE, TRUE, 10, 'M', TRUE);
+	// 	$pdf->Ln();
+
+	// 	$pdf->Output("Highlight_VentaN$id_venta.pdf", 'I'); // nombre para descargar pdf
+	// }
 }
