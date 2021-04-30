@@ -27,16 +27,21 @@ $(document).ready(() => {
 
   if (window.matchMedia("(max-width: 768px)").matches) {
     /* La pantalla tiene al menos 768 píxeles de ancho */
-    if (sliderImg) { 
-      productInfo.style.marginTop = "16rem";
-      console.log('hola')
-    }else {
-      productInfo.style.marginTop = '2rem';
-      console.log('chau');
+    if(productInfo){
+      if (sliderImg) { 
+        productInfo.style.marginTop = "16rem";
+        console.log('hola')
+      }else {
+        productInfo.style.marginTop = '1.2rem';
+        console.log('chau');
+      }
     }
-  } 
+    
+  }
   
 });
+
+
 
 function prueba(e) {
   console.log(e.value);
