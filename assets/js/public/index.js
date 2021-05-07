@@ -834,15 +834,6 @@ function guardarCompra(){
 }
 
 
-document.querySelector('#get-value').addEventListener('click', ()=> {
-  var elmValue = document.querySelector('#ddlViewBy').value;
-  document.querySelector('#result').innerHTML = elmValue;
-  console.log(elmValue);
-})
-
-$('input[type="checkbox"]').on('change', function() {
-  $('input[type="checkbox"]').not(this).prop('checked', false);
-});
 
 
 function check() {
@@ -865,7 +856,65 @@ function check() {
 
 }
 
+//-------------Cambio de contraseña
+function recuperar(e){
+  e.preventDefault();
+  pageLoader.classList.add('page-loader--show');
+  const formData = new FormData(e.target);
+  $.ajax({
+    method: "POST",
+    url: baseUrl + 'api/user/recuperar_contra',
+    data: formData,
+    cache: false,
+    contentType: false,
+    processData: false,
+  })
+  .done(( resp ) => {
+    pageLoader.classList.remove('page-loader--show');
+    data = JSON.parse(resp);
+    if(data.result === 1){
+      Swal.fire("Correo enviado!", data.msg , "success")
+      .then(() => {
+        window.location.href = data.url;
+      });
+    }else{
+      showErrors(data.errors);
+    }
+  })
+  .fail(ajaxErrors);
+}
 
+//-------------Cambio de contraseña
+function nuevaContrasena(e, id) {
+
+  e.preventDefault();
+  pageLoader.classList.add('page-loader--show');
+  var formData = new FormData($("#form_nuevacontrasena")[0]);
+  $.ajax({
+    method: "POST",
+    url: baseUrl + 'api/user/nuevaContrasena/' + id,
+    data: formData,
+    cache: false,
+    contentType: false,
+    processData: false,
+  })
+  .done(( resp ) => {
+    pageLoader.classList.remove('page-loader--show');
+    data = JSON.parse(resp);
+
+    if(data.result === 1){
+      Swal.fire("Bien!", data.mensaje , "success")
+      .then(() => {
+        window.location.href = data.url;
+      });
+    }else if(data.result === 2){
+      Swal.fire("Error!", data.mensaje , "error")
+    }else{
+       Swal.fire("Error!", data.mensaje , "error")
+    }
+  })
+  .fail(ajaxErrors);
+}
 
 function ajaxErrors( jqXHR, textStatus) {
   /* pageLoader.classList.remove('page-loader--show'); */

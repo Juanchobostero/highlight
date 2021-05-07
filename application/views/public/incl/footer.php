@@ -65,6 +65,10 @@
   <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
 </div>
 
+<div id="whatsapp-icon" style="z-index: 2000">
+  <a href="https://api.whatsapp.com/send?phone=+54 9 11 65403909">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/240px-WhatsApp.svg.png" width="65" height="65"></a>
+</div>
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>

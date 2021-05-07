@@ -2,7 +2,7 @@
 :root {
   --menu-links-color: #031929;
   --titulo-seccion-color: #e37222;
-  --color-grey: #f7f7f7;
+  --color-grey: #e8e7e7;
 }
 
 /* General Styles */
@@ -28,8 +28,6 @@ body {
   font-size: 17px;
   min-height: 100%;
 }
-
-
 
 a {
   text-decoration: none;
@@ -318,8 +316,22 @@ img.blur {
   border: 0.118rem solid var(--menu-links-color);
 }
 
+#whatsapp-icon {
+  position: fixed;
+  transition: transform .2s; 
+  right: 10px; 
+  bottom: 70px; 
+  text-align: center; 
+  padding: 3px;
+  z-index: 2000;
+}
+
+#whatsapp-icon:hover {
+  transform: scale(1.5);
+}
+
 @media (max-width: 768px) and (orientation: landscape) {
-  
+
   .jumbo-container {
     margin-top: -5rem;
   }
@@ -430,12 +442,12 @@ img.blur {
     padding-left: 2.8rem;
     transform: translateY(6rem);
   }
- 
+
 }
 
 .name:focus,
 .telefono:focus,
-.mail:focu s,
+.mail:focus,
 .password:focus {
   outline: none;
   border: 0.059rem solid var(--color-grey);
@@ -513,6 +525,7 @@ img.blur {
   .jumbotron .container p {
     font-size: 0.6rem;
   } 
+
 }
 
 

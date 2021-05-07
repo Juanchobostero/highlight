@@ -299,7 +299,7 @@ class Inicio_controller extends CI_Controller
 				'titulo'  => 'HIGHLIGHT Herramientas',
 				'para'    => 'juancruzmart93@gmail.com',
 				'asunto'  => 'Confirmación de pedido',
-				'mensaje' => 'Hemos recibido su pedido nº '. $id_pedido . '.<br/>No conteste este mail.<br/>Atte: NISSI Joyas',
+				'mensaje' => 'Hemos recibido su pedido nº '. $id_pedido . '.<br/>No conteste este mail.<br/>Atte: Highlight Herramientas',
 				);
 			
 			/* $envioAlVendedor = array(
@@ -343,6 +343,21 @@ class Inicio_controller extends CI_Controller
 			$this->load->view('public/pedidos', $data);
 		}
 		
+	}
+
+	public function frmRecuperar(){
+		$data['categorias'] = $this->Categorias_model->get_full();
+		$data['title'] = 'Recuperar contraseña';
+
+		$this->load->view('public/forms/frmRecuperar', $data);
+	}
+
+	public function frmNuevaContraseña($id_user) {
+		$data['categorias'] = $this->Categorias_model->get_full();
+		$data['title'] = 'Nueva contraseña';
+		$data['id_user'] = $id_user;
+
+		$this->load->view('public/forms/frmRecuperar', $data);
 	}
 
 }

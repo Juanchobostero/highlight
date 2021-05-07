@@ -139,6 +139,9 @@ $route['pagar'] = 'Inicio_controller/pagar/$1';
 $route['finalizar_compra/(:num)'] = 'Inicio_controller/finalizar_compra/$1';
 $route['pedido/(:num)'] = 'Inicio_controller/pedido/$1';
 $route['pedidos'] = 'Inicio_controller/pedidos';
+$route['recuperar'] = 'Inicio_controller/frmRecuperar';
+$route['recuperar_contra/(:any)'] = 'Inicio_controller/frmNuevaContraseña/$1';
+
 
 $route['message'] = 'public/Consultas_controller/mensaje';
 
@@ -158,5 +161,8 @@ $route['api/carrito/delete'] = 'public/APICarrito/eliminar';
 $route['api/carrito/gettotal'] = 'public/APICarrito/total_items';
 $route['api/search/get'] = 'public/APISearch/get';
 $route['api/carrito/save'] = 'public/APICarrito/guardar_compra';
+$route['api/user/recuperar_contra'] = 'public/APIUser/enviar_email_recu';
+$route['api/user/nuevaContrasena/(:any)'] = 'public/APIUser/nuevaContrasena/$1';
+
 
 
