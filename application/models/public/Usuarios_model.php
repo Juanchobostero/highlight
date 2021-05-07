@@ -80,4 +80,10 @@ class Usuarios_model extends CI_Model
 		$this->db->where(['id_usuario' => $id]);
 		return $this->db->update('usuarios', $data);
 	  }
+
+	// -------------------------------------------------------------------
+	public function search($data) {
+		$this->db->where('id_usuario', $data);
+		return $this->db->get('usuarios')->result();
+	  }
 }
