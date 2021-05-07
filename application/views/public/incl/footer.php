@@ -4,7 +4,6 @@
         <h4>Información</h4>
         <li class="footer-item-info"><a href="#" class="footer-link">Términos y condiciones</a></li>
         <li class="footer-item-info"><a href="#" class="footer-link">Como cuidamos tu privacidad</a></li>
-        <li class="footer-item-info"><a href="#" class="footer-link">Preguntas frecuentes</a></li>
       </ul>
     </div>
       <br>

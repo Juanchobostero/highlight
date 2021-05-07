@@ -207,6 +207,10 @@ img.blur {
   text-align: center;
 }
 
+.frase-txt {
+  font-size: 1.6rem;
+}
+
 .frase-txt:before {
   visibility: visible;
   content: '"Hacemos envios a todo el país"';

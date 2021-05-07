@@ -95,7 +95,7 @@
 
                 <div class="envio">
                     <input type="checkbox" id="envio" name="envio" onclick="check()" value="0">
-                    <span for="retiro" id="envio-lbl"> Envio</span><br><br>
+                    <span for="retiro" id="envio-lbl"> Envio a domicilio</span><br><br>
                 </div>
                 
                 
