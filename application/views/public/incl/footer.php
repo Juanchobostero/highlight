@@ -2,8 +2,8 @@
     <div class="info">
       <ul class="info-list">
         <h4>Información</h4>
-        <li class="footer-item-info"><a href="#" class="footer-link">Términos y condiciones</a></li>
-        <li class="footer-item-info"><a href="#" class="footer-link">Como cuidamos tu privacidad</a></li>
+        <li class="footer-item-info"><a href="<?=base_url('terminos')?>" class="footer-link">Términos y condiciones</a></li>
+        <li class="footer-item-info"><a href="<?=base_url('privacidad')?>" class="footer-link">Como cuidamos tu privacidad</a></li>
       </ul>
     </div>
       <br>

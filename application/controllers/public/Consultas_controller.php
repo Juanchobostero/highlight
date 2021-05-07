@@ -28,6 +28,19 @@ public function mensaje(){
   
         if($this->Consultas_model->add($data)){
           $result = 1;
+
+          $emailUser = array(
+            'de'      => APP_MAIL,
+            'titulo'  => APP_NAME,
+            'para'    => $data['correo'],
+            'asunto'  => 'Mensaje recibido',
+            'mensaje' => 'Tu mensaje ha sido enviado con exito. 
+            Pronto nos comunicaremos con ud via correo o whatsapp. 
+            <br> Esto es un correo automático.<br>No conteste este mail. <br>Atte. HIGHLIGHT',
+          );
+
+          enviar_email($emailUser);
+
           $url = base_url();
           $msg = 'Su consulta ha sido enviada con éxito !';
           $_SESSION['flash_msg'] = $msg;

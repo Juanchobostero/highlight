@@ -10,59 +10,7 @@ class APIUser extends CI_Controller {
     $this->load->library('cart');
   }
 
-  // -------------------------------------------
-  public function email($datosEnvio) {
-    $config = array(
-      'protocol'  => 'smtp',
-      'smtp_host' => 'ssl://smtp.gmail.com',
-      'smtp_user' => 'prueba.softcre@gmail.com',
-      'smtp_pass' => 'prueba123456softcre',
-      'smtp_port' => '465',
-      'charset'   => 'utf-8',
-      'mailtype'  => 'html',
-      'validate'  => TRUE,
-      'wordwrap'  => TRUE,
-    );
-
-    $this->email->initialize($config);
-
-    $this->email->from($datosEnvio['de'], $datosEnvio['titulo']);
-    $this->email->to($datosEnvio['para']);
-    $this->email->subject($datosEnvio['asunto']);
-    $this->email->message($datosEnvio['mensaje']);
-    $this->email->set_newline("\r\n");
-    //$this->email->attach(base_url('assets/PDFs/prueba.pdf'));
-    return $this->email->send();
-  }
-
-
-  //----------------------------------------------------------
-
-  /* public function mandar_email($data){
-    $config = array(
-      'protocol'  => 'smtp',
-      'smtp_host' => 'ssl://smtp.gmail.com',
-      'smtp_user' => 'prueba.softcre@gmail.com',
-      'smtp_pass' => 'prueba123456softcre',
-      'smtp_port' => '465',
-      'charset'   => 'utf-8',
-      'mailtype'  => 'html',
-      'validate'  => TRUE,
-      'wordwrap'  => TRUE,
-    );
-
-    $this->email->initialize($config);
-    $msg = 'Gracias por registrarse a nuestra web. <br>Ya se encuentra en condiciones de comprar. <br> Esto es un correo automático.<br>No conteste este mail. <br>Atte. HIGHLIGHT';
-
-    $this->email->from('prueba.softcre@gmail.com');
-    $this->email->to($data['emailU']);
-    $this->email->subject($data['asunto']);
-    $this->email->message($msg);
-    $this->email->set_newline("\r\n");
-    //$this->email->attach(base_url('assets/PDFs/prueba.pdf'));
-    return $this->email->send();
-  }
- */
+  
 
   //---------------------------------------
   
@@ -76,6 +24,7 @@ class APIUser extends CI_Controller {
         'nombreU'   => $user->nombreU,
         'apellidoU'   => $user->apellidoU,
         'telefonoU'   => $user->telefonoU,
+        'domicilioU' => $user->domicilioU,
         'fotoU'   => $user->fotoU,
         'emailU'    => $user->emailU,
         'id_tu'  => $user->id_tu,
@@ -85,7 +34,7 @@ class APIUser extends CI_Controller {
       $this->session->set_userdata($data);
       $result = 1;
       $msg = 'Bienvenido a Highlight !';
-      if(!$user->nombreU || !$user->apellidoU || !$user->telefonoU){
+      if(!$user->nombreU || !$user->apellidoU || !$user->telefonoU || !$user->domicilioU){
         $_SESSION['flash_msg'] = 'Completá tu perfil por única vez para Continuar';
         $this->session->mark_as_flash('flash_msg');
         $url = base_url('perfil');
@@ -126,8 +75,8 @@ class APIUser extends CI_Controller {
 
       //enviar mail
 			$emailUser = array(
-				'de'      => 'prueba.softcre@gmail.com',
-				'titulo'  => 'HIGHLIGHT Herramientas',
+				'de'      => APP_MAIL,
+				'titulo'  => APP_NAME,
 				'para'    => $emailEnvio,
 				'asunto'  => 'Registro aceptado',
 				'mensaje' => 'Gracias por registrarse a nuestra web. <br>Ya se encuentra en condiciones de comprar. <br> Esto es un correo automático.<br>No conteste este mail. <br>Atte. HIGHLIGHT',
@@ -160,6 +109,7 @@ class APIUser extends CI_Controller {
     $this->form_validation->set_rules('nombre', 'Nombre de Usuario', 'required');
     $this->form_validation->set_rules('apellido', 'Apellido de Usuario', 'required');
     $this->form_validation->set_rules('telefono', 'Telefono de Usuario', 'required');
+    $this->form_validation->set_rules('domicilio', 'Domicilio de Usuario', 'required');
     $this->form_validation->set_message("required", "El campo ({field}) es Requerido!");
 
     if ($this->form_validation->run()){
@@ -167,6 +117,7 @@ class APIUser extends CI_Controller {
       $data['nombreU'] = $this->input->post('nombre');
       $data['apellidoU'] = $this->input->post('apellido');
       $data['telefonoU'] = $this->input->post('telefono');
+      $data['domicilioU'] = $this->input->post('domicilio');
       $data['id_loc'] = $this->input->post('localidad');
 
       if(!empty($_FILES['foto']['name'])) {
@@ -231,9 +182,9 @@ class APIUser extends CI_Controller {
       $msg .= "</body></html>";
 
       $data = [
-        'de'   => 'prueba.softcre@gmail.com',
+        'de'   => APP_MAIL,
+        'titulo' => APP_NAME,
         'para' => $user->emailU,
-        'titulo' => 'Highlight',
         'asunto' => 'Cambio de contraseña',
         'mensaje' => $msg,
       ];
@@ -297,14 +248,15 @@ class APIUser extends CI_Controller {
   
             $u = $usuario->search($id_user)[0];
             $datosEnvio = array(
-              'de'      => 'prueba.softcre@gmail.com',
-              'titulo'  => 'Modificacion de contraseña',
+              'de'      => APP_MAIL,
+              'titulo'  => APP_NAME,
               'para'    => $u->correo,
               'asunto'  => 'Contraseña modificada',
-              'mensaje' => "Contraseña modificada correctamente.<br>Esto es un correo automático.<br>No conteste este mail.<br>Muchas gracias.<br>Atte. Highlight Herramientas",
+              'mensaje' => "Contraseña modificada correctamente.<br>Esto es un correo automático.<br>No conteste este mail.<br>Muchas gracias.<br>Atte. Highlight",
             );
   
-            $this->email($datosEnvio);
+            enviar_email($datosEnvio);
+
             $this->output->set_output(json_encode(compact('result', 'url', 'mensaje')));
             return;
           

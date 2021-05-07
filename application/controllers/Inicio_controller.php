@@ -257,6 +257,18 @@ class Inicio_controller extends CI_Controller
 		$this->load->view('public/nosotros', $data);
 	}
 
+	public function privacidad(){
+		$data['categorias'] = $this->Categorias_model->get_full();
+		$data['privacidad'] = $this->Institucional_model->get_privacidad();
+		$this->load->view('public/privacidad', $data);
+	}
+
+	public function terminos(){
+		$data['categorias'] = $this->Categorias_model->get_full();
+		$data['terminos'] = $this->Institucional_model->get_terminos();
+		$this->load->view('public/terminos', $data);
+	}
+
 	public function pedir_presupuesto(){
 		$data['categorias'] = $this->Categorias_model->get_full();
 		$data['title'] = 'Pedir presupuesto';
@@ -293,14 +305,18 @@ class Inicio_controller extends CI_Controller
 			$id_pedido = $this->Productos_model->guardar_pedido($envioVENT);
 			$data['pedido'] = $this->Productos_model->get_pedido($id_pedido);
 
+			//Obtenemos email user para enviar correo
+			$user = $this->Usuarios_model->get_user($this->session->userdata('id'));
+			$emailUser = $user->emailU;
+
 			//enviar mail
 			$envioAlCliente = array(
-				'de'      => 'prueba.softcre@gmail.com',
-				'titulo'  => 'HIGHLIGHT Herramientas',
-				'para'    => 'juancruzmart93@gmail.com',
+				'de'      => APP_MAIL,
+				'titulo'  => APP_NAME,
+				'para'    => $emailUser,
 				'asunto'  => 'Confirmación de pedido',
-				'mensaje' => 'Hemos recibido su pedido nº '. $id_pedido . '.<br/>No conteste este mail.<br/>Atte: Highlight Herramientas',
-				);
+				'mensaje' => 'Hemos recibido su pedido nº '. $id_pedido . '. Nos comunicaremos a la brevedad !.<br/>No conteste este mail.<br/>Atte: Highlight',
+			);
 			
 			/* $envioAlVendedor = array(
 				'de'      => 'server.email@nissijoyas.com',
