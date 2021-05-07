@@ -133,10 +133,10 @@ function enviar_email($datosEnvio)
 
 	$config = array(
 		'protocol'    => 'smtp',
-		'smtp_host'   => 'ssl://smtp.gmail.com',
-		'smtp_user'   => 'prueba.softcre@gmail.com',
-		'smtp_pass'   => 'prueba123456softcre',
-		'smtp_port'   => '465',
+		'smtp_host'   => APP_SMTP_HOST,
+		'smtp_user'   => APP_SMTP_USER,
+		'smtp_pass'   => APP_SMTP_PASS,
+		'smtp_port'   => APP_SMTP_PORT,
 		'charset'     => 'utf-8',
 		'mailtype'    => 'html',
 		'validate'    => TRUE,

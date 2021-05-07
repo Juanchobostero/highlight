@@ -7,7 +7,7 @@ class Inicio_controller extends CI_Controller
 	public function admin()
 	{
 
-		if (isset($_SESSION['id'])) {
+		if (isset($_SESSION['tipo']) == 1) {
 			redirect('admin/dashboard');
 		} else {
 			redirect('admin/login');
@@ -45,6 +45,7 @@ class Inicio_controller extends CI_Controller
 	public function login()
 	{
 		$data['title'] = 'Acceso';
+		$this->session->sess_destroy();
 		$this->load->view('admin/login', $data);
 		// $this->validar();
 	}
