@@ -20,7 +20,9 @@
         padding-left: 7rem;
     }
 
-    
+    #form-rec {
+        margin-top: 2rem;
+    }
     
     
     .login-banner {
@@ -131,12 +133,8 @@
         padding: 0 0;
     }
     
-    .remember {
-        padding-right: 1.4rem;
-    }
-    
     .forget {
-        padding-left: 1.4rem;
+        padding-left: 0.3rem;
     }
     
     .remember,

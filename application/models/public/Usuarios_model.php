@@ -70,4 +70,20 @@ class Usuarios_model extends CI_Model
 	public function get_provincias() {
 		return $this->db->get('provincias')->result();
 	}
+
+	// -------------------------------------------------------------------
+	public function nuevaContrasena($contrasena, $id_user) {
+		$id = $id_user;
+		$data = array(
+		  'contrasena' => password_hash($contrasena, PASSWORD_DEFAULT),
+		);
+		$this->db->where(['id_usuario' => $id]);
+		return $this->db->update('usuarios', $data);
+	  }
+
+	// -------------------------------------------------------------------
+	public function search($data) {
+		$this->db->where('id_usuario', $data);
+		return $this->db->get('usuarios')->result();
+	  }
 }

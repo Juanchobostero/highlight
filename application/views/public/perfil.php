@@ -34,6 +34,9 @@
                 <input class="telefono" type="text" name="telefono" placeholder="Teléfono" value="<?=$usuario->telefonoU?>">
             </div>  
             
+            <div class="form-group">
+                <input class="name" type="text" name="domicilio" placeholder="Domicilio" value="<?=$usuario->domicilioU?>">
+            </div>
             <!-- <div class="ubi-box">
                 <select class="provincia name" name="provincia" id="provincia"></select>
                 

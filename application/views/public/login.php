@@ -21,9 +21,9 @@
             <input class="password" type="password" name="pass" placeholder="Contraseña">
         </div>
         <div class="lost-pass">
-            <input type="checkbox" id="remember-pass" name="remember">
-            <span class="remember"><a href="#">R<u>ecorda</u>r mi contraseña</a></span>
-            <span class="forget"><a href="#">¿O<u>lvidast</u>e tu contraseña?</a></span>
+            <!--<input type="checkbox" id="remember-pass" name="remember">
+             <span class="remember"><a href="#">R<u>ecorda</u>r mi contraseña</a></span> -->
+            <span class="forget"><a href="<?=base_url('recuperar')?>">¿O<u>lvidast</u>e tu contraseña?</a></span>
         </div>
         <div class="buttons">
             <button class="btn-login">Ingresar</button>

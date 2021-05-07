@@ -79,3 +79,9 @@
     }
     
 }
+
+@media (min-width: 1500px){
+    .section-slider {
+        margin-bottom: 0.1rem;
+    }
+} 
