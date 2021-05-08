@@ -96,7 +96,7 @@ class Ventas_controller extends CI_Controller
 					'asunto'  => 'Envio de pedido N° ' . $id_venta,
 					'mensaje' => "El pedido N° $id_venta ha sido enviado.<br><br> <b>Datos de envio para seguimiento</b><br>Empresa: $empresa <br>Nro Seguimiento: $nroSeguimiento <br>Enlace: $link"
 				];
-				// enviar_email($envio_venta);
+				enviar_email($envio_venta); // envia mail a cliente
 
 				$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Venta N°' . $id_venta . ' enviada a destino', 'tabs' => 'ventas', 'tab' => 'nuevas']));
 				return;
@@ -131,7 +131,7 @@ class Ventas_controller extends CI_Controller
 				'mensaje' => 'El pedido N° ' . $id_venta . ' ya se encuetra en nuestra sucursal para ser retirado.'
 			];
 
-			// enviar_email($envio_venta);
+			enviar_email($envio_venta); // envia mail a cliente
 
 			$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Venta N°' . $id_venta . ' enviado a sucursal']));
 			return;
@@ -161,7 +161,7 @@ class Ventas_controller extends CI_Controller
 				'mensaje' => 'El pedido N° ' . $id_venta . ' ha sido entregado.'
 			];
 
-			// enviar_email($entregar_venta);
+			enviar_email($entregar_venta); // envia mail a cliente
 
 			$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Venta N°' . $id_venta . ' entregada']));
 			return;
@@ -196,7 +196,7 @@ class Ventas_controller extends CI_Controller
 				'mensaje' => 'El pedido N° ' . $id_venta . ' ha sido cancelado.'
 			];
 
-			// enviar_email($cancel_venta);
+			enviar_email($cancel_venta); // envia mail a cliente
 
 			$this->output->set_output(json_encode(['result' => 1, 'titulo' => 'Excelente!', 'msj' => 'Venta N°' . $id_venta . ' cancelada']));
 			return;

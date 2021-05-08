@@ -89,3 +89,10 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
  */
 define('APP_NAME', 'Highlight');
 define('APP_MAIL', 'prueba.softcre@gmail.com');
+
+
+// Para el servidor de email
+define('APP_SMTP_HOST', 'ssl://smtp.gmail.com'); // HOST
+define('APP_SMTP_USER', APP_MAIL);	// CORREO USER
+define('APP_SMTP_PASS', 'prueba123456softcre'); // CONTRASENIA
+define('APP_SMTP_PORT', '465');	// PUERTO
