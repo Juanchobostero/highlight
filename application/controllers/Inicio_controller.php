@@ -373,7 +373,7 @@ class Inicio_controller extends CI_Controller
 		$data['title'] = 'Nueva contraseña';
 		$data['id_user'] = $id_user;
 
-		$this->load->view('public/forms/frmRecuperar', $data);
+		$this->load->view('public/forms/frmNuevaContrasena', $data);
 	}
 
 }
