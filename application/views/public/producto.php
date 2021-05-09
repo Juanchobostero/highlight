@@ -43,7 +43,16 @@
             <h3 class="des-title">Descripción</h3>
             <div class="product-descrip"><?=$producto->descripcionPR?></div>
             <div class="product-detail">
-                <h2 class="product-price">$<?=$producto->precio_ventaPR?></h2>
+                <?php if($es_oferta):?>
+                    <h6 id="precio-ante">
+						<s>$<?=$producto->precio_ventaPR?></s>
+                    </h6>
+                    <h2 class="product-price">$<?=$precio_oferta->precio?></h2>
+					
+                <?php else: ?>
+                    <h2 class="product-price">$<?=$producto->precio_ventaPR?></h2>
+                <?php endif; ?>
+                
                 <h3 class="product-stock">Stock disponible: <?=ceil($producto->stockPR)?> unidades</h3>
                 <label class="lbl-cant" for="cantidad">cantidad:</label>
                 <div class="cantidad">

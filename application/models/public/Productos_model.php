@@ -43,6 +43,31 @@ class Productos_model extends CI_Model {
     return $producto;
   }
 
+  public function es_oferta($id_producto) {
+    $this->db->join('productos_ofertas as po', 'productos.id_producto = po.id_produc');
+    $this->db->where('po.estado_oferta', 1);
+    $this->db->where('productos.id_producto', $id_producto);
+    $oferta = $this->db->get('productos')->row();
+    $result = false;
+    if ($oferta) {
+      $result = true;
+    }else {
+      $result = false;
+    }
+
+    return $result;
+  }
+
+  public function get_precio_oferta($id_producto) {
+    $this->db->select('TRUNCATE(((productos.precio_ventaPR * po.porcentaje) / 100), 2) as precio');
+    $this->db->join('productos_ofertas as po', 'productos.id_producto = po.id_produc');
+    $this->db->where('po.estado_oferta', 1);
+    $this->db->where('productos.id_producto', $id_producto);
+    $result = $this->db->get('productos')->row();
+
+    return $result;
+  }
+
   public function get_fotos($id)
   {
     $this->db->select('productos_fotos.*');

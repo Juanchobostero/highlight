@@ -177,6 +177,12 @@ class Inicio_controller extends CI_Controller
 	public function producto($id){
 		$data['categorias'] = $this->Categorias_model->get_full();
 		$data['producto'] = $this->Productos_model->get_producto($id);
+		$data['es_oferta'] = $this->Productos_model->es_oferta($id);
+
+		if($data['es_oferta']) {
+			$data['precio_oferta'] = $this->Productos_model->get_precio_oferta($id);
+		}
+
 		$data['fotos'] = $this->Productos_model->get_fotos($id);
 	
 		/* if(!$data['producto']){
