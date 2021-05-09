@@ -10,13 +10,12 @@
 				<img class="product-img" src="<?=base_url($producto->foto)?>">
 				</div>
 				<div class="product-desc">
-				<h5>
-					<?php echo word_limiter($producto->nombrePR, 5)?>
-				</h5>
-				
-				<h6>
-					$<?=$producto->precio_ventaPR?>
-				</h6>
+					<h6>
+						$<?=$producto->precio_ventaPR?>
+					</h6>
+					<h5>
+						<?php echo word_limiter($producto->nombrePR, 5)?>
+					</h5>
 				</div>
 			</div>
 		</div>

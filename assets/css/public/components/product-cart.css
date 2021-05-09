@@ -2,7 +2,7 @@
     .product-cart {
         display: flex;
         flex-direction: column;
-        border-color: var(--menu-links-color);
+        
         width: 13rem;
         height: 45vh;
         background-color: var(--titulo-seccion-color);
@@ -26,18 +26,20 @@
         background-color: var(--color-grey);
         height: 33%;
         padding: 0.6rem;
+        text-align: left;
     }
     
     .product-desc h5{
-        font-size: 1rem;
+        font-size: 0.8rem;
         font-weight: 400;
+        margin-top: -0.5rem;
         /* white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden; */
     }
     
     .product-desc h6 {
-        font-size: 1rem;
+        font-size: 1.2rem;
         font-weight: 600;
         bottom: 0;
         padding: 0.2rem;
@@ -45,20 +47,17 @@
         margin-bottom: 0.6rem;
     }
 
-    .new-price {
-        height: 2.6vh;
-        position: absolute;
-        top: 0.2rem;
+    #precio-ant {
+        margin-top: -0.5rem;
+        font-size: 0.7rem;
+        font-weight: 500;
     }
 
-    .new-price span {
-        background-color: var(--menu-links-color);
-        color:white;
-        width: 100%;
-        padding: 0.2rem;
-        border-radius: 0.2rem;
-        font-size: 1rem;
+    #nuevo-pre {
+        margin-top: -0.8rem;
     }
+
+    
       
 
 @media (min-width: 1500px){
@@ -132,23 +131,7 @@
         top: 0;
     }
 
-    /* .new-price {
-        height: 1.5vh;
-        position: absolute;
-        top: 5rem;
-        bottom: 1;
-    }
-
-    .new-price span {
-        background-color: var(--menu-links-color);
-        color:white;
-        width: 100%;
-        height: 100%;
-        padding: 0.3rem;
-        border-radius: 0.2rem;
-        font-size: 0.8rem;
-        white-space: nowrap;
-    } */
+   
 
 } 
 

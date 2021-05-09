@@ -8,16 +8,20 @@
 					<div class="product-img-top">
 						<img class="product-img" src="<?=base_url($producto->foto)?>">
 					</div>
-					<div class="new-price">
-						<span>AHORA  $<?=$producto->precio_nuevo?></span>
-					</div>
+					<!-- <div class="new-price">
+						<span>AHORA  $<?$producto->precio_nuevo?></span>
+					</div> -->
 					<div class="product-desc">
+						<h6 id="precio-ant">
+							<s>$<?=$producto->precio_ventaPR?></s>
+						</h6>
+						<h6 id="nuevo-pre">
+							$<?=$producto->precio_nuevo?>
+						</h6>
 						<h5>
 							<?php echo word_limiter($producto->nombrePR, 5)?>
 						</h5>
-						<h6>
-							Antes <s>$<?=$producto->precio_ventaPR?></s>
-						</h6>
+						
 					</div>
 				</div>
 			</div>

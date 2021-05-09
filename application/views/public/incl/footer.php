@@ -65,7 +65,7 @@
 </div>
 
 <div id="whatsapp-icon" style="z-index: 2000">
-  <a target="_blank" href="https://api.whatsapp.com/send?phone=+54 9 11 65403909">
+  <a target="_blank" href="https://api.whatsapp.com/send?phone=+5491165403909&text=Hola!%20Me%20estoy%20comunicando%20a%20través%20de%20www.hlherramientas.com.ar">
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/240px-WhatsApp.svg.png" width="65" height="65"></a>
 </div>
   
