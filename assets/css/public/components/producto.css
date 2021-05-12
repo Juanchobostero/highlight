@@ -668,3 +668,17 @@
     from {transform:scale(0)}
     to {transform:scale(1)}
 }
+
+@media (min-width: 1500px){ 
+   /*  .product-head {
+
+    } */
+
+    .hr-prods {
+        width: 82%;
+    }
+
+    /* #nameCat {
+
+    } */
+}

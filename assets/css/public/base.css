@@ -543,6 +543,12 @@ img.blur {
 
 }
 
+@media (min-width: 1500px){ 
+  body {
+    font-size: 19px;
+  }
+}
+
 
 
 

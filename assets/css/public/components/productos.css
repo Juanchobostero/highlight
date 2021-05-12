@@ -283,11 +283,10 @@
     
 }
 
+
 @media (min-width: 1500px){
     .productos-wrapper {
-        grid-template-columns: repeat(auto-fit, 16rem);
-        margin-left: 10rem;
-        width: 80%;
+        grid-template-columns: repeat(auto-fit, 20%);
     }
 
     .producto-cell {
