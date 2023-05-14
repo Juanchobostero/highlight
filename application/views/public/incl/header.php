@@ -34,7 +34,7 @@
   <link rel="icon" href="favicon.png" type="image/x-icon">
   <link rel="Shortcut Icon" href='favicon.png' type="image/x-icon" />
   
-  <title>HIGHLIGHT</title>
+  <title>JLHERRAMIENTAS</title>
   
 </head>
 <body class="grid-container">
@@ -48,7 +48,7 @@
       </a>
 
       <a href="<?=base_url()?>" class="logo-link">
-        <img class="icon-logo" src="<?=base_url('assets/img/public/img/hlportada.png')?>" alt="logo">
+        <img class="icon-logo" src="<?=base_url('assets/img/public/img/jlportada.png')?>" alt="logo">
       </a>
       
       <nav class="navbar">

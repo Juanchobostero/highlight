@@ -2,8 +2,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
 	<!-- Brand Logo -->
 	<a href="<?= base_url('admin/dashboard'); ?>" class="brand-link">
-		<img src="<?= base_url('assets/img/hl_logo.png') ?>" alt="Logo" class="brand-image img-circle elevation-3">
-		<span class="brand-text font-weight-light">Highlight</span>
+		<img src="<?= base_url('assets/img/jlvector.png') ?>" alt="Logo" class="brand-image img-circle elevation-3">
+		<span class="brand-text font-weight-light"><?= APP_NAME ?></span>
 	</a>
 
 	<!-- Sidebar -->

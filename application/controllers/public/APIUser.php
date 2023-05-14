@@ -33,7 +33,7 @@ class APIUser extends CI_Controller {
       ];
       $this->session->set_userdata($data);
       $result = 1;
-      $msg = 'Bienvenido a Highlight !';
+      $msg = 'Bienvenido a Jotalight !';
       if(!$user->nombreU || !$user->apellidoU || !$user->telefonoU || !$user->domicilioU){
         $_SESSION['flash_msg'] = 'Completá tu perfil por única vez para Continuar';
         $this->session->mark_as_flash('flash_msg');
@@ -79,7 +79,7 @@ class APIUser extends CI_Controller {
 				'titulo'  => APP_NAME,
 				'para'    => $emailEnvio,
 				'asunto'  => 'Registro aceptado',
-				'mensaje' => 'Gracias por registrarse a nuestra web. <br>Ya se encuentra en condiciones de comprar. <br> Esto es un correo automático.<br>No conteste este mail. <br>Atte. HIGHLIGHT',
+				'mensaje' => 'Gracias por registrarse a nuestra web. <br>Ya se encuentra en condiciones de comprar. <br> Esto es un correo automático.<br>No conteste este mail. <br>Atte. JOTALIGHT',
 				);
 
       if($this->Usuarios_model->add($data)){
@@ -174,11 +174,11 @@ class APIUser extends CI_Controller {
       $url = base_url('recuperar_contra/'.$id_usuario);
       $msg = "<html><body>";
       $msg .= '
-        ¡Hola! <br>Recibiste este e-mail porque desde el sitio de HighLight, solicitaste recuperar la clave del mail: ' .$correo. '
+        ¡Hola! <br>Recibiste este e-mail porque desde el sitio de JotaLight, solicitaste recuperar la clave del mail: ' .$correo. '
   
           <p> Haga click en el siguiente enlace para recuperar su contraseña: <a href='.$url.'>Recuperar contraseña</a></p>
   
-          <p><br>Esto es un correo automático.<br>No conteste este mail. <br>Atte. HighLight Herramientas</p>';
+          <p><br>Esto es un correo automático.<br>No conteste este mail. <br>Atte. JotaLight Herramientas</p>';
       $msg .= "</body></html>";
 
       $data = [
@@ -252,7 +252,7 @@ class APIUser extends CI_Controller {
               'titulo'  => APP_NAME,
               'para'    => $u->correo,
               'asunto'  => 'Contraseña modificada',
-              'mensaje' => "Contraseña modificada correctamente.<br>Esto es un correo automático.<br>No conteste este mail.<br>Muchas gracias.<br>Atte. Highlight",
+              'mensaje' => "Contraseña modificada correctamente.<br>Esto es un correo automático.<br>No conteste este mail.<br>Muchas gracias.<br>Atte. JotaLight",
             );
   
             enviar_email($datosEnvio);
